@@ -15,14 +15,14 @@ function stringToBig(raw: string, denomination = 0): Big {
 }
 
 /**
- * Convert nAvax to Avax
- * @param nAVAX nAvax amount
+ * Convert nAxc to Axc
+ * @param nAXC nAxc amount
  * @param denom 9 or 18 decimal places depending on chain
  */
-function nAvaxToAVAX(nAVAX: string | number, denom = 9): number {
-    return typeof nAVAX === 'string'
-        ? parseInt(nAVAX) / Math.pow(10, denom)
-        : nAVAX / Math.pow(10, denom)
+function nAxcToAXC(nAXC: string | number, denom = 9): number {
+    return typeof nAXC === 'string'
+        ? parseInt(nAXC) / Math.pow(10, denom)
+        : nAXC / Math.pow(10, denom)
 }
 
 function bigToDenomBig(val: Big, denomination = 0): Big {
@@ -212,7 +212,7 @@ function getNullAddress(id: string, key = ''): IAddress {
         address: id,
         publicKey: key,
         // P-Chain (excludes X -> P shared memory)
-        AVAX_balance: Big(0),
+        AXC_balance: Big(0),
         P_unlocked: Big(0),
         P_lockedStakeable: Big(0),
         P_lockedNotStakeable: Big(0),
@@ -230,7 +230,7 @@ function getNullAddress(id: string, key = ''): IAddress {
 }
 
 export {
-    nAvaxToAVAX as toAVAX,
+    nAxcToAXC as toAXC,
     stringToBig,
     bigToDenomBig,
     bnToBig,

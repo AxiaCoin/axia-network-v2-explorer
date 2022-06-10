@@ -1,7 +1,7 @@
 import store from '@/store'
 import { AXIA_SUBNET_ID } from './platform'
 import Big from 'big.js'
-import { ONEAVAX } from 'axia/dist/utils'
+import { ONEAXC } from 'axia/dist/utils'
 import { bigToDenomBig } from '@/helper'
 
 /**
@@ -21,7 +21,7 @@ export function getTotalPendingValidators(): number {
 }
 
 /**
- * @returns Total $AVAX active stake on Primary Network
+ * @returns Total $AXC active stake on Primary Network
  */
 export function getTotalStake(): Big {
     const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
@@ -35,7 +35,7 @@ export function getTotalStake(): Big {
 }
 
 /**
- * @returns Total $AVAX pending stake on Primary Network
+ * @returns Total $AXC pending stake on Primary Network
  */
 export function getTotalPendingStake(): Big {
     const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
@@ -92,12 +92,12 @@ export function getTotalBlockchains(): number {
 }
 
 /**
- * @returns AVAX Market Cap in USD
+ * @returns AXC Market Cap in USD
  */
 export function getMarketCapUSD(): string {
     const currentSupplyBN = store.state.Platform.currentSupply
-    const currentSupplyBig = Big(currentSupplyBN.div(ONEAVAX).toString())
-    // TODO: need to use circulatingSupply as currentSupply is both locked and unlocked AVAX
+    const currentSupplyBig = Big(currentSupplyBN.div(ONEAXC).toString())
+    // TODO: need to use circulatingSupply as currentSupply is both locked and unlocked AXC
     if (store.state.prices) {
         const marketCapUSD = currentSupplyBig.times(store.state.prices['usd'])
         return marketCapUSD.toLocaleString(2)
@@ -109,7 +109,7 @@ export function getStakingRatio(): number {
     let totalStake = getTotalStake()
     totalStake = bigToDenomBig(totalStake, 9)
     const currentSupply = store.state.Platform.currentSupply
-        .div(ONEAVAX)
+        .div(ONEAXC)
         .toNumber()
     const percentStaked = totalStake.div(currentSupply).times(100)
     return parseFloat(percentStaked.toFixed(2))

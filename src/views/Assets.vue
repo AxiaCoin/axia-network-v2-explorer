@@ -76,7 +76,7 @@ import AssetsDataTable from '@/components/Assets/AssetsDataTable.vue'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import TooltipHeading from '@/components/misc/TooltipHeading.vue'
 import { Asset } from '@/js/Asset'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 
 @Component({
     components: {
@@ -93,12 +93,12 @@ export default class AssetsPage extends Vue {
 
     get assets(): Asset[] {
         let res: Asset[] = this.$store.getters.assetsArrayNonProfane
-        const avax: Asset = res.find(
-            (asset: Asset) => asset.id === AVAX_ID
+        const axc: Asset = res.find(
+            (asset: Asset) => asset.id === AXC_ID
         ) as Asset
-        res = res.filter((asset: Asset) => asset.id !== AVAX_ID)
+        res = res.filter((asset: Asset) => asset.id !== AXC_ID)
         res.sort((a: Asset, b: Asset) => b.txCount_day - a.txCount_day)
-        res.unshift(avax)
+        res.unshift(axc)
         return res
     }
 

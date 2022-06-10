@@ -34,7 +34,7 @@ export default class Subnet {
         this.pendingDelegators = []
     }
 
-    // TODO: get address details for Platform Keys (https://docs.avax.network/v1.0/en/api/platform/#platformgetaccount)
+    // TODO: get address details for Platform Keys (https://docs.axc.network/v1.0/en/api/platform/#platformgetaccount)
 
     async updateValidators(endpoint: string) {
         /* ==========================================

@@ -1,5 +1,5 @@
 <template>
-    <div class="avax_balance_table">
+    <div class="axc_balance_table">
         <v-simple-table>
             <template v-slot:default>
                 <thead>
@@ -22,7 +22,7 @@
                             >
                         </td>
                         <td class="text-right balance">
-                            {{ item.balance }} <span>AVAX</span>
+                            {{ item.balance }} <span>AXC</span>
                         </td>
                     </tr>
                 </tbody>
@@ -40,7 +40,7 @@ import Big from 'big.js'
 @Component({
     components: {},
 })
-export default class AVAXBalanceTableDetail extends Vue {
+export default class AXCBalanceTableDetail extends Vue {
     @Prop() pUnlocked!: Big
     @Prop() pLockedStakeable!: Big
     @Prop() pLockedNotStakeable!: Big
@@ -94,11 +94,11 @@ export default class AVAXBalanceTableDetail extends Vue {
         {
             name: 'Total Balance',
             chain: '',
-            balance: this.totalAVAX,
+            balance: this.totalAXC,
         },
     ]
 
-    get totalAVAX(): Big {
+    get totalAXC(): Big {
         return this.pUnlocked
             .plus(this.pLockedStakeable)
             .plus(this.pLockedNotStakeable)
@@ -129,7 +129,7 @@ export default class AVAXBalanceTableDetail extends Vue {
 </script>
 
 <style scoped lang="scss">
-.avax_balance_table {
+.axc_balance_table {
     margin-top: 30px;
     margin-bottom: 30px;
     max-width: 500px;

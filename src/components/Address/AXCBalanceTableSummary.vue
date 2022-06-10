@@ -1,5 +1,5 @@
 <template>
-    <div class="avax_balance_table">
+    <div class="axc_balance_table">
         <v-simple-table>
             <template v-slot:default>
                 <thead>
@@ -12,7 +12,7 @@
                     <tr v-for="item in balances" :key="item.name">
                         <td class="text-left">{{ item.name }}</td>
                         <td class="text-right balance">
-                            {{ item.balance }} <span>AVAX</span>
+                            {{ item.balance }} <span>AXC</span>
                         </td>
                     </tr>
                 </tbody>
@@ -29,23 +29,23 @@ import Big from 'big.js'
 @Component({
     components: {},
 })
-export default class AVAXBalanceTableSummary extends Vue {
+export default class AXCBalanceTableSummary extends Vue {
     balances: any[] = [
         {
             name: 'Locked',
-            balance: this.totalAVAXLocked,
+            balance: this.totalAXCLocked,
         },
         {
             name: 'Unlocked',
-            balance: this.totalAVAXUnlocked,
+            balance: this.totalAXCUnlocked,
         },
         {
             name: 'Staked',
-            balance: this.totalAVAXStaked,
+            balance: this.totalAXCStaked,
         },
         {
             name: 'Total Balance',
-            balance: this.totalAVAX,
+            balance: this.totalAXC,
         },
     ]
 
@@ -58,24 +58,24 @@ export default class AVAXBalanceTableSummary extends Vue {
     @Prop() xLocked!: Big
     @Prop() xcUnlocked!: Big
 
-    get totalAVAXStaked(): Big {
+    get totalAXCStaked(): Big {
         return this.pStaked
     }
 
-    get totalAVAXLocked(): Big {
+    get totalAXCLocked(): Big {
         return this.pLockedStakeable
             .plus(this.pLockedNotStakeable)
             .plus(this.xLocked)
     }
 
-    get totalAVAXUnlocked(): Big {
+    get totalAXCUnlocked(): Big {
         return this.pUnlocked
             .plus(this.xpUnlocked)
             .plus(this.xUnlocked)
             .plus(this.xcUnlocked)
     }
 
-    get totalAVAX(): Big {
+    get totalAXC(): Big {
         return this.pUnlocked
             .plus(this.pLockedStakeable)
             .plus(this.pLockedNotStakeable)
@@ -89,7 +89,7 @@ export default class AVAXBalanceTableSummary extends Vue {
 </script>
 
 <style scoped lang="scss">
-.avax_balance_table {
+.axc_balance_table {
     margin-top: 30px;
     margin-bottom: 30px;
     max-width: 500px;

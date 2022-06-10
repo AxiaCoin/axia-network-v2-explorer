@@ -47,8 +47,8 @@
                 <Tooltip content="The fee to process this transaction" />
             </p>
             <p class="meta_value">
-                {{ tx.txFee | toAVAX }}
-                <span class="unit">AVAX</span>
+                {{ tx.txFee | toAXC }}
+                <span class="unit">AXC</span>
             </p>
         </article>
         <article class="meta_row">
@@ -105,7 +105,7 @@ import TransactionHistory from '@/components/Home/TopInfo/TransactionHistory.vue
 import { getAssetType } from '@/services/assets'
 import { getTxChainType } from '@/known_blockchains'
 import { getMappingForType } from '@/store/modules/transactions/maps'
-import { backgroundColor, stringToBig, toAVAX } from '@/helper'
+import { backgroundColor, stringToBig, toAXC } from '@/helper'
 import { Transaction, getTransactionOutputs } from '@/js/Transaction'
 import { P } from '@/known_blockchains'
 import {
@@ -126,7 +126,7 @@ import Big from 'big.js'
 
     filters: {
         getType: getMappingForType,
-        toAVAX,
+        toAXC,
         getAssetType,
     },
 })

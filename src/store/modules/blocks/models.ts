@@ -13,10 +13,10 @@ export interface BlocksState {
     block by a cryptographic hash of its contents as a means of reference. Blocks contain 
     an identifier for the final state after all transactions contained in it are validated. 
     There is a consensus mechanism that provides incentives for nodes adding new blocks to 
-    the chain that comply with the rules of Axia by burning tokens ('AVAX') to an account 
+    the chain that comply with the rules of Axia by burning tokens ('AXC') to an account 
     specified by the protocol.
 
-    Current API response is the same as eth.getBlock (https://explorerapi.avax.network/v2/ctxdata/1000)
+    Current API response is the same as eth.getBlock (https://explorerapi.axc.network/v2/ctxdata/1000)
 */
 export interface EVMBlockQueryResponse {
     blockNumber: string // A scalar value equal to the number of ancestor blocks. The genesis block has a number of zero.

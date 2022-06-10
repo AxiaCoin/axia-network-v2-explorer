@@ -34,13 +34,13 @@
                 </div>
                 <div class="list">
                     <h4>Social</h4>
-                    <a href="https://twitter.com/axiaavax" target="_blank">
+                    <a href="https://twitter.com/axiaaxc" target="_blank">
                         <fa :icon="['fab', 'twitter']"></fa>Twitter
                     </a>
-                    <a href="https://chat.avax.network" target="_blank">
+                    <a href="https://chat.axc.network" target="_blank">
                         <fa :icon="['fab', 'discord']"></fa>Discord
                     </a>
-                    <a href="https://reddit.com/r/avax" target="_blank">
+                    <a href="https://reddit.com/r/axc" target="_blank">
                         <fa :icon="['fab', 'reddit']"></fa>Reddit
                     </a>
                     <a

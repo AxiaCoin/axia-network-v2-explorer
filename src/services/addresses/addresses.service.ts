@@ -3,7 +3,7 @@ import api from '@/axios'
 import { bigToDenomBig, getNullAddress, stringToBig } from '@/helper'
 import { Asset } from '@/js/Asset'
 import { resolveResponseData } from '@/services/helpers'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 import {
     IAddress,
     IAddressData,
@@ -211,25 +211,25 @@ export async function getAddress(
         publicKey: '', // todo
 
         // P-Chain (excludes X -> P shared memory)
-        AVAX_balance: bigToDenomBig(
+        AXC_balance: bigToDenomBig(
             new Big(pBalance.balance),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_unlocked: bigToDenomBig(
             new Big(pBalance.unlocked),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_lockedStakeable: bigToDenomBig(
             new Big(pBalance.lockedStakeable),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_lockedNotStakeable: bigToDenomBig(
             new Big(pBalance.lockedNotStakeable),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_staked: bigToDenomBig(
             new Big(pStake.staked),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_utxoIDs: pBalance.utxoIDs as string[],
 
@@ -262,9 +262,9 @@ export async function getAddress(
     if (pBalanceOrtelius.length > 0) {
         const pBalanceAndXPbalance = bigToDenomBig(
             setUnlockedXP(pBalanceOrtelius[0].assets),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         )
-        address.XP_unlocked = pBalanceAndXPbalance.minus(address.AVAX_balance)
+        address.XP_unlocked = pBalanceAndXPbalance.minus(address.AXC_balance)
     }
 
     if (xBalanceOrtelius.length > 0) {
@@ -275,7 +275,7 @@ export async function getAddress(
     if (cBalanceOrtelius.length > 0) {
         address.XC_unlocked = bigToDenomBig(
             setUnlockedXC(cBalanceOrtelius[0].assets),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         )
     }
 

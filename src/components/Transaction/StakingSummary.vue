@@ -26,9 +26,9 @@
                             Validator is rewarded
                             <span class="status"
                                 >{{
-                                    validatorRewardUTXO.amount | toAVAX
+                                    validatorRewardUTXO.amount | toAXC
                                 }}
-                                AVAX</span
+                                AXC</span
                             >
                         </p>
                     </template>
@@ -38,18 +38,15 @@
                             Delegator is rewarded
                             <span class="status"
                                 >{{
-                                    delegatorRewardUTXO.amount | toAVAX
+                                    delegatorRewardUTXO.amount | toAXC
                                 }}
-                                AVAX</span
+                                AXC</span
                             >
                         </p>
                         <p class="margin_top">
                             Validator is rewarded
                             <span class="status"
-                                >{{
-                                    delegatorFeeUTXO.amount | toAVAX
-                                }}
-                                AVAX</span
+                                >{{ delegatorFeeUTXO.amount | toAXC }} AXC</span
                             >
                             as fee
                         </p>
@@ -77,14 +74,14 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import StakingTimeline from '@/components/Transaction/StakingTimeline.vue'
 import moment from 'moment'
 import { Output } from '@/store/modules/transactions/models'
-import { toAVAX } from '@/helper'
+import { toAXC } from '@/helper'
 
 @Component({
     components: {
         StakingTimeline,
     },
     filters: {
-        toAVAX,
+        toAXC,
     },
 })
 export default class StakingSummary extends Vue {

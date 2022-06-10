@@ -1,7 +1,7 @@
 import { stringToBig } from '@/helper'
 import { Asset } from '@/js/Asset'
 import { IAssetDataOrtelius, IAssetDataAxiaGo } from '@/js/IAsset'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 import { IBalanceX, IBalanceXData, IBalanceXDatum } from './models'
 import Big from 'big.js'
 
@@ -30,14 +30,14 @@ export function setBalanceData(
 }
 
 export function setUnlockedXP(assets: IBalanceXData): Big {
-    return assets[AVAX_ID] ? Big(assets[AVAX_ID].balance) : Big(0)
+    return assets[AXC_ID] ? Big(assets[AXC_ID].balance) : Big(0)
 }
 
 export function setUnlockedX(assets: IBalanceX[]): Big {
-    const result = assets.find((asset) => asset.id === AVAX_ID)
+    const result = assets.find((asset) => asset.id === AXC_ID)
     return result ? result.balance : Big(0)
 }
 
 export function setUnlockedXC(assets: IBalanceXData): Big {
-    return assets[AVAX_ID] ? Big(assets[AVAX_ID].balance) : Big(0)
+    return assets[AXC_ID] ? Big(assets[AXC_ID].balance) : Big(0)
 }

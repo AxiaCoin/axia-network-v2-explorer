@@ -156,12 +156,12 @@ const platform_module: Module<PlatformState, IRootState> = {
                 ONE_YEAR_SECONDS,
                 currentSupply
             )
-            // convert 'nAVAX BNs' to 'AVAX numbers' since BN arithmetic is buggy
-            const currentSupplyAVAX = currentSupply
+            // convert 'nAXC BNs' to 'AXC numbers' since BN arithmetic is buggy
+            const currentSupplyAXC = currentSupply
                 .div(new BN(Math.pow(10, 9)))
                 .toNumber()
-            const rewardAVAX = reward.div(new BN(Math.pow(10, 9))).toNumber()
-            const APR = (rewardAVAX / currentSupplyAVAX) * 100
+            const rewardAXC = reward.div(new BN(Math.pow(10, 9))).toNumber()
+            const APR = (rewardAXC / currentSupplyAXC) * 100
             commit('setAnnualStakingRewardPercentage', APR)
         },
     },

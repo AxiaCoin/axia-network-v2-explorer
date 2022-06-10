@@ -49,12 +49,12 @@
                         <p class="label">
                             Total Stake Amount
                             <TooltipMeta
-                                content="Total value of AVAX locked to secure Axia"
+                                content="Total value of AXC locked to secure Axia"
                             />
                         </p>
                         <p class="meta_val">
                             {{ totalStake.toLocaleString() }}
-                            <span class="unit">AVAX</span>
+                            <span class="unit">AXC</span>
                         </p>
                     </div>
                 </article>

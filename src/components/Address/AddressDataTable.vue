@@ -22,8 +22,8 @@
                     <template v-else>{{ item.address }}</template>
                 </div>
             </template>
-            <template #item.avaxBalance="{ item }">
-                {{ item.avaxBalance }}
+            <template #item.axcBalance="{ item }">
+                {{ item.axcBalance }}
             </template>
         </v-data-table>
     </v-card>
@@ -45,7 +45,7 @@ export default class AddressDataTable extends Vue {
     get headers(): any[] {
         return [
             { text: 'Address', value: 'address' },
-            { text: 'AVAX Balance', value: 'avaxBalance' },
+            { text: 'AXC Balance', value: 'axcBalance' },
         ]
     }
 }

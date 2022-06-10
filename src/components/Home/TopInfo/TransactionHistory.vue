@@ -65,7 +65,7 @@ import TooltipHeading from '../../misc/TooltipHeading.vue'
 import Chart from 'chart.js'
 import moment from 'moment'
 import TransactionHistoryMeta from '@/components/Home/TopInfo/TransactionHistoryMeta'
-import { toAVAX } from '@/helper'
+import { toAXC } from '@/helper'
 import { max } from 'd3-array'
 import { getAggregates } from '@/services/aggregates'
 
@@ -249,7 +249,7 @@ export default {
         // charted data
         valuesX() {
             return this.dataX.map((d) => {
-                return toAVAX(d.transactionVolume).toFixed(0)
+                return toAXC(d.transactionVolume).toFixed(0)
             })
         },
         // x-axis labels
@@ -279,7 +279,7 @@ export default {
                 ],
                 datasets: [
                     {
-                        label: 'Volume (AVAX)',
+                        label: 'Volume (AXC)',
                         backgroundColor: 'transparent',
                         borderColor: '#e84970',
                         pointBackgroundColor: 'transparent',
@@ -408,7 +408,7 @@ export default {
             this.history = res
             this.aggregates = res.aggregates
             this.maxValue = max(this.history.intervals, (d) =>
-                toAVAX(d.transactionVolume)
+                toAXC(d.transactionVolume)
             )
             this.loading = false
             this.draw()

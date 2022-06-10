@@ -1,4 +1,4 @@
-import { Defaults, ONEAVAX } from 'axia/dist/utils'
+import { Defaults, ONEAXC } from 'axia/dist/utils'
 import { BN } from 'axia/dist'
 import { axia } from '@/axia'
 import Big from 'big.js'
@@ -28,9 +28,9 @@ export function calculateStakingReward(
     const diffConsumption: number = maxConsumption - minConsumption
     const remainingSupply = maxSupply.sub(currentSupply)
 
-    const amtBig = Big(amount.div(ONEAVAX).toString())
-    const currentSupplyBig = Big(currentSupply.div(ONEAVAX).toString())
-    const remainingSupplyBig = Big(remainingSupply.div(ONEAVAX).toString())
+    const amtBig = Big(amount.div(ONEAXC).toString())
+    const currentSupplyBig = Big(currentSupply.div(ONEAXC).toString())
+    const remainingSupplyBig = Big(remainingSupply.div(ONEAXC).toString())
     const portionOfExistingSupplyBig = amtBig.div(currentSupplyBig)
 
     const portionOfStakingDuration: number =

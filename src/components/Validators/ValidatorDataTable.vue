@@ -39,10 +39,10 @@
                 </div>
             </template>
             <template #item.stakeAmount="{ item }">
-                {{ item.totalStakeAmount | AVAX }} {{ nativeSymbol }}
+                {{ item.totalStakeAmount | AXC }} {{ nativeSymbol }}
             </template>
             <template #item.potentialReward="{ item }"
-                >{{ item.potentialReward | AVAX }} {{ nativeSymbol }}</template
+                >{{ item.potentialReward | AXC }} {{ nativeSymbol }}</template
             >
             <template #item.startTime="{ item }">
                 <div class="text-right date no-pad-right">
@@ -151,7 +151,7 @@
                         </td>
                         <td>
                             <div style="width: 130px">
-                                {{ delegator.totalStakeAmount | AVAX }}
+                                {{ delegator.totalStakeAmount | AXC }}
                                 {{ nativeSymbol }}
                             </div>
                         </td>
@@ -267,21 +267,21 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { toAVAX } from '@/helper'
+import { toAXC } from '@/helper'
 import Subnet from '@/js/Subnet'
 import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 import { IValidator } from '@/store/modules/platform/IValidator'
 import ContentMetadata from '@/components/Subnets/ContentMetadata.vue'
 import { scaleLinear } from 'd3-scale'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 
 @Component({
     components: {
         ContentMetadata,
     },
     filters: {
-        AVAX(val: number) {
-            return parseFloat(toAVAX(val).toFixed(9)).toLocaleString()
+        AXC(val: number) {
+            return parseFloat(toAXC(val).toFixed(9)).toLocaleString()
         },
     },
 })
@@ -344,7 +344,7 @@ export default class ValidatorDataTable extends Vue {
     }
 
     get nativeSymbol() {
-        return this.$store.state.assets[AVAX_ID].symbol
+        return this.$store.state.assets[AXC_ID].symbol
     }
 
     created() {

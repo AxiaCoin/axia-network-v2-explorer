@@ -1,6 +1,6 @@
-import { AVAX_ID } from './known_assets'
+import { AXC_ID } from './known_assets'
 
-export const AVAX_PRICE_ID = process.env.VUE_APP_AVAX_PRICE_ID as string
+export const AXC_PRICE_ID = process.env.VUE_APP_AXC_PRICE_ID as string
 export const VS_CURRENCIES = process.env.VUE_APP_VS_CURRENCIES as string
 
 interface PricesDict {
@@ -9,6 +9,6 @@ interface PricesDict {
 
 const dict: PricesDict = {}
 
-dict[AVAX_ID] = AVAX_PRICE_ID
+dict[AXC_ID] = AXC_PRICE_ID
 
 export default dict

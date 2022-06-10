@@ -26,7 +26,7 @@ import { parseTxs } from './modules/transactions/helpers'
 import { X } from '@/known_blockchains'
 import { getCacheAssets } from '@/services/assets'
 import { getPrices, Price, PriceMap } from '@/services/price'
-import { AVAX_PRICE_ID, VS_CURRENCIES } from '@/known_prices'
+import { AXC_PRICE_ID, VS_CURRENCIES } from '@/known_prices'
 import { getABI } from '@/services/abi/abi.service'
 //@ts-ignore
 import abiDecoder from 'abi-decoder'
@@ -152,10 +152,10 @@ const store = new Vuex.Store({
 
         async getPrice({ commit }) {
             const price: PriceMap = await getPrices({
-                ids: [AVAX_PRICE_ID],
+                ids: [AXC_PRICE_ID],
                 vs_currencies: [VS_CURRENCIES],
             })
-            commit('addPrices', price[AVAX_PRICE_ID])
+            commit('addPrices', price[AXC_PRICE_ID])
             commit('finishPricesLoading')
         },
 

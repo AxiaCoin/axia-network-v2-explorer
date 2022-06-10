@@ -27,7 +27,7 @@
                     <span
                         >The P-Chain is the metadata blockchain on Axia,
                         managing validators and custom subnets. Validators stake
-                        AVAX on the P-Chain to secure the network.</span
+                        AXC on the P-Chain to secure the network.</span
                     >
                 </v-tooltip>
                 <v-tooltip>

@@ -30,14 +30,14 @@
             <p class="label">
                 Total Staked
                 <TooltipMeta
-                    content="Total value of AVAX locked to secure Axia"
+                    content="Total value of AXC locked to secure Axia"
                     :color="'#2196f3'"
                 />
             </p>
             <div>
                 <p v-if="subnetsLoaded" class="meta_val">
                     {{ totalStake }}
-                    <span class="unit">AVAX</span>
+                    <span class="unit">AXC</span>
                 </p>
                 <v-progress-circular
                     v-else
@@ -53,7 +53,7 @@
             <p class="label">
                 Staking Ratio
                 <TooltipMeta
-                    content="Percentage of AVAX locked to secure Axia out of total AVAX supply"
+                    content="Percentage of AXC locked to secure Axia out of total AXC supply"
                     :color="'#2196f3'"
                 />
             </p>

@@ -5,7 +5,7 @@ export interface IAddress {
     address: string // "custom1wvdqtl8g5jjv2r5rk8qzgktf9kx95nx8fm2xsh
     publicKey: string
     // P-Chain (excludes X -> P shared memory)
-    AVAX_balance: Big
+    AXC_balance: Big
     P_unlocked: Big // unlocked tokens. stake/move (denominated)
     P_lockedStakeable: Big // vesting tokens. stake/!move (denominated)
     P_lockedNotStakeable: Big // vesting tokens. !stake/!move (denominated)
@@ -47,7 +47,7 @@ export interface IBalanceP {
 
 /* ==========================================
    Ortelius API
-        - unlocked X-Chain AVAX + assets
+        - unlocked X-Chain AXC + assets
         - TODO: locked eventually
    ========================================== */
 
@@ -73,9 +73,9 @@ export interface IBalanceXDatum {
 
 /* ==========================================
    Axia Go API
-        - unlocked P-Chain AVAX
-        - locked P-Chain AVAX
-        - staked P-Chain AVAX
+        - unlocked P-Chain AXC
+        - locked P-Chain AXC
+        - staked P-Chain AXC
    ========================================== */
 
 export interface IBalancePData {

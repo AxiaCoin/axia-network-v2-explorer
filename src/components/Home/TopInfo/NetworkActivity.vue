@@ -27,14 +27,14 @@
                     <dd class="indent">
                         24h Volume
                         <TooltipMeta
-                            content="Total value of AVAX transferred on Axia in the past 24 hours"
+                            content="Total value of AXC transferred on Axia in the past 24 hours"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
                         <template v-if="subnetsLoaded">
-                            {{ avaxVolume }}
-                            <span class="unit">AVAX</span>
+                            {{ axcVolume }}
+                            <span class="unit">AXC</span>
                         </template>
                         <v-progress-circular
                             v-else
@@ -78,14 +78,14 @@
                     <dd>
                         Total Staked
                         <TooltipMeta
-                            content="Total value of AVAX locked to secure Axia"
+                            content="Total value of AXC locked to secure Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
                         <template v-if="subnetsLoaded">
                             {{ totalStake }}
-                            <span class="unit">AVAX</span></template
+                            <span class="unit">AXC</span></template
                         >
                         <v-progress-circular
                             v-else
@@ -151,7 +151,7 @@
                     <dd>
                         Staking Ratio
                         <TooltipMeta
-                            content="Percentage of AVAX locked to secure Axia out of total AVAX supply"
+                            content="Percentage of AXC locked to secure Axia out of total AXC supply"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -196,7 +196,7 @@ import 'reflect-metadata'
 import { Mixins, Component, Watch } from 'vue-property-decorator'
 import TooltipHeading from '@/components/misc/TooltipHeading.vue'
 import TooltipMeta from '@/components/Home/TopInfo/TooltipMeta.vue'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 import { Asset } from '@/js/Asset'
 import Big from 'big.js'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
@@ -223,9 +223,9 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         return this.$store.state.Platform.subnetsLoaded
     }
 
-    @Watch('avaxVolume')
-    onAvaxVolumeChanged() {
-        this.saveCacheAvax()
+    @Watch('axcVolume')
+    onAxcVolumeChanged() {
+        this.saveCacheAxc()
     }
 
     @Watch('totalTransactions')
@@ -236,7 +236,7 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
     created() {
         // Get 24h volume cache
         // TODO: remove when API is enhanced
-        const volumeCacheJSON = localStorage.getItem('avaxCache')
+        const volumeCacheJSON = localStorage.getItem('axcCache')
         let volumeCache = Big(0)
         if (volumeCacheJSON) {
             const cache = JSON.parse(volumeCacheJSON)
@@ -257,16 +257,16 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         this.totalTransactionsCache = totalTransactionsCache
     }
 
-    saveCacheAvax() {
-        const asset = this.avax
+    saveCacheAxc() {
+        const asset = this.axc
         if (asset) {
             const volume_day = asset.volume_day.toString()
             const txCount_day = asset.txCount_day
             const cache = {
-                volume_day, // AVAX volume
-                txCount_day, // AVAX count
+                volume_day, // AXC volume
+                txCount_day, // AXC count
             }
-            localStorage.setItem('avaxCache', JSON.stringify(cache))
+            localStorage.setItem('axcCache', JSON.stringify(cache))
         }
     }
 
@@ -295,16 +295,16 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         return this.$store.state.assets
     }
 
-    get avax(): Asset | undefined {
-        return this.assets[AVAX_ID]
+    get axc(): Asset | undefined {
+        return this.assets[AXC_ID]
     }
 
-    get avaxVolume(): string {
-        if (!this.avax) {
+    get axcVolume(): string {
+        if (!this.axc) {
             return parseInt(this.volumeCache.toFixed(0)).toLocaleString()
         }
-        return this.avax.isHistoryUpdated
-            ? parseInt(this.avax.volume_day.toFixed(0)).toLocaleString()
+        return this.axc.isHistoryUpdated
+            ? parseInt(this.axc.volume_day.toFixed(0)).toLocaleString()
             : parseInt(this.volumeCache.toFixed(0)).toLocaleString()
     }
 

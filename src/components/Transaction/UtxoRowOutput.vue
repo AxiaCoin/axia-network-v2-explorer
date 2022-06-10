@@ -59,7 +59,7 @@ import Stakeable from '@/components/Transaction/UtxoStakeable.vue'
 import Block from '@/components/Transaction/UtxoBlock.vue'
 import NFTPayload from '@/components/Transaction/UtxoNFTPayload.vue'
 import Summary from '@/components/Transaction/UtxoSummary.vue'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 import { P, X, C } from '@/known_blockchains'
 import { backgroundColor } from '@/helper'
 
@@ -97,7 +97,7 @@ export default class UtxoRowOutput extends Vue {
     }
 
     get isMint() {
-        return this.txtype === 'create_asset' && this.utxo.assetID !== AVAX_ID
+        return this.txtype === 'create_asset' && this.utxo.assetID !== AXC_ID
             ? true
             : false
     }

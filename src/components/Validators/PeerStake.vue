@@ -1,7 +1,7 @@
 <template>
     <div class="peer_info">
         <div class="header">
-            <h4 class="meta_title">AVAX Stake Distribution</h4>
+            <h4 class="meta_title">AXC Stake Distribution</h4>
             <p class="subtitle">by AxiaGo Version</p>
         </div>
         <div class="canv_cont">

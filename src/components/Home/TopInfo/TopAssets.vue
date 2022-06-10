@@ -71,7 +71,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import TooltipHeading from '@/components/misc/TooltipHeading.vue'
 import { Asset } from '@/js/Asset'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 import { ICollisionMap } from '@/js/IAsset'
 import AssetLogoRenderer from '@/components/Assets/AssetLogoRenderer.vue'
 import NFTLogoRenderer from '@/components/Assets/NFTLogoRenderer.vue'
@@ -87,10 +87,10 @@ import NFTLogoRenderer from '@/components/Assets/NFTLogoRenderer.vue'
 export default class TopAssets extends Vue {
     get assets(): Asset[] {
         let res = this.$store.getters.assetsArrayNonProfane
-        const avax = res.find((asset: Asset) => asset.id === AVAX_ID)
-        res = res.filter((asset: Asset) => asset.id !== AVAX_ID)
+        const axc = res.find((asset: Asset) => asset.id === AXC_ID)
+        res = res.filter((asset: Asset) => asset.id !== AXC_ID)
         res.sort((a: Asset, b: Asset) => b.txCount_day - a.txCount_day)
-        res.unshift(avax)
+        res.unshift(axc)
         return res.slice(0, 7)
     }
 

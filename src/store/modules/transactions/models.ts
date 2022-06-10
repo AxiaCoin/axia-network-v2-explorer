@@ -44,7 +44,7 @@ export interface TransactionResponse {
 
     timestamp: string
 
-    // https://docs.avax.network/learn/platform-overview/transaction-fees#fee-schedule
+    // https://docs.axc.network/learn/platform-overview/transaction-fees#fee-schedule
     /* Multi-sig txFee scenarios
         A. 1-of-2 ms UTXO  =>  UTXO (equal)      both parties paid the fee.
                                UTXO (equal) 
@@ -121,7 +121,7 @@ export interface TransactionResponse {
         - stakable
             - stakeLockTime
         - stakableLockedOutput (wraps transfer)
-            - stakeLockTime - vesting avax. we needed a way for ppl to stake but otherwise not spend it for any other purpose                
+            - stakeLockTime - vesting axc. we needed a way for ppl to stake but otherwise not spend it for any other purpose                
             - lockTime
     */
 }
@@ -181,7 +181,7 @@ export interface EVMTransactionResponse {
         A transaction receipt does contain a status code to check whether execution succeeded or not, 
         but there’s no way to see what data was modified, nor what external contracts were invoked. 
         In order to introspect a transaction, we need to trace its execution.
-        Example: https://explorerapi.avax.network/v2/ctransactions?hash=0xbe5960deded935d9cbea94ea9e944699db668646dba9d20bcfda921f979bfd87
+        Example: https://explorerapi.axc.network/v2/ctransactions?hash=0xbe5960deded935d9cbea94ea9e944699db668646dba9d20bcfda921f979bfd87
     */
     traces: TraceResponse[]
 
@@ -202,7 +202,7 @@ export interface EVMTransactionResponse {
     Objects represent ContractMsg - A contract message is passed between a 
         contract account and any other account (external or contract). It is the 
         result of an execution chain originally triggered by an external eccount.
-    curl -X POST --data '{ "jsonrpc": "2.0", "method": "debug_traceTransaction","params": ["0x00000217bc17e7e3187efae9248523f4fe2bc90e029e3ba13ddd8ff69607c705", {"disableStack": true, "disableMemory": true, "disableStorage": true}],"id": 1}' -H 'content-type:application/json;' https://api.avax.network/ext/bc/C/rpc
+    curl -X POST --data '{ "jsonrpc": "2.0", "method": "debug_traceTransaction","params": ["0x00000217bc17e7e3187efae9248523f4fe2bc90e029e3ba13ddd8ff69607c705", {"disableStack": true, "disableMemory": true, "disableStorage": true}],"id": 1}' -H 'content-type:application/json;' https://api.axc.network/ext/bc/C/rpc
  */
 export interface TraceResponse {
     callType: string /* execution context
@@ -234,7 +234,7 @@ export interface TraceResponse {
     createdContractAddressHash?: string
     createdContractCode?: string
 
-    // ERROR EXAMPLE: https://explorerapi.avax-test.network/v2/ctransactions?hash=0x638a35c57a7a1545a8a6eb4ea6a3355c2d4e64657f8921fd3ff922aff86436b1
+    // ERROR EXAMPLE: https://explorerapi.axc-test.network/v2/ctransactions?hash=0x638a35c57a7a1545a8a6eb4ea6a3355c2d4e64657f8921fd3ff922aff86436b1
     error?: string // "execution reverted",
     revertReason?: string // keccak-256 encoding "0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000009542d4f4145582d30310000000000000000000000000000000000000000000000",
     revertReasonUnpacked?: string // "T-OAEX-01"
@@ -289,14 +289,14 @@ export interface OutputResponse {
 
     // RELEVANT TO C-CHAIN
     caddresses: string[]
-    block: string // https://cchain.explorer.avax.network/blocks/33726/transactions - broken block/tx
+    block: string // https://cchain.explorer.axc.network/blocks/33726/transactions - broken block/tx
     nonce: number
     /*        
     X > SHARED DB > P/C
-        1. EXPORT = move UTXO from X to SHARED DB (https://explorerapi.avax.network/v2/transactions/wQwXqfXKyoHSMCP4QVrfZgU9V7cBShJGgkZmGvkLQbHTRjhAS)
-        2. ATOMIC_IMPORT = move UTXO from SHARED DB to P/C (https://explorerapi.avax.network/v2/transactions/9TMCg4ZRfa91NHJE7LgMFK6UHKP83uopHBFL3zyDc55acfMUF)
+        1. EXPORT = move UTXO from X to SHARED DB (https://explorerapi.axc.network/v2/transactions/wQwXqfXKyoHSMCP4QVrfZgU9V7cBShJGgkZmGvkLQbHTRjhAS)
+        2. ATOMIC_IMPORT = move UTXO from SHARED DB to P/C (https://explorerapi.axc.network/v2/transactions/9TMCg4ZRfa91NHJE7LgMFK6UHKP83uopHBFL3zyDc55acfMUF)
             - normally, we'd see an output UTXO, but in lieu of output UTXO, we see a C-address
-                - inputs.addresses = [avax...]
+                - inputs.addresses = [axc...]
                 - outputs.address  = null
                 - outputs.caddress = [0x..]
             - if you have hex C-addresses, then the output represented as atomic import address, you will see the actual block that wrapped that atomic import/export tx
