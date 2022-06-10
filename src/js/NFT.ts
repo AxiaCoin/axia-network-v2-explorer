@@ -1,4 +1,4 @@
-import { UTXO } from 'axia/dist/apis/avm'
+import { UTXO } from '@zee-ava/avajs/dist/apis/avm'
 
 export interface UrlFormType {
     url: string

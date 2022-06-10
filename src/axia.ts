@@ -1,4 +1,4 @@
-import * as axiaJS from 'axia'
+import * as axiaJS from '@zee-ava/avajs'
 
 const DEFAULT_NETWORK_ID = parseInt(
     process.env.VUE_APP_DEFAULT_NETWORKID || '4'

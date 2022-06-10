@@ -1,7 +1,7 @@
 import store from '@/store'
 import { AXIA_SUBNET_ID } from './platform'
 import Big from 'big.js'
-import { ONEAXC } from 'axia/dist/utils'
+import { ONEAXC } from '@zee-ava/avajs/dist/utils'
 import { bigToDenomBig } from '@/helper'
 
 /**

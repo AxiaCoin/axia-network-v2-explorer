@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { JSONPayload } from 'axia/dist/utils'
+import { JSONPayload } from '@zee-ava/avajs/dist/utils'
 import { IGenericNft } from '@/js/NFT'
 import LogoFallback from '@/components/Assets/LogoFallback.vue'
 

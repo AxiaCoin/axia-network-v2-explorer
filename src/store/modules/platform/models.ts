@@ -1,6 +1,6 @@
 import Subnet from '@/js/Subnet'
 import Blockchain from '@/js/Blockchain'
-import { BN } from 'axia'
+import { BN } from '@zee-ava/avajs'
 
 export interface PlatformState {
     subnets: ISubnets

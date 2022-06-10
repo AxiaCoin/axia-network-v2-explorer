@@ -57,6 +57,7 @@ const platform_module: Module<PlatformState, IRootState> = {
 
         async getSubnets({ state, commit }) {
             // Get subnets and init classes
+            //@ts-ignore
             const subnets = ((await platform.getSubnets()) as ISubnetData[]).map(
                 (s: ISubnetData) => new Subnet(s)
             )

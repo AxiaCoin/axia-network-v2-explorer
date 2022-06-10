@@ -3,7 +3,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { PayloadBase } from 'axia/dist/utils'
+import { PayloadBase } from '@zee-ava/avajs/dist/utils'
 
 import Url from '@/components/misc/NftPayloadView/views_logo/UrlPayloadView.vue'
 import Utf from '@/components/misc/NftPayloadView/views_logo/UtfPayloadView.vue'
