@@ -1,7 +1,7 @@
 <template>
     <div id="network_statistics" class="card">
         <div class="header">
-            <h2 class="top_info_heading">Avalanche Network Activity</h2>
+            <h2 class="top_info_heading">Axia Network Activity</h2>
         </div>
         <section class="stats one-column">
             <!-- <dl>
@@ -9,7 +9,7 @@
                     <dd class="indent">
                         24h Transactions
                         <TooltipMeta
-                            content="Total number of state queries or modifications of all blockchains on Avalanche in the past 24 hours"
+                            content="Total number of state queries or modifications of all blockchains on Axia in the past 24 hours"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -27,7 +27,7 @@
                     <dd class="indent">
                         24h Volume
                         <TooltipMeta
-                            content="Total value of AVAX transferred on Avalanche in the past 24 hours"
+                            content="Total value of AVAX transferred on Axia in the past 24 hours"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -54,7 +54,7 @@
                     <dd>
                         Validators
                         <TooltipMeta
-                            content="Total number of nodes validating transactions on Avalanche"
+                            content="Total number of nodes validating transactions on Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -78,7 +78,7 @@
                     <dd>
                         Total Staked
                         <TooltipMeta
-                            content="Total value of AVAX locked to secure Avalanche"
+                            content="Total value of AVAX locked to secure Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -103,7 +103,7 @@
                     <dd>
                         Blockchains
                         <TooltipMeta
-                            content="Total number of blockchains on Avalanche"
+                            content="Total number of blockchains on Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -127,7 +127,7 @@
                     <dd>
                         Subnets
                         <TooltipMeta
-                            content="Total number of subnets on Avalanche"
+                            content="Total number of subnets on Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -151,7 +151,7 @@
                     <dd>
                         Staking Ratio
                         <TooltipMeta
-                            content="Percentage of AVAX locked to secure Avalanche out of total AVAX supply"
+                            content="Percentage of AVAX locked to secure Axia out of total AVAX supply"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -314,7 +314,7 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
             : this.totalTransactionsCache
     }
 
-    // Data from Avalanche-Go
+    // Data from Axia-Go
     get totalStake(): string {
         return this.getTotalStake().div(Math.pow(10, 9)).toLocaleString(0)
     }

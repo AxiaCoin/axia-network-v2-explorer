@@ -1,14 +1,14 @@
 import store from '@/store'
-import { AVALANCHE_SUBNET_ID } from './platform'
+import { AXIA_SUBNET_ID } from './platform'
 import Big from 'big.js'
-import { ONEAVAX } from 'avalanche/dist/utils'
+import { ONEAVAX } from 'axia/dist/utils'
 import { bigToDenomBig } from '@/helper'
 
 /**
  * @returns Count of active validators in Primary Network
  */
 export function getTotalValidators(): number {
-    const defaultSubnet = store.state.Platform.subnets[AVALANCHE_SUBNET_ID]
+    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
     return !defaultSubnet ? 0 : defaultSubnet.validators.length
 }
 
@@ -16,7 +16,7 @@ export function getTotalValidators(): number {
  * @returns Count of pending validators in Primary Network
  */
 export function getTotalPendingValidators(): number {
-    const defaultSubnet = store.state.Platform.subnets[AVALANCHE_SUBNET_ID]
+    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
     return !defaultSubnet ? 0 : defaultSubnet.pendingValidators.length
 }
 
@@ -24,7 +24,7 @@ export function getTotalPendingValidators(): number {
  * @returns Total $AVAX active stake on Primary Network
  */
 export function getTotalStake(): Big {
-    const defaultSubnet = store.state.Platform.subnets[AVALANCHE_SUBNET_ID]
+    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
     let total = Big(0)
     return !defaultSubnet
         ? total
@@ -38,7 +38,7 @@ export function getTotalStake(): Big {
  * @returns Total $AVAX pending stake on Primary Network
  */
 export function getTotalPendingStake(): Big {
-    const defaultSubnet = store.state.Platform.subnets[AVALANCHE_SUBNET_ID]
+    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
     let total = Big(0)
     return !defaultSubnet
         ? total
@@ -52,7 +52,7 @@ export function getTotalPendingStake(): Big {
  * @returns Accumulative distribution of active stakes
  */
 export function getCumulativeStake(): number[] {
-    const defaultSubnet = store.state.Platform.subnets[AVALANCHE_SUBNET_ID]
+    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
     const res: number[] = []
     let total = 0
     if (defaultSubnet) {
@@ -68,7 +68,7 @@ export function getCumulativeStake(): number[] {
  * @returns Accumulative distribution of pending stakes
  */
 export function getCumulativePendingStake(): number[] {
-    const defaultSubnet = store.state.Platform.subnets[AVALANCHE_SUBNET_ID]
+    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
     const res: number[] = []
     let total = 0
     if (defaultSubnet) {

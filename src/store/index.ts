@@ -9,10 +9,10 @@ import Network from './modules/network/network'
 import Notifications from './modules/notifications/notifications'
 import Transactions from './modules/transactions/transactions'
 import Blocks from './modules/blocks/blocks'
-import { avm } from '@/avalanche'
+import { avm } from '@/axia'
 import {
     IAssetDataOrtelius,
-    IAssetDataAvalancheGo,
+    IAssetDataAxiaGo,
     ICollisionMap,
 } from '@/js/IAsset'
 import {
@@ -116,7 +116,7 @@ const store = new Vuex.Store({
 
         // Adds an unknown asset id to the assets dictionary
         async addUnknownAsset({ commit }, assetId: string) {
-            const desc: IAssetDataAvalancheGo = await avm.getAssetDescription(
+            const desc: IAssetDataAxiaGo = await avm.getAssetDescription(
                 assetId
             )
             const newAssetData: IAssetDataOrtelius = {

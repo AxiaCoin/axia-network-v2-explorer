@@ -2,7 +2,7 @@
     <div class="resources">
         <div class="card">
             <div class="header">
-                <h2>Avalanche Directory</h2>
+                <h2>Axia Directory</h2>
             </div>
             <hr />
             <div class="resource_container">

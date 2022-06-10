@@ -19,7 +19,7 @@
             </div>
             <div v-else>
                 <p>
-                    No input UTXOs found for this transaction on the Avalanche
+                    No input UTXOs found for this transaction on the Axia
                     Explorer.
                 </p>
             </div>

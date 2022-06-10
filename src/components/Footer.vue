@@ -4,17 +4,17 @@
             <div class="powered_by">
                 <div class="header">
                     <img :src="img" />
-                    <h4>Avalanche Explorer</h4>
+                    <h4>Axia Explorer</h4>
                 </div>
-                <p class="avalanche_desc">
-                    Avalanche Explorer is an analytics tool that enables people
-                    to search the Avalanche blockchain for transactions,
-                    addresses, and other platform activities.
+                <p class="axia_desc">
+                    Axia Explorer is an analytics tool that enables people to
+                    search the Axia blockchain for transactions, addresses, and
+                    other platform activities.
                 </p>
-                <p class="avalanche_desc tos">
+                <p class="axia_desc tos">
                     By using this application you agree to the
                     <a
-                        href="/Avalanche (BVI) Inc. Explorer Terms of Use.pdf"
+                        href="/Axia (BVI) Inc. Explorer Terms of Use.pdf"
                         target="_blank"
                         >Terms of Use</a
                     >.
@@ -34,7 +34,7 @@
                 </div>
                 <div class="list">
                     <h4>Social</h4>
-                    <a href="https://twitter.com/avalancheavax" target="_blank">
+                    <a href="https://twitter.com/axiaavax" target="_blank">
                         <fa :icon="['fab', 'twitter']"></fa>Twitter
                     </a>
                     <a href="https://chat.avax.network" target="_blank">
@@ -43,7 +43,10 @@
                     <a href="https://reddit.com/r/avax" target="_blank">
                         <fa :icon="['fab', 'reddit']"></fa>Reddit
                     </a>
-                    <a href="https://github.com/ava-labs/avalanche-explorer" target="_blank">
+                    <a
+                        href="https://github.com/ava-labs/axia-explorer"
+                        target="_blank"
+                    >
                         <fa :icon="['fab', 'github']"></fa>GitHub
                     </a>
                 </div>
@@ -147,7 +150,7 @@ $footer_color: $black;
     }
 }
 
-.avalanche_desc {
+.axia_desc {
     line-height: 1.5em;
 }
 

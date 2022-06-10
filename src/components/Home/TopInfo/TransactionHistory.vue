@@ -298,7 +298,7 @@ export default {
                 responsive: true,
                 title: {
                     display: false,
-                    text: 'Avalanche Transaction History',
+                    text: 'Axia Transaction History',
                 },
                 tooltips: {
                     mode: 'index',

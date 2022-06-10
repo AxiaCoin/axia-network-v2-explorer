@@ -13,7 +13,7 @@ export interface BlocksState {
     block by a cryptographic hash of its contents as a means of reference. Blocks contain 
     an identifier for the final state after all transactions contained in it are validated. 
     There is a consensus mechanism that provides incentives for nodes adding new blocks to 
-    the chain that comply with the rules of Avalanche by burning tokens ('AVAX') to an account 
+    the chain that comply with the rules of Axia by burning tokens ('AVAX') to an account 
     specified by the protocol.
 
     Current API response is the same as eth.getBlock (https://explorerapi.avax.network/v2/ctxdata/1000)
@@ -25,7 +25,7 @@ export interface EVMBlockQueryResponse {
     transactions: EVMBlockTransaction[]
     logs: EVMBlockLog[] | null
     blockExtraData: string /* An arbitrary byte array containing data relevant to this block. 
-                                Contains atomic transactions (cross-chain imports/exports) in Avalanche 
+                                Contains atomic transactions (cross-chain imports/exports) in Axia 
                                 Must be 32 bytes or fewer. */
 
     // NOT APPLICABLE
@@ -73,7 +73,7 @@ export interface EVMBlockHeader {
                             The transactions in the block can then be re-executed and the probabilistic 
                             match of the bloom filter can be verified. */
 
-    // USED FOR AVALANCHE ATOMIC TRANSACTIONS
+    // USED FOR AXIA ATOMIC TRANSACTIONS
     extraData: string /* Ignore this as the ingested data is obfuscated by Ortelius. 
                             An arbitrary byte array containing data relevant to this block. This must be 32 bytes or fewer.*/
     extDataHash: string /* This will map to the block.blockExtraData in the level above */

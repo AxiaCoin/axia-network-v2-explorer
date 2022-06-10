@@ -2492,9 +2492,9 @@ available-typed-arrays@^1.0.2:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.4.tgz#9e0ae84ecff20caae6a94a1c3bc39b955649b7a9"
   integrity sha512-SA5mXJWrId1TaQjfxUYghbqQ/hYioKmLJvPJyDuYRtXXenFNMjj4hSSt1Cf1xsuXSXrtxrVC5Ot4eU6cOtBDdA==
 
-avalanche@3.2.5:
+axia@3.2.5:
   version "3.2.5"
-  resolved "https://registry.yarnpkg.com/avalanche/-/avalanche-3.2.5.tgz#d988f055ecbff4628b299b9515673874c1c8f0de"
+  resolved "https://registry.yarnpkg.com/axia/-/axia-3.2.5.tgz#d988f055ecbff4628b299b9515673874c1c8f0de"
   integrity sha512-gNWczhcP0ShDOarlpvhjme6e+531UOe7sD62joE7qFpTK8YHD9QtaDX8tjF2K0nHYVFGv6vykP8QNhIZKQSZPA==
   dependencies:
     axios "0.21.1"

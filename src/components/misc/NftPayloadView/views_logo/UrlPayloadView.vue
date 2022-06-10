@@ -4,7 +4,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { URLPayload } from 'avalanche/dist/utils'
+import { URLPayload } from 'axia/dist/utils'
 
 @Component
 export default class UrlPayloadView extends Vue {

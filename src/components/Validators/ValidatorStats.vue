@@ -8,7 +8,7 @@
             <p class="label">
                 Validators
                 <TooltipMeta
-                    content="Total number of nodes validating transactions on Avalanche"
+                    content="Total number of nodes validating transactions on Axia"
                     :color="'#2196f3'"
                 />
             </p>
@@ -30,7 +30,7 @@
             <p class="label">
                 Total Staked
                 <TooltipMeta
-                    content="Total value of AVAX locked to secure Avalanche"
+                    content="Total value of AVAX locked to secure Axia"
                     :color="'#2196f3'"
                 />
             </p>
@@ -53,7 +53,7 @@
             <p class="label">
                 Staking Ratio
                 <TooltipMeta
-                    content="Percentage of AVAX locked to secure Avalanche out of total AVAX supply"
+                    content="Percentage of AVAX locked to secure Axia out of total AVAX supply"
                     :color="'#2196f3'"
                 />
             </p>

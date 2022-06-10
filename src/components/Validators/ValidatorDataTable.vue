@@ -269,7 +269,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { toAVAX } from '@/helper'
 import Subnet from '@/js/Subnet'
-import { AVALANCHE_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 import { IValidator } from '@/store/modules/platform/IValidator'
 import ContentMetadata from '@/components/Subnets/ContentMetadata.vue'
 import { scaleLinear } from 'd3-scale'
@@ -286,7 +286,7 @@ import { AVAX_ID } from '@/known_assets'
     },
 })
 export default class ValidatorDataTable extends Vue {
-    defaultSubnetID: string = AVALANCHE_SUBNET_ID
+    defaultSubnetID: string = AXIA_SUBNET_ID
     currentTime: number | null = null
     startTimes: number[] = []
     endTimes: number[] = []

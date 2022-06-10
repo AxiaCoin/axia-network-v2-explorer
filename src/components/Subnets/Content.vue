@@ -105,7 +105,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import Subnet from '@/js/Subnet'
-import { AVALANCHE_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 import ContentMetadata from '@/components/Subnets/ContentMetadata.vue'
 import ValidatorDataTable from '@/components/Validators/ValidatorDataTable.vue'
 import BlockchainDataTable from '@/components/Blockchain/BlockchainDataTable.vue'
@@ -124,7 +124,7 @@ import ControlKeyTable from '@/components/Validators/ControlKeyTable.vue'
 export default class Content extends Vue {
     dense = true
     fixedHeader = true
-    defaultSubnetID: string = AVALANCHE_SUBNET_ID
+    defaultSubnetID: string = AXIA_SUBNET_ID
     currentTime: number | null = null
     startTimes: number[] = []
     endTimes: number[] = []

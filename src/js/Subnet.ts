@@ -1,4 +1,4 @@
-import avalanche_go_api from '@/avalanche_go_api'
+import axia_go_api from '@/axia_go_api'
 import { ISubnetData } from '@/store/modules/platform/ISubnet'
 import Blockchain from '@/js/Blockchain'
 import {
@@ -11,7 +11,7 @@ import {
     IPendingDelegator,
     IPendingDelegatorData,
 } from '@/store/modules/platform/IValidator'
-import { AVALANCHE_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 
 export default class Subnet {
     id: string
@@ -48,7 +48,7 @@ export default class Subnet {
             },
             id: 1,
         }
-        const response = await avalanche_go_api.post('', req)
+        const response = await axia_go_api.post('', req)
 
         // console.log(`------------- ${this.id.substring(0,4)} ------------ ${endpoint}`);
         // console.log("result:                        ", response.data.result);
@@ -68,7 +68,7 @@ export default class Subnet {
                 validators = this.sortByStake(validators, this.id)
 
                 // Primary Network Only
-                if (this.id === AVALANCHE_SUBNET_ID) {
+                if (this.id === AXIA_SUBNET_ID) {
                     validators.forEach((v: IValidator) => {
                         if (v.delegators !== null) {
                             v.delegators?.forEach((d: IDelegator) =>
@@ -99,7 +99,7 @@ export default class Subnet {
             }
 
             // Primary Network Only
-            if (this.id === AVALANCHE_SUBNET_ID) {
+            if (this.id === AXIA_SUBNET_ID) {
                 const pendingDelegatorsData = response.data.result
                     .delegators as IPendingValidatorData[]
                 if (pendingDelegatorsData.length > 0) {
@@ -263,7 +263,7 @@ export default class Subnet {
      *  Sort by stake or weight and add rank
      */
     private sortByStake(validators: IValidator[], id: string): IValidator[] {
-        id === AVALANCHE_SUBNET_ID
+        id === AXIA_SUBNET_ID
             ? validators.sort(
                   (a, b) =>
                       (b.totalStakeAmount as number) -

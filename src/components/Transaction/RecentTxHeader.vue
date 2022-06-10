@@ -25,7 +25,7 @@
                         >
                     </template>
                     <span
-                        >The P-Chain is the metadata blockchain on Avalanche,
+                        >The P-Chain is the metadata blockchain on Axia,
                         managing validators and custom subnets. Validators stake
                         AVAX on the P-Chain to secure the network.</span
                     >
@@ -42,10 +42,10 @@
                         >
                     </template>
                     <span
-                        >The X-Chain is the default asset blockchain on
-                        Avalanche enabling the creation and instant exchange of
-                        assets. This blockchain is for transfers that benefit
-                        from high-throughput and instant finality. Think X for
+                        >The X-Chain is the default asset blockchain on Axia
+                        enabling the creation and instant exchange of assets.
+                        This blockchain is for transfers that benefit from
+                        high-throughput and instant finality. Think X for
                         eXchanging assets.
                     </span>
                 </v-tooltip>
@@ -62,9 +62,9 @@
                     </template>
                     <span
                         >The C-Chain is the default smart contract blockchain on
-                        Avalanche and enables the creation of any
-                        Ethereum-compatible applications and assets with lower
-                        fees and faster transactions.</span
+                        Axia and enables the creation of any Ethereum-compatible
+                        applications and assets with lower fees and faster
+                        transactions.</span
                     >
                 </v-tooltip>
             </p>

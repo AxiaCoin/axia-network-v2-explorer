@@ -4,7 +4,7 @@
             <p class="meta_label">
                 Accepted
                 <Tooltip
-                    content="The date and time when this transaction was accepted by the Avalanche Network"
+                    content="The date and time when this transaction was accepted by the Axia Network"
                 />
             </p>
             <div class="meta_value values">

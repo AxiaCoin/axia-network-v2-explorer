@@ -37,7 +37,7 @@ import Metadata from '@/components/Subnets/Metadata.vue'
 import Tabs from '@/components/Subnets/Tabs.vue'
 import Loader from '@/components/misc/Loader.vue'
 import Content from '@/components/Subnets/Content.vue'
-import { AVALANCHE_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 import Big from 'big.js'
 import { ISubnets } from '@/store/modules/platform/models'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
@@ -56,7 +56,7 @@ interface IMap {
     },
 })
 export default class Subnets extends Mixins(PlatformGettersMixin) {
-    selection: string = AVALANCHE_SUBNET_ID
+    selection: string = AXIA_SUBNET_ID
 
     get subnetsLoaded(): boolean {
         return this.$store.state.Platform.subnetsLoaded

@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { JSONPayload } from 'avalanche/dist/utils'
+import { JSONPayload } from 'axia/dist/utils'
 import { IGenericNft } from '@/js/NFT'
 
 @Component
@@ -41,7 +41,7 @@ export default class UtfPayloadView extends Vue {
 
     mounted() {
         try {
-            this.jsonData = JSON.parse(this.content).avalanche
+            this.jsonData = JSON.parse(this.content).axia
         } catch (e) {
             this.isError = true
         }
@@ -50,7 +50,7 @@ export default class UtfPayloadView extends Vue {
     @Watch('payload')
     onPayloadChange() {
         try {
-            this.jsonData = JSON.parse(this.content).avalanche
+            this.jsonData = JSON.parse(this.content).axia
         } catch (e) {
             this.isError = true
         }

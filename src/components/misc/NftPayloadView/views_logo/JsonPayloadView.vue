@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { JSONPayload } from 'avalanche/dist/utils'
+import { JSONPayload } from 'axia/dist/utils'
 import LogoFallback from '@/components/Assets/LogoFallback.vue'
 import GenericPayloadViewSmall from '@/components/misc/NftPayloadView/views_logo/GenericPayloadView.vue'
 
@@ -43,10 +43,7 @@ export default class JsonPayloadView extends Vue {
         const data = this.text
         try {
             if (
-                Object.prototype.hasOwnProperty.call(
-                    JSON.parse(data),
-                    'avalanche'
-                )
+                Object.prototype.hasOwnProperty.call(JSON.parse(data), 'axia')
             ) {
                 return true
             } else {

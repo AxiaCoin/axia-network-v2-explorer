@@ -1,4 +1,4 @@
-import avalanche_go_api from '@/avalanche_go_api'
+import axia_go_api from '@/axia_go_api'
 import api from '@/axios'
 import { bigToDenomBig, getNullAddress, stringToBig } from '@/helper'
 import { Asset } from '@/js/Asset'
@@ -15,8 +15,8 @@ import {
     IStakePData,
 } from './models'
 import Big from 'big.js'
-import { IAssetDataAvalancheGo, IAssetDataOrtelius } from '@/js/IAsset'
-import { avm } from '@/avalanche'
+import { IAssetDataAxiaGo, IAssetDataOrtelius } from '@/js/IAsset'
+import { avm } from '@/axia'
 import {
     setUnlockedXP,
     setUnlockedX,
@@ -48,7 +48,7 @@ export function getAddressFromOrtelius(params?: IAddressesParams) {
 }
 
 export async function getBalance_P(id: string): Promise<IBalancePData> {
-    const res = await avalanche_go_api.post('', {
+    const res = await axia_go_api.post('', {
         jsonrpc: '2.0',
         method: 'platform.getBalance',
         params: {
@@ -60,7 +60,7 @@ export async function getBalance_P(id: string): Promise<IBalancePData> {
 }
 
 export async function getStake_P(id: string): Promise<IStakePData> {
-    const res = await avalanche_go_api.post('', {
+    const res = await axia_go_api.post('', {
         jsonrpc: '2.0',
         method: 'platform.getStake',
         params: {
@@ -131,9 +131,9 @@ function setBalances(balanceData: IBalanceXData, assetsMap: any): IBalanceX[] {
                         (parseInt(balanceDatum.balance) / parseInt('0')) * 100
                     )
                 } else if (!res.data) {
-                    // Try Avalanche-Go as last resort
+                    // Try Axia-Go as last resort
                     avm.getAssetDescription(assetID).then(
-                        (res: IAssetDataAvalancheGo) => {
+                        (res: IAssetDataAxiaGo) => {
                             if (res) {
                                 console.log('FOUND ASSET IN GECKO', res)
                                 const asset = res
@@ -178,7 +178,7 @@ export async function getAddress(
     id: string,
     assetsMap: IAssetsMap
 ): Promise<IAddress> {
-    // Get data from Ortelius and Avalanche-Go
+    // Get data from Ortelius and Axia-Go
     const [pAddress, xAddress, cAddress, pBalance, pStake] = await Promise.all([
         getAddressFromOrtelius({
             address: id,
@@ -205,7 +205,7 @@ export async function getAddress(
         return getNullAddress(id!)
     }
 
-    // Initialize the address and set the data from Avalanche-Go API
+    // Initialize the address and set the data from Axia-Go API
     const address: IAddress = {
         address: id!,
         publicKey: '', // todo

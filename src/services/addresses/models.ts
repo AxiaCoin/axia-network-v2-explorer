@@ -72,7 +72,7 @@ export interface IBalanceXDatum {
 }
 
 /* ==========================================
-   Avalanche Go API
+   Axia Go API
         - unlocked P-Chain AVAX
         - locked P-Chain AVAX
         - staked P-Chain AVAX

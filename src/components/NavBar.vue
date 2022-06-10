@@ -18,7 +18,7 @@
                         "
                     />
                     <h1>
-                        <span class="hide">Avalanche Explorer</span>
+                        <span class="hide">Axia Explorer</span>
                     </h1>
                 </a>
             </div>

@@ -10,7 +10,7 @@
                             require(`@/assets/explorer_logo_${logoColor}.png`)
                         "
                     />
-                    <h1><span class="hide">Avalanche Explorer</span></h1>
+                    <h1><span class="hide">Axia Explorer</span></h1>
                 </a>
             </div>
             <div class="buttons">

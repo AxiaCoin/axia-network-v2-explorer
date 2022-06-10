@@ -3,7 +3,7 @@
         <div class="left">
             <h2>Stats</h2>
             <p class="chain">
-                View up-to-date statistics for the Avalanche network on
+                View up-to-date statistics for the Axia network on
                 <a class="c_chain_link" :href="statsURL">stats.avax.network</a>.
             </p>
         </div>

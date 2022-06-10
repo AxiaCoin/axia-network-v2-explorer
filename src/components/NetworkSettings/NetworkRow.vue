@@ -27,6 +27,8 @@ export default class NetworkRow extends Vue {
     @Prop() network!: Network
 
     get endpoint(): string {
+        console.log('n ', this.network);
+        console.log('N ', Network);
         const net = this.network
         let portText = ''
         if (net.port) {

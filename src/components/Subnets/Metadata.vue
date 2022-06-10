@@ -10,7 +10,7 @@
                         <p class="label">
                             Subnets
                             <TooltipMeta
-                                content="Total number of subnets on Avalanche"
+                                content="Total number of subnets on Axia"
                             />
                         </p>
                         <p class="meta_val">
@@ -23,7 +23,7 @@
                         <p class="label">
                             Blockchains
                             <TooltipMeta
-                                content="Total number of blockchains on Avalanche"
+                                content="Total number of blockchains on Axia"
                             />
                         </p>
                         <p class="meta_val">
@@ -36,7 +36,7 @@
                         <p class="label">
                             Validators
                             <TooltipMeta
-                                content="Total number of nodes validating transactions on Avalanche"
+                                content="Total number of nodes validating transactions on Axia"
                             />
                         </p>
                         <p class="meta_val">
@@ -49,7 +49,7 @@
                         <p class="label">
                             Total Stake Amount
                             <TooltipMeta
-                                content="Total value of AVAX locked to secure Avalanche"
+                                content="Total value of AVAX locked to secure Axia"
                             />
                         </p>
                         <p class="meta_val">

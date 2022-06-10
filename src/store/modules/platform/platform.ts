@@ -3,7 +3,7 @@ import { Module } from 'vuex'
 import BN from 'bn.js'
 import { IRootState } from '@/store/types'
 import { PlatformState } from './models'
-import { platform } from '@/avalanche'
+import { platform } from '@/axia'
 import Subnet from '@/js/Subnet'
 import { ISubnetData } from './ISubnet'
 import { IBlockchainData } from './IBlockchain'
@@ -16,7 +16,7 @@ import { getTxCounts } from '@/services/transactionCounts/transactionCounts.serv
 import { TxCount } from '@/services/transactionCounts/models'
 import { getBurnedC } from '@/services/burned/burned.service'
 
-export const AVALANCHE_SUBNET_ID = P.id
+export const AXIA_SUBNET_ID = P.id
 
 const platform_module: Module<PlatformState, IRootState> = {
     namespaced: true,
@@ -76,8 +76,8 @@ const platform_module: Module<PlatformState, IRootState> = {
             // Add P-Chain manually
             const pChain = new Blockchain({
                 name: P.name,
-                id: AVALANCHE_SUBNET_ID,
-                subnetID: AVALANCHE_SUBNET_ID,
+                id: AXIA_SUBNET_ID,
+                subnetID: AXIA_SUBNET_ID,
                 vmID: '',
             })
             state.blockchains.unshift(pChain)

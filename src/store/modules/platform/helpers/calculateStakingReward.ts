@@ -1,6 +1,6 @@
-import { Defaults, ONEAVAX } from 'avalanche/dist/utils'
-import { BN } from 'avalanche/dist'
-import { avalanche } from '@/avalanche'
+import { Defaults, ONEAVAX } from 'axia/dist/utils'
+import { BN } from 'axia/dist'
+import { axia } from '@/axia'
 import Big from 'big.js'
 
 export function calculateStakingReward(
@@ -8,7 +8,7 @@ export function calculateStakingReward(
     duration: number,
     currentSupply: BN
 ): BN {
-    const networkID = avalanche.getNetworkID()
+    const networkID = axia.getNetworkID()
 
     //@ts-ignore
     let defValues = Defaults.network[networkID]

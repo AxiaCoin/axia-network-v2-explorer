@@ -1,7 +1,7 @@
 import { Module } from 'vuex'
 import { IRootState } from '@/store/types'
 import { INetworkState } from '@/store/modules/network/types'
-import { avalanche } from '@/avalanche'
+import { axia } from '@/axia'
 import Network from '@/js/Network'
 import axios from '@/axios'
 
@@ -17,15 +17,13 @@ export const DEFAULT_NETWORK_NAME =
 const networkName = process.env.VUE_APP_NETWORKNAME
 const explorerFEUrl = process.env.VUE_APP_EXPLORER_FE_URL || ''
 const orteliusURL = process.env.VUE_APP_ORTELIUS_URL || ''
-export const ethereumAPI = process.env.VUE_APP_AVALANCHE_GO_ETH_URL || ''
+export const ethereumAPI = process.env.VUE_APP_AXIA_GO_ETH_URL || ''
 export const peerInfoURL = process.env.VUE_APP_PEER_INFO_URL || ''
-const avalancheJSProtocol = process.env.VUE_APP_AVALANCHE_JS_PROTOCOL || ''
-const avalancheJSIP = process.env.VUE_APP_AVALANCHE_JS_IP || ''
-const avalancheJSPort = parseInt(process.env.VUE_APP_AVALANCHE_JS_PORT || '443')
-const avalancheJSNetworkID = parseInt(
-    process.env.VUE_APP_AVALANCHE_JS_NETWORKID || '1'
-)
-const avalancheJSChainID = process.env.VUE_APP_AVALANCHE_JS_CHAINID || 'X'
+const axiaJSProtocol = process.env.VUE_APP_AXIA_JS_PROTOCOL || ''
+const axiaJSIP = process.env.VUE_APP_AXIA_JS_IP || ''
+const axiaJSPort = parseInt(process.env.VUE_APP_AXIA_JS_PORT || '443')
+const axiaJSNetworkID = parseInt(process.env.VUE_APP_AXIA_JS_NETWORKID || '1')
+const axiaJSChainID = process.env.VUE_APP_AXIA_JS_CHAINID || 'X'
 export const cChainExplorerURL = process.env.VUE_APP_CCHAIN_EXPLORER_URL || ''
 export const statusURL = process.env.VUE_APP_STATUS_URL || ''
 
@@ -33,20 +31,15 @@ export const statusURL = process.env.VUE_APP_STATUS_URL || ''
 const networkName_test = process.env.VUE_APP_TEST_NETWORKNAME || ''
 const explorerFEUrl_test = process.env.VUE_APP_TEST_EXPLORER_FE_URL || ''
 const orteliusURL_test = process.env.VUE_APP_TEST_ORTELIUS_URL || ''
-export const ethereumAPI_test =
-    process.env.VUE_APP_TEST_AVALANCHE_GO_ETH_URL || ''
+export const ethereumAPI_test = process.env.VUE_APP_TEST_AXIA_GO_ETH_URL || ''
 export const peerInfoURL_test = process.env.VUE_APP_TEST_PEER_INFO_URL || ''
-const avalancheJSProtocol_test =
-    process.env.VUE_APP_TEST_AVALANCHE_JS_PROTOCOL || ''
-const avalancheJSIP_test = process.env.VUE_APP_TEST_AVALANCHE_JS_IP || ''
-const avalancheJSPort_test = parseInt(
-    process.env.VUE_APP_TEST_AVALANCHE_JS_PORT || '443'
+const axiaJSProtocol_test = process.env.VUE_APP_TEST_AXIA_JS_PROTOCOL || ''
+const axiaJSIP_test = process.env.VUE_APP_TEST_AXIA_JS_IP || ''
+const axiaJSPort_test = parseInt(process.env.VUE_APP_TEST_AXIA_JS_PORT || '443')
+const axiaJSNetworkID_test = parseInt(
+    process.env.VUE_APP_TEST_AXIA_JS_NETWORKID || '5'
 )
-const avalancheJSNetworkID_test = parseInt(
-    process.env.VUE_APP_TEST_AVALANCHE_JS_NETWORKID || '5'
-)
-const avalancheJSChainID_test =
-    process.env.VUE_APP_TEST_AVALANCHE_JS_CHAINID || ''
+const axiaJSChainID_test = process.env.VUE_APP_TEST_AXIA_JS_CHAINID || ''
 export const cChainExplorerURL_test =
     process.env.VUE_APP_TEST_CCHAIN_EXPLORER_URL || ''
 export const statusURL_test = process.env.VUE_APP_TEST_STATUS_URL || ''
@@ -67,17 +60,17 @@ const network_module: Module<INetworkState, IRootState> = {
         async init({ state, commit, dispatch }) {
             const mainnet = new Network(
                 `${networkName} Mainnet`,
-                `${avalancheJSProtocol}://${avalancheJSIP}:${avalancheJSPort}`,
-                avalancheJSNetworkID,
-                avalancheJSChainID,
+                `${axiaJSProtocol}://${axiaJSIP}:${axiaJSPort}`,
+                axiaJSNetworkID,
+                axiaJSChainID,
                 orteliusURL,
                 explorerFEUrl
             )
             const testnet = new Network(
                 `${networkName_test} Testnet`,
-                `${avalancheJSProtocol_test}://${avalancheJSIP_test}:${avalancheJSPort_test}`,
-                avalancheJSNetworkID_test,
-                avalancheJSChainID_test,
+                `${axiaJSProtocol_test}://${axiaJSIP_test}:${axiaJSPort_test}`,
+                axiaJSNetworkID_test,
+                axiaJSChainID_test,
                 orteliusURL_test,
                 explorerFEUrl_test
             )
@@ -101,9 +94,9 @@ const network_module: Module<INetworkState, IRootState> = {
         async setNetwork({ state }, net: Network): Promise<boolean> {
             // Query the network to get network id
             state.status = 'connecting'
-            avalanche.setAddress(net.ip, net.port, net.protocol)
-            avalanche.setNetworkID(net.networkId)
-            avalanche.XChain().refreshBlockchainID()
+            axia.setAddress(net.ip, net.port, net.protocol)
+            axia.setNetworkID(net.networkId)
+            axia.XChain().refreshBlockchainID()
 
             state.selectedNetwork = net
             axios.defaults.baseURL = net.explorerUrl

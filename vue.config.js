@@ -16,8 +16,8 @@ scssVars += `@import "@/_background.scss"; `
 console.log(`
 ${colors.green('.Env configs are:')}
     Ortelius url: ${colors.magenta(process.env.VUE_APP_ORTELIUS_URL)}
-    Avalanche GO url: ${colors.magenta(process.env.VUE_APP_AVALANCHE_GO_URL)}
-    Fuji url: ${colors.magenta(process.env.VUE_APP_AVALANCHE_JS_IP)}
+    Axia GO url: ${colors.magenta(process.env.VUE_APP_AXIA_GO_URL)}
+    Fuji url: ${colors.magenta(process.env.VUE_APP_AXIA_JS_IP)}
     C-Chain url: ${colors.magenta(process.env.VUE_APP_CCHAIN_EXPLORER_URL)}
 
     HTTP PORT: ${colors.magenta(process.env.VUE_APP_HTTP_PORT)}
