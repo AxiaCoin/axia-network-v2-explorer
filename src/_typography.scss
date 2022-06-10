@@ -1,0 +1,60 @@
+@import './mobile';
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-weight: bold !important;
+    line-height: 1.1em !important;
+}
+
+h1 {
+    font-size: 48px;
+}
+h2 {
+    font-size: 38px;
+}
+h3 {
+    font-size: 27px;
+}
+h4 {
+    font-size: 20px;
+}
+h5 {
+    font-size: 17px;
+}
+
+@include xsOrSmaller {
+    h1 {
+        font-size: 27px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    h4 {
+        font-size: 18px;
+    }
+    h5 {
+        font-size: 14px;
+    }
+}
+
+body {
+    font-size: 14px !important;
+}
+
+.p_lg {
+    font-size: 17px !important;
+}
+
+.p_md {
+    font-size: 14px !important;
+}
+
+.p_sm {
+    font-size: 14px !important;
+}

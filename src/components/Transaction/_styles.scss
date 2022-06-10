@@ -1,0 +1,219 @@
+$icon_dimension: 20px;
+$padding: 8px;
+
+/* ==========================================
+   Tx Summary
+   ========================================== */
+
+.type_label {
+    color: $primary-color;
+    font-size: 12px;
+    font-weight: 700;
+    width: max-content;
+    margin-bottom: 10px;
+    padding-left: 1px;
+}
+
+.click_to_copy {
+    cursor: default;
+    display: inline-block;
+}
+
+.time_icon {
+    margin-right: 4px;
+}
+
+/* ==========================================
+   UTXOs
+   ========================================== */
+
+.utxo_count {
+    margin-left: $padding;
+    font-size: 0.75em;
+}
+
+h3.label {
+    margin-top: 0;
+    font-weight: 400;
+}
+
+.utxo_container {
+    display: grid;
+    column-gap: $padding;
+    background: #ffffff;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.07);
+    border-radius: 10px;
+    padding: $padding;
+    margin-bottom: 16px;
+}
+
+.input_container {
+    grid-template-columns: $icon_dimension 1fr;
+    padding-right: 28px !important;
+}
+
+.output_container {
+    grid-template-columns: 1fr $icon_dimension;
+    padding-left: 28px !important;
+}
+
+.utxo_new_col {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+
+    > * {
+        flex-grow: 1;
+        margin-bottom: $padding;
+    }
+}
+
+.summary_label,
+.utxo_label {
+    font-size: 10px;
+    color: $primary-color;
+}
+
+.utxo_col {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: $icon_dimension;
+    margin-bottom: 16px;
+
+    // INDEX & TYPE
+    .index,
+    .type {
+        font-size: 12px;
+    }
+
+    .index {
+        color: $primary-color;
+    }
+
+    .type {
+        text-transform: none;
+        margin-left: 8px;
+    }
+
+    // AMOUNT
+    .amount {
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+    .symbol {
+        font-size: 16px;
+        white-space: nowrap;
+        width: max-content;
+        padding-left: 8px;
+    }
+}
+
+.v-application a.address {
+    font-size: 14px;
+    font-weight: 400;
+    word-break: break-all;
+
+    &:hover {
+        opacity: 0.7;
+        text-decoration: none;
+    }
+}
+
+.signature {
+    word-break: break-all;
+    max-width: 315px;
+    font-weight: 300;
+    line-height: 1.2em i !important;
+}
+
+.redeemed {
+    color: $green;
+}
+
+.two_col {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > div {
+        flex: 1;
+    }
+}
+
+.minted {
+    color: $green;
+}
+
+.tag {
+    font-size: 12px;
+    font-weight: 700;
+    background: $white;
+    border-radius: 50px;
+    display: inline-block;
+    margin-left: 8px;
+    padding: 4px 8px;
+    line-height: 1em;
+    width: max-content;
+    text-transform: none;
+}
+
+@if $VUE_APP_DEFAULT_NETWORKID == 5 {
+    .utxo_container {
+        background-color: $white;
+    }
+}
+
+@include smOrSmaller {
+    .type_label {
+        padding-left: 0;
+    }
+
+    .meta_row {
+        padding: 16px 0;
+        grid-template-columns: none;
+        grid-template-rows: max-content 1fr;
+
+        .label {
+            font-weight: 400;
+            margin-bottom: 8px;
+            margin-right: 0;
+            opacity: 0.7;
+        }
+    }
+
+    .utxo_col {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: $icon_dimension;
+        margin-bottom: 16px;
+
+        // INDEX & TYPE
+        .index,
+        .type {
+            font-size: 12px;
+        }
+
+        .index {
+            color: $primary-color;
+        }
+
+        .type {
+            text-transform: none;
+            margin-left: 8px;
+        }
+
+        .amount {
+            font-size: 16px;
+        }
+
+        .symbol {
+            font-size: 12px;
+            padding-left: 6px;
+        }
+    }
+}

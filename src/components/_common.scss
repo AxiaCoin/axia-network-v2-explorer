@@ -1,0 +1,166 @@
+/* ==========================================
+   detail pages
+   ========================================== */
+.detail {
+    header {
+        margin-bottom: 20px;
+    }
+
+    a {
+        overflow: hidden;
+        display: block;
+        text-overflow: ellipsis;
+        color: $primary-color;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    > div {
+        position: relative;
+    }
+}
+
+.two_column {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+}
+
+.meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .meta_row {
+        display: grid;
+        grid-template-columns: 140px 1fr;
+        font-size: 14px;
+        padding: 15px 0;
+
+        &:last-of-type {
+            padding-bottom: 0;
+            border: none;
+        }
+
+        .meta_label {
+            display: inline-block;
+            margin-top: 2px;
+            margin-right: 16px;
+            text-align: right;
+            font-size: var(--f-size);
+            font-weight: 700;
+        }
+
+        .meta_value {
+            // ADDRESS DETAIL
+            .addr {
+                text-overflow: ellipsis;
+                word-break: keep-all;
+                white-space: nowrap;
+
+                .alias {
+                    background-color: #e6ffe6;
+                    border: 1px solid $green;
+                    color: $green;
+                    width: max-content;
+                    padding: 4px 8px;
+                    margin: 0px 30px;
+                }
+            }
+
+            // ASSET DETAIL
+            .id {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .asset_value {
+                display: inline-block;
+                margin-left: 24px;
+
+                &:first-of-type {
+                    margin-left: 0;
+                }
+            }
+
+            // TX DETAIL
+            .timestamp {
+                margin-right: 15px;
+            }
+
+            .status {
+                background-color: $green-xlight;
+                color: $green;
+                width: max-content;
+                border-radius: 3px;
+                padding: 4px 8px;
+            }
+
+            .unit {
+                font-size: 14px;
+                opacity: 0.7;
+            }
+
+            .asset_type {
+                font-size: 10px;
+                opacity: 0.7;
+                margin-left: 8px;
+            }
+
+            .genesis_tx {
+                display: flex;
+                align-items: center;
+            }
+
+            .genesis {
+                background-color: #e6ffe6;
+                border: 1px solid $green;
+                color: $green;
+                width: max-content;
+                padding: 4px 8px;
+                margin: 0 0 0 30px;
+                word-break: keep-all;
+            }
+        }
+    }
+}
+
+@include smOrSmaller {
+    .two_column {
+        grid-template-columns: 1fr;
+    }
+
+    .meta {
+        .meta_row {
+            border-bottom: 1px solid $gray-xlight;
+            grid-template-columns: 1fr;
+
+            &:last-of-type {
+                padding-bottom: 15px;
+                border-bottom: 1px solid $gray-xlight;
+            }
+
+            .meta_label {
+                display: inline-block;
+                margin-top: 0;
+                margin-right: 0;
+                margin-bottom: 10px;
+                text-align: left;
+            }
+        }
+    }
+}
+
+@include xsOrSmaller {
+    .utxo_table {
+        margin-top: 5px;
+    }
+
+    .detail {
+        padding: $container_padding_xs;
+    }
+}
