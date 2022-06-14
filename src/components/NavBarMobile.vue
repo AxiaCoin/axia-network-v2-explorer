@@ -124,7 +124,7 @@ export default class NavbarMobile extends Vue {
     }
 
     get statsURL() {
-        return 'https://stats.axc.network/'
+        return 'https://stats.avax.network/'
     }
 
     get isMainnet() {

@@ -9,7 +9,7 @@ const CYPRESS_BASE_CONFIG = {
 
 const CYPRESS_CONFIG_PROD = {
     ...CYPRESS_BASE_CONFIG,
-    baseUrl: 'https://explorer-xp.axc.network/',
+    baseUrl: 'https://explorer-xp.avax.network/',
 }
 
 const CYPRESS_CONFIG_LOCAL = {
