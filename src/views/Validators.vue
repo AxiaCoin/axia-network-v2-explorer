@@ -79,7 +79,7 @@ import 'reflect-metadata'
 import { Mixins, Component } from 'vue-property-decorator'
 import ValidatorRow from '@/components/rows/ValidatorRow/ValidatorRow.vue'
 import ValidatorPaginationControls from '@/components/misc/ValidatorPaginationControls.vue'
-import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
+import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import Metadata from '@/components/Validators/Metadata.vue'
 import StakingMetadata from '@/components/Validators/StakingMetadata.vue'
@@ -137,11 +137,11 @@ export default class Validators extends Mixins(PlatformGettersMixin) {
     }
 
     get validators() {
-        const defaultAllyChain = this.$store.state.Platform.allyChains[AXIA_ALLYCHAIN_ID]
-        if (defaultAllyChain) {
+        const defaultSubnet = this.$store.state.Platform.subnets[AXIA_SUBNET_ID]
+        if (defaultSubnet) {
             return this.toggle === 'active'
-                ? defaultAllyChain.validators
-                : defaultAllyChain.pendingValidators
+                ? defaultSubnet.validators
+                : defaultSubnet.pendingValidators
         }
         return []
     }
@@ -157,17 +157,17 @@ export default class Validators extends Mixins(PlatformGettersMixin) {
     }
 
     get pendingValidators() {
-        const defaultAllyChain = this.$store.state.Platform.allyChains[AXIA_ALLYCHAIN_ID]
-        if (defaultAllyChain) {
-            const vals = defaultAllyChain.pendingValidators
+        const defaultSubnet = this.$store.state.Platform.subnets[AXIA_SUBNET_ID]
+        if (defaultSubnet) {
+            const vals = defaultSubnet.pendingValidators
             return vals
         }
         return []
     }
 
     get cumulativeStake() {
-        const defaultAllyChain = this.$store.state.Platform.allyChains[AXIA_ALLYCHAIN_ID]
-        if (defaultAllyChain) {
+        const defaultSubnet = this.$store.state.Platform.subnets[AXIA_SUBNET_ID]
+        if (defaultSubnet) {
             return this.toggle === 'active'
                 ? this.getCumulativeStake()
                 : this.getCumulativePendingStake()

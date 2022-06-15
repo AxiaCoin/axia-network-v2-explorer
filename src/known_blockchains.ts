@@ -32,9 +32,9 @@ export const P: ChainMap = {
     darkColor: '#FFF8EE',
     txTypes: [
         ['add_validator', txTypeMap.get('add_validator')!],
-        ['add_allyChain_validator', txTypeMap.get('add_allyChain_validator')!],
+        ['add_subnet_validator', txTypeMap.get('add_subnet_validator')!],
         ['add_nominator', txTypeMap.get('add_nominator')!],
-        ['create_allyChain', txTypeMap.get('create_allyChain')!],
+        ['create_subnet', txTypeMap.get('create_subnet')!],
         ['create_chain', txTypeMap.get('create_chain')!],
         ['pvm_export', txTypeMap.get('pvm_export')!],
         ['pvm_import', txTypeMap.get('pvm_import')!],
@@ -43,9 +43,9 @@ export const P: ChainMap = {
 
 export const X: ChainMap = {
     id: (isMainnetNetwork()
-        ? process.env.VUE_APP_XCHAINID
-        : process.env.VUE_APP_TEST_XCHAINID) as string,
-    name: 'X-Chain',
+        ? process.env.VUE_APP_ASSETCHAINID
+        : process.env.VUE_APP_TEST_ASSETCHAINID) as string,
+    name: 'AssetChain',
     fullname: 'Exchange',
     code: 'X',
     color: '#005FED',
@@ -82,12 +82,12 @@ dict[C.id] = C
 
 export default dict
 
-export const txChainTypeMap = new Map<string, typeof C>([
+export const tassetChainTypeMap = new Map<string, typeof C>([
     [C.id, C],
     [P.id, P],
     [X.id, X],
 ])
 
-export function getTxChainType(type: string) {
-    return txChainTypeMap.get(type)
+export function getTassetChainType(type: string) {
+    return tassetChainTypeMap.get(type)
 }

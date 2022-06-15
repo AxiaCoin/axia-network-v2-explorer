@@ -1,4 +1,4 @@
-import { blockchainMap, allyChainMap } from '@/helper'
+import { blockchainMap, subnetMap } from '@/helper'
 import { Asset } from '@/js/Asset'
 import moment from 'moment'
 import Vue from 'vue'
@@ -9,8 +9,8 @@ Vue.filter('blockchain', function (val: string) {
     return blockchainMap(val)
 })
 
-Vue.filter('allyChain', function (val: string) {
-    return allyChainMap(val)
+Vue.filter('subnet', function (val: string) {
+    return subnetMap(val)
 })
 
 Vue.filter('nameOrID', function (val: Asset) {

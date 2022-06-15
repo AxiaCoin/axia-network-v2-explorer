@@ -7,7 +7,7 @@
                         <p class="label">
                             Blockchains
                             <TooltipMeta
-                                content="Total number of blockchains created on this allyChainwork"
+                                content="Total number of blockchains created on this subnetwork"
                             />
                         </p>
                         <p class="meta_val">
@@ -20,7 +20,7 @@
                         <p class="label">
                             Validators
                             <TooltipMeta
-                                content="Total number of nodes participating in the consensus protocol of this allyChainwork"
+                                content="Total number of nodes participating in the consensus protocol of this subnetwork"
                             />
                         </p>
                         <p class="meta_val">
@@ -49,7 +49,7 @@
                         <p class="label">
                             Control Keys
                             <TooltipMeta
-                                content="In order to add a validator to a allyChain, threshold signatures from keys are needed"
+                                content="In order to add a validator to a subnet, threshold signatures from keys are needed"
                             />
                         </p>
                         <p class="meta_val">

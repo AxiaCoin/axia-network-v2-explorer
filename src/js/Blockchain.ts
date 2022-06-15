@@ -5,7 +5,7 @@ import { profanities } from '@/js/Profanities'
 export default class Blockchain {
     id: string
     name: string
-    allyChainID: string
+    subnetID: string
     vmID: string
     addressCount?: number | null
     txCount?: number | null
@@ -16,7 +16,7 @@ export default class Blockchain {
     constructor(data: IBlockchainData) {
         this.id = data.id
         this.name = data.name
-        this.allyChainID = data.allyChainID
+        this.subnetID = data.subnetID
         this.vmID = data.vmID
         this.addressCount = null
         this.txCount = null

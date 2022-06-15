@@ -44,24 +44,24 @@ const routes = [
         },
     },
     {
-        path: '/allyChains',
-        name: 'AllyChains',
+        path: '/subnets',
+        name: 'Subnets',
         component: () =>
-            import(/* webpackChunkName: "allyChains" */ '../views/AllyChains.vue'),
+            import(/* webpackChunkName: "subnets" */ '../views/Subnets.vue'),
         meta: {
             auth: false,
-            title: 'AllyChains' + suffix,
+            title: 'Subnets' + suffix,
             metaTags: defaultMetaTags,
         },
     },
     {
-        path: '/allyChain/:id',
-        name: 'AllyChain',
+        path: '/subnet/:id',
+        name: 'Subnet',
         component: () =>
-            import(/* webpackChunkName: "allyChain" */ '../views/AllyChain.vue'),
+            import(/* webpackChunkName: "subnet" */ '../views/Subnet.vue'),
         meta: {
             auth: false,
-            title: 'AllyChain' + suffix,
+            title: 'Subnet' + suffix,
             metaTags: defaultMetaTags,
         },
     },
@@ -103,12 +103,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on CoreChain, X-Chain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, AssetChain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on CoreChain, X-Chain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, AssetChain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },
@@ -127,12 +127,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on CoreChain, X-Chain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, AssetChain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on CoreChain, X-Chain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, AssetChain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },

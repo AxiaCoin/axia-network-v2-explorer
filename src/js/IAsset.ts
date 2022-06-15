@@ -1,6 +1,6 @@
 import { IAggregate } from '@/services/aggregates/'
 
-export interface IAssetDataOrtelius {
+export interface IAssetDataAxtract {
     id: string
     alias: string
     chainID: string

@@ -1,10 +1,10 @@
 import { P } from '@/known_blockchains'
 
-interface AllyChainDict {
+interface SubnetDict {
     [key: string]: string
 }
 
-const dict: AllyChainDict = {}
+const dict: SubnetDict = {}
 
 dict[P.id] = 'Primary Network'
 

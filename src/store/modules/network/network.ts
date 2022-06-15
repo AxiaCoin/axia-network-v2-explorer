@@ -16,7 +16,7 @@ export const DEFAULT_NETWORK_NAME =
 // Mainnet
 const networkName = process.env.VUE_APP_NETWORKNAME
 const explorerFEUrl = process.env.VUE_APP_EXPLORER_FE_URL || ''
-const orteliusURL = process.env.VUE_APP_ORTELIUS_URL || ''
+const axtractURL = process.env.VUE_APP_AXTRACT_URL || ''
 export const ethereumAPI = process.env.VUE_APP_AXIA_GO_ETH_URL || ''
 export const peerInfoURL = process.env.VUE_APP_PEER_INFO_URL || ''
 const axiaJSProtocol = process.env.VUE_APP_AXIA_JS_PROTOCOL || ''
@@ -30,7 +30,7 @@ export const statusURL = process.env.VUE_APP_STATUS_URL || ''
 // Testnet
 const networkName_test = process.env.VUE_APP_TEST_NETWORKNAME || ''
 const explorerFEUrl_test = process.env.VUE_APP_TEST_EXPLORER_FE_URL || ''
-const orteliusURL_test = process.env.VUE_APP_TEST_ORTELIUS_URL || ''
+const axtractURL_test = process.env.VUE_APP_TEST_AXTRACT_URL || ''
 export const ethereumAPI_test = process.env.VUE_APP_TEST_AXIA_GO_ETH_URL || ''
 export const peerInfoURL_test = process.env.VUE_APP_TEST_PEER_INFO_URL || ''
 const axiaJSProtocol_test = process.env.VUE_APP_TEST_AXIA_JS_PROTOCOL || ''
@@ -63,7 +63,7 @@ const network_module: Module<INetworkState, IRootState> = {
                 `${axiaJSProtocol}://${axiaJSIP}:${axiaJSPort}`,
                 axiaJSNetworkID,
                 axiaJSChainID,
-                orteliusURL,
+                axtractURL,
                 explorerFEUrl
             )
             const testnet = new Network(
@@ -71,7 +71,7 @@ const network_module: Module<INetworkState, IRootState> = {
                 `${axiaJSProtocol_test}://${axiaJSIP_test}:${axiaJSPort_test}`,
                 axiaJSNetworkID_test,
                 axiaJSChainID_test,
-                orteliusURL_test,
+                axtractURL_test,
                 explorerFEUrl_test
             )
 
@@ -96,7 +96,7 @@ const network_module: Module<INetworkState, IRootState> = {
             state.status = 'connecting'
             axia.setAddress(net.ip, net.port, net.protocol)
             axia.setNetworkID(net.networkId)
-            axia.XChain().refreshBlockchainID()
+            axia.AssetChain().refreshBlockchainID()
 
             state.selectedNetwork = net
             axios.defaults.baseURL = net.explorerUrl

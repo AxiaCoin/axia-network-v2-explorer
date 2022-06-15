@@ -90,9 +90,9 @@ export interface TransactionResponse {
                 - contains reward UTXO
             - 0 tx = abort block
                 - no reward
-    5. KEYPAIR spends reward UTXO (it appears in Ortelius)
-        - confirm the reward tx (points at the ADD_* tx) is issued on the x-chain
-        - possibly issued on CoreChain and pvm_export to x-chain to be spent
+    5. KEYPAIR spends reward UTXO (it appears in Axtract)
+        - confirm the reward tx (points at the ADD_* tx) is issued on the AssetChain
+        - possibly issued on CoreChain and pvm_export to AssetChain to be spent
 
     rewarded    | rewardedTime
     false       | null          = default, someone staked
@@ -131,7 +131,7 @@ export interface TransactionResponse {
    ========================================== */
 export interface EVMTransactionQueryResponse {
     Transactions: EVMTransactionResponse[]
-    startTime: string // N/A - internal query logic for Ortelius DB
+    startTime: string // N/A - internal query logic for Axtract DB
     endTime: string // N/A
 }
 
@@ -142,7 +142,7 @@ export interface EVMTransactionQueryResponse {
  */
 export interface EVMTransactionResponse {
     hash: string // The Keccak 256-bit hash of the transaction
-    createdAt: string // time of ingestion by Ortelius, 99& of the time this value should be the same as blockHeader.timestamp (sec granularity). different by ms
+    createdAt: string // time of ingestion by Axtract, 99& of the time this value should be the same as blockHeader.timestamp (sec granularity). different by ms
 
     // SENDER
     fromAddr: string /* A tx always originates from an external account that is 
@@ -265,7 +265,7 @@ export interface OutputResponse {
     outputIndex: number // INPUTS - reference the UTXO index from the prev tx that generated this UTXO.
     chainID: string
     assetID: string
-    timestamp: string // time of ingestion by Ortelius
+    timestamp: string // time of ingestion by Axtract
     amount: string // 0 in the case of NFTs
 
     outputType: number
@@ -277,14 +277,14 @@ export interface OutputResponse {
     stakeLocktime: number // if before stakeLockTime, UTXO is vesting (locked), and can only used as input UTXO to stake in addValidator/addNominator tx
     rewardUtxo: boolean // if true, this UTXO is the validation/delegation reward
 
-    // RELEVANT TO X-CHAIN
+    // RELEVANT TO ASSETCHAIN
     genesisutxo: boolean
     frozen: boolean // TODO: Apricot
     locktime: number
     threshold: number
     payload: string | null // NFTs
 
-    // RELEVANT TO CORECHAIN & X-CHAIN
+    // RELEVANT TO CORECHAIN & ASSETCHAIN
     addresses: string[] // notice the output UTXO address is blank. an exception for CoreChain is handled in the transaction class
 
     // RELEVANT TO APPCHAIN

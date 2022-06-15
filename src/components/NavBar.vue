@@ -26,7 +26,7 @@
             <div class="links">
                 <div class="routes">
                     <a :href="appChainURL">Home</a>
-                    <router-link to="/allyChains">AllyChains</router-link>
+                    <router-link to="/subnets">Subnets</router-link>
                     <router-link to="/validators">Validators</router-link>
                     <a :href="tokensURL">Tokens</a>
                     <router-link to="/blockchains">Blockchains</router-link>
@@ -223,7 +223,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
             clip: rect(1px, 1px, 1px, 1px);
         }
 
-        .allyChain {
+        .subnet {
             font-size: 12px;
             color: $primary-color;
             padding-bottom: 7px;
@@ -351,7 +351,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
         h1 {
             padding-left: 161px;
             height: 12px;
-            .allyChain {
+            .subnet {
                 font-size: 12px;
                 color: $primary-color;
                 padding-top: 9px;

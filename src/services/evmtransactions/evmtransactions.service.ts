@@ -17,7 +17,7 @@ export interface IEVMTransactionParams {
 /**
  * Get a list of EVM transactions (AppChain)
  * @param params api release
- * @link https://docs.axc.network/build/tools/ortelius#list-corechain-transactions
+ * @link https://docs.axc.network/build/tools/axtract#list-corechain-transactions
  */
 export function getEVMTransaction(params?: IEVMTransactionParams) {
     return api

@@ -60,7 +60,7 @@ import {
     getTransactionInputs,
 } from '@/js/Transaction'
 import { DEFAULT_NETWORK_ID } from '@/store/modules/network/network'
-import { getTxChainType } from '@/known_blockchains'
+import { getTassetChainType } from '@/known_blockchains'
 import { getMappingForType } from '@/store/modules/transactions/maps'
 
 @Component({
@@ -84,15 +84,15 @@ export default class TxRow extends Vue {
     }
 
     get chainCode() {
-        return getTxChainType(this.transaction.chainID)!.code
+        return getTassetChainType(this.transaction.chainID)!.code
     }
 
     get chainColor() {
-        return getTxChainType(this.transaction.chainID)!.color
+        return getTassetChainType(this.transaction.chainID)!.color
     }
 
     get chainDarkColor() {
-        return getTxChainType(this.transaction.chainID)!.darkColor
+        return getTassetChainType(this.transaction.chainID)!.darkColor
     }
 
     get type() {

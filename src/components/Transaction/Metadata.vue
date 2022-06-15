@@ -103,7 +103,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import TransactionHistory from '@/components/Home/TopInfo/TransactionHistory.vue'
 import { getAssetType } from '@/services/assets'
-import { getTxChainType } from '@/known_blockchains'
+import { getTassetChainType } from '@/known_blockchains'
 import { getMappingForType } from '@/store/modules/transactions/maps'
 import { backgroundColor, stringToBig, toAXC } from '@/helper'
 import { Transaction, getTransactionOutputs } from '@/js/Transaction'
@@ -144,7 +144,7 @@ export default class Metadata extends Vue {
     }
 
     get chain(): string {
-        return getTxChainType(this.tx.chainID)!.name
+        return getTassetChainType(this.tx.chainID)!.name
     }
 
     get isCoreChain() {

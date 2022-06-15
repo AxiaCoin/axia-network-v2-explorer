@@ -3,7 +3,7 @@
         <h2>Transactions</h2>
         <v-alert class="testnet_alert" text type="info" rounded="0">
             <p class="description">
-                Notice: This explorer only indexes the X-Chain and CoreChain. To
+                Notice: This explorer only indexes the AssetChain and CoreChain. To
                 view AppChain transactions (EVM chain), click
                 <a class="bold c_chain_link" :href="appChainURL">here</a>.
             </p>
@@ -23,7 +23,7 @@
                 </template>
                 <span
                     >The CoreChain is the metadata blockchain on Axia, managing
-                    validators and custom allyChains. Validators stake AXC on the
+                    validators and custom subnets. Validators stake AXC on the
                     CoreChain to secure the network.</span
                 >
             </v-tooltip>
@@ -32,14 +32,14 @@
                     <span
                         class="chain_tag margin-left"
                         :style="{
-                            backgroundColor: xChain.darkColor,
+                            backgroundColor: assetChain.darkColor,
                         }"
                         v-on="on"
-                        >{{ xChain.name }}</span
+                        >{{ assetChain.name }}</span
                     >
                 </template>
                 <span
-                    >The X-Chain is the default asset blockchain on Axia
+                    >The AssetChain is the default asset blockchain on Axia
                     enabling the creation and instant exchange of assets. This
                     blockchain is for transfers that benefit from
                     high-throughput and instant finality. Think X for eXchanging
@@ -70,7 +70,7 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component } from 'vue-property-decorator'
-import { P, X, C, getTxChainType } from '@/known_blockchains'
+import { P, X, C, getTassetChainType } from '@/known_blockchains'
 import {
     DEFAULT_NETWORK_ID,
     appChainExplorerURL,
@@ -79,16 +79,16 @@ import {
 
 @Component({})
 export default class TxHeader extends Vue {
-    get xChain() {
-        return getTxChainType(X.id)
+    get assetChain() {
+        return getTassetChainType(X.id)
     }
 
     get coreChain() {
-        return getTxChainType(P.id)
+        return getTassetChainType(P.id)
     }
 
     get appChain() {
-        return getTxChainType(C.id)
+        return getTassetChainType(C.id)
     }
 
     get appChainURL() {

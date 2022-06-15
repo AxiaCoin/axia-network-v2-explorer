@@ -1,13 +1,13 @@
 import { stringToBig } from '@/helper'
 import { Asset } from '@/js/Asset'
-import { IAssetDataOrtelius, IAssetDataAxiaGo } from '@/js/IAsset'
+import { IAssetDataAxtract, IAssetDataAxiaGo } from '@/js/IAsset'
 import { AXC_ID } from '@/known_assets'
 import { IBalanceX, IBalanceXData, IBalanceXDatum } from './models'
 import Big from 'big.js'
 
 // set asset metadata for convenience
 export function setAssetMetadata(
-    asset: Asset | IAssetDataOrtelius | IAssetDataAxiaGo,
+    asset: Asset | IAssetDataAxtract | IAssetDataAxiaGo,
     balance: IBalanceX
 ) {
     balance.name = asset.name

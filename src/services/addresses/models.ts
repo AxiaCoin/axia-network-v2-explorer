@@ -13,7 +13,7 @@ export interface IAddress {
     P_utxoIDs: string[]
     // X -> P shared memory
     XP_unlocked: Big
-    // X-Chain (includes C -> X and P -> X shared memory)
+    // AssetChain (includes C -> X and P -> X shared memory)
     X_unlocked: Big
     X_locked: Big
     X_assets: IBalanceX[]
@@ -46,8 +46,8 @@ export interface IBalanceP {
 }
 
 /* ==========================================
-   Ortelius API
-        - unlocked X-Chain AXC + assets
+   Axtract API
+        - unlocked AssetChain AXC + assets
         - TODO: locked eventually
    ========================================== */
 

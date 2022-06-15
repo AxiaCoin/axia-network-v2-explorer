@@ -15,8 +15,8 @@ import {
     IStakePData,
 } from './models'
 import Big from 'big.js'
-import { IAssetDataAxiaGo, IAssetDataOrtelius } from '@/js/IAsset'
-import { avm } from '@/axia'
+import { IAssetDataAxiaGo, IAssetDataAxtract } from '@/js/IAsset'
+import { axvm } from '@/axia'
 import {
     setUnlockedXP,
     setUnlockedX,
@@ -37,7 +37,7 @@ export interface IAddressesParams {
     limit?: number
 }
 
-export function getAddressFromOrtelius(params?: IAddressesParams) {
+export function getAddressFromAxtract(params?: IAddressesParams) {
     return api
         .get(`${ADDRESSES_V2_API_BASE_URL}`, {
             params,
@@ -115,11 +115,11 @@ function setBalances(balanceData: IBalanceXData, assetsMap: any): IBalanceX[] {
 
         // If asset does not exist in store
         if (!assetsMap[assetID]) {
-            // Try Ortelius
+            // Try Axtract
             api.get(`/x/assets/${assetID}`).then((res) => {
                 if (res.data) {
-                    console.log('FOUND ASSET IN ORTELIUS', res.data)
-                    const asset: IAssetDataOrtelius = res.data
+                    console.log('FOUND ASSET IN AXTRACT', res.data)
+                    const asset: IAssetDataAxtract = res.data
 
                     setAssetMetadata(asset, balance)
                     setBalanceData(balanceDatum, balance.denomination, balance)
@@ -132,7 +132,7 @@ function setBalances(balanceData: IBalanceXData, assetsMap: any): IBalanceX[] {
                     )
                 } else if (!res.data) {
                     // Try Axia-Go as last resort
-                    avm.getAssetDescription(assetID).then(
+                    axvm.getAssetDescription(assetID).then(
                         (res: IAssetDataAxiaGo) => {
                             if (res) {
                                 console.log('FOUND ASSET IN GECKO', res)
@@ -178,17 +178,17 @@ export async function getAddress(
     id: string,
     assetsMap: IAssetsMap
 ): Promise<IAddress> {
-    // Get data from Ortelius and Axia-Go
+    // Get data from Axtract and Axia-Go
     const [pAddress, xAddress, cAddress, pBalance, pStake] = await Promise.all([
-        getAddressFromOrtelius({
+        getAddressFromAxtract({
             address: id,
             chainID: [P.id],
         }),
-        getAddressFromOrtelius({
+        getAddressFromAxtract({
             address: id,
             chainID: [X.id],
         }),
-        getAddressFromOrtelius({
+        getAddressFromAxtract({
             address: id,
             chainID: [C.id],
         }),
@@ -236,7 +236,7 @@ export async function getAddress(
         // X -> P shared memory
         XP_unlocked: Big(0),
 
-        // X-Chain (includes P -> X & C -> X shared memory)
+        // AssetChain (includes P -> X & C -> X shared memory)
         X_assets: [],
         X_unlocked: Big(0),
         X_locked: Big(0),
@@ -245,36 +245,36 @@ export async function getAddress(
         XC_unlocked: Big(0),
     }
 
-    // Then set data from Ortelius
-    const pBalanceOrtelius = pAddress.addresses.filter(
+    // Then set data from Axtract
+    const pBalanceAxtract = pAddress.addresses.filter(
         (a: IAddressData) => a.chainID === P.id
     )
-    const xBalanceOrtelius = xAddress.addresses.filter(
+    const xBalanceAxtract = xAddress.addresses.filter(
         (a: IAddressData) => a.chainID === X.id
     )
-    const cBalanceOrtelius = cAddress.addresses.filter(
+    const cBalanceAxtract = cAddress.addresses.filter(
         (a: IAddressData) => a.chainID === C.id
     )
 
-    // Ortelius pBalance includes UTXOs from CoreChain and X -> P shared memory
+    // Axtract pBalance includes UTXOs from CoreChain and X -> P shared memory
     // Avala-Go pBalance includes UTXOs from CoreChain
     // We subtract one from the other to get balance for X -> P shared memory
-    if (pBalanceOrtelius.length > 0) {
+    if (pBalanceAxtract.length > 0) {
         const pBalanceAndXPbalance = bigToDenomBig(
-            setUnlockedXP(pBalanceOrtelius[0].assets),
+            setUnlockedXP(pBalanceAxtract[0].assets),
             assetsMap[AXC_ID].denomination
         )
         address.XP_unlocked = pBalanceAndXPbalance.minus(address.AXC_balance)
     }
 
-    if (xBalanceOrtelius.length > 0) {
-        address.X_assets = setBalances(xBalanceOrtelius[0].assets, assetsMap)
+    if (xBalanceAxtract.length > 0) {
+        address.X_assets = setBalances(xBalanceAxtract[0].assets, assetsMap)
         address.X_unlocked = setUnlockedX(address.X_assets)
     }
 
-    if (cBalanceOrtelius.length > 0) {
+    if (cBalanceAxtract.length > 0) {
         address.XC_unlocked = bigToDenomBig(
-            setUnlockedXC(cBalanceOrtelius[0].assets),
+            setUnlockedXC(cBalanceAxtract[0].assets),
             assetsMap[AXC_ID].denomination
         )
     }

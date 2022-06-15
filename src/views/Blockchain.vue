@@ -2,7 +2,7 @@
     <div class="detail">
         <v-breadcrumbs :items="breadcrumbs" />
         <Loader
-            v-if="loading && !allyChainsLoaded"
+            v-if="loading && !subnetsLoaded"
             :content-id="id"
             :message="'Fetching Blockchain Details'"
         />
@@ -35,7 +35,7 @@ import { TransactionsGettersMixin } from '@/store/modules/transactions/transacti
 import { ITransactionParams } from '@/services/transactions'
 import TxHeader from '@/components/Transaction/TxHeader.vue'
 import TxInteractive from '@/components/Transaction/TxInteractive.vue'
-import { ChainMap, getTxChainType } from '@/known_blockchains'
+import { ChainMap, getTassetChainType } from '@/known_blockchains'
 
 @Component({
     components: {
@@ -72,8 +72,8 @@ export default class BlockchainPage extends Mixins(TransactionsGettersMixin) {
         this.fetchTx(this.initialParams)
     }
 
-    @Watch('allyChainsLoaded')
-    async onAllyChainsLoadedChanged() {
+    @Watch('subnetsLoaded')
+    async onSubnetsLoadedChanged() {
         await this.getData()
         this.fetchTx(this.initialParams)
     }
@@ -89,15 +89,15 @@ export default class BlockchainPage extends Mixins(TransactionsGettersMixin) {
     }
 
     get chain() {
-        return [getTxChainType(this.id) as ChainMap]
+        return [getTassetChainType(this.id) as ChainMap]
     }
 
     get assetsLoaded() {
         return this.$store.state.assetsLoaded
     }
 
-    get allyChainsLoaded() {
-        return this.$store.state.Platform.allyChainsLoaded
+    get subnetsLoaded() {
+        return this.$store.state.Platform.subnetsLoaded
     }
 
     async getData() {

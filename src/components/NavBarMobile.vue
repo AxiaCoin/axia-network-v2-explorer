@@ -38,7 +38,7 @@
                 </v-list-item>
                 <template>
                     <v-list-item :href="appChainURL">Home</v-list-item>
-                    <v-list-item to="/allyChains">AllyChains</v-list-item>
+                    <v-list-item to="/subnets">Subnets</v-list-item>
                     <v-list-item to="/validators">Validators</v-list-item>
                     <v-list-item :href="tokensURL">Tokens</v-list-item>
                     <v-list-item to="/blockchains">Blockchains</v-list-item>
@@ -216,7 +216,7 @@ export default class NavbarMobile extends Vue {
             clip: rect(1px, 1px, 1px, 1px);
         }
 
-        .allyChain {
+        .subnet {
             font-size: 12px;
             color: $primary-color;
             padding-bottom: 2px;

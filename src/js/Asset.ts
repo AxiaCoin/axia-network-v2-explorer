@@ -1,4 +1,4 @@
-import { IAssetDataOrtelius } from './IAsset'
+import { IAssetDataAxtract } from './IAsset'
 import { profanities } from '@/js/Profanities'
 import Big from 'big.js'
 import { stringToBig } from '@/helper'
@@ -28,7 +28,7 @@ class Asset {
     // not in indexer
     isUnknown: boolean
 
-    constructor(assetData: IAssetDataOrtelius, isUnknown: boolean) {
+    constructor(assetData: IAssetDataAxtract, isUnknown: boolean) {
         this.id = assetData.id
         this.alias = assetData.alias
         this.chainID = assetData.chainID

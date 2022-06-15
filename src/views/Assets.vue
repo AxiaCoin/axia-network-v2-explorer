@@ -5,7 +5,7 @@
                 <h2>Assets</h2>
                 <v-alert class="testnet_alert" text type="info" rounded="0">
                     <p class="description">
-                        Notice: This explorer only indexes the X-Chain and
+                        Notice: This explorer only indexes the AssetChain and
                         CoreChain. To view AppChain transactions (EVM chain), click
                         <a class="bold c_chain_link" :href="appChainURL">here</a>.
                     </p>

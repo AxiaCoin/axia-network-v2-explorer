@@ -24,7 +24,7 @@
                 :is-stakeableout="utxo.stakeableout"
                 :time="utxo.stakeLocktime"
             />
-            <!-- X-CHAIN -->
+            <!-- ASSETCHAIN -->
             <div v-if="utxo.genesisutxo === true">
                 <div>UTXO is from genesis</div>
             </div>

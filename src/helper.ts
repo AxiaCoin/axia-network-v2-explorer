@@ -1,10 +1,10 @@
 import Big from 'big.js'
-import AllyChainDict from './known_allyChains'
+import SubnetDict from './known_subnets'
 import BlockchainDict, { C, P, X } from './known_blockchains'
 import VMDict from './known_vms'
 import { Quote, quotes } from './quotes'
 import { BN, Buffer } from '@zee-ava/avajs/dist'
-import { NFTTransferOutput, UTXO } from '@zee-ava/avajs/dist/apis/avm'
+import { NFTTransferOutput, UTXO } from '@zee-ava/avajs/dist/apis/axvm'
 import { PayloadBase, PayloadTypes } from '@zee-ava/avajs/dist/utils'
 import { NetworkIDToHRP } from '@zee-ava/avajs/dist/utils/constants'
 import { DEFAULT_NETWORK_ID } from './store/modules/network/network'
@@ -33,9 +33,9 @@ function bnToBig(val: BN, denomination = 0): Big {
     return new Big(val.toString()).div(Math.pow(10, denomination))
 }
 
-function allyChainMap(id: string): string {
-    if (AllyChainDict[id]) {
-        return AllyChainDict[id]
+function subnetMap(id: string): string {
+    if (SubnetDict[id]) {
+        return SubnetDict[id]
     } else {
         return id
     }
@@ -220,7 +220,7 @@ function getNullAddress(id: string, key = ''): IAddress {
         P_utxoIDs: [],
         // X -> P shared memory
         XP_unlocked: Big(0),
-        // X-Chain (includes C -> X and P -> X shared memory)
+        // AssetChain (includes C -> X and P -> X shared memory)
         X_unlocked: Big(0),
         X_locked: Big(0),
         X_assets: [],
@@ -234,7 +234,7 @@ export {
     stringToBig,
     bigToDenomBig,
     bnToBig,
-    allyChainMap,
+    subnetMap,
     blockchainMap,
     VMMap,
     VMDocumentationMap,

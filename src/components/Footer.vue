@@ -24,7 +24,7 @@
                 <div class="list">
                     <h4>Menu</h4>
                     <a :href="appChainURL">Home</a>
-                    <router-link to="/allyChains">AllyChains</router-link>
+                    <router-link to="/subnets">Subnets</router-link>
                     <router-link to="/validators">Validators</router-link>
                     <router-link to="/assets">Assets</router-link>
                     <router-link to="/blockchains">Blockchains</router-link>
@@ -44,7 +44,7 @@
                         <fa :icon="['fab', 'reddit']"></fa>Reddit
                     </a>
                     <a
-                        href="https://github.com/ava-labs/axia-explorer"
+                        href="https://github.com/AxiaCoin/axia-explorer"
                         target="_blank"
                     >
                         <fa :icon="['fab', 'github']"></fa>GitHub

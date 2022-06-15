@@ -27,7 +27,7 @@
                         <a href="https://docs.axc.network/" target="_blank"
                             >Documentation</a
                         >
-                        <a href="https://github.com/ava-labs" target="_blank"
+                        <a href="https://github.com/AxiaCoin" target="_blank"
                             >Github</a
                         >
                     </div>

@@ -15,7 +15,7 @@ scssVars += `@import "@/_background.scss"; `
  */
 console.log(`
 ${colors.green('.Env configs are:')}
-    Ortelius url: ${colors.magenta(process.env.VUE_APP_ORTELIUS_URL)}
+    Axtract url: ${colors.magenta(process.env.VUE_APP_AXTRACT_URL)}
     Axia GO url: ${colors.magenta(process.env.VUE_APP_AXIA_GO_URL)}
     Fuji url: ${colors.magenta(process.env.VUE_APP_AXIA_JS_IP)}
     AppChain url: ${colors.magenta(process.env.VUE_APP_APPCHAIN_EXPLORER_URL)}
@@ -25,7 +25,7 @@ ${colors.green('.Env configs are:')}
 
 module.exports = {
     devServer: {
-        https: false,
+        https: true,
         port: process.env.VUE_APP_HTTP_PORT,
     },
     chainWebpack: (config) => {

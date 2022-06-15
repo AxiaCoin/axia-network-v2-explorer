@@ -14,7 +14,7 @@
                         />
                     </dd>
                     <dt>
-                        <template v-if="allyChainsLoaded">
+                        <template v-if="subnetsLoaded">
                             {{totalTransactions.toLocaleString()}}
                             <span class="unit">{{tpmText}} TPM</span>
                         </template>
@@ -32,7 +32,7 @@
                         />
                     </dd>
                     <dt>
-                        <template v-if="allyChainsLoaded">
+                        <template v-if="subnetsLoaded">
                             {{ axcVolume }}
                             <span class="unit">AXC</span>
                         </template>
@@ -59,7 +59,7 @@
                         />
                     </dd>
                     <dt>
-                        <template v-if="allyChainsLoaded">
+                        <template v-if="subnetsLoaded">
                             {{ validatorCount.toLocaleString() }}
                         </template>
                         <v-progress-circular
@@ -83,7 +83,7 @@
                         />
                     </dd>
                     <dt>
-                        <template v-if="allyChainsLoaded">
+                        <template v-if="subnetsLoaded">
                             {{ totalStake }}
                             <span class="unit">AXC</span></template
                         >
@@ -108,7 +108,7 @@
                         />
                     </dd>
                     <dt>
-                        <template v-if="allyChainsLoaded">{{
+                        <template v-if="subnetsLoaded">{{
                             totalBlockchains
                         }}</template>
                         <v-progress-circular
@@ -123,17 +123,17 @@
                 </router-link>
             </dl>
             <dl>
-                <router-link class="link" to="/allyChains">
+                <router-link class="link" to="/subnets">
                     <dd>
-                        AllyChains
+                        Subnets
                         <TooltipMeta
-                            content="Total number of allyChains on Axia"
+                            content="Total number of subnets on Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
-                        <template v-if="allyChainsLoaded">{{
-                            totalAllyChains
+                        <template v-if="subnetsLoaded">{{
+                            totalSubnets
                         }}</template>
                         <v-progress-circular
                             v-else
@@ -147,7 +147,7 @@
                 </router-link>
             </dl>
             <dl>
-                <router-link class="link" to="/allyChains">
+                <router-link class="link" to="/subnets">
                     <dd>
                         Staking Ratio
                         <TooltipMeta
@@ -156,7 +156,7 @@
                         />
                     </dd>
                     <dt>
-                        <template v-if="allyChainsLoaded"
+                        <template v-if="subnetsLoaded"
                             >{{ percentStaked }}%</template
                         >
                         <v-progress-circular
@@ -171,10 +171,10 @@
                 </router-link>
             </dl>
             <dl>
-                <router-link class="link" to="/allyChains">
+                <router-link class="link" to="/subnets">
                     <dd>Annual Staking Reward</dd>
                     <dt>
-                        <template v-if="allyChainsLoaded">{{
+                        <template v-if="subnetsLoaded">{{
                             annualStakingRewardPercentage
                         }}</template>
                         <v-progress-circular
@@ -219,8 +219,8 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         return this.$store.state.assetAggregatesLoaded
     }
 
-    get allyChainsLoaded(): boolean {
-        return this.$store.state.Platform.allyChainsLoaded
+    get subnetsLoaded(): boolean {
+        return this.$store.state.Platform.subnetsLoaded
     }
 
     @Watch('axcVolume')
@@ -278,7 +278,7 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         )
     }
 
-    // Data from Ortelius
+    // Data from Axtract
     get tpmText(): string {
         const day = 60 * 24
         const avg = this.totalTransactions / day
@@ -327,8 +327,8 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         return this.getTotalBlockchains()
     }
 
-    get totalAllyChains(): number {
-        return Object.keys(this.$store.state.Platform.allyChains).length
+    get totalSubnets(): number {
+        return Object.keys(this.$store.state.Platform.subnets).length
     }
 
     get percentStaked() {

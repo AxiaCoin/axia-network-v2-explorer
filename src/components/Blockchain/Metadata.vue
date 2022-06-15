@@ -13,9 +13,9 @@
             </p>
         </article>
         <article class="meta_row">
-            <p class="meta_label">AllyChain</p>
+            <p class="meta_label">Subnet</p>
             <p class="meta_value">
-                <span>{{ blockchain.allyChainID }}</span>
+                <span>{{ blockchain.subnetID }}</span>
             </p>
         </article>
         <article class="meta_row">
@@ -57,7 +57,7 @@ export default class Metadata extends Vue {
     @Prop() blockchain!: Blockchain
 
     get validatorsCount() {
-        return this.$store.state.Platform.allyChains[this.blockchain.allyChainID]
+        return this.$store.state.Platform.subnets[this.blockchain.subnetID]
             .validators.length
     }
 }

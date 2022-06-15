@@ -1,17 +1,17 @@
 <template>
-    <div id="allyChains">
-        <template v-if="!allyChainsLoaded">
-            <Loader :content-id="''" :message="'Fetching AllyChains'" />
+    <div id="subnets">
+        <template v-if="!subnetsLoaded">
+            <Loader :content-id="''" :message="'Fetching Subnets'" />
         </template>
         <template v-else>
             <Metadata
-                :total-allyChains="totalAllyChains"
+                :total-subnets="totalSubnets"
                 :total-validators="totalValidators"
                 :total-blockchains="totalBlockchains"
                 :total-stake="totalStake"
             />
             <div v-if="this.$vuetify.breakpoint.mdAndUp" class="card">
-                <Tabs :allyChains="allyChains" />
+                <Tabs :subnets="subnets" />
             </div>
             <div
                 v-if="this.$vuetify.breakpoint.smAndDown"
@@ -19,11 +19,11 @@
             >
                 <v-select
                     v-model="selection"
-                    :items="allyChainsByName"
-                    label="Select AllyChain"
+                    :items="subnetsByName"
+                    label="Select Subnet"
                     outlined
                 />
-                <Content :allyChain-i-d="selection" :allyChain="allyChains[selection]" />
+                <Content :subnet-i-d="selection" :subnet="subnets[selection]" />
             </div>
         </template>
     </div>
@@ -32,14 +32,14 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Mixins, Component } from 'vue-property-decorator'
-import { allyChainMap } from '@/helper'
-import Metadata from '@/components/AllyChains/Metadata.vue'
-import Tabs from '@/components/AllyChains/Tabs.vue'
+import { subnetMap } from '@/helper'
+import Metadata from '@/components/Subnets/Metadata.vue'
+import Tabs from '@/components/Subnets/Tabs.vue'
 import Loader from '@/components/misc/Loader.vue'
-import Content from '@/components/AllyChains/Content.vue'
-import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
+import Content from '@/components/Subnets/Content.vue'
+import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 import Big from 'big.js'
-import { IAllyChains } from '@/store/modules/platform/models'
+import { ISubnets } from '@/store/modules/platform/models'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
 
 interface IMap {
@@ -55,19 +55,19 @@ interface IMap {
         Tabs,
     },
 })
-export default class AllyChains extends Mixins(PlatformGettersMixin) {
-    selection: string = AXIA_ALLYCHAIN_ID
+export default class Subnets extends Mixins(PlatformGettersMixin) {
+    selection: string = AXIA_SUBNET_ID
 
-    get allyChainsLoaded(): boolean {
-        return this.$store.state.Platform.allyChainsLoaded
+    get subnetsLoaded(): boolean {
+        return this.$store.state.Platform.subnetsLoaded
     }
 
-    get allyChains(): IAllyChains {
-        const allyChains = this.$store.state.Platform.allyChains
-        const ordered: IAllyChains = {}
-        Object.keys(allyChains)
+    get subnets(): ISubnets {
+        const subnets = this.$store.state.Platform.subnets
+        const ordered: ISubnets = {}
+        Object.keys(subnets)
             .sort()
-            .forEach((key) => (ordered[key] = allyChains[key]))
+            .forEach((key) => (ordered[key] = subnets[key]))
         return ordered
     }
 
@@ -85,15 +85,15 @@ export default class AllyChains extends Mixins(PlatformGettersMixin) {
         return res
     }
 
-    get totalAllyChains(): number {
-        return Object.keys(this.$store.state.Platform.allyChains).length
+    get totalSubnets(): number {
+        return Object.keys(this.$store.state.Platform.subnets).length
     }
 
-    get allyChainsByName(): IMap[] {
+    get subnetsByName(): IMap[] {
         const list: IMap[] = []
-        Object.keys(this.allyChains).forEach((key) => {
+        Object.keys(this.subnets).forEach((key) => {
             const object: IMap = {
-                text: allyChainMap(key) ? allyChainMap(key) : key,
+                text: subnetMap(key) ? subnetMap(key) : key,
                 value: key,
             }
             list.push(object)

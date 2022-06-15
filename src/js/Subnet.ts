@@ -1,5 +1,5 @@
 import axia_go_api from '@/axia_go_api'
-import { IAllyChainData } from '@/store/modules/platform/IAllyChain'
+import { ISubnetData } from '@/store/modules/platform/ISubnet'
 import Blockchain from '@/js/Blockchain'
 import {
     IValidator,
@@ -11,9 +11,9 @@ import {
     IPendingNominator,
     IPendingNominatorData,
 } from '@/store/modules/platform/IValidator'
-import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
+import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 
-export default class AllyChain {
+export default class Subnet {
     id: string
     controlKeys: string[]
     threshold: number
@@ -23,7 +23,7 @@ export default class AllyChain {
     pendingValidators: IPendingValidator[]
     pendingNominators: IPendingNominator[]
 
-    constructor(data: IAllyChainData) {
+    constructor(data: ISubnetData) {
         this.id = data.id
         this.controlKeys = data.controlKeys
         this.threshold = parseInt(data.threshold)
@@ -44,7 +44,7 @@ export default class AllyChain {
             jsonrpc: '2.0',
             method: endpoint,
             params: {
-                allyChainID: this.id,
+                subnetID: this.id,
             },
             id: 1,
         }
@@ -63,12 +63,12 @@ export default class AllyChain {
             let nominators: INominator[] = []
 
             if (validatorsData.length > 0) {
-                // All AllyChains
+                // All Subnets
                 validators = this.setValidators(validatorsData)
                 validators = this.sortByStake(validators, this.id)
 
                 // Primary Network Only
-                if (this.id === AXIA_ALLYCHAIN_ID) {
+                if (this.id === AXIA_SUBNET_ID) {
                     validators.forEach((v: IValidator) => {
                         if (v.nominators !== null) {
                             v.nominators?.forEach((d: INominator) =>
@@ -91,7 +91,7 @@ export default class AllyChain {
             let pendingValidators: IPendingValidator[] = []
             let pendingNominators: IPendingNominator[] = []
 
-            // All AllyChains
+            // All Subnets
             if (pendingValidatorsData.length > 0) {
                 pendingValidators = this.setPendingValidators(
                     pendingValidatorsData
@@ -99,7 +99,7 @@ export default class AllyChain {
             }
 
             // Primary Network Only
-            if (this.id === AXIA_ALLYCHAIN_ID) {
+            if (this.id === AXIA_SUBNET_ID) {
                 const pendingNominatorsData = response.data.result
                     .nominators as IPendingValidatorData[]
                 if (pendingNominatorsData.length > 0) {
@@ -152,7 +152,7 @@ export default class AllyChain {
                 )
                 validator.elapsed = this.getElapsedStakingPeriod(validator)
             }
-            // AllyChains
+            // Subnets
             if ({}.hasOwnProperty.call(v, 'weight')) {
                 validator.weight = parseInt(v.weight as string)
             }
@@ -263,7 +263,7 @@ export default class AllyChain {
      *  Sort by stake or weight and add rank
      */
     private sortByStake(validators: IValidator[], id: string): IValidator[] {
-        id === AXIA_ALLYCHAIN_ID
+        id === AXIA_SUBNET_ID
             ? validators.sort(
                   (a, b) =>
                       (b.totalStakeAmount as number) -

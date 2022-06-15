@@ -2,19 +2,19 @@
     <div class="metadata">
         <div class="card">
             <div class="header">
-                <h2>AllyChains</h2>
+                <h2>Subnets</h2>
             </div>
             <section class="stats">
                 <article>
                     <div class="stat">
                         <p class="label">
-                            AllyChains
+                            Subnets
                             <TooltipMeta
-                                content="Total number of allyChains on Axia"
+                                content="Total number of subnets on Axia"
                             />
                         </p>
                         <p class="meta_val">
-                            {{ totalAllyChains.toLocaleString() }}
+                            {{ totalSubnets.toLocaleString() }}
                         </p>
                     </div>
                 </article>
@@ -78,7 +78,7 @@ import { DEFAULT_NETWORK_ID } from '@/store/modules/network/network'
     },
 })
 export default class Metadata extends Vue {
-    @Prop() totalAllyChains!: number
+    @Prop() totalSubnets!: number
     @Prop() totalBlockchains!: number
     @Prop() totalValidators!: number
     @Prop() totalStake!: Big

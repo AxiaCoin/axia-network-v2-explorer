@@ -9,9 +9,9 @@ import Network from './modules/network/network'
 import Notifications from './modules/notifications/notifications'
 import Transactions from './modules/transactions/transactions'
 import Blocks from './modules/blocks/blocks'
-import { avm } from '@/axia'
+import { axvm } from '@/axia'
 import {
-    IAssetDataOrtelius,
+    IAssetDataAxtract,
     IAssetDataAxiaGo,
     ICollisionMap,
 } from '@/js/IAsset'
@@ -98,7 +98,7 @@ const store = new Vuex.Store({
         async getAssetAggregates(store) {
             const assetAggregates: IAssetAggregate[] = await getAssetAggregates()
             assetAggregates.forEach((agg: IAssetAggregate) => {
-                // only request aggregates for assets that are in the Ortelius assets map
+                // only request aggregates for assets that are in the Axtract assets map
                 if (store.state.assets[agg.asset]) {
                     store.commit('updateAssetWithAggregationData', agg)
                 }
@@ -116,10 +116,10 @@ const store = new Vuex.Store({
 
         // Adds an unknown asset id to the assets dictionary
         async addUnknownAsset({ commit }, assetId: string) {
-            const desc: IAssetDataAxiaGo = await avm.getAssetDescription(
+            const desc: IAssetDataAxiaGo = await axvm.getAssetDescription(
                 assetId
             )
-            const newAssetData: IAssetDataOrtelius = {
+            const newAssetData: IAssetDataAxtract = {
                 alias: '',
                 chainID: X.id,
                 currentSupply: '0',

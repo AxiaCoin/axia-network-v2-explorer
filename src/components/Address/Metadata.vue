@@ -50,7 +50,7 @@
             </div>
         </article>
         <article class="meta_row">
-            <p class="meta_label">X-Chain Portfolio</p>
+            <p class="meta_label">AssetChain Portfolio</p>
             <div class="meta_value">
                 <BalanceTable :assets="assets" />
             </div>
@@ -114,7 +114,7 @@ export default class Metadata extends Vue {
         return this.metaData.XP_unlocked
     }
 
-    // X-Chain AXC balance
+    // AssetChain AXC balance
     get X_unlocked(): Big {
         return this.metaData.X_unlocked
     }

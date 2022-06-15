@@ -82,7 +82,7 @@ import TooltipMeta from '@/components/misc/TooltipMeta.vue'
 import { Transaction } from '@/js/Transaction'
 import { getAssetType } from '@/services/assets'
 import { backgroundColor } from '@/helper'
-import { getTxChainType } from '@/known_blockchains'
+import { getTassetChainType } from '@/known_blockchains'
 
 @Component({
     components: {
@@ -110,7 +110,7 @@ export default class Metadata extends Vue {
     }
 
     get background(): string {
-        const chain = getTxChainType(this.asset.chainID)
+        const chain = getTassetChainType(this.asset.chainID)
         return chain ? backgroundColor(chain.code) : '#fff'
     }
 }

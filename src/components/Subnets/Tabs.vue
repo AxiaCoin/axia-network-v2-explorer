@@ -1,15 +1,15 @@
 <template>
-    <div id="allyChain_tabs">
+    <div id="subnet_tabs">
         <v-tabs vertical right>
-            <v-tab v-for="(s, allyChainID) in allyChains" :key="s.id">{{
-                allyChainID | allyChain
+            <v-tab v-for="(s, subnetID) in subnets" :key="s.id">{{
+                subnetID | subnet
             }}</v-tab>
             <v-tab-item
-                v-for="(s, allyChainID) in allyChains"
+                v-for="(s, subnetID) in subnets"
                 :key="s.id"
                 :vertical="true"
             >
-                <Content :allyChain-i-d="allyChainID" :allyChain="s" />
+                <Content :subnet-i-d="subnetID" :subnet="s" />
             </v-tab-item>
         </v-tabs>
     </div>
@@ -18,11 +18,11 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import Content from '@/components/AllyChains/Content.vue'
-import AllyChain from '@/js/AllyChain'
+import Content from '@/components/Subnets/Content.vue'
+import Subnet from '@/js/Subnet'
 
-interface AllyChains {
-    [key: string]: AllyChain
+interface Subnets {
+    [key: string]: Subnet
 }
 
 @Component({
@@ -30,8 +30,8 @@ interface AllyChains {
         Content,
     },
 })
-export default class AllyChainTabs extends Vue {
-    @Prop() allyChains!: AllyChains
+export default class SubnetTabs extends Vue {
+    @Prop() subnets!: Subnets
 }
 </script>
 
@@ -66,7 +66,7 @@ export default class AllyChainTabs extends Vue {
 </style>
 
 <style lang="scss">
-#allyChain_tabs {
+#subnet_tabs {
     .v-tabs--vertical > .v-tabs-bar {
         max-width: 200px !important;
         border-left: 1px solid #cecece;
