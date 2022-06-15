@@ -25,7 +25,7 @@ ${colors.green('.Env configs are:')}
 
 module.exports = {
     devServer: {
-        https: true,
+        https: false,
         port: process.env.VUE_APP_HTTP_PORT,
     },
     chainWebpack: (config) => {
