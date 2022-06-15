@@ -25,7 +25,7 @@ export const txTypeMap = new Map<string, TxType>([
         },
     ],
     /**
-     * @link https://docs.axc.network/build/references/axvm-transaction-serialization#operations
+     * @link https://docs.axc.network/build/references/avm-transaction-serialization#operations
      */
     [
         'operation',
@@ -132,7 +132,7 @@ export function getMappingForType(type: string) {
 }
 
 /**
- * Info can be found here @link https://docs.axc.network/build/references/axvm-transaction-serialization
+ * Info can be found here @link https://docs.axc.network/build/references/avm-transaction-serialization
  */
 const outputTypes = new Map([
     [6, OutputType.MINT],

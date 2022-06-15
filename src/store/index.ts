@@ -9,7 +9,7 @@ import Network from './modules/network/network'
 import Notifications from './modules/notifications/notifications'
 import Transactions from './modules/transactions/transactions'
 import Blocks from './modules/blocks/blocks'
-import { axvm } from '@/axia'
+import { avm } from '@/axia'
 import {
     IAssetDataAxtract,
     IAssetDataAxiaGo,
@@ -116,7 +116,7 @@ const store = new Vuex.Store({
 
         // Adds an unknown asset id to the assets dictionary
         async addUnknownAsset({ commit }, assetId: string) {
-            const desc: IAssetDataAxiaGo = await axvm.getAssetDescription(
+            const desc: IAssetDataAxiaGo = await avm.getAssetDescription(
                 assetId
             )
             const newAssetData: IAssetDataAxtract = {

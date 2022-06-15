@@ -16,7 +16,7 @@ import {
 } from './models'
 import Big from 'big.js'
 import { IAssetDataAxiaGo, IAssetDataAxtract } from '@/js/IAsset'
-import { axvm } from '@/axia'
+import { avm } from '@/axia'
 import {
     setUnlockedXP,
     setUnlockedX,
@@ -132,7 +132,7 @@ function setBalances(balanceData: IBalanceXData, assetsMap: any): IBalanceX[] {
                     )
                 } else if (!res.data) {
                     // Try Axia-Go as last resort
-                    axvm.getAssetDescription(assetID).then(
+                    avm.getAssetDescription(assetID).then(
                         (res: IAssetDataAxiaGo) => {
                             if (res) {
                                 console.log('FOUND ASSET IN GECKO', res)

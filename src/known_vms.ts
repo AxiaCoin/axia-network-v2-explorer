@@ -16,9 +16,9 @@ const dict: VMDict = {
             'https://github.com/AxiaCoin/axiago/tree/master/vms/platformvm',
     },
     jvYyfQTxGMJLuGWa55kdP2p2zSUYsQ5Raupu4TW34ZAUBAbtq: {
-        name: 'axvm',
+        name: 'avm',
         fullName: 'AXIA',
-        documentation: 'https://github.com/AxiaCoin/axiago/tree/master/vms/axvm',
+        documentation: 'https://github.com/AxiaCoin/axiago/tree/master/vms/avm',
     },
     mgj786NP7uDwBCcq6YwThhaN8FLyybkCa4zBWTQbNgmK6k9A6: {
         name: 'evm',
