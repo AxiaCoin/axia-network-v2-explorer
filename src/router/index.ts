@@ -4,8 +4,8 @@ import Home from '../views/Home.vue'
 import { IMetaTag } from '@/router/IMetaTag'
 import {
     DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
+    appChainExplorerURL,
+    appChainExplorerURL_test,
 } from '@/store/modules/network/network'
 
 Vue.use(VueRouter)
@@ -24,8 +24,8 @@ const defaultMetaTags: IMetaTag[] = [
     },
 ]
 
-const cChainURL =
-    DEFAULT_NETWORK_ID === 1 ? cChainExplorerURL : cChainExplorerURL_test
+const appChainURL =
+    DEFAULT_NETWORK_ID === 1 ? appChainExplorerURL : appChainExplorerURL_test
 
 const routes = [
     {
@@ -38,30 +38,30 @@ const routes = [
             metaTags: defaultMetaTags,
         },
         beforeEnter() {
-            if (window.location.href !== cChainURL) {
-                window.location.href = cChainURL
+            if (window.location.href !== appChainURL) {
+                window.location.href = appChainURL
             }
         },
     },
     {
-        path: '/subnets',
-        name: 'Subnets',
+        path: '/allyChains',
+        name: 'AllyChains',
         component: () =>
-            import(/* webpackChunkName: "subnets" */ '../views/Subnets.vue'),
+            import(/* webpackChunkName: "allyChains" */ '../views/AllyChains.vue'),
         meta: {
             auth: false,
-            title: 'Subnets' + suffix,
+            title: 'AllyChains' + suffix,
             metaTags: defaultMetaTags,
         },
     },
     {
-        path: '/subnet/:id',
-        name: 'Subnet',
+        path: '/allyChain/:id',
+        name: 'AllyChain',
         component: () =>
-            import(/* webpackChunkName: "subnet" */ '../views/Subnet.vue'),
+            import(/* webpackChunkName: "allyChain" */ '../views/AllyChain.vue'),
         meta: {
             auth: false,
-            title: 'Subnet' + suffix,
+            title: 'AllyChain' + suffix,
             metaTags: defaultMetaTags,
         },
     },
@@ -103,12 +103,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on P-Chain, X-Chain, and C-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, X-Chain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on P-Chain, X-Chain, and C-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, X-Chain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },
@@ -127,12 +127,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on P-Chain, X-Chain, and C-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, X-Chain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on P-Chain, X-Chain, and C-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, X-Chain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },

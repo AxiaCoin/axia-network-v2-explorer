@@ -63,8 +63,8 @@ import { getOutputType } from '@/services/transactions'
 import { P, X } from '@/known_blockchains'
 import {
     DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
+    appChainExplorerURL,
+    appChainExplorerURL_test,
 } from '@/store/modules/network/network'
 import { getTransactionChainType } from '@/js/Transaction'
 
@@ -89,8 +89,8 @@ export default class UtxoTxLinkOutput extends Vue {
     get cURL(): string {
         return `${
             DEFAULT_NETWORK_ID === 1
-                ? cChainExplorerURL
-                : cChainExplorerURL_test
+                ? appChainExplorerURL
+                : appChainExplorerURL_test
         }/tx/0x${this.txID}`
     }
 

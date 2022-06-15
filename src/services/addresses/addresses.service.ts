@@ -210,7 +210,7 @@ export async function getAddress(
         address: id!,
         publicKey: '', // todo
 
-        // P-Chain (excludes X -> P shared memory)
+        // CoreChain (excludes X -> P shared memory)
         AXC_balance: bigToDenomBig(
             new Big(pBalance.balance),
             assetsMap[AXC_ID].denomination
@@ -256,8 +256,8 @@ export async function getAddress(
         (a: IAddressData) => a.chainID === C.id
     )
 
-    // Ortelius pBalance includes UTXOs from P-chain and X -> P shared memory
-    // Avala-Go pBalance includes UTXOs from P-chain
+    // Ortelius pBalance includes UTXOs from CoreChain and X -> P shared memory
+    // Avala-Go pBalance includes UTXOs from CoreChain
     // We subtract one from the other to get balance for X -> P shared memory
     if (pBalanceOrtelius.length > 0) {
         const pBalanceAndXPbalance = bigToDenomBig(

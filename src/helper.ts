@@ -1,5 +1,5 @@
 import Big from 'big.js'
-import SubnetDict from './known_subnets'
+import AllyChainDict from './known_allyChains'
 import BlockchainDict, { C, P, X } from './known_blockchains'
 import VMDict from './known_vms'
 import { Quote, quotes } from './quotes'
@@ -33,9 +33,9 @@ function bnToBig(val: BN, denomination = 0): Big {
     return new Big(val.toString()).div(Math.pow(10, denomination))
 }
 
-function subnetMap(id: string): string {
-    if (SubnetDict[id]) {
-        return SubnetDict[id]
+function allyChainMap(id: string): string {
+    if (AllyChainDict[id]) {
+        return AllyChainDict[id]
     } else {
         return id
     }
@@ -211,7 +211,7 @@ function getNullAddress(id: string, key = ''): IAddress {
     return {
         address: id,
         publicKey: key,
-        // P-Chain (excludes X -> P shared memory)
+        // CoreChain (excludes X -> P shared memory)
         AXC_balance: Big(0),
         P_unlocked: Big(0),
         P_lockedStakeable: Big(0),
@@ -234,7 +234,7 @@ export {
     stringToBig,
     bigToDenomBig,
     bnToBig,
-    subnetMap,
+    allyChainMap,
     blockchainMap,
     VMMap,
     VMDocumentationMap,

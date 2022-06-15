@@ -8,11 +8,11 @@
             <div class="resource_container">
                 <div class="resource">
                     <img src="@/assets/resources_view/Wallet.png" />
-                    <h3>Wallet &amp; Faucet</h3>
+                    <h3>Axwallet &amp; Faucet</h3>
                     <p>Used to receive and spend cryptoassets</p>
                     <div class="buts">
                         <a href="https://wallet.axc.network" target="_blank"
-                            >Wallet</a
+                            >Axwallet</a
                         >
                         <a href="https://faucet.axc.network" target="_blank"
                             >Faucet</a

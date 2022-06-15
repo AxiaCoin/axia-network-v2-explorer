@@ -7,7 +7,7 @@ import {
 const BURNED_URL = DEFAULT_NETWORK_ID === 1 ? ethereumAPI : ethereumAPI_test
 
 /**
- * get burned AXC for the C-chain
+ * get burned AXC for the CoreChain
  */
 export async function getBurnedC() {
     return await fetch(BURNED_URL, {

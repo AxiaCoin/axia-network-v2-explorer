@@ -18,7 +18,7 @@
                 :threshold="utxo.threshold"
                 :addresses="utxo.addresses"
             />
-            <!-- P-CHAIN -->
+            <!-- CORECHAIN -->
             <Stake :is-stake="utxo.stake" />
             <Stakeable
                 :is-stakeableout="utxo.stakeableout"
@@ -33,7 +33,7 @@
                 :asset-i-d="utxo.assetID"
                 :group-i-d="utxo.groupID"
             />
-            <!-- C-CHAIN -->
+            <!-- APPCHAIN -->
             <Block :block="utxo.block" :nonce="utxo.nonce" />
         </div>
         <div class="tx_link">

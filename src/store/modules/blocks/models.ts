@@ -59,7 +59,7 @@ export interface EVMBlockHeader {
                         Its purpose is to keep block propagation and processing time low, 
                         thereby allowing for a sufficiently decentralized network. */
     gasUsed: string // A scalar value equal to the total gas used by all transactions in this block.
-    miner: string // C-chain burn address
+    miner: string // CoreChain burn address
 
     // LOGS
     logsBloom: string /* The bloom filter of log entries resulting from the transactions in the block. 

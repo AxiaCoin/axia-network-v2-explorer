@@ -2686,10 +2686,10 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@zee-ava/avajs@^3.14.5":
-  version "3.14.5"
-  resolved "https://registry.yarnpkg.com/@zee-ava/avajs/-/avajs-3.14.5.tgz#6125a8690bffeeb65462c23dd65e08cf620f5bea"
-  integrity sha512-AZs6t7P3j9/W5JLS2vpWk4ZXwlGNANn0ty7faF+NHFGeGyFQUWz1EM49VpY3OhAsS7WpK6Vc7ayazZUx+zpYWQ==
+"@zee-ava/avajs@^3.14.8":
+  version "3.14.8"
+  resolved "https://registry.yarnpkg.com/@zee-ava/avajs/-/avajs-3.14.8.tgz#b4bdf54039d3da1737f41c7760ac02ddf118d31a"
+  integrity sha512-bvJ3s30B9CNnRD1aAEap5MRmBxR5VmA9A7ZouxY2fhl1wozlv57tzFgtbUhhzUej58mhNgzApr0XVyypeQJdAg==
   dependencies:
     assert "2.0.0"
     axios "0.27.2"

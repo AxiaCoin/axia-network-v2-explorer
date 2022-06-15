@@ -2,7 +2,7 @@
     <div class="detail">
         <v-breadcrumbs :items="breadcrumbs" />
         <Loader
-            v-if="loading && !subnetsLoaded"
+            v-if="loading && !allyChainsLoaded"
             :content-id="id"
             :message="'Fetching Blockchain Details'"
         />
@@ -72,8 +72,8 @@ export default class BlockchainPage extends Mixins(TransactionsGettersMixin) {
         this.fetchTx(this.initialParams)
     }
 
-    @Watch('subnetsLoaded')
-    async onSubnetsLoadedChanged() {
+    @Watch('allyChainsLoaded')
+    async onAllyChainsLoadedChanged() {
         await this.getData()
         this.fetchTx(this.initialParams)
     }
@@ -96,8 +96,8 @@ export default class BlockchainPage extends Mixins(TransactionsGettersMixin) {
         return this.$store.state.assetsLoaded
     }
 
-    get subnetsLoaded() {
-        return this.$store.state.Platform.subnetsLoaded
+    get allyChainsLoaded() {
+        return this.$store.state.Platform.allyChainsLoaded
     }
 
     async getData() {

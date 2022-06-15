@@ -10,7 +10,7 @@
     >
         <div class="top">
             <div class="logo">
-                <a :href="cChainURL">
+                <a :href="appChainURL">
                     <img
                         style="height: 30px"
                         :src="
@@ -25,13 +25,13 @@
             <v-spacer class="spacer_mid"></v-spacer>
             <div class="links">
                 <div class="routes">
-                    <a :href="cChainURL">Home</a>
-                    <router-link to="/subnets">Subnets</router-link>
+                    <a :href="appChainURL">Home</a>
+                    <router-link to="/allyChains">AllyChains</router-link>
                     <router-link to="/validators">Validators</router-link>
                     <a :href="tokensURL">Tokens</a>
                     <router-link to="/blockchains">Blockchains</router-link>
                     <a v-if="isMainnet" :href="statsURL">Stats</a>
-                    <a :href="cChainURL">C-Chain</a>
+                    <a :href="appChainURL">AppChain</a>
                     <a :href="statusPageURL">Status</a>
                     <router-link to="/resources">Resources</router-link>
                 </div>
@@ -76,8 +76,8 @@ import SearchBar from '@/components/misc/SearchBar/SearchBar'
 import NetworkMenu from './NetworkSettings/NetworkMenu.vue'
 import {
     DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
+    appChainExplorerURL,
+    appChainExplorerURL_test,
     statusURL,
     statusURL_test,
 } from '@/store/modules/network/network'
@@ -108,10 +108,10 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
     get logoColor() {
         return DEFAULT_NETWORK_ID === 1 ? 'black' : 'white'
     }
-    get cChainURL() {
+    get appChainURL() {
         return DEFAULT_NETWORK_ID === 1
-            ? cChainExplorerURL
-            : cChainExplorerURL_test
+            ? appChainExplorerURL
+            : appChainExplorerURL_test
     }
 
     get tokensURL() {
@@ -223,7 +223,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
             clip: rect(1px, 1px, 1px, 1px);
         }
 
-        .subnet {
+        .allyChain {
             font-size: 12px;
             color: $primary-color;
             padding-bottom: 7px;
@@ -351,7 +351,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
         h1 {
             padding-left: 161px;
             height: 12px;
-            .subnet {
+            .allyChain {
                 font-size: 12px;
                 color: $primary-color;
                 padding-top: 9px;

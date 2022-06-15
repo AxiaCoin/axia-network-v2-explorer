@@ -40,10 +40,10 @@
                     </a>
                 </div>
             </template>
-            <template #item.subnetID="{ item }">
+            <template #item.allyChainID="{ item }">
                 <div>
-                    <router-link :to="`/subnet/${item.subnetID}`">{{
-                        item.subnetID | subnet
+                    <router-link :to="`/allyChain/${item.allyChainID}`">{{
+                        item.allyChainID | allyChain
                     }}</router-link>
                 </div>
             </template>
@@ -54,7 +54,7 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { subnetMap, VMMap, VMDocumentationMap, VMFullNameMap } from '@/helper'
+import { allyChainMap, VMMap, VMDocumentationMap, VMFullNameMap } from '@/helper'
 import Blockchain from '@/js/Blockchain'
 import Indexed from '@/components/Blockchain/Indexed.vue'
 import { getTxChainType } from '@/known_blockchains'
@@ -68,17 +68,17 @@ import { P, X, C } from '@/known_blockchains'
 export default class BlockchainDataTable extends Vue {
     @Prop() blockchains!: Blockchain[]
     @Prop() links?: boolean
-    @Prop() subnets?: boolean
+    @Prop() allyChains?: boolean
     @Prop() title?: string
 
     get headers(): any[] {
         const headers = [
             { text: 'Name', value: 'name', width: 200, fixed: true },
             { text: 'VM', value: 'vmID', width: 125 },
-            { text: 'Subnet', value: 'subnetID', width: 300 },
+            { text: 'AllyChain', value: 'allyChainID', width: 300 },
             { text: 'Index', value: 'indexed', width: 125 },
         ]
-        return this.subnets ? headers : headers.slice(0, 5)
+        return this.allyChains ? headers : headers.slice(0, 5)
     }
 
     chainDarkColor(id: string) {
@@ -107,8 +107,8 @@ export default class BlockchainDataTable extends Vue {
         }
     }
 
-    subnet(val: string) {
-        return subnetMap(val)
+    allyChain(val: string) {
+        return allyChainMap(val)
     }
 
     vm(val: string) {

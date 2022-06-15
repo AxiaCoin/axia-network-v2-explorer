@@ -92,7 +92,7 @@ export default class Metadata extends Vue {
         return this.$store.state.assets
     }
 
-    // P-Chain AXC balance
+    // CoreChain AXC balance
     get P_unlocked(): Big {
         return this.metaData.P_unlocked
     }
@@ -128,7 +128,7 @@ export default class Metadata extends Vue {
         return this.metaData.XC_unlocked
     }
 
-    // C-Chain AXC balance
+    // AppChain AXC balance
     // @dev we do not support EVM balances here. only bech32, no 0x
 }
 </script>

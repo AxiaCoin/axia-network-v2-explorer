@@ -4,8 +4,8 @@ import BN from 'bn.js'
 import { IRootState } from '@/store/types'
 import { PlatformState } from './models'
 import { platform } from '@/axia'
-import Subnet from '@/js/Subnet'
-import { ISubnetData } from './ISubnet'
+import AllyChain from '@/js/AllyChain'
+import { IAllyChainData } from './IAllyChain'
 import { IBlockchainData } from './IBlockchain'
 import Blockchain from '@/js/Blockchain'
 import { C, P } from '@/known_blockchains'
@@ -16,14 +16,14 @@ import { getTxCounts } from '@/services/transactionCounts/transactionCounts.serv
 import { TxCount } from '@/services/transactionCounts/models'
 import { getBurnedC } from '@/services/burned/burned.service'
 
-export const AXIA_SUBNET_ID = P.id
+export const AXIA_ALLYCHAIN_ID = P.id
 
 const platform_module: Module<PlatformState, IRootState> = {
     namespaced: true,
     state: {
-        subnets: {},
+        allyChains: {},
         blockchains: [],
-        subnetsLoaded: false,
+        allyChainsLoaded: false,
         currentSupply: new BN(0),
         minStake: new BN(0),
         annualStakingRewardPercentage: 0,
@@ -32,11 +32,11 @@ const platform_module: Module<PlatformState, IRootState> = {
         setCurrentSupply(state, currentSupply: BN) {
             state.currentSupply = currentSupply
         },
-        setSubnet(state, s) {
-            Vue.set(state.subnets, s.id, s)
+        setAllyChain(state, s) {
+            Vue.set(state.allyChains, s.id, s)
         },
         finishLoading(state) {
-            state.subnetsLoaded = true
+            state.allyChainsLoaded = true
         },
         updateChains(state, blockchains: Blockchain[]) {
             state.blockchains = blockchains
@@ -49,24 +49,24 @@ const platform_module: Module<PlatformState, IRootState> = {
         async init({ dispatch }) {
             await dispatch('updateCurrentSupply')
             await dispatch('updateAnnualStakingRewardPercentage')
-            await dispatch('getSubnets')
+            await dispatch('getAllyChains')
             dispatch('updateAddressCounts')
             dispatch('updateTxCounts')
             dispatch('updateBurned')
         },
 
-        async getSubnets({ state, commit }) {
-            // Get subnets and init classes
+        async getAllyChains({ state, commit }) {
+            // Get allyChains and init classes
             //@ts-ignore
-            const subnets = ((await platform.getSubnets()) as ISubnetData[]).map(
-                (s: ISubnetData) => new Subnet(s)
+            const allyChains = ((await platform.getAllyChains()) as IAllyChainData[]).map(
+                (s: IAllyChainData) => new AllyChain(s)
             )
 
-            // Get and set validators for each subnet
-            subnets.forEach((s) => {
+            // Get and set validators for each allyChain
+            allyChains.forEach((s) => {
                 s.updateValidators('platform.getCurrentValidators')
                 s.updateValidators('platform.getPendingValidators')
-                commit('setSubnet', s)
+                commit('setAllyChain', s)
             })
 
             // Get blockchains and init classes
@@ -74,26 +74,26 @@ const platform_module: Module<PlatformState, IRootState> = {
                 (b: IBlockchainData) => new Blockchain(b)
             )
 
-            // Add P-Chain manually
-            const pChain = new Blockchain({
+            // Add CoreChain manually
+            const coreChain = new Blockchain({
                 name: P.name,
-                id: AXIA_SUBNET_ID,
-                subnetID: AXIA_SUBNET_ID,
+                id: AXIA_ALLYCHAIN_ID,
+                allyChainID: AXIA_ALLYCHAIN_ID,
                 vmID: '',
             })
-            state.blockchains.unshift(pChain)
+            state.blockchains.unshift(coreChain)
 
-            // Map blockchains to their subnet
+            // Map blockchains to their allyChain
             state.blockchains.forEach((b) => {
-                const subnetID = b.subnetID
+                const allyChainID = b.allyChainID
                 try {
-                    state.subnets[subnetID].addBlockchain(b)
+                    state.allyChains[allyChainID].addBlockchain(b)
                 } catch (err) {
                     console.log(err)
                 }
             })
 
-            state.subnetsLoaded = true
+            state.allyChainsLoaded = true
         },
 
         async updateCurrentSupply({ commit }) {

@@ -4,7 +4,7 @@ import Big from 'big.js'
 export interface IAddress {
     address: string // "custom1wvdqtl8g5jjv2r5rk8qzgktf9kx95nx8fm2xsh
     publicKey: string
-    // P-Chain (excludes X -> P shared memory)
+    // CoreChain (excludes X -> P shared memory)
     AXC_balance: Big
     P_unlocked: Big // unlocked tokens. stake/move (denominated)
     P_lockedStakeable: Big // vesting tokens. stake/!move (denominated)
@@ -73,9 +73,9 @@ export interface IBalanceXDatum {
 
 /* ==========================================
    Axia Go API
-        - unlocked P-Chain AXC
-        - locked P-Chain AXC
-        - staked P-Chain AXC
+        - unlocked CoreChain AXC
+        - locked CoreChain AXC
+        - staked CoreChain AXC
    ========================================== */
 
 export interface IBalancePData {

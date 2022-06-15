@@ -5,9 +5,9 @@
 
             <v-alert class="testnet_alert" text type="info" rounded="0">
                 <p class="description">
-                    Notice: This explorer only indexes the X-Chain and P-Chain.
-                    To view C-Chain transactions (EVM chain), click
-                    <a class="bold c_chain_link" :href="cChainURL">here</a>.
+                    Notice: This explorer only indexes the X-Chain and CoreChain.
+                    To view AppChain transactions (EVM chain), click
+                    <a class="bold c_chain_link" :href="appChainURL">here</a>.
                 </p>
             </v-alert>
 
@@ -18,16 +18,16 @@
                         <span
                             class="chain_tag"
                             :style="{
-                                backgroundColor: pChain.darkColor,
+                                backgroundColor: coreChain.darkColor,
                             }"
                             v-on="on"
-                            >{{ pChain.name }}</span
+                            >{{ coreChain.name }}</span
                         >
                     </template>
                     <span
-                        >The P-Chain is the metadata blockchain on Axia,
-                        managing validators and custom subnets. Validators stake
-                        AXC on the P-Chain to secure the network.</span
+                        >The CoreChain is the metadata blockchain on Axia,
+                        managing validators and custom allyChains. Validators stake
+                        AXC on the CoreChain to secure the network.</span
                     >
                 </v-tooltip>
                 <v-tooltip>
@@ -54,14 +54,14 @@
                         <span
                             class="chain_tag margin-left"
                             :style="{
-                                backgroundColor: cChain.darkColor,
+                                backgroundColor: appChain.darkColor,
                             }"
                             v-on="on"
-                            >{{ cChain.name }} (atomic txs only)</span
+                            >{{ appChain.name }} (atomic txs only)</span
                         >
                     </template>
                     <span
-                        >The C-Chain is the default smart contract blockchain on
+                        >The AppChain is the default smart contract blockchain on
                         Axia and enables the creation of any Ethereum-compatible
                         applications and assets with lower fees and faster
                         transactions.</span
@@ -91,8 +91,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { P, X, C, getTxChainType } from '@/known_blockchains'
 import {
     DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
+    appChainExplorerURL,
+    appChainExplorerURL_test,
 } from '@/store/modules/network/network'
 
 @Component({
@@ -110,18 +110,18 @@ export default class RecentTxHeader extends Vue {
         return getTxChainType(X.id)
     }
 
-    get pChain() {
+    get coreChain() {
         return getTxChainType(P.id)
     }
 
-    get cChain() {
+    get appChain() {
         return getTxChainType(C.id)
     }
 
-    get cChainURL() {
+    get appChainURL() {
         return DEFAULT_NETWORK_ID === 1
-            ? cChainExplorerURL
-            : cChainExplorerURL_test
+            ? appChainExplorerURL
+            : appChainExplorerURL_test
     }
 
     goToTx() {

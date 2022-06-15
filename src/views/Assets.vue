@@ -6,8 +6,8 @@
                 <v-alert class="testnet_alert" text type="info" rounded="0">
                     <p class="description">
                         Notice: This explorer only indexes the X-Chain and
-                        P-Chain. To view C-Chain transactions (EVM chain), click
-                        <a class="bold c_chain_link" :href="cChainURL">here</a>.
+                        CoreChain. To view AppChain transactions (EVM chain), click
+                        <a class="bold c_chain_link" :href="appChainURL">here</a>.
                     </p>
                 </v-alert>
                 <template v-if="assetsLoaded">

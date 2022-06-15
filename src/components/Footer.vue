@@ -23,12 +23,12 @@
             <div class="lists">
                 <div class="list">
                     <h4>Menu</h4>
-                    <a :href="cChainURL">Home</a>
-                    <router-link to="/subnets">Subnets</router-link>
+                    <a :href="appChainURL">Home</a>
+                    <router-link to="/allyChains">AllyChains</router-link>
                     <router-link to="/validators">Validators</router-link>
                     <router-link to="/assets">Assets</router-link>
                     <router-link to="/blockchains">Blockchains</router-link>
-                    <a :href="cChainURL">C-Chain</a>
+                    <a :href="appChainURL">AppChain</a>
                     <a :href="statusPageURL">Status</a>
                     <router-link to="/resources">Resources</router-link>
                 </div>
@@ -59,18 +59,18 @@
 import { Vue, Component } from 'vue-property-decorator'
 import {
     DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
+    appChainExplorerURL,
+    appChainExplorerURL_test,
     statusURL,
     statusURL_test,
 } from '@/store/modules/network/network'
 
 @Component({})
 export default class Footer extends Vue {
-    get cChainURL() {
+    get appChainURL() {
         return DEFAULT_NETWORK_ID === 1
-            ? cChainExplorerURL
-            : cChainExplorerURL_test
+            ? appChainExplorerURL
+            : appChainExplorerURL_test
     }
 
     get statusPageURL() {

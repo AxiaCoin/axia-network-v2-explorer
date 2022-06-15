@@ -17,7 +17,7 @@ const dict: VMDict = {
     },
     jvYyfQTxGMJLuGWa55kdP2p2zSUYsQ5Raupu4TW34ZAUBAbtq: {
         name: 'avm',
-        fullName: 'Ava',
+        fullName: 'AXIA',
         documentation: 'https://github.com/ava-labs/axiago/tree/master/vms/avm',
     },
     mgj786NP7uDwBCcq6YwThhaN8FLyybkCa4zBWTQbNgmK6k9A6: {

@@ -63,7 +63,7 @@
                 >
                     {{ chain }}
                 </span>
-                <div v-if="isPChain" style="margin-top: 10px">
+                <div v-if="isCoreChain" style="margin-top: 10px">
                     <div class="summary_label">Block</div>
                     <div>{{ tx.txBlockId }}</div>
                 </div>
@@ -147,7 +147,7 @@ export default class Metadata extends Vue {
         return getTxChainType(this.tx.chainID)!.name
     }
 
-    get isPChain() {
+    get isCoreChain() {
         return this.tx.chainID === P.id ? true : false
     }
 

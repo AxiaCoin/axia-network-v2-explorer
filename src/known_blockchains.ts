@@ -23,18 +23,18 @@ export function isMainnetNetwork() {
 
 export const P: ChainMap = {
     id: (isMainnetNetwork()
-        ? process.env.VUE_APP_PCHAINID
-        : process.env.VUE_APP_TEST_PCHAINID) as string,
-    name: 'P-Chain',
+        ? process.env.VUE_APP_CORECHAINID
+        : process.env.VUE_APP_TEST_CORECHAINID) as string,
+    name: 'CoreChain',
     fullname: 'Platform',
     code: 'P',
     color: '#F19100',
     darkColor: '#FFF8EE',
     txTypes: [
         ['add_validator', txTypeMap.get('add_validator')!],
-        ['add_subnet_validator', txTypeMap.get('add_subnet_validator')!],
-        ['add_delegator', txTypeMap.get('add_delegator')!],
-        ['create_subnet', txTypeMap.get('create_subnet')!],
+        ['add_allyChain_validator', txTypeMap.get('add_allyChain_validator')!],
+        ['add_nominator', txTypeMap.get('add_nominator')!],
+        ['create_allyChain', txTypeMap.get('create_allyChain')!],
         ['create_chain', txTypeMap.get('create_chain')!],
         ['pvm_export', txTypeMap.get('pvm_export')!],
         ['pvm_import', txTypeMap.get('pvm_import')!],
@@ -61,9 +61,9 @@ export const X: ChainMap = {
 
 export const C: ChainMap = {
     id: (isMainnetNetwork()
-        ? process.env.VUE_APP_CCHAINID
-        : process.env.VUE_APP_TEST_CCHAINID) as string,
-    name: 'C-Chain',
+        ? process.env.VUE_APP_APPCHAINID
+        : process.env.VUE_APP_TEST_APPCHAINID) as string,
+    name: 'AppChain',
     fullname: 'Contract',
     code: 'C',
     color: '#088223',

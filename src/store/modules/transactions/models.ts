@@ -63,19 +63,19 @@ export interface TransactionResponse {
     REWARD PATTERNS - tx type: delgator/validator only
         
     0.  KEYPAIR controls UTXOs
-    1.  KEYPAIR issues ADD_VALIDATOR/ADD_DELEGATOR TX
-        - validator = adds node to validator (nodeId, start, end, stakeAmount, addressID (rewards destination), fee they charge delegators)
-        - delegator = delegates to validator
+    1.  KEYPAIR issues ADD_VALIDATOR/ADD_NOMINATOR TX
+        - validator = adds node to validator (nodeId, start, end, stakeAmount, addressID (rewards destination), fee they charge nominators)
+        - nominator = delegates to validator
         - once the tx is put into block and accepted:
             - Input UTXOs
                 - UTXOs for staking transfer custody to the protocol (they disappear)
             - Output UTXOs
                 - none for staking (output.stake boolean)
                 - change UTXOs only
-        - you will become a validator/delegator at the startTime
+        - you will become a validator/nominator at the startTime
     2. endTime arrives
-    3. PROTOCOL automatically issues REMOVE_VALIDATOR / REMOVE_DELEGATOR TX
-        - removes the validator/delegator from validator set
+    3. PROTOCOL automatically issues REMOVE_VALIDATOR / REMOVE_NOMINATOR TX
+        - removes the validator/nominator from validator set
         - once the tx is put into block and accepted:
             - Input UTXOs
                 - none
@@ -85,14 +85,14 @@ export interface TransactionResponse {
                 - no inputs or outputs for this tx. the output UTXOs are created out of thin air    
     4. PROTOCOL creates a commit or abort block
         - if uptime is good, then you receive the reward
-        P-chain blocks contain 1 tx or 0 tx
+        CoreChain blocks contain 1 tx or 0 tx
             - 1 tx = commit block 
                 - contains reward UTXO
             - 0 tx = abort block
                 - no reward
     5. KEYPAIR spends reward UTXO (it appears in Ortelius)
         - confirm the reward tx (points at the ADD_* tx) is issued on the x-chain
-        - possibly issued on p-chain and pvm_export to x-chain to be spent
+        - possibly issued on CoreChain and pvm_export to x-chain to be spent
 
     rewarded    | rewardedTime
     false       | null          = default, someone staked
@@ -110,8 +110,8 @@ export interface TransactionResponse {
     validatorStart: number
     validatorEnd: number
 
-    // p-chain event. you can tie transactions together (double decision block)
-    txBlockId: string // p-chain hash (might be useful to lookup)
+    // CoreChain event. you can tie transactions together (double decision block)
+    txBlockId: string // CoreChain hash (might be useful to lookup)
 
     /*
     TODOS: exception booleans
@@ -271,10 +271,10 @@ export interface OutputResponse {
     outputType: number
     groupID: number
 
-    // RELEVANT TO P-CHAIN
+    // RELEVANT TO CORECHAIN
     stake: boolean // if true, UTXO was in the staking output set (ins/outs/staking)
     stakeableout: boolean // if true, UTXO is/was subject to vesting. connected to stakeLocktime
-    stakeLocktime: number // if before stakeLockTime, UTXO is vesting (locked), and can only used as input UTXO to stake in addValidator/addDelegator tx
+    stakeLocktime: number // if before stakeLockTime, UTXO is vesting (locked), and can only used as input UTXO to stake in addValidator/addNominator tx
     rewardUtxo: boolean // if true, this UTXO is the validation/delegation reward
 
     // RELEVANT TO X-CHAIN
@@ -284,12 +284,12 @@ export interface OutputResponse {
     threshold: number
     payload: string | null // NFTs
 
-    // RELEVANT TO P-CHAIN & X-CHAIN
-    addresses: string[] // notice the output UTXO address is blank. an exception for c-chain is handled in the transaction class
+    // RELEVANT TO CORECHAIN & X-CHAIN
+    addresses: string[] // notice the output UTXO address is blank. an exception for CoreChain is handled in the transaction class
 
-    // RELEVANT TO C-CHAIN
+    // RELEVANT TO APPCHAIN
     caddresses: string[]
-    block: string // https://cchain.explorer.axc.network/blocks/33726/transactions - broken block/tx
+    block: string // https://appchain.explorer.axc.network/blocks/33726/transactions - broken block/tx
     nonce: number
     /*        
     X > SHARED DB > P/C
