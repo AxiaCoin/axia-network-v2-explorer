@@ -3,8 +3,8 @@
         <h2>Transactions</h2>
         <v-alert class="testnet_alert" text type="info" rounded="0">
             <p class="description">
-                Notice: This explorer only indexes the AssetChain and CoreChain. To
-                view AppChain transactions (EVM chain), click
+                Notice: This explorer only indexes the AssetChain and CoreChain.
+                To view AppChain transactions (EVM chain), click
                 <a class="bold c_chain_link" :href="appChainURL">here</a>.
             </p>
         </v-alert>

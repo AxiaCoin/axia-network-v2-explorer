@@ -5,8 +5,8 @@
 
             <v-alert class="testnet_alert" text type="info" rounded="0">
                 <p class="description">
-                    Notice: This explorer only indexes the AssetChain and CoreChain.
-                    To view AppChain transactions (EVM chain), click
+                    Notice: This explorer only indexes the AssetChain and
+                    CoreChain. To view AppChain transactions (EVM chain), click
                     <a class="bold c_chain_link" :href="appChainURL">here</a>.
                 </p>
             </v-alert>
@@ -61,10 +61,10 @@
                         >
                     </template>
                     <span
-                        >The AppChain is the default smart contract blockchain on
-                        Axia and enables the creation of any Ethereum-compatible
-                        applications and assets with lower fees and faster
-                        transactions.</span
+                        >The AppChain is the default smart contract blockchain
+                        on Axia and enables the creation of any
+                        Ethereum-compatible applications and assets with lower
+                        fees and faster transactions.</span
                     >
                 </v-tooltip>
             </p>

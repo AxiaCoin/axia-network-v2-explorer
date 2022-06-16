@@ -24,7 +24,8 @@ const axiaJSIP = process.env.VUE_APP_AXIA_JS_IP || ''
 const axiaJSPort = parseInt(process.env.VUE_APP_AXIA_JS_PORT || '443')
 const axiaJSNetworkID = parseInt(process.env.VUE_APP_AXIA_JS_NETWORKID || '1')
 const axiaJSChainID = process.env.VUE_APP_AXIA_JS_CHAINID || 'X'
-export const appChainExplorerURL = process.env.VUE_APP_APPCHAIN_EXPLORER_URL || ''
+export const appChainExplorerURL =
+    process.env.VUE_APP_APPCHAIN_EXPLORER_URL || ''
 export const statusURL = process.env.VUE_APP_STATUS_URL || ''
 
 // Testnet

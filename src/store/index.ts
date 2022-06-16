@@ -10,11 +10,7 @@ import Notifications from './modules/notifications/notifications'
 import Transactions from './modules/transactions/transactions'
 import Blocks from './modules/blocks/blocks'
 import { avm } from '@/axia'
-import {
-    IAssetDataAxtract,
-    IAssetDataAxiaGo,
-    ICollisionMap,
-} from '@/js/IAsset'
+import { IAssetDataAxtract, IAssetDataAxiaGo, ICollisionMap } from '@/js/IAsset'
 import {
     TransactionQuery,
     TransactionQueryResponse,
