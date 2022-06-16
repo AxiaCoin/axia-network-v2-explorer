@@ -11,28 +11,28 @@
                     search the Axia blockchain for transactions, addresses, and
                     other platform activities.
                 </p>
-                <p class="axia_desc tos">
+                <!-- <p class="axia_desc tos">
                     By using this application you agree to the
                     <a
                         href="/Axia (BVI) Inc. Explorer Terms of Use.pdf"
                         target="_blank"
                         >Terms of Use</a
                     >.
-                </p>
+                </p> -->
             </div>
             <div class="lists">
                 <div class="list">
                     <h4>Menu</h4>
-                    <a :href="appChainURL">Home</a>
+                    <!-- <a :href="appChainURL">Home</a> -->
                     <router-link to="/subnets">Subnets</router-link>
                     <router-link to="/validators">Validators</router-link>
                     <router-link to="/assets">Assets</router-link>
                     <router-link to="/blockchains">Blockchains</router-link>
                     <a :href="appChainURL">AppChain</a>
-                    <a :href="statusPageURL">Status</a>
+                    <!-- <a :href="statusPageURL">Status</a> -->
                     <router-link to="/resources">Resources</router-link>
                 </div>
-                <div class="list">
+                <!-- <div class="list">
                     <h4>Social</h4>
                     <a href="https://twitter.com/axiaaxc" target="_blank">
                         <fa :icon="['fab', 'twitter']"></fa>Twitter
@@ -49,7 +49,7 @@
                     >
                         <fa :icon="['fab', 'github']"></fa>GitHub
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </v-footer>

@@ -25,14 +25,14 @@
             <v-spacer class="spacer_mid"></v-spacer>
             <div class="links">
                 <div class="routes">
-                    <a :href="appChainURL">Home</a>
+                    <!-- <a :href="appChainURL">Home</a> -->
                     <router-link to="/subnets">Subnets</router-link>
                     <router-link to="/validators">Validators</router-link>
-                    <a :href="tokensURL">Tokens</a>
+                    <!-- <a :href="tokensURL">Tokens</a> -->
                     <router-link to="/blockchains">Blockchains</router-link>
-                    <a v-if="isMainnet" :href="statsURL">Stats</a>
+                    <!-- <a v-if="isMainnet" :href="statsURL">Stats</a> -->
                     <a :href="appChainURL">AppChain</a>
-                    <a :href="statusPageURL">Status</a>
+                    <!-- <a :href="statusPageURL">Status</a> -->
                     <router-link to="/resources">Resources</router-link>
                 </div>
             </div>

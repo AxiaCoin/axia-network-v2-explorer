@@ -37,17 +37,17 @@
                     </div>
                 </v-list-item>
                 <template>
-                    <v-list-item :href="appChainURL">Home</v-list-item>
+                    <!-- <v-list-item :href="appChainURL">Home</v-list-item> -->
                     <v-list-item to="/subnets">Subnets</v-list-item>
                     <v-list-item to="/validators">Validators</v-list-item>
-                    <v-list-item :href="tokensURL">Tokens</v-list-item>
+                    <!-- <v-list-item :href="tokensURL">Tokens</v-list-item> -->
                     <v-list-item to="/blockchains">Blockchains</v-list-item>
                     <v-list-item to="/tx">Transactions</v-list-item>
-                    <v-list-item v-if="isMainnet" :href="statsURL"
+                    <!-- <v-list-item v-if="isMainnet" :href="statsURL"
                         >Stats</v-list-item
-                    >
+                    > -->
                     <v-list-item :href="appChainURL">AppChain</v-list-item>
-                    <v-list-item :href="statusPageURL">Status</v-list-item>
+                    <!-- <v-list-item :href="statusPageURL">Status</v-list-item> -->
                     <v-list-item to="/resources">Resources</v-list-item>
                 </template>
             </v-list>
