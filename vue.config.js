@@ -17,7 +17,7 @@ console.log(`
 ${colors.green('.Env configs are:')}
     Axtract url: ${colors.magenta(process.env.VUE_APP_AXTRACT_URL)}
     Axia GO url: ${colors.magenta(process.env.VUE_APP_AXIA_GO_URL)}
-    Fuji url: ${colors.magenta(process.env.VUE_APP_AXIA_JS_IP)}
+    Testnet url: ${colors.magenta(process.env.VUE_APP_AXIA_JS_IP)}
     AppChain url: ${colors.magenta(process.env.VUE_APP_APPCHAIN_EXPLORER_URL)}
 
     HTTP PORT: ${colors.magenta(process.env.VUE_APP_HTTP_PORT)}
