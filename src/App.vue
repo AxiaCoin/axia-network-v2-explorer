@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <Footer class="footer" />
+        <Footer class="footer" :style="{display: 'none'}"/>
         <Notifications />
         <!-- <ResponsiveGuidelines /> -->
     </v-app>
@@ -83,13 +83,13 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .v-application {
-    background-color: $white !important;
+    background-color: #e9f6ff !important;
     min-height: 100vh;
 }
 
 @if $VUE_APP_DEFAULT_NETWORKID == 5 {
     .v-application {
-        background-color: #fff !important;
+        background-color: #e9f6ff !important;
         background-image: $background_image;
     }
 }

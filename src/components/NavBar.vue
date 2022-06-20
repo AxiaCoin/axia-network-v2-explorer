@@ -8,7 +8,7 @@
         :height="140"
         :style="{ backgroundColor: 'white' }"
     >
-        <div class="top">
+        <!-- <div class="top">
             <div class="logo">
                 <a :href="appChainURL">
                     <img
@@ -25,24 +25,28 @@
             <v-spacer class="spacer_mid"></v-spacer>
             <div class="links">
                 <div class="routes">
-                    <!-- <a :href="appChainURL">Home</a> -->
+                     <a :href="appChainURL">Home</a>
                     <router-link to="/subnets">Subnets</router-link>
                     <router-link to="/validators">Validators</router-link>
-                    <!-- <a :href="tokensURL">Tokens</a> -->
+                     <a :href="tokensURL">Tokens</a> 
                     <router-link to="/blockchains">Blockchains</router-link>
-                    <!-- <a v-if="isMainnet" :href="statsURL">Stats</a> -->
+                     <a v-if="isMainnet" :href="statsURL">Stats</a> 
                     <a :href="appChainURL">AppChain</a>
-                    <!-- <a :href="statusPageURL">Status</a> -->
+                     <a :href="statusPageURL">Status</a> 
                     <router-link to="/resources">Resources</router-link>
-                </div>
-            </div>
+                </div> 
+            </div> 
             <v-spacer class="spacer_mid"></v-spacer>
             <NetworkMenu />
-        </div>
+        </div> -->
+        <hr />
         <div class="bottom">
             <div v-if="pricesLoaded" class="prices">
                 <div class="price_pair">
-                    <span class="label">AXC</span>
+                    <span class="label">
+                        <img src="../../axc.png" class="currency_logo" />
+                        AXC
+                    </span>
                     <span class="value">{{ priceUSD }}</span>
                 </div>
                 <!-- <div class="price_pair">
@@ -171,6 +175,9 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
     flex-direction: column !important;
 }
 
+.currency_logo{
+    margin-bottom: -5px;
+}
 @if $VUE_APP_DEFAULT_NETWORKID == 5 {
     .navbar {
         border-bottom: none;
@@ -238,6 +245,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 
 .bottom {
     display: flex;
+    margin-top: 5%;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
@@ -258,7 +266,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 
         .label {
             font-size: 18px;
-            color: #178FE1 !important;
+            color: #178fe1 !important;
             margin-right: 5px;
         }
 

@@ -60,6 +60,11 @@ export default class SubnetTabs extends Vue {
     letter-spacing: 0;
 }
 
+.v-tab--active{
+    color: #178FE1 !important;
+    border-left: 4px solid #178FE1;
+}
+
 .v-tab:before {
     background-color: $primary-color !important;
 }
@@ -71,7 +76,6 @@ export default class SubnetTabs extends Vue {
         max-width: 200px !important;
         border-left: 1px solid #cecece;
     }
-
     .v-tabs--vertical > .v-window {
         overflow: hidden !important;
     }
