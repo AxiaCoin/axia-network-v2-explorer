@@ -12,7 +12,7 @@
                     :total-nominators="subnet.nominators.length"
                     :total-control-keys="subnet.controlKeys.length"
                 />
-                <v-tabs v-model="tab" show-arrows>
+                <v-tabs v-model="tab" show-arrows class="head-border">
                     <v-tab href="#validators">Validators</v-tab>
                     <v-tab href="#pending-validators">Pending Validators</v-tab>
                     <v-tab href="#blockchains">Blockchains</v-tab>
@@ -172,19 +172,25 @@ export default class Content extends Vue {
     border-radius: 0 !important;
     padding-left: 16px;
 }
-
 .v-tab {
     font-weight: 400;
     text-transform: none;
     letter-spacing: 0;
+    color: #178FE1 !important;
 }
 
+.v-tab--active{
+    color: white !important;
+    background: #178FE1;
+    margin: 2px;
+    border-radius: 5px;
+}
 .v-tab:before {
     background-color: $primary-color !important;
 }
 
 .subnet_header {
-    color: $black;
+    color: #178FE1;
 
     .subheading {
         text-transform: capitalize;
@@ -196,6 +202,7 @@ export default class Content extends Vue {
         color: $primary-color;
         margin: 0;
         padding-top: 0;
+        font-size: 24px;
     }
 }
 
@@ -273,6 +280,12 @@ export default class Content extends Vue {
     background-color: $white !important;
 }
 
+.v-tabs-slider, .v-tabs-slider-wrapper{
+    height: 0;
+    color: none;
+    background-color: none;
+    display: none;
+}
 th {
     .v-input--selection-controls {
         padding-top: 0;
@@ -286,6 +299,11 @@ th {
 }
 
 #content {
+    .v-tabs-bar__content{
+    border: 1px solid #178FE1;
+    border-radius: 10px;
+    }
+
     .table_margin {
         margin-left: 1px;
     }

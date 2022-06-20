@@ -2,7 +2,7 @@
     <div class="metadata">
         <div class="card">
             <div class="header">
-                <h2>Subnets</h2>
+                <h2 :style="{ fontSize: '24px' }">Subnets</h2>
             </div>
             <section class="stats">
                 <article>

@@ -6,7 +6,7 @@
         flat
         dense
         :height="140"
-        :style="{ backgroundColor: navColor }"
+        :style="{ backgroundColor: 'white' }"
     >
         <div class="top">
             <div class="logo">
@@ -258,13 +258,13 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 
         .label {
             font-size: 18px;
-            color: $primary-color-light !important;
+            color: #178FE1 !important;
             margin-right: 5px;
         }
 
         .value {
             font-weight: 500;
-            font-size: 26px;
+            font-size: 24px;
             line-height: 140%;
             color: $primary-color !important;
         }
@@ -274,6 +274,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 .search_bar {
     min-width: 400px;
     width: 100%;
+    border-radius: 20px;
 }
 
 .links {

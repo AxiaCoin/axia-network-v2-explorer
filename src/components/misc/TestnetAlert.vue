@@ -7,7 +7,7 @@
                 text
                 rounded="0"
             >
-                <p class="description">
+                <p class="description" :style="{color: 'white'}">
                     Explore network activity and staking metrics using
                     <a class="bold" :href="statsURL">Axia Stats</a>.
                 </p>
@@ -15,7 +15,7 @@
         </template>
         <template v-else>
             <v-alert class="testnet_alert" text type="info" rounded="0">
-                <p class="description">
+                <p class="description" :style="{color: 'white'}">
                     Notice: This Explorer displays activity on the
                     {{ networkName }} Testnet, <span class="bold">not</span> the
                     Axia Mainnet.
@@ -52,13 +52,13 @@ export default class TestnetAlert extends Vue {
 <style scoped lang="scss">
 .testnet_alert {
     margin-top: 140px !important;
-    background-color: $white !important;
+    background-color: #45A5E7 !important;
 }
 
 #mainnet_announce {
     > .v-alert__wrapper {
         .info--text {
-            color: $white !important;
+            color: white !important;
             caret-color: #fff !important;
         }
     }
@@ -68,7 +68,7 @@ export default class TestnetAlert extends Vue {
     }
 }
 .mainnet_announcement {
-    color: $white !important;
+    color: white !important;
     font-weight: 500;
     background-image: linear-gradient(to left, #2196f3) !important;
 
@@ -81,7 +81,7 @@ export default class TestnetAlert extends Vue {
 
 @if $VUE_APP_DEFAULT_NETWORKID == 1 {
     .v-alert--text:before {
-        background-color: $white;
+        background-color: #45A5E7 !important;
     }
 }
 
