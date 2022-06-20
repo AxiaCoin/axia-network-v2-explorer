@@ -29,21 +29,6 @@ const axChainURL =
 
 const routes = [
     {
-        path: '/',
-        name: 'Home',
-        component: Home,
-        meta: {
-            auth: false,
-            title: 'View All Activities' + suffix,
-            metaTags: defaultMetaTags,
-        },
-        beforeEnter() {
-            if (window.location.href !== axChainURL) {
-                window.location.href = axChainURL
-            }
-        },
-    },
-    {
         path: '/subnets',
         name: 'Subnets',
         component: () =>
@@ -175,7 +160,7 @@ const routes = [
         },
     },
     {
-        path: '/blockchains',
+        path: '/',
         name: 'Blockchains',
         component: () =>
             import(
