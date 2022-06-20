@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <Footer class="footer" :style="{display: 'none'}"/>
+        <Footer class="footer" :style="{ display: 'none' }" />
         <Notifications />
         <!-- <ResponsiveGuidelines /> -->
     </v-app>
@@ -98,7 +98,7 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+   // height: 100%;
     overflow-y: hidden;
 }
 

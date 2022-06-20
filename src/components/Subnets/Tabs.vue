@@ -72,7 +72,10 @@ export default class SubnetTabs extends Vue {
 
 <style lang="scss">
 #subnet_tabs {
+    background-color: #F8F9FA !important;
     .v-tabs--vertical > .v-tabs-bar {
+        padding-right: 30px;
+        background-color: #F8F9FA !important;
         max-width: 200px !important;
         border-left: 1px solid #cecece;
     }

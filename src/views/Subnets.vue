@@ -114,4 +114,9 @@ export default class Subnets extends Mixins(PlatformGettersMixin) {
         padding: 12px 15px;
     }
 }
+#subnets{
+    .card{
+        padding: 30px 0 30px 30px;
+    }
+}
 </style>

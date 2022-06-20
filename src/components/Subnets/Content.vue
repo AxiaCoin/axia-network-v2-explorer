@@ -183,7 +183,7 @@ export default class Content extends Vue {
     color: white !important;
     background: #178FE1;
     margin: 2px;
-    border-radius: 5px;
+    border-radius: 12px;
 }
 .v-tab:before {
     background-color: $primary-color !important;
@@ -301,7 +301,7 @@ th {
 #content {
     .v-tabs-bar__content{
     border: 1px solid #178FE1;
-    border-radius: 10px;
+    border-radius: 12px;
     }
 
     .table_margin {

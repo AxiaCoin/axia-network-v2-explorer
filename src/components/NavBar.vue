@@ -5,7 +5,7 @@
         dark
         flat
         dense
-        :height="140"
+        :height="80"
         :style="{ backgroundColor: 'white' }"
     >
         <!-- <div class="top">
@@ -245,7 +245,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 
 .bottom {
     display: flex;
-    margin-top: 5%;
+//    margin-top: 5%;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
