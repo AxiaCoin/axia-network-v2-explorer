@@ -16,7 +16,7 @@ export const DEFAULT_NETWORK_NAME =
 // Mainnet
 const networkName = process.env.VUE_APP_NETWORKNAME
 const explorerFEUrl = process.env.VUE_APP_EXPLORER_FE_URL || ''
-const axtractURL = process.env.VUE_APP_AXTRACT_URL || ''
+const magellanURL = process.env.VUE_APP_MAGELLAN_URL || ''
 export const ethereumAPI = process.env.VUE_APP_AXIA_GO_ETH_URL || ''
 export const peerInfoURL = process.env.VUE_APP_PEER_INFO_URL || ''
 const axiaJSProtocol = process.env.VUE_APP_AXIA_JS_PROTOCOL || ''
@@ -24,14 +24,14 @@ const axiaJSIP = process.env.VUE_APP_AXIA_JS_IP || ''
 const axiaJSPort = parseInt(process.env.VUE_APP_AXIA_JS_PORT || '443')
 const axiaJSNetworkID = parseInt(process.env.VUE_APP_AXIA_JS_NETWORKID || '1')
 const axiaJSChainID = process.env.VUE_APP_AXIA_JS_CHAINID || 'X'
-export const appChainExplorerURL =
-    process.env.VUE_APP_APPCHAIN_EXPLORER_URL || ''
+export const axChainExplorerURL =
+    process.env.VUE_APP_AXCHAIN_EXPLORER_URL || ''
 export const statusURL = process.env.VUE_APP_STATUS_URL || ''
 
 // Testnet
 const networkName_test = process.env.VUE_APP_TEST_NETWORKNAME || ''
 const explorerFEUrl_test = process.env.VUE_APP_TEST_EXPLORER_FE_URL || ''
-const axtractURL_test = process.env.VUE_APP_TEST_AXTRACT_URL || ''
+const magellanURL_test = process.env.VUE_APP_TEST_MAGELLAN_URL || ''
 export const ethereumAPI_test = process.env.VUE_APP_TEST_AXIA_GO_ETH_URL || ''
 export const peerInfoURL_test = process.env.VUE_APP_TEST_PEER_INFO_URL || ''
 const axiaJSProtocol_test = process.env.VUE_APP_TEST_AXIA_JS_PROTOCOL || ''
@@ -41,8 +41,8 @@ const axiaJSNetworkID_test = parseInt(
     process.env.VUE_APP_TEST_AXIA_JS_NETWORKID || '5'
 )
 const axiaJSChainID_test = process.env.VUE_APP_TEST_AXIA_JS_CHAINID || ''
-export const appChainExplorerURL_test =
-    process.env.VUE_APP_TEST_APPCHAIN_EXPLORER_URL || ''
+export const axChainExplorerURL_test =
+    process.env.VUE_APP_TEST_AXCHAIN_EXPLORER_URL || ''
 export const statusURL_test = process.env.VUE_APP_TEST_STATUS_URL || ''
 
 const network_module: Module<INetworkState, IRootState> = {
@@ -64,7 +64,7 @@ const network_module: Module<INetworkState, IRootState> = {
                 `${axiaJSProtocol}://${axiaJSIP}:${axiaJSPort}`,
                 axiaJSNetworkID,
                 axiaJSChainID,
-                axtractURL,
+                magellanURL,
                 explorerFEUrl
             )
             const testnet = new Network(
@@ -72,7 +72,7 @@ const network_module: Module<INetworkState, IRootState> = {
                 `${axiaJSProtocol_test}://${axiaJSIP_test}:${axiaJSPort_test}`,
                 axiaJSNetworkID_test,
                 axiaJSChainID_test,
-                axtractURL_test,
+                magellanURL_test,
                 explorerFEUrl_test
             )
 
@@ -97,7 +97,7 @@ const network_module: Module<INetworkState, IRootState> = {
             state.status = 'connecting'
             axia.setAddress(net.ip, net.port, net.protocol)
             axia.setNetworkID(net.networkId)
-            axia.AssetChain().refreshBlockchainID()
+            axia.SwapChain().refreshBlockchainID()
 
             state.selectedNetwork = net
             axios.defaults.baseURL = net.explorerUrl

@@ -1,6 +1,6 @@
 import { IAggregate } from '@/services/aggregates/'
 
-export interface IAssetDataAxtract {
+export interface IAssetDataMagellan {
     id: string
     alias: string
     chainID: string

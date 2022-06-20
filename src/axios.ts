@@ -4,13 +4,13 @@ const DEFAULT_NETWORK_ID = parseInt(
     process.env.VUE_APP_DEFAULT_NETWORKID || '4'
 )
 
-const AXTRACT_URL =
+const MAGELLAN_URL =
     DEFAULT_NETWORK_ID === 1
-        ? (process.env.VUE_APP_AXTRACT_URL as string)
-        : (process.env.VUE_APP_TEST_AXTRACT_URL as string)
+        ? (process.env.VUE_APP_MAGELLAN_URL as string)
+        : (process.env.VUE_APP_TEST_MAGELLAN_URL as string)
 
 export default axios.create({
-    baseURL: AXTRACT_URL,
+    baseURL: MAGELLAN_URL,
     withCredentials: false,
     headers: {
         'Content-Type': 'application/json',

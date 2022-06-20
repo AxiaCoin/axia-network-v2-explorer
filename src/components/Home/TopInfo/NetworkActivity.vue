@@ -278,7 +278,7 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         )
     }
 
-    // Data from Axtract
+    // Data from Magellan
     get tpmText(): string {
         const day = 60 * 24
         const avg = this.totalTransactions / day

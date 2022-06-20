@@ -31,7 +31,7 @@
                 :is-stakeableout="utxo.output.stakeableout"
                 :time="utxo.output.stakeLocktime"
             />
-            <!-- ASSETCHAIN -->
+            <!-- SWAPCHAIN -->
             <div v-if="utxo.output.genesisutxo === true">
                 <div>UTXO is from genesis</div>
             </div>
@@ -40,7 +40,7 @@
                 :asset-i-d="utxo.output.assetID"
                 :group-i-d="utxo.output.groupID"
             />
-            <!-- APPCHAIN -->
+            <!-- AXCHAIN -->
             <Block :block="utxo.output.block" :nonce="utxo.output.nonce" />
         </div>
     </div>

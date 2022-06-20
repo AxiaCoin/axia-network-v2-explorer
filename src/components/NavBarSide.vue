@@ -1,13 +1,13 @@
 <template>
     <div class="navbar_side">
         <v-list dense nav>
-            <v-list-item :href="appChainURL">Home</v-list-item>
+            <v-list-item :href="axChainURL">Home</v-list-item>
             <v-list-item to="/subnets">Subnets</v-list-item>
             <v-list-item to="/validators">Validators</v-list-item>
             <v-list-item to="/blockchains">Blockchains</v-list-item>
             <v-list-item to="/assets">Assets</v-list-item>
             <v-list-item to="/tx">Transactions</v-list-item>
-            <v-list-item :href="appChainURL">AppChain</v-list-item>
+            <v-list-item :href="axChainURL">AXChain</v-list-item>
             <v-list-item :href="statusPageURL">Status</v-list-item>
             <v-list-item to="/resources">Resources</v-list-item>
         </v-list>
@@ -18,18 +18,18 @@
 import { Vue, Component } from 'vue-property-decorator'
 import {
     DEFAULT_NETWORK_ID,
-    appChainExplorerURL,
-    appChainExplorerURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
     statusURL,
     statusURL_test,
 } from '@/store/modules/network/network'
 
 @Component({})
 export default class NavbarSide extends Vue {
-    get appChainURL() {
+    get axChainURL() {
         return DEFAULT_NETWORK_ID === 1
-            ? appChainExplorerURL
-            : appChainExplorerURL_test
+            ? axChainExplorerURL
+            : axChainExplorerURL_test
     }
 
     get statusPageURL() {

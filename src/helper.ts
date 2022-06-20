@@ -220,7 +220,7 @@ function getNullAddress(id: string, key = ''): IAddress {
         P_utxoIDs: [],
         // X -> P shared memory
         XP_unlocked: Big(0),
-        // AssetChain (includes C -> X and P -> X shared memory)
+        // SwapChain (includes C -> X and P -> X shared memory)
         X_unlocked: Big(0),
         X_locked: Big(0),
         X_assets: [],

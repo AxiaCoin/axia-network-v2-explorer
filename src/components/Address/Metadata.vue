@@ -50,7 +50,7 @@
             </div>
         </article>
         <article class="meta_row">
-            <p class="meta_label">AssetChain Portfolio</p>
+            <p class="meta_label">SwapChain Portfolio</p>
             <div class="meta_value">
                 <BalanceTable :assets="assets" />
             </div>
@@ -114,7 +114,7 @@ export default class Metadata extends Vue {
         return this.metaData.XP_unlocked
     }
 
-    // AssetChain AXC balance
+    // SwapChain AXC balance
     get X_unlocked(): Big {
         return this.metaData.X_unlocked
     }
@@ -128,7 +128,7 @@ export default class Metadata extends Vue {
         return this.metaData.XC_unlocked
     }
 
-    // AppChain AXC balance
+    // AXChain AXC balance
     // @dev we do not support EVM balances here. only bech32, no 0x
 }
 </script>

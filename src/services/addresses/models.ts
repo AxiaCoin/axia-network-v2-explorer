@@ -13,7 +13,7 @@ export interface IAddress {
     P_utxoIDs: string[]
     // X -> P shared memory
     XP_unlocked: Big
-    // AssetChain (includes C -> X and P -> X shared memory)
+    // SwapChain (includes C -> X and P -> X shared memory)
     X_unlocked: Big
     X_locked: Big
     X_assets: IBalanceX[]
@@ -46,8 +46,8 @@ export interface IBalanceP {
 }
 
 /* ==========================================
-   Axtract API
-        - unlocked AssetChain AXC + assets
+   Magellan API
+        - unlocked SwapChain AXC + assets
         - TODO: locked eventually
    ========================================== */
 

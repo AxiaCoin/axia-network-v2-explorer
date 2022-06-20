@@ -4,7 +4,7 @@
             <h2 class="top_info_heading">
                 Top Assets
                 <TooltipHeading
-                    content="The most transferred assets on Axia P and AssetChains in the past 24 hours (excludes AppChain)"
+                    content="The most transferred assets on Axia P and SwapChains in the past 24 hours (excludes AXChain)"
                 />
             </h2>
         </div>

@@ -37,7 +37,7 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { getTassetChainType } from '@/known_blockchains'
+import { getTswapChainType } from '@/known_blockchains'
 
 @Component({})
 export default class TransactionResult extends Vue {
@@ -49,15 +49,15 @@ export default class TransactionResult extends Vue {
     }
 
     get chainColor() {
-        return getTassetChainType(this.item.chainID)!.color
+        return getTswapChainType(this.item.chainID)!.color
     }
 
     get chainDarkColor() {
-        return getTassetChainType(this.item.chainID)!.darkColor
+        return getTswapChainType(this.item.chainID)!.darkColor
     }
 
     get chainName() {
-        return getTassetChainType(this.item.chainID)!.name
+        return getTswapChainType(this.item.chainID)!.name
     }
 }
 </script>

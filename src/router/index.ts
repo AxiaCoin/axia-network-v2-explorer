@@ -4,8 +4,8 @@ import Home from '../views/Home.vue'
 import { IMetaTag } from '@/router/IMetaTag'
 import {
     DEFAULT_NETWORK_ID,
-    appChainExplorerURL,
-    appChainExplorerURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
 } from '@/store/modules/network/network'
 
 Vue.use(VueRouter)
@@ -24,8 +24,8 @@ const defaultMetaTags: IMetaTag[] = [
     },
 ]
 
-const appChainURL =
-    DEFAULT_NETWORK_ID === 1 ? appChainExplorerURL : appChainExplorerURL_test
+const axChainURL =
+    DEFAULT_NETWORK_ID === 1 ? axChainExplorerURL : axChainExplorerURL_test
 
 const routes = [
     {
@@ -38,8 +38,8 @@ const routes = [
             metaTags: defaultMetaTags,
         },
         beforeEnter() {
-            if (window.location.href !== appChainURL) {
-                window.location.href = appChainURL
+            if (window.location.href !== axChainURL) {
+                window.location.href = axChainURL
             }
         },
     },
@@ -103,12 +103,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on CoreChain, AssetChain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, SwapChain, and AXChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on CoreChain, AssetChain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, SwapChain, and AXChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },
@@ -127,12 +127,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on CoreChain, AssetChain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, SwapChain, and AXChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on CoreChain, AssetChain, and AppChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on CoreChain, SwapChain, and AXChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },

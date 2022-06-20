@@ -15,10 +15,10 @@ scssVars += `@import "@/_background.scss"; `
  */
 console.log(`
 ${colors.green('.Env configs are:')}
-    Axtract url: ${colors.magenta(process.env.VUE_APP_AXTRACT_URL)}
+    Magellan url: ${colors.magenta(process.env.VUE_APP_MAGELLAN_URL)}
     Axia GO url: ${colors.magenta(process.env.VUE_APP_AXIA_GO_URL)}
     Testnet url: ${colors.magenta(process.env.VUE_APP_AXIA_JS_IP)}
-    AppChain url: ${colors.magenta(process.env.VUE_APP_APPCHAIN_EXPLORER_URL)}
+    AXChain url: ${colors.magenta(process.env.VUE_APP_AXCHAIN_EXPLORER_URL)}
 
     HTTP PORT: ${colors.magenta(process.env.VUE_APP_HTTP_PORT)}
 `)

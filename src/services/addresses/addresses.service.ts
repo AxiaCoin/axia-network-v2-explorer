@@ -15,7 +15,7 @@ import {
     IStakePData,
 } from './models'
 import Big from 'big.js'
-import { IAssetDataAxiaGo, IAssetDataAxtract } from '@/js/IAsset'
+import { IAssetDataAxiaGo, IAssetDataMagellan } from '@/js/IAsset'
 import { avm } from '@/axia'
 import {
     setUnlockedXP,
@@ -37,7 +37,7 @@ export interface IAddressesParams {
     limit?: number
 }
 
-export function getAddressFromAxtract(params?: IAddressesParams) {
+export function getAddressFromMagellan(params?: IAddressesParams) {
     return api
         .get(`${ADDRESSES_V2_API_BASE_URL}`, {
             params,
@@ -115,11 +115,11 @@ function setBalances(balanceData: IBalanceXData, assetsMap: any): IBalanceX[] {
 
         // If asset does not exist in store
         if (!assetsMap[assetID]) {
-            // Try Axtract
+            // Try Magellan
             api.get(`/x/assets/${assetID}`).then((res) => {
                 if (res.data) {
-                    console.log('FOUND ASSET IN AXTRACT', res.data)
-                    const asset: IAssetDataAxtract = res.data
+                    console.log('FOUND ASSET IN MAGELLAN', res.data)
+                    const asset: IAssetDataMagellan = res.data
 
                     setAssetMetadata(asset, balance)
                     setBalanceData(balanceDatum, balance.denomination, balance)
@@ -178,17 +178,17 @@ export async function getAddress(
     id: string,
     assetsMap: IAssetsMap
 ): Promise<IAddress> {
-    // Get data from Axtract and Axia-Go
+    // Get data from Magellan and Axia-Go
     const [pAddress, xAddress, cAddress, pBalance, pStake] = await Promise.all([
-        getAddressFromAxtract({
+        getAddressFromMagellan({
             address: id,
             chainID: [P.id],
         }),
-        getAddressFromAxtract({
+        getAddressFromMagellan({
             address: id,
             chainID: [X.id],
         }),
-        getAddressFromAxtract({
+        getAddressFromMagellan({
             address: id,
             chainID: [C.id],
         }),
@@ -236,7 +236,7 @@ export async function getAddress(
         // X -> P shared memory
         XP_unlocked: Big(0),
 
-        // AssetChain (includes P -> X & C -> X shared memory)
+        // SwapChain (includes P -> X & C -> X shared memory)
         X_assets: [],
         X_unlocked: Big(0),
         X_locked: Big(0),
@@ -245,36 +245,36 @@ export async function getAddress(
         XC_unlocked: Big(0),
     }
 
-    // Then set data from Axtract
-    const pBalanceAxtract = pAddress.addresses.filter(
+    // Then set data from Magellan
+    const pBalanceMagellan = pAddress.addresses.filter(
         (a: IAddressData) => a.chainID === P.id
     )
-    const xBalanceAxtract = xAddress.addresses.filter(
+    const xBalanceMagellan = xAddress.addresses.filter(
         (a: IAddressData) => a.chainID === X.id
     )
-    const cBalanceAxtract = cAddress.addresses.filter(
+    const cBalanceMagellan = cAddress.addresses.filter(
         (a: IAddressData) => a.chainID === C.id
     )
 
-    // Axtract pBalance includes UTXOs from CoreChain and X -> P shared memory
+    // Magellan pBalance includes UTXOs from CoreChain and X -> P shared memory
     // Avala-Go pBalance includes UTXOs from CoreChain
     // We subtract one from the other to get balance for X -> P shared memory
-    if (pBalanceAxtract.length > 0) {
+    if (pBalanceMagellan.length > 0) {
         const pBalanceAndXPbalance = bigToDenomBig(
-            setUnlockedXP(pBalanceAxtract[0].assets),
+            setUnlockedXP(pBalanceMagellan[0].assets),
             assetsMap[AXC_ID].denomination
         )
         address.XP_unlocked = pBalanceAndXPbalance.minus(address.AXC_balance)
     }
 
-    if (xBalanceAxtract.length > 0) {
-        address.X_assets = setBalances(xBalanceAxtract[0].assets, assetsMap)
+    if (xBalanceMagellan.length > 0) {
+        address.X_assets = setBalances(xBalanceMagellan[0].assets, assetsMap)
         address.X_unlocked = setUnlockedX(address.X_assets)
     }
 
-    if (cBalanceAxtract.length > 0) {
+    if (cBalanceMagellan.length > 0) {
         address.XC_unlocked = bigToDenomBig(
-            setUnlockedXC(cBalanceAxtract[0].assets),
+            setUnlockedXC(cBalanceMagellan[0].assets),
             assetsMap[AXC_ID].denomination
         )
     }

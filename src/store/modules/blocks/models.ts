@@ -74,7 +74,7 @@ export interface EVMBlockHeader {
                             match of the bloom filter can be verified. */
 
     // USED FOR AXIA ATOMIC TRANSACTIONS
-    extraData: string /* Ignore this as the ingested data is obfuscated by Axtract. 
+    extraData: string /* Ignore this as the ingested data is obfuscated by Magellan. 
                             An arbitrary byte array containing data relevant to this block. This must be 32 bytes or fewer.*/
     extDataHash: string /* This will map to the block.blockExtraData in the level above */
 

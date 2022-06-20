@@ -43,9 +43,9 @@ export const P: ChainMap = {
 
 export const X: ChainMap = {
     id: (isMainnetNetwork()
-        ? process.env.VUE_APP_ASSETCHAINID
-        : process.env.VUE_APP_TEST_ASSETCHAINID) as string,
-    name: 'AssetChain',
+        ? process.env.VUE_APP_SWAPCHAINID
+        : process.env.VUE_APP_TEST_SWAPCHAINID) as string,
+    name: 'SwapChain',
     fullname: 'Exchange',
     code: 'X',
     color: '#005FED',
@@ -61,9 +61,9 @@ export const X: ChainMap = {
 
 export const C: ChainMap = {
     id: (isMainnetNetwork()
-        ? process.env.VUE_APP_APPCHAINID
-        : process.env.VUE_APP_TEST_APPCHAINID) as string,
-    name: 'AppChain',
+        ? process.env.VUE_APP_AXCHAINID
+        : process.env.VUE_APP_TEST_AXCHAINID) as string,
+    name: 'AXChain',
     fullname: 'Contract',
     code: 'C',
     color: '#088223',
@@ -82,12 +82,12 @@ dict[C.id] = C
 
 export default dict
 
-export const tassetChainTypeMap = new Map<string, typeof C>([
+export const tswapChainTypeMap = new Map<string, typeof C>([
     [C.id, C],
     [P.id, P],
     [X.id, X],
 ])
 
-export function getTassetChainType(type: string) {
-    return tassetChainTypeMap.get(type)
+export function getTswapChainType(type: string) {
+    return tswapChainTypeMap.get(type)
 }

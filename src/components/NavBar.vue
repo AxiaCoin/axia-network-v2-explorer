@@ -10,7 +10,7 @@
     >
         <!-- <div class="top">
             <div class="logo">
-                <a :href="appChainURL">
+                <a :href="axChainURL">
                     <img
                         style="height: 30px"
                         :src="
@@ -25,13 +25,13 @@
             <v-spacer class="spacer_mid"></v-spacer>
             <div class="links">
                 <div class="routes">
-                     <a :href="appChainURL">Home</a>
+                     <a :href="axChainURL">Home</a>
                     <router-link to="/subnets">Subnets</router-link>
                     <router-link to="/validators">Validators</router-link>
                      <a :href="tokensURL">Tokens</a> 
                     <router-link to="/blockchains">Blockchains</router-link>
                      <a v-if="isMainnet" :href="statsURL">Stats</a> 
-                    <a :href="appChainURL">AppChain</a>
+                    <a :href="axChainURL">AXChain</a>
                      <a :href="statusPageURL">Status</a> 
                     <router-link to="/resources">Resources</router-link>
                 </div> 
@@ -80,8 +80,8 @@ import SearchBar from '@/components/misc/SearchBar/SearchBar'
 import NetworkMenu from './NetworkSettings/NetworkMenu.vue'
 import {
     DEFAULT_NETWORK_ID,
-    appChainExplorerURL,
-    appChainExplorerURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
     statusURL,
     statusURL_test,
 } from '@/store/modules/network/network'
@@ -112,10 +112,10 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
     get logoColor() {
         return DEFAULT_NETWORK_ID === 1 ? 'black' : 'white'
     }
-    get appChainURL() {
+    get axChainURL() {
         return DEFAULT_NETWORK_ID === 1
-            ? appChainExplorerURL
-            : appChainExplorerURL_test
+            ? axChainExplorerURL
+            : axChainExplorerURL_test
     }
 
     get tokensURL() {

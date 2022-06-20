@@ -10,7 +10,7 @@ import Notifications from './modules/notifications/notifications'
 import Transactions from './modules/transactions/transactions'
 import Blocks from './modules/blocks/blocks'
 import { avm } from '@/axia'
-import { IAssetDataAxtract, IAssetDataAxiaGo, ICollisionMap } from '@/js/IAsset'
+import { IAssetDataMagellan, IAssetDataAxiaGo, ICollisionMap } from '@/js/IAsset'
 import {
     TransactionQuery,
     TransactionQueryResponse,
@@ -94,7 +94,7 @@ const store = new Vuex.Store({
         async getAssetAggregates(store) {
             const assetAggregates: IAssetAggregate[] = await getAssetAggregates()
             assetAggregates.forEach((agg: IAssetAggregate) => {
-                // only request aggregates for assets that are in the Axtract assets map
+                // only request aggregates for assets that are in the Magellan assets map
                 if (store.state.assets[agg.asset]) {
                     store.commit('updateAssetWithAggregationData', agg)
                 }
@@ -115,7 +115,7 @@ const store = new Vuex.Store({
             const desc: IAssetDataAxiaGo = await avm.getAssetDescription(
                 assetId
             )
-            const newAssetData: IAssetDataAxtract = {
+            const newAssetData: IAssetDataMagellan = {
                 alias: '',
                 chainID: X.id,
                 currentSupply: '0',

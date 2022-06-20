@@ -35,7 +35,7 @@ import { TransactionsGettersMixin } from '@/store/modules/transactions/transacti
 import { ITransactionParams } from '@/services/transactions'
 import TxHeader from '@/components/Transaction/TxHeader.vue'
 import TxInteractive from '@/components/Transaction/TxInteractive.vue'
-import { ChainMap, getTassetChainType } from '@/known_blockchains'
+import { ChainMap, getTswapChainType } from '@/known_blockchains'
 
 @Component({
     components: {
@@ -89,7 +89,7 @@ export default class BlockchainPage extends Mixins(TransactionsGettersMixin) {
     }
 
     get chain() {
-        return [getTassetChainType(this.id) as ChainMap]
+        return [getTswapChainType(this.id) as ChainMap]
     }
 
     get assetsLoaded() {

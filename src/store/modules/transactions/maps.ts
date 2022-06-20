@@ -7,7 +7,7 @@ export interface TxType {
 }
 
 /**
- * These types come from here @link https://github.com/AxiaCoin/axtract/blob/ec567c97630383d1a4ef468cf1bcf35d5d1eb3d2/services/indexes/models/types.go#L56
+ * These types come from here @link https://github.com/AxiaCoin/magellan/blob/ec567c97630383d1a4ef468cf1bcf35d5d1eb3d2/services/indexes/models/types.go#L56
  */
 export const txTypeMap = new Map<string, TxType>([
     [

@@ -15,9 +15,9 @@ export interface IEVMTransactionParams {
 }
 
 /**
- * Get a list of EVM transactions (AppChain)
+ * Get a list of EVM transactions (AXChain)
  * @param params api release
- * @link https://docs.axc.network/build/tools/axtract#list-corechain-transactions
+ * @link https://docs.axc.network/build/tools/magellan#list-corechain-transactions
  */
 export function getEVMTransaction(params?: IEVMTransactionParams) {
     return api

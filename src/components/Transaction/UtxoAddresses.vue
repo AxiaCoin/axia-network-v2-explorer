@@ -25,8 +25,8 @@
 <script lang="ts">
 import { DisplayAddress } from '@/js/Transaction'
 import {
-    appChainExplorerURL,
-    appChainExplorerURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
     DEFAULT_NETWORK_ID,
 } from '@/store/modules/network/network'
 import 'reflect-metadata'
@@ -55,8 +55,8 @@ export default class UtxoAddresses extends Vue {
     cURL(id: string) {
         return `${
             DEFAULT_NETWORK_ID === 1
-                ? appChainExplorerURL
-                : appChainExplorerURL_test
+                ? axChainExplorerURL
+                : axChainExplorerURL_test
         }/address/${id}`
     }
 }

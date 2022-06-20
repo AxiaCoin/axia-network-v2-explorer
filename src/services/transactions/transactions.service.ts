@@ -34,7 +34,7 @@ export interface ITransactionParams {
 /**
  *
  * @param params api release
- * @link https://docs.axc.network/build/tools/axtract#list-transactions
+ * @link https://docs.axc.network/build/tools/magellan#list-transactions
  */
 export function getTransaction(
     id?: string | null,

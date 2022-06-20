@@ -57,7 +57,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { subnetMap, VMMap, VMDocumentationMap, VMFullNameMap } from '@/helper'
 import Blockchain from '@/js/Blockchain'
 import Indexed from '@/components/Blockchain/Indexed.vue'
-import { getTassetChainType } from '@/known_blockchains'
+import { getTswapChainType } from '@/known_blockchains'
 import { P, X, C } from '@/known_blockchains'
 
 @Component({
@@ -84,11 +84,11 @@ export default class BlockchainDataTable extends Vue {
     chainDarkColor(id: string) {
         switch (id) {
             case P.id:
-                return getTassetChainType(id)!.darkColor
+                return getTswapChainType(id)!.darkColor
             case X.id:
-                return getTassetChainType(id)!.darkColor
+                return getTswapChainType(id)!.darkColor
             case C.id:
-                return getTassetChainType(id)!.darkColor
+                return getTswapChainType(id)!.darkColor
             default:
                 return '#FFF'
         }
@@ -97,11 +97,11 @@ export default class BlockchainDataTable extends Vue {
     chainCode(id: string) {
         switch (id) {
             case P.id:
-                return getTassetChainType(id)!.code
+                return getTswapChainType(id)!.code
             case X.id:
-                return getTassetChainType(id)!.code
+                return getTswapChainType(id)!.code
             case C.id:
-                return getTassetChainType(id)!.code
+                return getTswapChainType(id)!.code
             default:
                 return ''
         }
