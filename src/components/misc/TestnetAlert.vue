@@ -92,7 +92,7 @@ export default class TestnetAlert extends Vue {
 
 @include lgOrBigger {
     .testnet_alert {
-        margin-top: $navbar_height_offset_xl !important;
+        margin-top: 80px !important;
         padding-left: 18vw;
         padding-right: 18vw;
     }
