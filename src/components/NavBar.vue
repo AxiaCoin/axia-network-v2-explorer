@@ -175,7 +175,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
     flex-direction: column !important;
 }
 
-.currency_logo{
+.currency_logo {
     margin-bottom: -5px;
 }
 @if $VUE_APP_DEFAULT_NETWORKID == 5 {
@@ -245,7 +245,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 
 .bottom {
     display: flex;
-//    margin-top: 5%;
+    //    margin-top: 5%;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;

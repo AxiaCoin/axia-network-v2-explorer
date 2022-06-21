@@ -60,9 +60,9 @@ export default class AllychainTabs extends Vue {
     letter-spacing: 0;
 }
 
-.v-tab--active{
-    color: #178FE1 !important;
-    border-left: 4px solid #178FE1;
+.v-tab--active {
+    color: #178fe1 !important;
+    border-left: 4px solid #178fe1;
 }
 
 .v-tab:before {
@@ -72,10 +72,10 @@ export default class AllychainTabs extends Vue {
 
 <style lang="scss">
 #allychain_tabs {
-    background-color: #F8F9FA !important;
+    background-color: #f8f9fa !important;
     .v-tabs--vertical > .v-tabs-bar {
         padding-right: 30px;
-        background-color: #F8F9FA !important;
+        background-color: #f8f9fa !important;
         max-width: 200px !important;
         border-left: 1px solid #cecece;
     }

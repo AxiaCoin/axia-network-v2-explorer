@@ -23,8 +23,8 @@
                 </template>
                 <span
                     >The CoreChain is the metadata blockchain on Axia, managing
-                    validators and custom allychains. Validators stake AXC on the
-                    CoreChain to secure the network.</span
+                    validators and custom allychains. Validators stake AXC on
+                    the CoreChain to secure the network.</span
                 >
             </v-tooltip>
             <v-tooltip>
@@ -42,8 +42,8 @@
                     >The SwapChain is the default asset blockchain on Axia
                     enabling the creation and instant exchange of assets. This
                     blockchain is for transfers that benefit from
-                    high-throughput and instant finality. Think Swap for eXchanging
-                    assets.
+                    high-throughput and instant finality. Think Swap for
+                    eXchanging assets.
                 </span>
             </v-tooltip>
             <v-tooltip>

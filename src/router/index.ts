@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 import { IMetaTag } from '@/router/IMetaTag'
-import {
-    DEFAULT_NETWORK_ID,
-    axChainExplorerURL,
-    axChainExplorerURL_test,
-} from '@/store/modules/network/network'
+// import {
+//     DEFAULT_NETWORK_ID,
+//     axChainExplorerURL,
+//     axChainExplorerURL_test,
+// } from '@/store/modules/network/network'
 
 Vue.use(VueRouter)
 
@@ -24,15 +24,17 @@ const defaultMetaTags: IMetaTag[] = [
     },
 ]
 
-const axChainURL =
-    DEFAULT_NETWORK_ID === 1 ? axChainExplorerURL : axChainExplorerURL_test
+// const axChainURL =
+//     DEFAULT_NETWORK_ID === 1 ? axChainExplorerURL : axChainExplorerURL_test
 
 const routes = [
     {
         path: '/allychains',
         name: 'Allychains',
         component: () =>
-            import(/* webpackChunkName: "allychains" */ '../views/Allychains.vue'),
+            import(
+                /* webpackChunkName: "allychains" */ '../views/Allychains.vue'
+            ),
         meta: {
             auth: false,
             title: 'Allychains' + suffix,
@@ -43,7 +45,9 @@ const routes = [
         path: '/allychain/:id',
         name: 'Allychain',
         component: () =>
-            import(/* webpackChunkName: "allychain" */ '../views/Allychain.vue'),
+            import(
+                /* webpackChunkName: "allychain" */ '../views/Allychain.vue'
+            ),
         meta: {
             auth: false,
             title: 'Allychain' + suffix,

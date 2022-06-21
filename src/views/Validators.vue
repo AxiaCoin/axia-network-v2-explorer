@@ -79,7 +79,7 @@ import 'reflect-metadata'
 import { Mixins, Component } from 'vue-property-decorator'
 import ValidatorRow from '@/components/rows/ValidatorRow/ValidatorRow.vue'
 import ValidatorPaginationControls from '@/components/misc/ValidatorPaginationControls.vue'
-import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import Metadata from '@/components/Validators/Metadata.vue'
 import StakingMetadata from '@/components/Validators/StakingMetadata.vue'
@@ -137,7 +137,9 @@ export default class Validators extends Mixins(PlatformGettersMixin) {
     }
 
     get validators() {
-        const defaultAllychain = this.$store.state.Platform.allychains[AXIA_SUBNET_ID]
+        const defaultAllychain = this.$store.state.Platform.allychains[
+            AXIA_ALLYCHAIN_ID
+        ]
         if (defaultAllychain) {
             return this.toggle === 'active'
                 ? defaultAllychain.validators
@@ -157,7 +159,9 @@ export default class Validators extends Mixins(PlatformGettersMixin) {
     }
 
     get pendingValidators() {
-        const defaultAllychain = this.$store.state.Platform.allychains[AXIA_SUBNET_ID]
+        const defaultAllychain = this.$store.state.Platform.allychains[
+            AXIA_ALLYCHAIN_ID
+        ]
         if (defaultAllychain) {
             const vals = defaultAllychain.pendingValidators
             return vals
@@ -166,7 +170,9 @@ export default class Validators extends Mixins(PlatformGettersMixin) {
     }
 
     get cumulativeStake() {
-        const defaultAllychain = this.$store.state.Platform.allychains[AXIA_SUBNET_ID]
+        const defaultAllychain = this.$store.state.Platform.allychains[
+            AXIA_ALLYCHAIN_ID
+        ]
         if (defaultAllychain) {
             return this.toggle === 'active'
                 ? this.getCumulativeStake()

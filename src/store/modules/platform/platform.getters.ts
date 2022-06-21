@@ -1,5 +1,5 @@
 import store from '@/store'
-import { AXIA_SUBNET_ID } from './platform'
+import { AXIA_ALLYCHAIN_ID } from './platform'
 import Big from 'big.js'
 import { ONEAXC } from '@zee-ava/avajs/dist/utils'
 import { bigToDenomBig } from '@/helper'
@@ -8,7 +8,7 @@ import { bigToDenomBig } from '@/helper'
  * @returns Count of active validators in Primary Network
  */
 export function getTotalValidators(): number {
-    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_ALLYCHAIN_ID]
     return !defaultAllychain ? 0 : defaultAllychain.validators.length
 }
 
@@ -16,7 +16,7 @@ export function getTotalValidators(): number {
  * @returns Count of pending validators in Primary Network
  */
 export function getTotalPendingValidators(): number {
-    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_ALLYCHAIN_ID]
     return !defaultAllychain ? 0 : defaultAllychain.pendingValidators.length
 }
 
@@ -24,7 +24,7 @@ export function getTotalPendingValidators(): number {
  * @returns Total $AXC active stake on Primary Network
  */
 export function getTotalStake(): Big {
-    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_ALLYCHAIN_ID]
     let total = Big(0)
     return !defaultAllychain
         ? total
@@ -38,7 +38,7 @@ export function getTotalStake(): Big {
  * @returns Total $AXC pending stake on Primary Network
  */
 export function getTotalPendingStake(): Big {
-    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_ALLYCHAIN_ID]
     let total = Big(0)
     return !defaultAllychain
         ? total
@@ -52,7 +52,7 @@ export function getTotalPendingStake(): Big {
  * @returns Accumulative distribution of active stakes
  */
 export function getCumulativeStake(): number[] {
-    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_ALLYCHAIN_ID]
     const res: number[] = []
     let total = 0
     if (defaultAllychain) {
@@ -68,7 +68,7 @@ export function getCumulativeStake(): number[] {
  * @returns Accumulative distribution of pending stakes
  */
 export function getCumulativePendingStake(): number[] {
-    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_ALLYCHAIN_ID]
     const res: number[] = []
     let total = 0
     if (defaultAllychain) {

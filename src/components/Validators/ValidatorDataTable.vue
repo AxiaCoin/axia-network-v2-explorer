@@ -269,7 +269,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { toAXC } from '@/helper'
 import Allychain from '@/js/Allychain'
-import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 import { IValidator } from '@/store/modules/platform/IValidator'
 import ContentMetadata from '@/components/Allychains/ContentMetadata.vue'
 import { scaleLinear } from 'd3-scale'
@@ -286,7 +286,7 @@ import { AXC_ID } from '@/known_assets'
     },
 })
 export default class ValidatorDataTable extends Vue {
-    defaultAllychainID: string = AXIA_SUBNET_ID
+    defaultAllychainID: string = AXIA_ALLYCHAIN_ID
     currentTime: number | null = null
     startTimes: number[] = []
     endTimes: number[] = []
@@ -332,7 +332,9 @@ export default class ValidatorDataTable extends Vue {
     }
 
     get stakeOrWeight(): string {
-        return this.allychainID === this.defaultAllychainID ? 'stakeAmount' : 'weight'
+        return this.allychainID === this.defaultAllychainID
+            ? 'stakeAmount'
+            : 'weight'
     }
 
     get mode(): string {

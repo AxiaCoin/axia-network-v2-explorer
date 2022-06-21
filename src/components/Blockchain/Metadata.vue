@@ -57,8 +57,9 @@ export default class Metadata extends Vue {
     @Prop() blockchain!: Blockchain
 
     get validatorsCount() {
-        return this.$store.state.Platform.allychains[this.blockchain.allychainID]
-            .validators.length
+        return this.$store.state.Platform.allychains[
+            this.blockchain.allychainID
+        ].validators.length
     }
 }
 </script>

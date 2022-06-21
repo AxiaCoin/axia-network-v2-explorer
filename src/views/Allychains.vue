@@ -23,7 +23,10 @@
                     label="Select Allychain"
                     outlined
                 />
-                <Content :allychain-i-d="selection" :allychain="allychains[selection]" />
+                <Content
+                    :allychain-i-d="selection"
+                    :allychain="allychains[selection]"
+                />
             </div>
         </template>
     </div>
@@ -37,7 +40,7 @@ import Metadata from '@/components/Allychains/Metadata.vue'
 import Tabs from '@/components/Allychains/Tabs.vue'
 import Loader from '@/components/misc/Loader.vue'
 import Content from '@/components/Allychains/Content.vue'
-import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 import Big from 'big.js'
 import { IAllychains } from '@/store/modules/platform/models'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
@@ -56,7 +59,7 @@ interface IMap {
     },
 })
 export default class Allychains extends Mixins(PlatformGettersMixin) {
-    selection: string = AXIA_SUBNET_ID
+    selection: string = AXIA_ALLYCHAIN_ID
 
     get allychainsLoaded(): boolean {
         return this.$store.state.Platform.allychainsLoaded

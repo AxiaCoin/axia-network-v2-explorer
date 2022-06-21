@@ -11,7 +11,7 @@ import {
     IPendingNominator,
     IPendingNominatorData,
 } from '@/store/modules/platform/IValidator'
-import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 
 export default class Allychain {
     id: string
@@ -68,7 +68,7 @@ export default class Allychain {
                 validators = this.sortByStake(validators, this.id)
 
                 // Primary Network Only
-                if (this.id === AXIA_SUBNET_ID) {
+                if (this.id === AXIA_ALLYCHAIN_ID) {
                     validators.forEach((v: IValidator) => {
                         if (v.nominators !== null) {
                             v.nominators?.forEach((d: INominator) =>
@@ -99,7 +99,7 @@ export default class Allychain {
             }
 
             // Primary Network Only
-            if (this.id === AXIA_SUBNET_ID) {
+            if (this.id === AXIA_ALLYCHAIN_ID) {
                 const pendingNominatorsData = response.data.result
                     .nominators as IPendingValidatorData[]
                 if (pendingNominatorsData.length > 0) {
@@ -263,7 +263,7 @@ export default class Allychain {
      *  Sort by stake or weight and add rank
      */
     private sortByStake(validators: IValidator[], id: string): IValidator[] {
-        id === AXIA_SUBNET_ID
+        id === AXIA_ALLYCHAIN_ID
             ? validators.sort(
                   (a, b) =>
                       (b.totalStakeAmount as number) -

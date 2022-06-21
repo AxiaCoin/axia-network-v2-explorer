@@ -16,7 +16,7 @@ import { getTxCounts } from '@/services/transactionCounts/transactionCounts.serv
 import { TxCount } from '@/services/transactionCounts/models'
 import { getBurnedC } from '@/services/burned/burned.service'
 
-export const AXIA_SUBNET_ID = Core.id
+export const AXIA_ALLYCHAIN_ID = Core.id
 
 const platform_module: Module<PlatformState, IRootState> = {
     namespaced: true,
@@ -77,8 +77,8 @@ const platform_module: Module<PlatformState, IRootState> = {
             // Add CoreChain manually
             const coreChain = new Blockchain({
                 name: Core.name,
-                id: AXIA_SUBNET_ID,
-                allychainID: AXIA_SUBNET_ID,
+                id: AXIA_ALLYCHAIN_ID,
+                allychainID: AXIA_ALLYCHAIN_ID,
                 vmID: '',
             })
             state.blockchains.unshift(coreChain)

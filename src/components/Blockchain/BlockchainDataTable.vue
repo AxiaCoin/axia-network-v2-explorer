@@ -54,7 +54,12 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { allychainMap, VMMap, VMDocumentationMap, VMFullNameMap } from '@/helper'
+import {
+    allychainMap,
+    VMMap,
+    VMDocumentationMap,
+    VMFullNameMap,
+} from '@/helper'
 import Blockchain from '@/js/Blockchain'
 import Indexed from '@/components/Blockchain/Indexed.vue'
 import { getTswapChainType } from '@/known_blockchains'

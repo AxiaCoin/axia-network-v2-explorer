@@ -57,7 +57,11 @@ export default class Blockchains extends Mixins(PlatformGettersMixin) {
     get blockchains() {
         return (this.$store.state.Platform
             .blockchains as Blockchain[]).sort((a, b) =>
-            a.allychainID > b.allychainID ? 1 : b.allychainID > a.allychainID ? -1 : 0
+            a.allychainID > b.allychainID
+                ? 1
+                : b.allychainID > a.allychainID
+                ? -1
+                : 0
         )
     }
 

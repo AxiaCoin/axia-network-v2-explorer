@@ -35,9 +35,12 @@
                         </template>
                     </v-tab-item>
                     <v-tab-item class="tab_content" value="pending-validators">
-                        <template v-if="allychain.pendingValidators.length === 0">
+                        <template
+                            v-if="allychain.pendingValidators.length === 0"
+                        >
                             <p class="null">
-                                There are no pending validators for this allychain.
+                                There are no pending validators for this
+                                allychain.
                             </p>
                         </template>
                         <template v-else>
@@ -82,7 +85,8 @@
                     <v-tab-item class="tab_content" value="delegations">
                         <template v-if="allychain.nominators.length === 0">
                             <p class="null">
-                                There are no delegated stakes for this allychain.
+                                There are no delegated stakes for this
+                                allychain.
                             </p>
                         </template>
                         <template v-else>
@@ -105,7 +109,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import Allychain from '@/js/Allychain'
-import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 import ContentMetadata from '@/components/Allychains/ContentMetadata.vue'
 import ValidatorDataTable from '@/components/Validators/ValidatorDataTable.vue'
 import BlockchainDataTable from '@/components/Blockchain/BlockchainDataTable.vue'
@@ -124,7 +128,7 @@ import ControlKeyTable from '@/components/Validators/ControlKeyTable.vue'
 export default class Content extends Vue {
     dense = true
     fixedHeader = true
-    defaultAllychainID: string = AXIA_SUBNET_ID
+    defaultAllychainID: string = AXIA_ALLYCHAIN_ID
     currentTime: number | null = null
     startTimes: number[] = []
     endTimes: number[] = []
@@ -176,12 +180,12 @@ export default class Content extends Vue {
     font-weight: 400;
     text-transform: none;
     letter-spacing: 0;
-    color: #178FE1 !important;
+    color: #178fe1 !important;
 }
 
-.v-tab--active{
+.v-tab--active {
     color: white !important;
-    background: #178FE1;
+    background: #178fe1;
     margin: 2px;
     border-radius: 12px;
 }
@@ -190,7 +194,7 @@ export default class Content extends Vue {
 }
 
 .allychain_header {
-    color: #178FE1;
+    color: #178fe1;
 
     .subheading {
         text-transform: capitalize;
@@ -280,7 +284,8 @@ export default class Content extends Vue {
     background-color: $white !important;
 }
 
-.v-tabs-slider, .v-tabs-slider-wrapper{
+.v-tabs-slider,
+.v-tabs-slider-wrapper {
     height: 0;
     color: none;
     background-color: none;
@@ -299,9 +304,9 @@ th {
 }
 
 #content {
-    .v-tabs-bar__content{
-    border: 1px solid #178FE1;
-    border-radius: 12px;
+    .v-tabs-bar__content {
+        border: 1px solid #178fe1;
+        border-radius: 12px;
     }
 
     .table_margin {

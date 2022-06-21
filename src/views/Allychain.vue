@@ -9,7 +9,10 @@
         </template>
         <template v-else>
             <div class="card">
-                <Content :allychain-i-d="allychainID" :allychain="allychains[allychainID]" />
+                <Content
+                    :allychain-i-d="allychainID"
+                    :allychain="allychains[allychainID]"
+                />
             </div>
         </template>
     </div>
