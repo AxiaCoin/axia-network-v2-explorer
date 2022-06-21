@@ -23,7 +23,7 @@
                 </template>
                 <span
                     >The CoreChain is the metadata blockchain on Axia, managing
-                    validators and custom subnets. Validators stake AXC on the
+                    validators and custom allychains. Validators stake AXC on the
                     CoreChain to secure the network.</span
                 >
             </v-tooltip>
@@ -42,7 +42,7 @@
                     >The SwapChain is the default asset blockchain on Axia
                     enabling the creation and instant exchange of assets. This
                     blockchain is for transfers that benefit from
-                    high-throughput and instant finality. Think X for eXchanging
+                    high-throughput and instant finality. Think Swap for eXchanging
                     assets.
                 </span>
             </v-tooltip>
@@ -70,7 +70,7 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component } from 'vue-property-decorator'
-import { P, X, C, getTswapChainType } from '@/known_blockchains'
+import { Core, Swap, AX, getTswapChainType } from '@/known_blockchains'
 import {
     DEFAULT_NETWORK_ID,
     axChainExplorerURL,
@@ -80,15 +80,15 @@ import {
 @Component({})
 export default class TxHeader extends Vue {
     get swapChain() {
-        return getTswapChainType(X.id)
+        return getTswapChainType(Swap.id)
     }
 
     get coreChain() {
-        return getTswapChainType(P.id)
+        return getTswapChainType(Core.id)
     }
 
     get axChain() {
-        return getTswapChainType(C.id)
+        return getTswapChainType(AX.id)
     }
 
     get axChainURL() {

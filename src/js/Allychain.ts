@@ -1,5 +1,5 @@
 import axia_go_api from '@/axia_go_api'
-import { ISubnetData } from '@/store/modules/platform/ISubnet'
+import { IAllychainData } from '@/store/modules/platform/IAllychain'
 import Blockchain from '@/js/Blockchain'
 import {
     IValidator,
@@ -13,7 +13,7 @@ import {
 } from '@/store/modules/platform/IValidator'
 import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 
-export default class Subnet {
+export default class Allychain {
     id: string
     controlKeys: string[]
     threshold: number
@@ -23,7 +23,7 @@ export default class Subnet {
     pendingValidators: IPendingValidator[]
     pendingNominators: IPendingNominator[]
 
-    constructor(data: ISubnetData) {
+    constructor(data: IAllychainData) {
         this.id = data.id
         this.controlKeys = data.controlKeys
         this.threshold = parseInt(data.threshold)
@@ -44,7 +44,7 @@ export default class Subnet {
             jsonrpc: '2.0',
             method: endpoint,
             params: {
-                subnetID: this.id,
+                allychainID: this.id,
             },
             id: 1,
         }
@@ -56,14 +56,14 @@ export default class Subnet {
         /* ==========================================
             CURRENT VALIDATORS
            ========================================== */
-        if (endpoint === 'platform.getCurrentValidators') {
+        if (endpoint === 'core.getCurrentValidators') {
             const validatorsData = response.data.result
                 .validators as IValidatorData[]
             let validators: IValidator[] = []
             let nominators: INominator[] = []
 
             if (validatorsData.length > 0) {
-                // All Subnets
+                // All Allychains
                 validators = this.setValidators(validatorsData)
                 validators = this.sortByStake(validators, this.id)
 
@@ -91,7 +91,7 @@ export default class Subnet {
             let pendingValidators: IPendingValidator[] = []
             let pendingNominators: IPendingNominator[] = []
 
-            // All Subnets
+            // All Allychains
             if (pendingValidatorsData.length > 0) {
                 pendingValidators = this.setPendingValidators(
                     pendingValidatorsData
@@ -152,7 +152,7 @@ export default class Subnet {
                 )
                 validator.elapsed = this.getElapsedStakingPeriod(validator)
             }
-            // Subnets
+            // Allychains
             if ({}.hasOwnProperty.call(v, 'weight')) {
                 validator.weight = parseInt(v.weight as string)
             }

@@ -70,10 +70,10 @@ export const txTypeMap = new Map<string, TxType>([
         },
     ],
     [
-        'add_subnet_validator',
+        'add_allychain_validator',
         {
-            long: 'Add Subnet Validator',
-            short: 'Validate Subnet',
+            long: 'Add Allychain Validator',
+            short: 'Validate Allychain',
         },
     ],
     [
@@ -84,10 +84,10 @@ export const txTypeMap = new Map<string, TxType>([
         },
     ],
     [
-        'create_subnet',
+        'create_allychain',
         {
-            long: 'Create Subnet',
-            short: 'Create Subnet',
+            long: 'Create Allychain',
+            short: 'Create Allychain',
         },
     ],
     [

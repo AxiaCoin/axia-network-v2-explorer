@@ -51,7 +51,7 @@ import TxHeader from '@/components/Transaction/TxHeader.vue'
 import TxInteractive from '@/components/Transaction/TxInteractive.vue'
 import { TransactionsGettersMixin } from '@/store/modules/transactions/transactions.mixins'
 import HTTPError from '@/components/misc/HTTPError.vue'
-import { P, X, C } from '@/known_blockchains'
+import { Core, Swap, AX } from '@/known_blockchains'
 
 @Component({
     components: {
@@ -135,7 +135,7 @@ export default class AssetPage extends Mixins(TransactionsGettersMixin) {
     }
 
     get chains() {
-        return [P, X, C]
+        return [Core, Swap, AX]
     }
 
     get transactions() {
@@ -175,7 +175,7 @@ export default class AssetPage extends Mixins(TransactionsGettersMixin) {
                 id: null,
                 params: {
                     assetID: this.assetID,
-                    chainID: [P.id, C.id, X.id],
+                    chainID: [Core.id, AX.id, Swap.id],
                     ...params,
                 },
             })

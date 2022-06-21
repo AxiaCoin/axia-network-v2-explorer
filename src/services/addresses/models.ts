@@ -4,20 +4,20 @@ import Big from 'big.js'
 export interface IAddress {
     address: string // "custom1wvdqtl8g5jjv2r5rk8qzgktf9kx95nx8fm2xsh
     publicKey: string
-    // CoreChain (excludes X -> P shared memory)
+    // CoreChain (excludes Swap -> Core shared memory)
     AXC_balance: Big
     P_unlocked: Big // unlocked tokens. stake/move (denominated)
     P_lockedStakeable: Big // vesting tokens. stake/!move (denominated)
     P_lockedNotStakeable: Big // vesting tokens. !stake/!move (denominated)
     P_staked: Big // staked tokens. from getStake (denominated)
     P_utxoIDs: string[]
-    // X -> P shared memory
+    // Swap -> Core shared memory
     XP_unlocked: Big
-    // SwapChain (includes C -> X and P -> X shared memory)
+    // SwapChain (includes AX -> Swap and Core -> Swap shared memory)
     X_unlocked: Big
     X_locked: Big
     X_assets: IBalanceX[]
-    // X -> C shared memory
+    // Swap -> AX shared memory
     XC_unlocked: Big
 }
 

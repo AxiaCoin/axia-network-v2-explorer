@@ -1,6 +1,6 @@
 import Big from 'big.js'
-import SubnetDict from './known_subnets'
-import BlockchainDict, { C, P, X } from './known_blockchains'
+import AllychainDict from './known_allychains'
+import BlockchainDict, { AX, Core, Swap } from './known_blockchains'
 import VMDict from './known_vms'
 import { Quote, quotes } from './quotes'
 import { BN, Buffer } from '@zee-ava/avajs/dist'
@@ -33,9 +33,9 @@ function bnToBig(val: BN, denomination = 0): Big {
     return new Big(val.toString()).div(Math.pow(10, denomination))
 }
 
-function subnetMap(id: string): string {
-    if (SubnetDict[id]) {
-        return SubnetDict[id]
+function allychainMap(id: string): string {
+    if (AllychainDict[id]) {
+        return AllychainDict[id]
     } else {
         return id
     }
@@ -151,14 +151,14 @@ function pushPayload(rawPayload: string, assetID: string, groupID: number) {
 function foregroundColor(address: string) {
     const prefix = address.charAt(0)
     switch (prefix) {
-        case 'P':
-            return P.color
-        case 'X':
-            return X.color
-        case 'C':
-            return C.color
+        case 'Core':
+            return Core.color
+        case 'Swap':
+            return Swap.color
+        case 'AX':
+            return AX.color
         case '0':
-            return C.color
+            return AX.color
         default:
             return '#212121'
     }
@@ -167,14 +167,14 @@ function foregroundColor(address: string) {
 function backgroundColor(address: string) {
     const prefix = address.charAt(0)
     switch (prefix) {
-        case 'P':
-            return P.darkColor
-        case 'X':
-            return X.darkColor
-        case 'C':
-            return C.darkColor
+        case 'Core':
+            return Core.darkColor
+        case 'Swap':
+            return Swap.darkColor
+        case 'AX':
+            return AX.darkColor
         case '0':
-            return C.darkColor
+            return AX.darkColor
         default:
             return '#e4e4e4'
     }
@@ -211,20 +211,20 @@ function getNullAddress(id: string, key = ''): IAddress {
     return {
         address: id,
         publicKey: key,
-        // CoreChain (excludes X -> P shared memory)
+        // CoreChain (excludes Swap -> Core shared memory)
         AXC_balance: Big(0),
         P_unlocked: Big(0),
         P_lockedStakeable: Big(0),
         P_lockedNotStakeable: Big(0),
         P_staked: Big(0),
         P_utxoIDs: [],
-        // X -> P shared memory
+        // Swap -> Core shared memory
         XP_unlocked: Big(0),
-        // SwapChain (includes C -> X and P -> X shared memory)
+        // SwapChain (includes AX -> Swap and Core -> Swap shared memory)
         X_unlocked: Big(0),
         X_locked: Big(0),
         X_assets: [],
-        // X -> C shared memory
+        // Swap -> AX shared memory
         XC_unlocked: Big(0),
     }
 }
@@ -234,7 +234,7 @@ export {
     stringToBig,
     bigToDenomBig,
     bnToBig,
-    subnetMap,
+    allychainMap,
     blockchainMap,
     VMMap,
     VMDocumentationMap,

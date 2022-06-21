@@ -40,10 +40,10 @@
                     </a>
                 </div>
             </template>
-            <template #item.subnetID="{ item }">
+            <template #item.allychainID="{ item }">
                 <div>
-                    <router-link :to="`/subnet/${item.subnetID}`">{{
-                        item.subnetID | subnet
+                    <router-link :to="`/allychain/${item.allychainID}`">{{
+                        item.allychainID | allychain
                     }}</router-link>
                 </div>
             </template>
@@ -54,11 +54,11 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { subnetMap, VMMap, VMDocumentationMap, VMFullNameMap } from '@/helper'
+import { allychainMap, VMMap, VMDocumentationMap, VMFullNameMap } from '@/helper'
 import Blockchain from '@/js/Blockchain'
 import Indexed from '@/components/Blockchain/Indexed.vue'
 import { getTswapChainType } from '@/known_blockchains'
-import { P, X, C } from '@/known_blockchains'
+import { Core, Swap, AX } from '@/known_blockchains'
 
 @Component({
     components: {
@@ -68,26 +68,26 @@ import { P, X, C } from '@/known_blockchains'
 export default class BlockchainDataTable extends Vue {
     @Prop() blockchains!: Blockchain[]
     @Prop() links?: boolean
-    @Prop() subnets?: boolean
+    @Prop() allychains?: boolean
     @Prop() title?: string
 
     get headers(): any[] {
         const headers = [
             { text: 'Name', value: 'name', width: 200, fixed: true },
             { text: 'VM', value: 'vmID', width: 125 },
-            { text: 'Subnet', value: 'subnetID', width: 300 },
+            { text: 'Allychain', value: 'allychainID', width: 300 },
             { text: 'Index', value: 'indexed', width: 125 },
         ]
-        return this.subnets ? headers : headers.slice(0, 5)
+        return this.allychains ? headers : headers.slice(0, 5)
     }
 
     chainDarkColor(id: string) {
         switch (id) {
-            case P.id:
+            case Core.id:
                 return getTswapChainType(id)!.darkColor
-            case X.id:
+            case Swap.id:
                 return getTswapChainType(id)!.darkColor
-            case C.id:
+            case AX.id:
                 return getTswapChainType(id)!.darkColor
             default:
                 return '#FFF'
@@ -96,19 +96,19 @@ export default class BlockchainDataTable extends Vue {
 
     chainCode(id: string) {
         switch (id) {
-            case P.id:
+            case Core.id:
                 return getTswapChainType(id)!.code
-            case X.id:
+            case Swap.id:
                 return getTswapChainType(id)!.code
-            case C.id:
+            case AX.id:
                 return getTswapChainType(id)!.code
             default:
                 return ''
         }
     }
 
-    subnet(val: string) {
-        return subnetMap(val)
+    allychain(val: string) {
+        return allychainMap(val)
     }
 
     vm(val: string) {

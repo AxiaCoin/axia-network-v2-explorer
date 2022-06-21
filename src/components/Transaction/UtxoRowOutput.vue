@@ -60,7 +60,7 @@ import Block from '@/components/Transaction/UtxoBlock.vue'
 import NFTPayload from '@/components/Transaction/UtxoNFTPayload.vue'
 import Summary from '@/components/Transaction/UtxoSummary.vue'
 import { AXC_ID } from '@/known_assets'
-import { P, X, C } from '@/known_blockchains'
+import { Core, Swap, AX } from '@/known_blockchains'
 import { backgroundColor } from '@/helper'
 
 @Component({
@@ -102,23 +102,23 @@ export default class UtxoRowOutput extends Vue {
             : false
     }
 
-    // Exporting UTXO from P to Atomic DB
+    // Exporting UTXO from Core to Atomic DB
     get isPVMExport() {
-        return this.txtype === 'pvm_export' && this.utxo.chainID !== P.id
+        return this.txtype === 'pvm_export' && this.utxo.chainID !== Core.id
             ? true
             : false
     }
 
-    // Exporting UTXO from X to Atomic DB
+    // Exporting UTXO from Swap to Atomic DB
     get isExport() {
-        return this.txtype === 'export' && this.utxo.chainID !== X.id
+        return this.txtype === 'export' && this.utxo.chainID !== Swap.id
             ? true
             : false
     }
 
-    // Exporting UTXO from C to Atomic DB
+    // Exporting UTXO from AX to Atomic DB
     get isAtomicExport() {
-        return this.txtype === 'atomic_export_tx' && this.utxo.chainID !== C.id
+        return this.txtype === 'atomic_export_tx' && this.utxo.chainID !== AX.id
             ? true
             : false
     }

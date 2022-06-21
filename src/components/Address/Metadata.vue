@@ -109,7 +109,7 @@ export default class Metadata extends Vue {
         return this.metaData.P_staked
     }
 
-    // X -> P shared memory
+    // Swap -> Core shared memory
     get XP_unlocked(): Big {
         return this.metaData.XP_unlocked
     }
@@ -123,7 +123,7 @@ export default class Metadata extends Vue {
         return this.metaData.X_locked
     }
 
-    // X -> C shared memory
+    // Swap -> AX shared memory
     get XC_unlocked(): Big {
         return this.metaData.XC_unlocked
     }

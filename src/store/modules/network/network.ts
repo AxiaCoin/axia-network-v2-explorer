@@ -23,9 +23,8 @@ const axiaJSProtocol = process.env.VUE_APP_AXIA_JS_PROTOCOL || ''
 const axiaJSIP = process.env.VUE_APP_AXIA_JS_IP || ''
 const axiaJSPort = parseInt(process.env.VUE_APP_AXIA_JS_PORT || '443')
 const axiaJSNetworkID = parseInt(process.env.VUE_APP_AXIA_JS_NETWORKID || '1')
-const axiaJSChainID = process.env.VUE_APP_AXIA_JS_CHAINID || 'X'
-export const axChainExplorerURL =
-    process.env.VUE_APP_AXCHAIN_EXPLORER_URL || ''
+const axiaJSChainID = process.env.VUE_APP_AXIA_JS_CHAINID || 'Swap'
+export const axChainExplorerURL = process.env.VUE_APP_AXCHAIN_EXPLORER_URL || ''
 export const statusURL = process.env.VUE_APP_STATUS_URL || ''
 
 // Testnet

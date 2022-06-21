@@ -13,7 +13,7 @@
                 />
             </p>
             <div>
-                <p v-if="subnetsLoaded" class="meta_val">
+                <p v-if="allychainsLoaded" class="meta_val">
                     {{ totalValidatorsCount.toLocaleString() }}
                 </p>
                 <v-progress-circular
@@ -35,7 +35,7 @@
                 />
             </p>
             <div>
-                <p v-if="subnetsLoaded" class="meta_val">
+                <p v-if="allychainsLoaded" class="meta_val">
                     {{ totalStake }}
                     <span class="unit">AXC</span>
                 </p>
@@ -58,7 +58,7 @@
                 />
             </p>
             <div>
-                <p v-if="subnetsLoaded" class="meta_val">
+                <p v-if="allychainsLoaded" class="meta_val">
                     {{ percentStaked }}%
                 </p>
                 <v-progress-circular
@@ -74,7 +74,7 @@
         <article class="meta">
             <p class="label">Annual Staking Reward</p>
             <div>
-                <p v-if="subnetsLoaded" class="meta_val">
+                <p v-if="allychainsLoaded" class="meta_val">
                     {{ annualStakingRewardPercentage }}
                 </p>
                 <v-progress-circular
@@ -103,8 +103,8 @@ import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
     },
 })
 export default class ValidatorStats extends Mixins(PlatformGettersMixin) {
-    get subnetsLoaded(): boolean {
-        return this.$store.state.Platform.subnetsLoaded
+    get allychainsLoaded(): boolean {
+        return this.$store.state.Platform.allychainsLoaded
     }
 
     get totalValidatorsCount() {

@@ -10,7 +10,11 @@ import Notifications from './modules/notifications/notifications'
 import Transactions from './modules/transactions/transactions'
 import Blocks from './modules/blocks/blocks'
 import { avm } from '@/axia'
-import { IAssetDataMagellan, IAssetDataAxiaGo, ICollisionMap } from '@/js/IAsset'
+import {
+    IAssetDataMagellan,
+    IAssetDataAxiaGo,
+    ICollisionMap,
+} from '@/js/IAsset'
 import {
     TransactionQuery,
     TransactionQueryResponse,
@@ -19,7 +23,7 @@ import { ITransactionPayload } from '@/services/transactions'
 import { getTransaction } from '@/services/transactions'
 import { getAssetAggregates, IAssetAggregate } from '@/services/aggregates'
 import { parseTxs } from './modules/transactions/helpers'
-import { X } from '@/known_blockchains'
+import { Swap } from '@/known_blockchains'
 import { getCacheAssets } from '@/services/assets'
 import { getPrices, Price, PriceMap } from '@/services/price'
 import { AXC_PRICE_ID, VS_CURRENCIES } from '@/known_prices'
@@ -43,7 +47,7 @@ const store = new Vuex.Store({
         assetsLoaded: false,
         assetAggregatesLoaded: false,
         known_addresses: AddressDict,
-        chainId: 'X',
+        chainId: 'Swap',
         recentTxRes: {},
         assetsSubsetForAggregations: {}, // TODO: remove eventually
         // this is a bandaid until the API precomputes aggregate data for assets
@@ -117,7 +121,7 @@ const store = new Vuex.Store({
             )
             const newAssetData: IAssetDataMagellan = {
                 alias: '',
-                chainID: X.id,
+                chainID: Swap.id,
                 currentSupply: '0',
                 denomination: desc.denomination,
                 id: assetId,

@@ -2,14 +2,14 @@
     <div>
         <div class="utxo_label">{{ type | fromOrTo }}</div>
         <div v-for="({ address, displayAddress }, i) in addresses" :key="i">
-            <!-- X/P (internal route) -->
+            <!-- Swap/Core (internal route) -->
             <router-link
                 v-if="isXP(displayAddress)"
                 :to="xpURL(address)"
                 class="address monospace compound_interest"
                 >{{ displayAddress }}</router-link
             >
-            <!-- C (external route) -->
+            <!-- AX (external route) -->
             <a
                 v-else
                 :href="`${cURL(address)}`"

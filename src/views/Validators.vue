@@ -137,11 +137,11 @@ export default class Validators extends Mixins(PlatformGettersMixin) {
     }
 
     get validators() {
-        const defaultSubnet = this.$store.state.Platform.subnets[AXIA_SUBNET_ID]
-        if (defaultSubnet) {
+        const defaultAllychain = this.$store.state.Platform.allychains[AXIA_SUBNET_ID]
+        if (defaultAllychain) {
             return this.toggle === 'active'
-                ? defaultSubnet.validators
-                : defaultSubnet.pendingValidators
+                ? defaultAllychain.validators
+                : defaultAllychain.pendingValidators
         }
         return []
     }
@@ -157,17 +157,17 @@ export default class Validators extends Mixins(PlatformGettersMixin) {
     }
 
     get pendingValidators() {
-        const defaultSubnet = this.$store.state.Platform.subnets[AXIA_SUBNET_ID]
-        if (defaultSubnet) {
-            const vals = defaultSubnet.pendingValidators
+        const defaultAllychain = this.$store.state.Platform.allychains[AXIA_SUBNET_ID]
+        if (defaultAllychain) {
+            const vals = defaultAllychain.pendingValidators
             return vals
         }
         return []
     }
 
     get cumulativeStake() {
-        const defaultSubnet = this.$store.state.Platform.subnets[AXIA_SUBNET_ID]
-        if (defaultSubnet) {
+        const defaultAllychain = this.$store.state.Platform.allychains[AXIA_SUBNET_ID]
+        if (defaultAllychain) {
             return this.toggle === 'active'
                 ? this.getCumulativeStake()
                 : this.getCumulativePendingStake()

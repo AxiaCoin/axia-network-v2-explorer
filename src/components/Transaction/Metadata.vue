@@ -107,7 +107,7 @@ import { getTswapChainType } from '@/known_blockchains'
 import { getMappingForType } from '@/store/modules/transactions/maps'
 import { backgroundColor, stringToBig, toAXC } from '@/helper'
 import { Transaction, getTransactionOutputs } from '@/js/Transaction'
-import { P } from '@/known_blockchains'
+import { Core } from '@/known_blockchains'
 import {
     OutputValuesDict,
     OutValuesDenominated,
@@ -148,7 +148,7 @@ export default class Metadata extends Vue {
     }
 
     get isCoreChain() {
-        return this.tx.chainID === P.id ? true : false
+        return this.tx.chainID === Core.id ? true : false
     }
 
     get assets(): any {

@@ -2,7 +2,7 @@
     <div class="tx_link">
         <!-- SPENT -->
         <template v-if="txID">
-            <!-- X/P (internal route) -->
+            <!-- Swap/Core (internal route) -->
             <router-link v-if="isXP" :to="xpURL">
                 <v-tooltip left>
                     <template v-slot:activator="{ on }">
@@ -20,7 +20,7 @@
                     </div>
                 </v-tooltip>
             </router-link>
-            <!-- C (external route) -->
+            <!-- AX (external route) -->
             <a v-else :href="cURL">
                 <v-tooltip left>
                     <template v-slot:activator="{ on }">
@@ -60,7 +60,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { getOutputType } from '@/services/transactions'
-import { P, X } from '@/known_blockchains'
+import { Core, Swap } from '@/known_blockchains'
 import {
     DEFAULT_NETWORK_ID,
     axChainExplorerURL,
@@ -79,7 +79,7 @@ export default class UtxoTxLinkOutput extends Vue {
     @Prop() timestamp!: string
 
     get isXP(): boolean {
-        return this.chainID === X.id || this.chainID === P.id
+        return this.chainID === Swap.id || this.chainID === Core.id
     }
 
     get xpURL(): string {

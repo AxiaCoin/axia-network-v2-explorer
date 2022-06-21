@@ -52,7 +52,7 @@ export interface TransactionResponse {
         B. 1-of-2 ms UTXO  =>  UTXO (equal)      person that owned the non-multisig output paid more of a % of the fee.
               non-ms UTXO      UTXO (equal)
         
-        C. 1-of-2 ms UTXO  =>  UTXO              person that ended up w/ out output paid the fee because the other person was reimbursed.
+        AX. 1-of-2 ms UTXO  =>  UTXO              person that ended up w/ out output paid the fee because the other person was reimbursed.
               non-ms UTXO
      */
     txFee: number
@@ -202,7 +202,7 @@ export interface EVMTransactionResponse {
     Objects represent ContractMsg - A contract message is passed between a 
         contract account and any other account (external or contract). It is the 
         result of an execution chain originally triggered by an external eccount.
-    curl -X POST --data '{ "jsonrpc": "2.0", "method": "debug_traceTransaction","params": ["0x00000217bc17e7e3187efae9248523f4fe2bc90e029e3ba13ddd8ff69607c705", {"disableStack": true, "disableMemory": true, "disableStorage": true}],"id": 1}' -H 'content-type:application/json;' https://api.axc.network/ext/bc/C/rpc
+    curl -Swap POST --data '{ "jsonrpc": "2.0", "method": "debug_traceTransaction","params": ["0x00000217bc17e7e3187efae9248523f4fe2bc90e029e3ba13ddd8ff69607c705", {"disableStack": true, "disableMemory": true, "disableStorage": true}],"id": 1}' -H 'content-type:application/json;' https://api.axc.network/ext/bc/AX/rpc
  */
 export interface TraceResponse {
     callType: string /* execution context
@@ -292,18 +292,18 @@ export interface OutputResponse {
     block: string // https://axchain.explorer.axc.network/blocks/33726/transactions - broken block/tx
     nonce: number
     /*        
-    X > SHARED DB > P/C
-        1. EXPORT = move UTXO from X to SHARED DB (https://explorerapi.axc.network/v2/transactions/wQwXqfXKyoHSMCP4QVrfZgU9V7cBShJGgkZmGvkLQbHTRjhAS)
-        2. ATOMIC_IMPORT = move UTXO from SHARED DB to P/C (https://explorerapi.axc.network/v2/transactions/9TMCg4ZRfa91NHJE7LgMFK6UHKP83uopHBFL3zyDc55acfMUF)
-            - normally, we'd see an output UTXO, but in lieu of output UTXO, we see a C-address
+    Swap > SHARED DB > Core/AX
+        1. EXPORT = move UTXO from Swap to SHARED DB (https://explorerapi.axc.network/v2/transactions/wQwXqfXKyoHSMCP4QVrfZgU9V7cBShJGgkZmGvkLQbHTRjhAS)
+        2. ATOMIC_IMPORT = move UTXO from SHARED DB to Core/AX (https://explorerapi.axc.network/v2/transactions/9TMCg4ZRfa91NHJE7LgMFK6UHKP83uopHBFL3zyDc55acfMUF)
+            - normally, we'd see an output UTXO, but in lieu of output UTXO, we see a AX-address
                 - inputs.addresses = [axc...]
                 - outputs.address  = null
                 - outputs.caddress = [0x..]
-            - if you have hex C-addresses, then the output represented as atomic import address, you will see the actual block that wrapped that atomic import/export tx
+            - if you have hex AX-addresses, then the output represented as atomic import address, you will see the actual block that wrapped that atomic import/export tx
     
-    P/C > SHARED DB > X
-        1. ATOMIC_EXPORT = move UTXO from P/C to SHARED DB 
-        2. IMPORT = move UTXO from SHARED DB to X                                                    
+    Core/AX > SHARED DB > Swap
+        1. ATOMIC_EXPORT = move UTXO from Core/AX to SHARED DB 
+        2. IMPORT = move UTXO from SHARED DB to Swap                                                    
     
     note: "chainID": "2q9e4r6Mu3U68nU1fYjgbR6JvwrRx36CohpAX5UQxse55x1Q5", is messed up    
     */

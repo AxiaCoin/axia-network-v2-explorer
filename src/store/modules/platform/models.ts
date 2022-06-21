@@ -1,16 +1,16 @@
-import Subnet from '@/js/Subnet'
+import Allychain from '@/js/Allychain'
 import Blockchain from '@/js/Blockchain'
 import { BN } from '@zee-ava/avajs'
 
 export interface PlatformState {
-    subnets: ISubnets
+    allychains: IAllychains
     blockchains: Blockchain[]
-    subnetsLoaded: boolean
+    allychainsLoaded: boolean
     minStake: BN
     currentSupply: BN
     annualStakingRewardPercentage: number
 }
 
-export interface ISubnets {
-    [key: string]: Subnet
+export interface IAllychains {
+    [key: string]: Allychain
 }

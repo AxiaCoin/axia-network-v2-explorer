@@ -59,7 +59,7 @@ import TxHeader from '@/components/Transaction/TxHeader.vue'
 import TxInteractive from '@/components/Transaction/TxInteractive.vue'
 import { ITransactionParams } from '@/services/transactions'
 import { TransactionsGettersMixin } from '@/store/modules/transactions/transactions.mixins'
-import { P, X, C } from '@/known_blockchains'
+import { Core, Swap, AX } from '@/known_blockchains'
 import { getNullAddress } from '@/helper'
 
 @Component({
@@ -158,7 +158,7 @@ export default class AddressPage extends Mixins(TransactionsGettersMixin) {
     }
 
     get chains() {
-        return [P, X, C]
+        return [Core, Swap, AX]
     }
 
     get transactions() {

@@ -16,7 +16,7 @@
             <router-link
                 v-for="({ address, displayAddress }, i) in utxo.addresses"
                 :key="i"
-                :to="`/address/X-${address}`"
+                :to="`/address/Swap-${address}`"
                 >{{ displayAddress }}</router-link
             >
         </span>

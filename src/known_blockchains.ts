@@ -21,33 +21,33 @@ export function isMainnetNetwork() {
     return DEFAULT_NETWORK_ID === 1
 }
 
-export const P: ChainMap = {
+export const Core: ChainMap = {
     id: (isMainnetNetwork()
         ? process.env.VUE_APP_CORECHAINID
         : process.env.VUE_APP_TEST_CORECHAINID) as string,
     name: 'CoreChain',
     fullname: 'Platform',
-    code: 'P',
+    code: 'Core',
     color: '#F19100',
     darkColor: '#FFF8EE',
     txTypes: [
         ['add_validator', txTypeMap.get('add_validator')!],
-        ['add_subnet_validator', txTypeMap.get('add_subnet_validator')!],
+        ['add_allychain_validator', txTypeMap.get('add_allychain_validator')!],
         ['add_nominator', txTypeMap.get('add_nominator')!],
-        ['create_subnet', txTypeMap.get('create_subnet')!],
+        ['create_allychain', txTypeMap.get('create_allychain')!],
         ['create_chain', txTypeMap.get('create_chain')!],
         ['pvm_export', txTypeMap.get('pvm_export')!],
         ['pvm_import', txTypeMap.get('pvm_import')!],
     ],
 }
 
-export const X: ChainMap = {
+export const Swap: ChainMap = {
     id: (isMainnetNetwork()
         ? process.env.VUE_APP_SWAPCHAINID
         : process.env.VUE_APP_TEST_SWAPCHAINID) as string,
     name: 'SwapChain',
     fullname: 'Exchange',
-    code: 'X',
+    code: 'Swap',
     color: '#005FED',
     darkColor: '#EFF7FF',
     txTypes: [
@@ -59,13 +59,13 @@ export const X: ChainMap = {
     ],
 }
 
-export const C: ChainMap = {
+export const AX: ChainMap = {
     id: (isMainnetNetwork()
         ? process.env.VUE_APP_AXCHAINID
         : process.env.VUE_APP_TEST_AXCHAINID) as string,
     name: 'AXChain',
     fullname: 'Contract',
-    code: 'C',
+    code: 'AX',
     color: '#088223',
     darkColor: '#F6FFF6',
     txTypes: [
@@ -76,16 +76,16 @@ export const C: ChainMap = {
 
 const dict: BlockchainDict = {}
 
-dict[P.id] = P
-dict[X.id] = X
-dict[C.id] = C
+dict[Core.id] = Core
+dict[Swap.id] = Swap
+dict[AX.id] = AX
 
 export default dict
 
-export const tswapChainTypeMap = new Map<string, typeof C>([
-    [C.id, C],
-    [P.id, P],
-    [X.id, X],
+export const tswapChainTypeMap = new Map<string, typeof AX>([
+    [AX.id, AX],
+    [Core.id, Core],
+    [Swap.id, Swap],
 ])
 
 export function getTswapChainType(type: string) {

@@ -26,6 +26,6 @@ if (DEFAULT_NETWORK_ID === 1) {
 
 const axia = new axiaJS.Axia(IP, PORT, PROTOCOL, NETWORK_ID, CHAIN_ID)
 const avm = axia.SwapChain()
-const platform = axia.CoreChain()
+const core = axia.CoreChain()
 
-export { axia, avm, platform }
+export { axia, avm, core }

@@ -112,15 +112,15 @@ export default class AXCBalanceTableDetail extends Vue {
     background(chain: string): string {
         switch (chain) {
             case 'Platform':
-                return backgroundColor('P')
+                return backgroundColor('Core')
             case 'XP Shared Memory':
-                return backgroundColor('P')
+                return backgroundColor('Core')
             case 'Exchange':
-                return backgroundColor('X')
+                return backgroundColor('Swap')
             case 'XC Shared Memory':
-                return backgroundColor('C')
+                return backgroundColor('AX')
             case 'Contract':
-                return backgroundColor('C')
+                return backgroundColor('AX')
             default:
                 return 'transparent'
         }

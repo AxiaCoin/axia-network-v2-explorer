@@ -2,7 +2,7 @@
     <div class="navbar_side">
         <v-list dense nav>
             <v-list-item :href="axChainURL">Home</v-list-item>
-            <v-list-item to="/subnets">Subnets</v-list-item>
+            <v-list-item to="/allychains">Allychains</v-list-item>
             <v-list-item to="/validators">Validators</v-list-item>
             <v-list-item to="/blockchains">Blockchains</v-list-item>
             <v-list-item to="/assets">Assets</v-list-item>

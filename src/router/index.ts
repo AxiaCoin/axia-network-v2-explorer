@@ -29,24 +29,24 @@ const axChainURL =
 
 const routes = [
     {
-        path: '/subnets',
-        name: 'Subnets',
+        path: '/allychains',
+        name: 'Allychains',
         component: () =>
-            import(/* webpackChunkName: "subnets" */ '../views/Subnets.vue'),
+            import(/* webpackChunkName: "allychains" */ '../views/Allychains.vue'),
         meta: {
             auth: false,
-            title: 'Subnets' + suffix,
+            title: 'Allychains' + suffix,
             metaTags: defaultMetaTags,
         },
     },
     {
-        path: '/subnet/:id',
-        name: 'Subnet',
+        path: '/allychain/:id',
+        name: 'Allychain',
         component: () =>
-            import(/* webpackChunkName: "subnet" */ '../views/Subnet.vue'),
+            import(/* webpackChunkName: "allychain" */ '../views/Allychain.vue'),
         meta: {
             auth: false,
-            title: 'Subnet' + suffix,
+            title: 'Allychain' + suffix,
             metaTags: defaultMetaTags,
         },
     },

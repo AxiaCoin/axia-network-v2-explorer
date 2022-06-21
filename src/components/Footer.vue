@@ -24,7 +24,7 @@
                 <div class="list">
                     <h4>Menu</h4>
                     <!-- <a :href="axChainURL">Home</a> -->
-                    <router-link to="/subnets">Subnets</router-link>
+                    <router-link to="/allychains">Allychains</router-link>
                     <router-link to="/validators">Validators</router-link>
                     <router-link to="/assets">Assets</router-link>
                     <router-link to="/blockchains">Blockchains</router-link>

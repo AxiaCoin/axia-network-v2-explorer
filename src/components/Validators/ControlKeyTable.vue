@@ -12,7 +12,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="ck in subnet.controlKeys" :key="ck">
+                    <tr v-for="ck in allychain.controlKeys" :key="ck">
                         <td>
                             <img
                                 class="table_image"
@@ -26,8 +26,8 @@
             </template>
         </v-simple-table>
         <p class="threshold">
-            {{ subnet.threshold | pluralizeThreshold }} needed to add a
-            validator to the subnet.
+            {{ allychain.threshold | pluralizeThreshold }} needed to add a
+            validator to the allychain.
         </p>
     </v-card>
 </template>
@@ -35,7 +35,7 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import Subnet from '@/js/Subnet'
+import Allychain from '@/js/Allychain'
 import Indexed from '@/components/Blockchain/Indexed.vue'
 import { DEFAULT_NETWORK_ID } from '@/store/modules/network/network'
 
@@ -45,7 +45,7 @@ import { DEFAULT_NETWORK_ID } from '@/store/modules/network/network'
     },
 })
 export default class ControlKeyTable extends Vue {
-    @Prop() subnet!: Subnet
+    @Prop() allychain!: Allychain
     @Prop() title?: string
 
     get imgColor(): string {

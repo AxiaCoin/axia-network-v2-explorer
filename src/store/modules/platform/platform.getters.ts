@@ -8,27 +8,27 @@ import { bigToDenomBig } from '@/helper'
  * @returns Count of active validators in Primary Network
  */
 export function getTotalValidators(): number {
-    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
-    return !defaultSubnet ? 0 : defaultSubnet.validators.length
+    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
+    return !defaultAllychain ? 0 : defaultAllychain.validators.length
 }
 
 /**
  * @returns Count of pending validators in Primary Network
  */
 export function getTotalPendingValidators(): number {
-    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
-    return !defaultSubnet ? 0 : defaultSubnet.pendingValidators.length
+    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
+    return !defaultAllychain ? 0 : defaultAllychain.pendingValidators.length
 }
 
 /**
  * @returns Total $AXC active stake on Primary Network
  */
 export function getTotalStake(): Big {
-    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
     let total = Big(0)
-    return !defaultSubnet
+    return !defaultAllychain
         ? total
-        : (total = defaultSubnet.validators.reduce(
+        : (total = defaultAllychain.validators.reduce(
               (a, v) => a.add(Big(v.totalStakeAmount as number)),
               total
           ))
@@ -38,11 +38,11 @@ export function getTotalStake(): Big {
  * @returns Total $AXC pending stake on Primary Network
  */
 export function getTotalPendingStake(): Big {
-    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
     let total = Big(0)
-    return !defaultSubnet
+    return !defaultAllychain
         ? total
-        : (total = defaultSubnet.pendingValidators.reduce(
+        : (total = defaultAllychain.pendingValidators.reduce(
               (a, v) => a.add(Big(v.stakeAmount as number)),
               total
           ))
@@ -52,11 +52,11 @@ export function getTotalPendingStake(): Big {
  * @returns Accumulative distribution of active stakes
  */
 export function getCumulativeStake(): number[] {
-    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
     const res: number[] = []
     let total = 0
-    if (defaultSubnet) {
-        defaultSubnet.validators.forEach((v) => {
+    if (defaultAllychain) {
+        defaultAllychain.validators.forEach((v) => {
             total += v.totalStakeAmount as number
             res.push(total)
         })
@@ -68,11 +68,11 @@ export function getCumulativeStake(): number[] {
  * @returns Accumulative distribution of pending stakes
  */
 export function getCumulativePendingStake(): number[] {
-    const defaultSubnet = store.state.Platform.subnets[AXIA_SUBNET_ID]
+    const defaultAllychain = store.state.Platform.allychains[AXIA_SUBNET_ID]
     const res: number[] = []
     let total = 0
-    if (defaultSubnet) {
-        defaultSubnet.pendingValidators.forEach((v) => {
+    if (defaultAllychain) {
+        defaultAllychain.pendingValidators.forEach((v) => {
             total += v.stakeAmount as number
             res.push(total)
         })
@@ -81,12 +81,12 @@ export function getCumulativePendingStake(): number[] {
 }
 
 /**
- * @returns Count of blockchains across all subnets
+ * @returns Count of blockchains across all allychains
  */
 export function getTotalBlockchains(): number {
     let total = 0
-    for (const subnetID of Object.keys(store.state.Platform.subnets)) {
-        total += store.state.Platform.subnets[subnetID].blockchains.length
+    for (const allychainID of Object.keys(store.state.Platform.allychains)) {
+        total += store.state.Platform.allychains[allychainID].blockchains.length
     }
     return total
 }

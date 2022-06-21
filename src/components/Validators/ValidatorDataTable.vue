@@ -268,10 +268,10 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { toAXC } from '@/helper'
-import Subnet from '@/js/Subnet'
+import Allychain from '@/js/Allychain'
 import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 import { IValidator } from '@/store/modules/platform/IValidator'
-import ContentMetadata from '@/components/Subnets/ContentMetadata.vue'
+import ContentMetadata from '@/components/Allychains/ContentMetadata.vue'
 import { scaleLinear } from 'd3-scale'
 import { AXC_ID } from '@/known_assets'
 
@@ -286,7 +286,7 @@ import { AXC_ID } from '@/known_assets'
     },
 })
 export default class ValidatorDataTable extends Vue {
-    defaultSubnetID: string = AXIA_SUBNET_ID
+    defaultAllychainID: string = AXIA_SUBNET_ID
     currentTime: number | null = null
     startTimes: number[] = []
     endTimes: number[] = []
@@ -298,8 +298,8 @@ export default class ValidatorDataTable extends Vue {
     search = ''
     filteredCount = 0
 
-    @Prop() subnetID!: string
-    @Prop() subnet!: Subnet
+    @Prop() allychainID!: string
+    @Prop() allychain!: Allychain
     @Prop() validators!: IValidator[]
     @Prop() title!: string
 
@@ -332,7 +332,7 @@ export default class ValidatorDataTable extends Vue {
     }
 
     get stakeOrWeight(): string {
-        return this.subnetID === this.defaultSubnetID ? 'stakeAmount' : 'weight'
+        return this.allychainID === this.defaultAllychainID ? 'stakeAmount' : 'weight'
     }
 
     get mode(): string {
@@ -356,7 +356,7 @@ export default class ValidatorDataTable extends Vue {
 
     minStartTime() {
         const startTimes: number[] = []
-        this.subnet.validators.forEach((v: IValidator) => {
+        this.allychain.validators.forEach((v: IValidator) => {
             startTimes.push(v.startTime.getTime())
         })
         return Math.min(...startTimes)
@@ -364,7 +364,7 @@ export default class ValidatorDataTable extends Vue {
 
     maxEndTime() {
         const endTimes: number[] = []
-        this.subnet.validators.forEach((v: IValidator) => {
+        this.allychain.validators.forEach((v: IValidator) => {
             endTimes.push(v.endTime.getTime())
         })
         return Math.max(...endTimes)

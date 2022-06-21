@@ -1,17 +1,17 @@
 <template>
-    <div id="subnets">
-        <template v-if="!subnetsLoaded">
-            <Loader :content-id="''" :message="'Fetching Subnets'" />
+    <div id="allychains">
+        <template v-if="!allychainsLoaded">
+            <Loader :content-id="''" :message="'Fetching Allychains'" />
         </template>
         <template v-else>
             <Metadata
-                :total-subnets="totalSubnets"
+                :total-allychains="totalAllychains"
                 :total-validators="totalValidators"
                 :total-blockchains="totalBlockchains"
                 :total-stake="totalStake"
             />
             <div v-if="this.$vuetify.breakpoint.mdAndUp" class="card">
-                <Tabs :subnets="subnets" />
+                <Tabs :allychains="allychains" />
             </div>
             <div
                 v-if="this.$vuetify.breakpoint.smAndDown"
@@ -19,11 +19,11 @@
             >
                 <v-select
                     v-model="selection"
-                    :items="subnetsByName"
-                    label="Select Subnet"
+                    :items="allychainsByName"
+                    label="Select Allychain"
                     outlined
                 />
-                <Content :subnet-i-d="selection" :subnet="subnets[selection]" />
+                <Content :allychain-i-d="selection" :allychain="allychains[selection]" />
             </div>
         </template>
     </div>
@@ -32,14 +32,14 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Mixins, Component } from 'vue-property-decorator'
-import { subnetMap } from '@/helper'
-import Metadata from '@/components/Subnets/Metadata.vue'
-import Tabs from '@/components/Subnets/Tabs.vue'
+import { allychainMap } from '@/helper'
+import Metadata from '@/components/Allychains/Metadata.vue'
+import Tabs from '@/components/Allychains/Tabs.vue'
 import Loader from '@/components/misc/Loader.vue'
-import Content from '@/components/Subnets/Content.vue'
+import Content from '@/components/Allychains/Content.vue'
 import { AXIA_SUBNET_ID } from '@/store/modules/platform/platform'
 import Big from 'big.js'
-import { ISubnets } from '@/store/modules/platform/models'
+import { IAllychains } from '@/store/modules/platform/models'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
 
 interface IMap {
@@ -55,19 +55,19 @@ interface IMap {
         Tabs,
     },
 })
-export default class Subnets extends Mixins(PlatformGettersMixin) {
+export default class Allychains extends Mixins(PlatformGettersMixin) {
     selection: string = AXIA_SUBNET_ID
 
-    get subnetsLoaded(): boolean {
-        return this.$store.state.Platform.subnetsLoaded
+    get allychainsLoaded(): boolean {
+        return this.$store.state.Platform.allychainsLoaded
     }
 
-    get subnets(): ISubnets {
-        const subnets = this.$store.state.Platform.subnets
-        const ordered: ISubnets = {}
-        Object.keys(subnets)
+    get allychains(): IAllychains {
+        const allychains = this.$store.state.Platform.allychains
+        const ordered: IAllychains = {}
+        Object.keys(allychains)
             .sort()
-            .forEach((key) => (ordered[key] = subnets[key]))
+            .forEach((key) => (ordered[key] = allychains[key]))
         return ordered
     }
 
@@ -85,15 +85,15 @@ export default class Subnets extends Mixins(PlatformGettersMixin) {
         return res
     }
 
-    get totalSubnets(): number {
-        return Object.keys(this.$store.state.Platform.subnets).length
+    get totalAllychains(): number {
+        return Object.keys(this.$store.state.Platform.allychains).length
     }
 
-    get subnetsByName(): IMap[] {
+    get allychainsByName(): IMap[] {
         const list: IMap[] = []
-        Object.keys(this.subnets).forEach((key) => {
+        Object.keys(this.allychains).forEach((key) => {
             const object: IMap = {
-                text: subnetMap(key) ? subnetMap(key) : key,
+                text: allychainMap(key) ? allychainMap(key) : key,
                 value: key,
             }
             list.push(object)
@@ -114,8 +114,8 @@ export default class Subnets extends Mixins(PlatformGettersMixin) {
         padding: 12px 15px;
     }
 }
-#subnets{
-    .card{
+#allychains {
+    .card {
         padding: 30px 0 30px 30px;
     }
 }

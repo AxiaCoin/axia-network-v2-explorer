@@ -79,17 +79,17 @@ export default class UtxoRowInput extends Vue {
     @Prop() utxo!: any
     @Prop() txtype!: string
 
-    // Importing UTXO from Atomic DB to P
+    // Importing UTXO from Atomic DB to Core
     get isPVMImport() {
         return this.txtype === 'pvm_import' ? true : false
     }
 
-    // Importing UTXO from Atomic DB to X
+    // Importing UTXO from Atomic DB to Swap
     get isImport() {
         return this.txtype === 'import' ? true : false
     }
 
-    // Importing UTXO from Atomic DB to C
+    // Importing UTXO from Atomic DB to AX
     get isAtomicImport() {
         return this.txtype === 'atomic_import_tx' ? true : false
     }

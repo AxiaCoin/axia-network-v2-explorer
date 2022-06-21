@@ -113,7 +113,7 @@ export default Vue.extend({
             clip: rect(1px, 1px, 1px, 1px);
         }
 
-        .subnet {
+        .allychain {
             font-size: 12px;
             color: $primary-color;
             padding-bottom: 7px;
@@ -167,7 +167,7 @@ export default Vue.extend({
         h1 {
             padding-left: 161px;
             height: 12px;
-            .subnet {
+            .allychain {
                 font-size: 12px;
                 color: $primary-color;
                 padding-top: 9px;

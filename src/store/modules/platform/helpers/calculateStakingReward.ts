@@ -18,7 +18,7 @@ export function calculateStakingReward(
         return new BN(0)
     }
     //@ts-ignore
-    defValues = defValues.P
+    defValues = defValues.Core
 
     const {
         maxConsumption,
