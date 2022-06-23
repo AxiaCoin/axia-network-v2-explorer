@@ -12,7 +12,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { URLPayload } from '@zee-ava/avajs/dist/utils'
+import { URLPayload } from '@axia-systems/axiajs/dist/utils'
 
 @Component
 export default class UrlPayloadView extends Vue {

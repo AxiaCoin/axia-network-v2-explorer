@@ -1,6 +1,6 @@
 import Allychain from '@/js/Allychain'
 import Blockchain from '@/js/Blockchain'
-import { BN } from '@zee-ava/avajs'
+import { BN } from '@axia-systems/axiajs'
 
 export interface PlatformState {
     allychains: IAllychains

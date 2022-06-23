@@ -1,7 +1,7 @@
 import store from '@/store'
 import { AXIA_ALLYCHAIN_ID } from './platform'
 import Big from 'big.js'
-import { ONEAXC } from '@zee-ava/avajs/dist/utils'
+import { ONEAXC } from '@axia-systems/axiajs/dist/utils'
 import { bigToDenomBig } from '@/helper'
 
 /**

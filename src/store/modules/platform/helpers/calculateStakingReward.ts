@@ -1,5 +1,5 @@
-import { Defaults, ONEAXC } from '@zee-ava/avajs/dist/utils'
-import { BN } from '@zee-ava/avajs/dist'
+import { Defaults, ONEAXC } from '@axia-systems/axiajs/dist/utils'
+import { BN } from '@axia-systems/axiajs/dist'
 import { axia } from '@/axia'
 import Big from 'big.js'
 

@@ -9,6 +9,28 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
+"@axia-systems/axiajs@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@axia-systems/axiajs/-/axiajs-1.0.0.tgz#62e01b51cbe3bc90fbd2dfb873a3a6ef0a3a4b05"
+  integrity sha512-F13QzxPUxQJFDcpCcRuQvknxQXOyvjP7IP+sfncsrQ+CqzmLSlZhoORoVKsFmHUYIzoqkUsxjC2ApcOs7ntpoA==
+  dependencies:
+    assert "2.0.0"
+    axios "0.27.2"
+    bech32 "2.0.0"
+    bip39 "3.0.4"
+    bn.js "5.2.1"
+    buffer "6.0.3"
+    create-hash "1.2.0"
+    crypto-browserify "3.12.0"
+    elliptic "6.5.4"
+    ethers "5.6.4"
+    hdkey "2.0.1"
+    isomorphic-ws "4.0.1"
+    store2 "2.13.2"
+    stream-browserify "3.0.0"
+    ws "8.5.0"
+    xss "1.0.11"
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.8.3":
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz"
@@ -2685,28 +2707,6 @@
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
-
-"@zee-ava/avajs@^3.14.18":
-  version "3.14.18"
-  resolved "https://registry.yarnpkg.com/@zee-ava/avajs/-/avajs-3.14.18.tgz#595b443f7fab6f45a88ac517614d8c502052b119"
-  integrity sha512-2Y5MnELkasLMRa0KMNEd7g5fBzeRbXjBl9SfP5oSUkqXjqpQMOjCewTAvf8Bc0FB3ZgWSwbfbm5X+2eVQBPt8w==
-  dependencies:
-    assert "2.0.0"
-    axios "0.27.2"
-    bech32 "2.0.0"
-    bip39 "3.0.4"
-    bn.js "5.2.1"
-    buffer "6.0.3"
-    create-hash "1.2.0"
-    crypto-browserify "3.12.0"
-    elliptic "6.5.4"
-    ethers "5.6.4"
-    hdkey "2.0.1"
-    isomorphic-ws "4.0.1"
-    store2 "2.13.2"
-    stream-browserify "3.0.0"
-    ws "8.5.0"
-    xss "1.0.11"
 
 JSONStream@^1.0.4:
   version "1.3.5"
