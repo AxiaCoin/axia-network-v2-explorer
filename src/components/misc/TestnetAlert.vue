@@ -92,7 +92,7 @@ export default class TestnetAlert extends Vue {
 
 @include lgOrBigger {
     .testnet_alert {
-        margin-top: 80px !important;
+        margin-top: 140px !important;
         padding-left: 18vw;
         padding-right: 18vw;
     }
