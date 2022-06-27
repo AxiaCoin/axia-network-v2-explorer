@@ -51,7 +51,7 @@ export default class TestnetAlert extends Vue {
 
 <style scoped lang="scss">
 .testnet_alert {
-    margin-top: 80px !important;
+    margin-top: $navbar_height_offset_xl !important;
     background-color: #45a5e7 !important;
 }
 
