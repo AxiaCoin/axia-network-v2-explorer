@@ -188,6 +188,30 @@ const routes = [
         },
     },
     {
+        path: '/blockchains',
+        name: 'Blockchains',
+        component: () =>
+            import(
+                /* webpackChunkName: "blockchains" */ '../views/Blockchains.vue'
+            ),
+        meta: {
+            auth: false,
+            title: 'Blockchains' + suffix,
+            metaTags: [
+                {
+                    name: 'description',
+                    content:
+                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                },
+                {
+                    property: 'og:description',
+                    content:
+                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                },
+            ],
+        },
+    },
+    {
         path: '/blockchain/:id',
         name: 'Blockchain',
         component: () =>
