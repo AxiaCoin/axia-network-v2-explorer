@@ -8,7 +8,7 @@ let PROTOCOL = ''
 let IP = ''
 let PORT = 80
 let NETWORK_ID = 0
-let CHAIN_ID = 'X'
+let CHAIN_ID = 'Swap'
 
 if (DEFAULT_NETWORK_ID === 1) {
     PROTOCOL = process.env.VUE_APP_AXIA_JS_PROTOCOL as string
