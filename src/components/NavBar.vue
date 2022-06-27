@@ -33,7 +33,7 @@
                     <a v-if="isMainnet" :href="statsURL">Stats</a>
                     <a :href="axChainURL">AXChain</a>
                     <!-- <a :href="statusPageURL">Status</a> -->
-                    <router-link to="/resources">Resources</router-link>
+                    <!-- <router-link to="/resources">Resources</router-link> -->
                 </div>
             </div>
             <v-spacer class="spacer_mid"></v-spacer>
