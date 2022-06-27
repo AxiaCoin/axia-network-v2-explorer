@@ -18,7 +18,7 @@
                 <p class="description" :style="{ color: 'white' }">
                     Notice: This Explorer displays activity on the
                     {{ networkName }} Testnet, <span class="bold">not</span> the
-                    Axia Mainnet.
+                    AXIA Mainnet.
                 </p>
             </v-alert>
         </template>

@@ -18,7 +18,7 @@ export default class AssetLogoRenderer extends Vue {
     get logo(): string {
         return dict[this.asset.id]
             ? dict[this.asset.id].logo
-            : `/hex_ava_${this.hexColor}.svg`
+            : `/hex_axc_${this.hexColor}.svg`
     }
 
     get hexColor(): string {
