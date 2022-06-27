@@ -5,10 +5,10 @@
         dark
         flat
         dense
-        :height="80"
+        :height="140"
         :style="{ backgroundColor: 'white' }"
     >
-        <!-- <div class="top">
+        <div class="top">
             <div class="logo">
                 <a :href="axChainURL">
                     <img
@@ -26,7 +26,7 @@
             <div class="links">
                 <div class="routes">
                      <a :href="axChainURL">Home</a>
-                    <router-link to="/allychains">Allychains</router-link>
+                    <router-link to="/subnets">Subnets</router-link>
                     <router-link to="/validators">Validators</router-link>
                      <a :href="tokensURL">Tokens</a> 
                     <router-link to="/blockchains">Blockchains</router-link>
@@ -38,8 +38,7 @@
             </div> 
             <v-spacer class="spacer_mid"></v-spacer>
             <NetworkMenu />
-        </div> -->
-        <hr />
+        </div>
         <div class="bottom">
             <div v-if="pricesLoaded" class="prices">
                 <div class="price_pair">
@@ -175,8 +174,8 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
     flex-direction: column !important;
 }
 
-.currency_logo {
-    margin-bottom: -5px;
+.currency_logo{
+   margin-bottom: -5px;
 }
 @if $VUE_APP_DEFAULT_NETWORKID == 5 {
     .navbar {
@@ -230,7 +229,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
             clip: rect(1px, 1px, 1px, 1px);
         }
 
-        .allychain {
+        .subnet {
             font-size: 12px;
             color: $primary-color;
             padding-bottom: 7px;
@@ -245,7 +244,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 
 .bottom {
     display: flex;
-    //    margin-top: 5%;
+  //  margin-top: 5%;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
@@ -360,7 +359,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
         h1 {
             padding-left: 161px;
             height: 12px;
-            .allychain {
+            .subnet {
                 font-size: 12px;
                 color: $primary-color;
                 padding-top: 9px;
