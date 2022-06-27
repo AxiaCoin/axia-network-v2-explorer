@@ -19,7 +19,7 @@ export default class NFTFallback extends Vue {
             : { width: `100%`, height: `100%` }
     }
     get fallback(): string {
-        return `/hex_ava_${this.hexColor}.svg`
+        return `/hex_axc_${this.hexColor}.svg`
     }
 
     get hexColor(): string {
