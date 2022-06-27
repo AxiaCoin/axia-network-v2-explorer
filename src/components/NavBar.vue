@@ -47,7 +47,7 @@
                         <img src="../../axc.png" class="currency_logo" />
                         AXC
                     </span>
-                    <span class="value">{{ priceUSD }}</span>
+                    <!-- <span class="value">{{ priceUSD }}</span> -->
                 </div>
                 <!-- <div class="price_pair">
                     <span class="label">Market Cap</span>
