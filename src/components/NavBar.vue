@@ -31,7 +31,7 @@
                     <!-- <a :href="tokensURL">Tokens</a> -->
                     <router-link to="/blockchains">Blockchains</router-link>
                     <a v-if="isMainnet" :href="statsURL">Stats</a>
-                    <a :href="axChainURL" target="_blank">AXChain</a>
+                    <a :href="axChainURL" target="_blank">AX-Chain</a>
                     <!-- <a :href="statusPageURL">Status</a> -->
                     <!-- <router-link to="/resources">Resources</router-link> -->
                 </div>

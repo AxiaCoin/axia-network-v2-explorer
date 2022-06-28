@@ -50,7 +50,7 @@
             </div>
         </article>
         <article class="meta_row">
-            <p class="meta_label">SwapChain Portfolio</p>
+            <p class="meta_label">Swap-Chain Portfolio</p>
             <div class="meta_value">
                 <BalanceTable :assets="assets" />
             </div>

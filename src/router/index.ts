@@ -92,12 +92,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on CoreChain, SwapChain, and AXChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on CoreChain, SwapChain, and AXChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },
@@ -116,12 +116,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on CoreChain, SwapChain, and AXChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on CoreChain, SwapChain, and AXChain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },

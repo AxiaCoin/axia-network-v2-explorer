@@ -18,7 +18,7 @@ ${colors.green('.Env configs are:')}
     Magellan url: ${colors.magenta(process.env.VUE_APP_MAGELLAN_URL)}
     Axia GO url: ${colors.magenta(process.env.VUE_APP_AXIA_GO_URL)}
     Testnet url: ${colors.magenta(process.env.VUE_APP_AXIA_JS_IP)}
-    AXChain url: ${colors.magenta(process.env.VUE_APP_AXCHAIN_EXPLORER_URL)}
+    AX-Chain url: ${colors.magenta(process.env.VUE_APP_AXCHAIN_EXPLORER_URL)}
 
     HTTP PORT: ${colors.magenta(process.env.VUE_APP_HTTP_PORT)}
 `)

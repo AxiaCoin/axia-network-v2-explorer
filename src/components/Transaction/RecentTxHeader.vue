@@ -5,8 +5,8 @@
 
             <v-alert class="testnet_alert" text type="info" rounded="0">
                 <p class="description">
-                    Notice: This explorer only indexes the SwapChain and
-                    CoreChain. To view AXChain transactions (EVM chain), click
+                    Notice: This explorer only indexes the Swap-Chain and
+                    Core-Chain. To view AX-Chain transactions (EVM chain), click
                     <a class="bold c_chain_link" :href="axChainURL">here</a>.
                 </p>
             </v-alert>
@@ -25,9 +25,9 @@
                         >
                     </template>
                     <span
-                        >The CoreChain is the metadata blockchain on Axia,
+                        >The Core-Chain is the metadata blockchain on Axia,
                         managing validators and custom allychains. Validators stake
-                        AXC on the CoreChain to secure the network.</span
+                        AXC on the Core-Chain to secure the network.</span
                     >
                 </v-tooltip>
                 <v-tooltip>
@@ -42,7 +42,7 @@
                         >
                     </template>
                     <span
-                        >The SwapChain is the default asset blockchain on Axia
+                        >The Swap-Chain is the default asset blockchain on Axia
                         enabling the creation and instant exchange of assets.
                         This blockchain is for transfers that benefit from
                         high-throughput and instant finality. Think Swap for
@@ -61,7 +61,7 @@
                         >
                     </template>
                     <span
-                        >The AXChain is the default smart contract blockchain
+                        >The AX-Chain is the default smart contract blockchain
                         on Axia and enables the creation of any
                         Ethereum-compatible applications and assets with lower
                         fees and faster transactions.</span

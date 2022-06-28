@@ -5,8 +5,8 @@
                 <h2>Assets</h2>
                 <v-alert class="testnet_alert" text type="info" rounded="0">
                     <p class="description">
-                        Notice: This explorer only indexes the SwapChain and
-                        CoreChain. To view AXChain transactions (EVM chain),
+                        Notice: This explorer only indexes the Swap-Chain and
+                        Core-Chain. To view AX-Chain transactions (EVM chain),
                         click
                         <a class="bold c_chain_link" :href="axChainURL">here</a
                         >.

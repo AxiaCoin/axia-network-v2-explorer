@@ -46,7 +46,7 @@
                     <!-- <v-list-item v-if="isMainnet" :href="statsURL"
                         >Stats</v-list-item
                     > -->
-                    <v-list-item :href="axChainURL">AXChain</v-list-item>
+                    <v-list-item :href="axChainURL">AX-Chain</v-list-item>
                     <!-- <v-list-item :href="statusPageURL">Status</v-list-item> -->
                     <v-list-item to="/resources">Resources</v-list-item>
                 </template>
