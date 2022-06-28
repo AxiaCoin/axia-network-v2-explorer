@@ -5,7 +5,7 @@
         </div>
         <div class="staking_info">
             <ValidatorStats />
-            <div class="peerinfo_cont">
+            <!-- <div class="peerinfo_cont">
                 <div v-show="loading" class="loading_cont">
                     <v-progress-circular
                         :size="16"
@@ -20,7 +20,7 @@
                     :color-scale="stakesColorScale"
                     :metric="'stakePercent'"
                 />
-            </div>
+            </div> 
             <div class="peerinfo_cont">
                 <div v-show="loading" class="loading_cont">
                     <v-progress-circular
@@ -36,7 +36,7 @@
                     :color-scale="versionsColorScale"
                     :metric="'nodeCount'"
                 />
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

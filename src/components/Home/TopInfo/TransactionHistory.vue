@@ -3,7 +3,9 @@
         <div class="header">
             <h2 class="top_info_heading">
                 Transaction Volume
-                <TooltipHeading content="for Core-Chains and Swap-Chains only" />
+                <TooltipHeading
+                    content="for Core-Chains and Swap-Chains only"
+                />
             </h2>
         </div>
         <div class="history_cont">
