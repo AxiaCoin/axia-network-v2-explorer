@@ -9,7 +9,7 @@
         :style="{ backgroundColor: 'white' }"
     >
         <div class="top">
-            <div class="logo">
+            <!-- <div class="logo">
                 <a :href="axChainURL">
                     <img
                         style="height: 30px"
@@ -21,7 +21,7 @@
                         <span class="hide">Axia Explorer</span>
                     </h1>
                 </a>
-            </div>
+            </div> -->
             <v-spacer class="spacer_mid"></v-spacer>
             <div class="links">
                 <div class="routes">
@@ -31,7 +31,7 @@
                     <!-- <a :href="tokensURL">Tokens</a> -->
                     <router-link to="/blockchains">Blockchains</router-link>
                     <a v-if="isMainnet" :href="statsURL">Stats</a>
-                    <a :href="axChainURL">AXChain</a>
+                    <a :href="axChainURL" target="_blank">AXChain</a>
                     <!-- <a :href="statusPageURL">Status</a> -->
                     <!-- <router-link to="/resources">Resources</router-link> -->
                 </div>
@@ -39,7 +39,6 @@
             <v-spacer class="spacer_mid"></v-spacer>
             <NetworkMenu />
         </div>
-        <hr />
         <div class="bottom">
             <div v-if="pricesLoaded" class="prices">
                 <div class="price_pair">
