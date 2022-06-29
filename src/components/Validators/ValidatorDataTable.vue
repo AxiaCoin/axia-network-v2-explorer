@@ -39,10 +39,10 @@
                 </div>
             </template>
             <template #item.stakeAmount="{ item }">
-                {{ item.totalStakeAmount | AXC }} {{ nativeSymbol }}
+                {{ item.totalStakeAmount | AXC }} {{ 'AXC' }}
             </template>
             <template #item.potentialReward="{ item }"
-                >{{ item.potentialReward | AXC }} {{ nativeSymbol }}</template
+                >{{ item.potentialReward | AXC }} {{ 'AXC' }}</template
             >
             <template #item.startTime="{ item }">
                 <div class="text-right date no-pad-right">

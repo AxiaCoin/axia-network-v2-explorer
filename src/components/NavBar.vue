@@ -40,7 +40,7 @@
             <NetworkMenu />
         </div>
         <div class="bottom">
-            <div v-if="pricesLoaded" class="prices">
+            <div class="prices">
                 <div class="price_pair">
                     <span class="label">
                         <img src="../../axc.png" class="currency_logo" />
@@ -53,14 +53,14 @@
                     <span class="value">${{ marketCapUSD }}</span>
                 </div> -->
             </div>
-            <v-progress-circular
+            <!-- <v-progress-circular
                 v-else
                 key="1"
                 :size="16"
                 :width="2"
                 color="#E84970"
                 indeterminate
-            />
+            /> -->
             <div>
                 <SearchBar
                     class="search_bar"

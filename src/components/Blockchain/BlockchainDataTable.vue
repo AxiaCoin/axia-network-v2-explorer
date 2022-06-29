@@ -34,10 +34,10 @@
             </template>
             <template #item.vmID="{ item }">
                 <div>
-                    <a :href="vmDocumentation(item.vmID)">
-                        <p>{{ vmFullName(item.vmID) }}</p>
-                        <p class="vm_abbrev">{{ vm(item.vmID) }}</p>
-                    </a>
+                    <!-- <a :href="vmDocumentation(item.vmID)"> -->
+                    <p>{{ vmFullName(item.vmID) }}</p>
+                    <p class="vm_abbrev">{{ vm(item.vmID) }}</p>
+                    <!-- </a> -->
                 </div>
             </template>
             <template #item.allychainID="{ item }">
