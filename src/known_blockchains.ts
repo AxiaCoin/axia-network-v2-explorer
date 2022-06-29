@@ -26,7 +26,7 @@ export const Core: ChainMap = {
         ? process.env.VUE_APP_CORECHAINID
         : process.env.VUE_APP_TEST_CORECHAINID) as string,
     name: 'Core-Chain',
-    fullname: 'Platform',
+    fullname: 'Core',
     code: 'Core',
     color: '#F19100',
     darkColor: '#FFF8EE',
@@ -46,7 +46,7 @@ export const Swap: ChainMap = {
         ? process.env.VUE_APP_SWAPCHAINID
         : process.env.VUE_APP_TEST_SWAPCHAINID) as string,
     name: 'Swap-Chain',
-    fullname: 'Exchange',
+    fullname: 'Swap',
     code: 'Swap',
     color: '#005FED',
     darkColor: '#EFF7FF',
@@ -64,7 +64,7 @@ export const AX: ChainMap = {
         ? process.env.VUE_APP_AXCHAINID
         : process.env.VUE_APP_TEST_AXCHAINID) as string,
     name: 'AX-Chain',
-    fullname: 'Contract',
+    fullname: 'AX',
     code: 'AX',
     color: '#088223',
     darkColor: '#F6FFF6',

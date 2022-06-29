@@ -71,7 +71,7 @@
                 />
             </div>
         </article>
-        <article class="meta">
+        <!-- <article class="meta">
             <p class="label">Annual Staking Reward</p>
             <div>
                 <p v-if="allychainsLoaded" class="meta_val">
@@ -86,7 +86,7 @@
                     indeterminate
                 />
             </div>
-        </article>
+        </article> -->
     </div>
 </template>
 
