@@ -44,7 +44,7 @@ const store = new Vuex.Store({
     },
     state: {
         assets: {},
-        assetsLoaded: false,
+        assetsLoaded: true,
         assetAggregatesLoaded: false,
         known_addresses: AddressDict,
         chainId: 'Swap',
