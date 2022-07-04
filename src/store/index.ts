@@ -45,7 +45,7 @@ const store = new Vuex.Store({
     state: {
         assets: {},
         assetsLoaded: true,
-        assetAggregatesLoaded: false,
+        assetAggregatesLoaded: true,
         known_addresses: AddressDict,
         chainId: 'Swap',
         recentTxRes: {},
@@ -54,9 +54,9 @@ const store = new Vuex.Store({
         // it holds a subset of the assets and checks if they have aggregation data
         // temporarily responsible for triggering assetAggregatesLoaded
         collisionMap: {},
-        pricesLoaded: false,
+        pricesLoaded: true,
         prices: null,
-        abisLoaded: false,
+        abisLoaded: true,
         abis: null,
         abiDecoder: null,
     } as IRootState,
