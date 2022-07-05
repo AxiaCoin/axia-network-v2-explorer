@@ -168,7 +168,7 @@ export default class ValidatorDataTable extends Vue {
                 value: 'rewardOwner.addresses[0]',
                 width: 420,
             },
-            { text: 'Delegated Stake', value: 'stakeAmount', width: 175 },
+            { text: 'Nominated Stake', value: 'stakeAmount', width: 175 },
             { text: 'Potential Reward', value: 'potentialReward', width: 150 },
             { text: 'Start', value: 'startTime', align: 'end', width: 80 },
             {
@@ -179,7 +179,7 @@ export default class ValidatorDataTable extends Vue {
             },
             { text: 'End', value: 'endTime', width: 80 },
             { text: 'Duration', value: 'duration', width: 85 },
-            { text: 'Delegate Node', value: 'nodeID', width: 420 },
+            { text: 'Nominate Node', value: 'nodeID', width: 420 },
         ]
     }
 

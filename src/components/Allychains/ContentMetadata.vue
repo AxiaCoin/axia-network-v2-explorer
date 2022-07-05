@@ -31,9 +31,9 @@
                 <div>
                     <div>
                         <p class="label">
-                            Delegations
+                            Nominations
                             <TooltipMeta
-                                content="Total number of stake delegations to validators"
+                                content="Total number of stake nominations to validators"
                             />
                         </p>
                         <p class="meta_val">

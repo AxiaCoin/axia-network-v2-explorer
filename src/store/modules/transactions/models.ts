@@ -65,7 +65,7 @@ export interface TransactionResponse {
     0.  KEYPAIR controls UTXOs
     1.  KEYPAIR issues ADD_VALIDATOR/ADD_NOMINATOR TX
         - validator = adds node to validator (nodeId, start, end, stakeAmount, addressID (rewards destination), fee they charge nominators)
-        - nominator = delegates to validator
+        - nominator = nominates to validator
         - once the tx is put into block and accepted:
             - Input UTXOs
                 - UTXOs for staking transfer custody to the protocol (they disappear)
@@ -275,7 +275,7 @@ export interface OutputResponse {
     stake: boolean // if true, UTXO was in the staking output set (ins/outs/staking)
     stakeableout: boolean // if true, UTXO is/was subject to vesting. connected to stakeLocktime
     stakeLocktime: number // if before stakeLockTime, UTXO is vesting (locked), and can only used as input UTXO to stake in addValidator/addNominator tx
-    rewardUtxo: boolean // if true, this UTXO is the validation/delegation reward
+    rewardUtxo: boolean // if true, this UTXO is the validation/nomination reward
 
     // RELEVANT TO SWAPCHAIN
     genesisutxo: boolean

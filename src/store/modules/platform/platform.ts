@@ -108,7 +108,7 @@ const platform_module: Module<PlatformState, IRootState> = {
             const res = await getAddressCounts()
             const updates = state.blockchains.map((chain: Blockchain) => {
                 const toUpdate = chain
-                const addressCount = res.find(
+                const addressCount = res?.find(
                     (addressCount: AddressCount) =>
                         addressCount.chainID === toUpdate.id
                 )
@@ -124,7 +124,7 @@ const platform_module: Module<PlatformState, IRootState> = {
             const res = await getTxCounts()
             const updates = state.blockchains.map((chain: Blockchain) => {
                 const toUpdate = chain
-                const txCount = res.find(
+                const txCount = res?.find(
                     (txCount: TxCount) => txCount.chainID === toUpdate.id
                 )
                 if (txCount) {

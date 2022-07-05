@@ -80,7 +80,7 @@ export const txTypeMap = new Map<string, TxType>([
         'add_nominator',
         {
             long: 'Add Nominator',
-            short: 'Delegate',
+            short: 'Nominate',
         },
     ],
     [

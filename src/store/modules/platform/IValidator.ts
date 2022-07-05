@@ -8,7 +8,7 @@ export interface IValidator {
     stakeAmount?: number
     uptime?: number // local uptime (percentrage)
     connected?: boolean
-    delegationFee?: number
+    nominationFee?: number
     nominators?: INominator[] | null
     // Other Networks only
     weight?: number // analogous to stakeAmount. arbitrarily set by the control key holder
@@ -42,7 +42,7 @@ export interface IPendingValidator {
 
     stakeAmount: number
     connected?: boolean
-    delegationFee?: number
+    nominationFee?: number
     nominators: IPendingNominator | null
 }
 
@@ -67,7 +67,7 @@ export interface IValidatorData {
     stakeAmount?: string
     uptime?: string
     connected?: boolean
-    delegationFee?: string
+    nominationFee?: string
     nominators?: INominatorData[] | null
     // Other Networks Only
     weight?: string
@@ -95,7 +95,7 @@ export interface IPendingValidatorData {
 
     stakeAmount: string
     connected?: boolean
-    delegationFee?: string
+    nominationFee?: string
     nominators?: null // always null (even if there is a pendingNominator). API to be redesigned
 }
 

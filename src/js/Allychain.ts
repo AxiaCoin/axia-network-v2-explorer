@@ -142,7 +142,7 @@ export default class Allychain {
                 validator.stakeAmount = parseInt(v.stakeAmount as string)
                 validator.uptime = parseFloat(v.uptime as string) * 100 // percentage
                 validator.connected = v.connected
-                validator.delegationFee = parseInt(v.delegationFee as string)
+                validator.nominationFee = parseInt(v.nominationFee as string)
                 validator.nominators = this.setNominators(v.nominators!) as
                     | INominator[]
                     | null
@@ -208,8 +208,8 @@ export default class Allychain {
                 // Pending Validators - set optional props
                 if ({}.hasOwnProperty.call(pv, 'connected')) {
                     pendingValidator.connected = pv.connected as boolean
-                    pendingValidator.delegationFee = parseInt(
-                        pv.delegationFee as string
+                    pendingValidator.nominationFee = parseInt(
+                        pv.nominationFee as string
                     )
                 }
 
@@ -242,7 +242,7 @@ export default class Allychain {
     }
 
     /**
-     *  validated + delegated stake
+     *  validated + nominated stake
      */
     private calculateTotalStakeAmount(
         nominators: INominator[] | null,
@@ -251,9 +251,9 @@ export default class Allychain {
         let totalStakeAmount = stakeAmount
 
         if (nominators) {
-            let delegatedStakeAmount = 0
-            nominators.forEach((d) => (delegatedStakeAmount += d.stakeAmount))
-            totalStakeAmount += delegatedStakeAmount
+            let nominatedStakeAmount = 0
+            nominators.forEach((d) => (nominatedStakeAmount += d.stakeAmount))
+            totalStakeAmount += nominatedStakeAmount
         }
 
         return totalStakeAmount

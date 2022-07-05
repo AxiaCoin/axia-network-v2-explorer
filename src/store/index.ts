@@ -89,7 +89,7 @@ const store = new Vuex.Store({
          */
         async getAssets(store) {
             const assetsData = await getCacheAssets()
-            assetsData.forEach((assetData: any) => {
+            assetsData?.forEach((assetData: any) => {
                 store.commit('addAsset', new Asset(assetData, false))
             })
             store.commit('finishLoading')
@@ -97,7 +97,7 @@ const store = new Vuex.Store({
 
         async getAssetAggregates(store) {
             const assetAggregates: IAssetAggregate[] = await getAssetAggregates()
-            assetAggregates.forEach((agg: IAssetAggregate) => {
+            assetAggregates?.forEach((agg: IAssetAggregate) => {
                 // only request aggregates for assets that are in the Magellan assets map
                 if (store.state.assets[agg.asset]) {
                     store.commit('updateAssetWithAggregationData', agg)

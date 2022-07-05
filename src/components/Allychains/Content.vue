@@ -17,7 +17,7 @@
                     <v-tab href="#pending-validators">Pending Validators</v-tab>
                     <v-tab href="#blockchains">Blockchains</v-tab>
                     <v-tab href="#control-keys">Control Keys</v-tab>
-                    <v-tab href="#delegations">Delegations</v-tab>
+                    <v-tab href="#nominations">Nominations</v-tab>
                     <v-tab-item class="tab_content" value="validators">
                         <template v-if="allychain.validators.length === 0">
                             <p class="null">
@@ -82,19 +82,19 @@
                             />
                         </template>
                     </v-tab-item>
-                    <v-tab-item class="tab_content" value="delegations">
+                    <v-tab-item class="tab_content" value="nominations">
                         <template v-if="allychain.nominators.length === 0">
                             <p class="null">
-                                There are no delegated stakes for this
+                                There are no nominated stakes for this
                                 allychain.
                             </p>
                         </template>
                         <template v-else>
-                            <DelegationDataTable
+                            <NominationDataTable
                                 :validators="allychain.nominators"
                                 :allychain-i-d="allychainID"
                                 :allychain="allychain"
-                                :title="'Delegations'"
+                                :title="'Nominations'"
                                 class="table_margin"
                             />
                         </template>
@@ -113,7 +113,7 @@ import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 import ContentMetadata from '@/components/Allychains/ContentMetadata.vue'
 import ValidatorDataTable from '@/components/Validators/ValidatorDataTable.vue'
 import BlockchainDataTable from '@/components/Blockchain/BlockchainDataTable.vue'
-import DelegationDataTable from '@/components/Validators/DelegationDataTable.vue'
+import NominationDataTable from '@/components/Validators/NominationDataTable.vue'
 import ControlKeyTable from '@/components/Validators/ControlKeyTable.vue'
 
 @Component({
@@ -122,7 +122,7 @@ import ControlKeyTable from '@/components/Validators/ControlKeyTable.vue'
         ValidatorDataTable,
         BlockchainDataTable,
         ControlKeyTable,
-        DelegationDataTable,
+        NominationDataTable,
     },
 })
 export default class Content extends Vue {

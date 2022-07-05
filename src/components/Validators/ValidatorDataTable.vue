@@ -122,15 +122,15 @@
                     >{{ item.rewardOwner.addresses?.[0] }}
                 </router-link>
             </template>
-            <template #item.delegationFee="{ item }">
-                <div>{{ item.delegationFee }}%</div>
+            <template #item.nominationFee="{ item }">
+                <div>{{ item.nominationFee }}%</div>
             </template>
             <template #item.uptime="{ item }">
                 <div>{{ item.uptime?.toFixed(2) }}%</div>
             </template>
             <template #item.nominators="{ item }">
-                <div v-show="item.nominators && item.nominators.length > 0">
-                    {{ item.nominators.length }}
+                <div v-show="item.nominators && item.nominators?.length > 0">
+                    {{ item.nominators?.length }}
                 </div>
             </template>
             <!-- NOMINATOR EXPANDED ITEM -->
@@ -273,7 +273,7 @@ import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 import { IValidator } from '@/store/modules/platform/IValidator'
 import ContentMetadata from '@/components/Allychains/ContentMetadata.vue'
 import { scaleLinear } from 'd3-scale'
-import { AXC_ID } from '@/known_assets'
+// import { AXC_ID } from '@/known_assets'
 
 @Component({
     components: {
@@ -322,12 +322,12 @@ export default class ValidatorDataTable extends Vue {
                 value: 'rewardOwner.addresses[0]',
                 width: 420,
             },
-            { text: 'Delegation Fee', value: 'delegationFee', width: 125 },
+            { text: 'Nomination Fee', value: 'nominationFee', width: 125 },
             { text: 'Connected', value: 'connected', width: 125 },
             { text: 'Local Uptime', value: 'uptime', width: 125 },
 
-            // { text: "Nominators", value: "nominators", width: 100 },
-            // { text: "", value: "expand", align: "end" },
+            { text: 'Nominators', value: 'nominators', width: 100 },
+            { text: '', value: 'expand', align: 'end' },
         ]
     }
 
@@ -346,7 +346,9 @@ export default class ValidatorDataTable extends Vue {
     }
 
     get nativeSymbol() {
-        return this.$store.state.assets[AXC_ID].symbol
+        // TODO: Revert when cacheAssets is avaialble from Magellan
+        // return this.$store.state.assets[AXC_ID].symbol
+        return 'AXC'
     }
 
     created() {
