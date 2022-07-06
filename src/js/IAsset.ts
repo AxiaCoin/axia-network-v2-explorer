@@ -1,6 +1,6 @@
 import { IAggregate } from '@/services/aggregates/'
 
-export interface IAssetDataOrtelius {
+export interface IAssetDataMagellan {
     id: string
     alias: string
     chainID: string
@@ -14,7 +14,7 @@ export interface IAssetDataOrtelius {
     aggregates: IAggregate | null
 }
 
-export interface IAssetDataAvalancheGo {
+export interface IAssetDataAxiaGo {
     assetID: Uint8Array
     denomination: number
     name: string

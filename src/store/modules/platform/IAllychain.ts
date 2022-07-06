@@ -1,4 +1,4 @@
-export interface ISubnetData {
+export interface IAllychainData {
     id: string
     controlKeys: string[]
     threshold: string

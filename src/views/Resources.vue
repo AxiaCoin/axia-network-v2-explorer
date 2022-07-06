@@ -2,19 +2,19 @@
     <div class="resources">
         <div class="card">
             <div class="header">
-                <h2>Avalanche Directory</h2>
+                <h2>Axia Directory</h2>
             </div>
             <hr />
             <div class="resource_container">
                 <div class="resource">
                     <img src="@/assets/resources_view/Wallet.png" />
-                    <h3>Wallet &amp; Faucet</h3>
+                    <h3>Axwallet &amp; Faucet</h3>
                     <p>Used to receive and spend cryptoassets</p>
                     <div class="buts">
-                        <a href="https://wallet.avax.network" target="_blank"
-                            >Wallet</a
+                        <a href="https://wallet.axc.network" target="_blank"
+                            >Axwallet</a
                         >
-                        <a href="https://faucet.avax.network" target="_blank"
+                        <a href="https://faucet.axc.network" target="_blank"
                             >Faucet</a
                         >
                     </div>
@@ -24,10 +24,10 @@
                     <h3>Learning Resources</h3>
                     <p>Learn more about blockchain basics</p>
                     <div class="buts">
-                        <a href="https://docs.avax.network/" target="_blank"
+                        <a href="https://docs.axc.network/" target="_blank"
                             >Documentation</a
                         >
-                        <a href="https://github.com/ava-labs" target="_blank"
+                        <a href="https://github.com/AxiaCoin" target="_blank"
                             >Github</a
                         >
                     </div>

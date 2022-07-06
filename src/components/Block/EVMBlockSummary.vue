@@ -66,7 +66,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import CopyText from '@/components/misc/CopyText.vue'
-import { toAVAX } from '@/helper'
+import { toAXC } from '@/helper'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import EVMMetadata from '@/components/Block/EVMMetadata.vue'
 import EVMLogRow from '@/components/rows/EVMLogRow.vue'
@@ -83,7 +83,7 @@ import EVMTxDataTable from '@/components/Transaction/EVMTxDataTable.vue'
         EVMLogRow,
     },
     filters: {
-        toAVAX,
+        toAXC,
     },
 })
 export default class EVMTxSummary extends Vue {

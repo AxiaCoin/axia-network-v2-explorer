@@ -4,49 +4,52 @@
             <div class="powered_by">
                 <div class="header">
                     <img :src="img" />
-                    <h4>Avalanche Explorer</h4>
+                    <h4>Axia Explorer</h4>
                 </div>
-                <p class="avalanche_desc">
-                    Avalanche Explorer is an analytics tool that enables people
-                    to search the Avalanche blockchain for transactions,
-                    addresses, and other platform activities.
+                <p class="axia_desc">
+                    Axia Explorer is an analytics tool that enables people to
+                    search the Axia blockchain for transactions, addresses, and
+                    other platform activities.
                 </p>
-                <p class="avalanche_desc tos">
+                <!-- <p class="axia_desc tos">
                     By using this application you agree to the
                     <a
-                        href="/Avalanche (BVI) Inc. Explorer Terms of Use.pdf"
+                        href="/Axia (BVI) Inc. Explorer Terms of Use.pdf"
                         target="_blank"
                         >Terms of Use</a
                     >.
-                </p>
+                </p> -->
             </div>
             <div class="lists">
                 <div class="list">
                     <h4>Menu</h4>
-                    <a :href="cChainURL">Home</a>
-                    <router-link to="/subnets">Subnets</router-link>
+                    <!-- <a :href="axChainURL">Home</a> -->
+                    <router-link to="/allychains">Allychains</router-link>
                     <router-link to="/validators">Validators</router-link>
                     <router-link to="/assets">Assets</router-link>
                     <router-link to="/blockchains">Blockchains</router-link>
-                    <a :href="cChainURL">C-Chain</a>
-                    <a :href="statusPageURL">Status</a>
-                    <router-link to="/resources">Resources</router-link>
+                    <a :href="axChainURL">AX-Chain</a>
+                    <!-- <a :href="statusPageURL">Status</a> -->
+                    <!-- <router-link to="/resources">Resources</router-link> -->
                 </div>
-                <div class="list">
+                <!-- <div class="list">
                     <h4>Social</h4>
-                    <a href="https://twitter.com/avalancheavax" target="_blank">
+                    <a href="https://twitter.com/axiaaxc" target="_blank">
                         <fa :icon="['fab', 'twitter']"></fa>Twitter
                     </a>
-                    <a href="https://chat.avax.network" target="_blank">
+                    <a href="https://chat.axc.network" target="_blank">
                         <fa :icon="['fab', 'discord']"></fa>Discord
                     </a>
-                    <a href="https://reddit.com/r/avax" target="_blank">
+                    <a href="https://reddit.com/r/axc" target="_blank">
                         <fa :icon="['fab', 'reddit']"></fa>Reddit
                     </a>
-                    <a href="https://github.com/ava-labs/avalanche-explorer" target="_blank">
+                    <a
+                        href="https://github.com/AxiaCoin/axia-explorer"
+                        target="_blank"
+                    >
                         <fa :icon="['fab', 'github']"></fa>GitHub
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </v-footer>
@@ -56,27 +59,27 @@
 import { Vue, Component } from 'vue-property-decorator'
 import {
     DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
-    statusURL,
-    statusURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
+    // statusURL,
+    // statusURL_test,
 } from '@/store/modules/network/network'
 
 @Component({})
 export default class Footer extends Vue {
-    get cChainURL() {
+    get axChainURL() {
         return DEFAULT_NETWORK_ID === 1
-            ? cChainExplorerURL
-            : cChainExplorerURL_test
+            ? axChainExplorerURL
+            : axChainExplorerURL_test
     }
 
-    get statusPageURL() {
-        return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
-    }
+    // get statusPageURL() {
+    //     return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
+    // }
 
     get img() {
         const color = DEFAULT_NETWORK_ID === 1 ? `black` : `blue`
-        return `/img/ava_logo_${color}.png`
+        return `/img/axc_logo_${color}.png`
     }
 }
 </script>
@@ -147,7 +150,7 @@ $footer_color: $black;
     }
 }
 
-.avalanche_desc {
+.axia_desc {
     line-height: 1.5em;
 }
 

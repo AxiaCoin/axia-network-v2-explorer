@@ -47,8 +47,8 @@
                 <Tooltip content="The fee to process this transaction" />
             </p>
             <p class="meta_value">
-                {{ tx.txFee | toAVAX }}
-                <span class="unit">AVAX</span>
+                {{ tx.txFee | toAXC }}
+                <span class="unit">AXC</span>
             </p>
         </article>
         <article class="meta_row">
@@ -63,7 +63,7 @@
                 >
                     {{ chain }}
                 </span>
-                <div v-if="isPChain" style="margin-top: 10px">
+                <div v-if="isCoreChain" style="margin-top: 10px">
                     <div class="summary_label">Block</div>
                     <div>{{ tx.txBlockId }}</div>
                 </div>
@@ -103,11 +103,11 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import TransactionHistory from '@/components/Home/TopInfo/TransactionHistory.vue'
 import { getAssetType } from '@/services/assets'
-import { getTxChainType } from '@/known_blockchains'
+import { getTswapChainType } from '@/known_blockchains'
 import { getMappingForType } from '@/store/modules/transactions/maps'
-import { backgroundColor, stringToBig, toAVAX } from '@/helper'
+import { backgroundColor, stringToBig, toAXC } from '@/helper'
 import { Transaction, getTransactionOutputs } from '@/js/Transaction'
-import { P } from '@/known_blockchains'
+import { Core } from '@/known_blockchains'
 import {
     OutputValuesDict,
     OutValuesDenominated,
@@ -126,7 +126,7 @@ import Big from 'big.js'
 
     filters: {
         getType: getMappingForType,
-        toAVAX,
+        toAXC,
         getAssetType,
     },
 })
@@ -144,11 +144,11 @@ export default class Metadata extends Vue {
     }
 
     get chain(): string {
-        return getTxChainType(this.tx.chainID)!.name
+        return getTswapChainType(this.tx.chainID)!.name
     }
 
-    get isPChain() {
-        return this.tx.chainID === P.id ? true : false
+    get isCoreChain() {
+        return this.tx.chainID === Core.id ? true : false
     }
 
     get assets(): any {

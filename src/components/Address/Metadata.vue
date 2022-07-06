@@ -9,15 +9,15 @@
             </p>
         </article>
         <article class="meta_row">
-            <p class="meta_label">AVAX Balance</p>
+            <p class="meta_label">AXC Balance</p>
             <div class="meta_value symbol">
-                <div class="avax_balance_container">
+                <div class="axc_balance_container">
                     <div>
                         <v-tabs show-arrows>
                             <v-tab>Summary</v-tab>
                             <v-tab>Detail</v-tab>
                             <v-tab-item class="tab_content">
-                                <AVAXBalanceTableSummary
+                                <AXCBalanceTableSummary
                                     :p-unlocked="P_unlocked"
                                     :p-locked-stakeable="P_lockedStakeable"
                                     :p-locked-not-stakeable="
@@ -28,10 +28,10 @@
                                     :x-unlocked="X_unlocked"
                                     :x-locked="X_locked"
                                     :xc-unlocked="XC_unlocked"
-                                ></AVAXBalanceTableSummary>
+                                ></AXCBalanceTableSummary>
                             </v-tab-item>
                             <v-tab-item class="tab_content">
-                                <AVAXBalanceTableDetail
+                                <AXCBalanceTableDetail
                                     :p-unlocked="P_unlocked"
                                     :p-locked-stakeable="P_lockedStakeable"
                                     :p-locked-not-stakeable="
@@ -42,7 +42,7 @@
                                     :x-unlocked="X_unlocked"
                                     :x-locked="X_locked"
                                     :xc-unlocked="XC_unlocked"
-                                ></AVAXBalanceTableDetail>
+                                ></AXCBalanceTableDetail>
                             </v-tab-item>
                         </v-tabs>
                     </div>
@@ -50,7 +50,7 @@
             </div>
         </article>
         <article class="meta_row">
-            <p class="meta_label">X-Chain Portfolio</p>
+            <p class="meta_label">Swap-Chain Portfolio</p>
             <div class="meta_value">
                 <BalanceTable :assets="assets" />
             </div>
@@ -63,18 +63,18 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import CopyText from '@/components/misc/CopyText.vue'
 import BalanceTable from '@/components/Address/BalanceTable.vue'
-import AVAXBalanceTableSummary from '@/components/Address/AVAXBalanceTableSummary.vue'
-import AVAXBalanceTableDetail from '@/components/Address/AVAXBalanceTableDetail.vue'
+import AXCBalanceTableSummary from '@/components/Address/AXCBalanceTableSummary.vue'
+import AXCBalanceTableDetail from '@/components/Address/AXCBalanceTableDetail.vue'
 import { IAddress, IBalanceX } from '@/services/addresses/models'
 import Big from 'big.js'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 
 @Component({
     components: {
         CopyText,
         BalanceTable,
-        AVAXBalanceTableSummary,
-        AVAXBalanceTableDetail,
+        AXCBalanceTableSummary,
+        AXCBalanceTableDetail,
     },
 })
 export default class Metadata extends Vue {
@@ -84,15 +84,15 @@ export default class Metadata extends Vue {
     @Prop() assets!: IBalanceX[]
     @Prop() prefix!: string
 
-    get AVAX(): string {
-        return AVAX_ID
+    get AXC(): string {
+        return AXC_ID
     }
 
     get assetsMap(): any {
         return this.$store.state.assets
     }
 
-    // P-Chain AVAX balance
+    // CoreChain AXC balance
     get P_unlocked(): Big {
         return this.metaData.P_unlocked
     }
@@ -109,12 +109,12 @@ export default class Metadata extends Vue {
         return this.metaData.P_staked
     }
 
-    // X -> P shared memory
+    // Swap -> Core shared memory
     get XP_unlocked(): Big {
         return this.metaData.XP_unlocked
     }
 
-    // X-Chain AVAX balance
+    // SwapChain AXC balance
     get X_unlocked(): Big {
         return this.metaData.X_unlocked
     }
@@ -123,12 +123,12 @@ export default class Metadata extends Vue {
         return this.metaData.X_locked
     }
 
-    // X -> C shared memory
+    // Swap -> AX shared memory
     get XC_unlocked(): Big {
         return this.metaData.XC_unlocked
     }
 
-    // C-Chain AVAX balance
+    // AXChain AXC balance
     // @dev we do not support EVM balances here. only bech32, no 0x
 }
 </script>

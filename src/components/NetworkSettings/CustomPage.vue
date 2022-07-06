@@ -52,7 +52,7 @@ export default {
             name: 'My Custom Network',
             url: '',
             explorer_api: '',
-            chainId: 'X',
+            chainId: 'Swap',
             err: null,
             err_url: '',
             isAjax: false,
@@ -164,7 +164,7 @@ export default {
             // Clear values
             this.name = 'My Custom Network'
             this.url = ''
-            this.chainId = 'X'
+            this.chainId = 'Swap'
         },
     },
 }

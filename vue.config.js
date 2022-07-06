@@ -15,17 +15,17 @@ scssVars += `@import "@/_background.scss"; `
  */
 console.log(`
 ${colors.green('.Env configs are:')}
-    Ortelius url: ${colors.magenta(process.env.VUE_APP_ORTELIUS_URL)}
-    Avalanche GO url: ${colors.magenta(process.env.VUE_APP_AVALANCHE_GO_URL)}
-    Fuji url: ${colors.magenta(process.env.VUE_APP_AVALANCHE_JS_IP)}
-    C-Chain url: ${colors.magenta(process.env.VUE_APP_CCHAIN_EXPLORER_URL)}
+    Magellan url: ${colors.magenta(process.env.VUE_APP_MAGELLAN_URL)}
+    Axia GO url: ${colors.magenta(process.env.VUE_APP_AXIA_GO_URL)}
+    Testnet url: ${colors.magenta(process.env.VUE_APP_AXIA_JS_IP)}
+    AX-Chain url: ${colors.magenta(process.env.VUE_APP_AXCHAIN_EXPLORER_URL)}
 
     HTTP PORT: ${colors.magenta(process.env.VUE_APP_HTTP_PORT)}
 `)
 
 module.exports = {
     devServer: {
-        https: !process.env.USE_HTTP,
+        https: true,
         port: process.env.VUE_APP_HTTP_PORT,
     },
     chainWebpack: (config) => {

@@ -9,7 +9,7 @@ import {
     OutputTotal,
 } from '@/store/modules/transactions/models'
 import { stringToBig } from '@/helper'
-import { txChainTypeMap } from '@/known_blockchains'
+import { tswapChainTypeMap } from '@/known_blockchains'
 
 function getOutput(output: OutputResponse): Output {
     return {
@@ -20,7 +20,7 @@ function getOutput(output: OutputResponse): Output {
 }
 
 export function getTransactionChainType(chainID: string) {
-    return txChainTypeMap.get(chainID)
+    return tswapChainTypeMap.get(chainID)
 }
 
 export function getTransactionOutputs(outputs: Output[]) {

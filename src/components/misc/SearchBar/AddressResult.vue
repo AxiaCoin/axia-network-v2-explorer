@@ -8,8 +8,8 @@
             <p class="balance">
                 Balance
                 <span
-                    >{{ avaxBalance.toLocaleString(avaxDenomination) }}
-                    {{ avaxSymbol }}</span
+                    >{{ axcBalance.toLocaleString(axcDenomination) }}
+                    {{ axcSymbol }}</span
                 >
             </p>
         </div>
@@ -19,7 +19,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { stringToBig } from '@/helper'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 
 @Component({})
 export default class AddressResult extends Vue {
@@ -27,24 +27,24 @@ export default class AddressResult extends Vue {
 
     select() {
         // TODO: support for multiple chains. add a chain param
-        const url = `/address/X-${this.item.address}`
+        const url = `/address/Swap-${this.item.address}`
         this.$router.push(url)
         this.$emit('select')
     }
 
-    get avaxBalance() {
+    get axcBalance() {
         return stringToBig(
-            this.item.assets[AVAX_ID].balance,
-            this.avaxDenomination
+            this.item.assets[AXC_ID].balance,
+            this.axcDenomination
         )
     }
 
-    get avaxDenomination() {
-        return this.$store.state.assets[AVAX_ID].denomination
+    get axcDenomination() {
+        return this.$store.state.assets[AXC_ID].denomination
     }
 
-    get avaxSymbol() {
-        return this.$store.state.assets[AVAX_ID].symbol
+    get axcSymbol() {
+        return this.$store.state.assets[AXC_ID].symbol
     }
 
     get numTx() {

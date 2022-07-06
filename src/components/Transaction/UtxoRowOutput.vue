@@ -18,13 +18,13 @@
                 :threshold="utxo.threshold"
                 :addresses="utxo.addresses"
             />
-            <!-- P-CHAIN -->
+            <!-- CORECHAIN -->
             <Stake :is-stake="utxo.stake" />
             <Stakeable
                 :is-stakeableout="utxo.stakeableout"
                 :time="utxo.stakeLocktime"
             />
-            <!-- X-CHAIN -->
+            <!-- SWAPCHAIN -->
             <div v-if="utxo.genesisutxo === true">
                 <div>UTXO is from genesis</div>
             </div>
@@ -33,7 +33,7 @@
                 :asset-i-d="utxo.assetID"
                 :group-i-d="utxo.groupID"
             />
-            <!-- C-CHAIN -->
+            <!-- AXCHAIN -->
             <Block :block="utxo.block" :nonce="utxo.nonce" />
         </div>
         <div class="tx_link">
@@ -59,8 +59,8 @@ import Stakeable from '@/components/Transaction/UtxoStakeable.vue'
 import Block from '@/components/Transaction/UtxoBlock.vue'
 import NFTPayload from '@/components/Transaction/UtxoNFTPayload.vue'
 import Summary from '@/components/Transaction/UtxoSummary.vue'
-import { AVAX_ID } from '@/known_assets'
-import { P, X, C } from '@/known_blockchains'
+import { AXC_ID } from '@/known_assets'
+import { Core, Swap, AX } from '@/known_blockchains'
 import { backgroundColor } from '@/helper'
 
 @Component({
@@ -97,28 +97,28 @@ export default class UtxoRowOutput extends Vue {
     }
 
     get isMint() {
-        return this.txtype === 'create_asset' && this.utxo.assetID !== AVAX_ID
+        return this.txtype === 'create_asset' && this.utxo.assetID !== AXC_ID
             ? true
             : false
     }
 
-    // Exporting UTXO from P to Atomic DB
+    // Exporting UTXO from Core to Atomic DB
     get isPVMExport() {
-        return this.txtype === 'pvm_export' && this.utxo.chainID !== P.id
+        return this.txtype === 'pvm_export' && this.utxo.chainID !== Core.id
             ? true
             : false
     }
 
-    // Exporting UTXO from X to Atomic DB
+    // Exporting UTXO from Swap to Atomic DB
     get isExport() {
-        return this.txtype === 'export' && this.utxo.chainID !== X.id
+        return this.txtype === 'export' && this.utxo.chainID !== Swap.id
             ? true
             : false
     }
 
-    // Exporting UTXO from C to Atomic DB
+    // Exporting UTXO from AX to Atomic DB
     get isAtomicExport() {
-        return this.txtype === 'atomic_export_tx' && this.utxo.chainID !== C.id
+        return this.txtype === 'atomic_export_tx' && this.utxo.chainID !== AX.id
             ? true
             : false
     }

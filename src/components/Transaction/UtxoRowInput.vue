@@ -25,13 +25,13 @@
                 :threshold="utxo.output.threshold"
                 :addresses="utxo.output.addresses"
             />
-            <!-- P-CHAIN -->
+            <!-- CORECHAIN -->
             <Stake :is-stake="utxo.output.stake" />
             <Stakeable
                 :is-stakeableout="utxo.output.stakeableout"
                 :time="utxo.output.stakeLocktime"
             />
-            <!-- X-CHAIN -->
+            <!-- SWAPCHAIN -->
             <div v-if="utxo.output.genesisutxo === true">
                 <div>UTXO is from genesis</div>
             </div>
@@ -40,7 +40,7 @@
                 :asset-i-d="utxo.output.assetID"
                 :group-i-d="utxo.output.groupID"
             />
-            <!-- C-CHAIN -->
+            <!-- AXCHAIN -->
             <Block :block="utxo.output.block" :nonce="utxo.output.nonce" />
         </div>
     </div>
@@ -79,17 +79,17 @@ export default class UtxoRowInput extends Vue {
     @Prop() utxo!: any
     @Prop() txtype!: string
 
-    // Importing UTXO from Atomic DB to P
+    // Importing UTXO from Atomic DB to Core
     get isPVMImport() {
         return this.txtype === 'pvm_import' ? true : false
     }
 
-    // Importing UTXO from Atomic DB to X
+    // Importing UTXO from Atomic DB to Swap
     get isImport() {
         return this.txtype === 'import' ? true : false
     }
 
-    // Importing UTXO from Atomic DB to C
+    // Importing UTXO from Atomic DB to AX
     get isAtomicImport() {
         return this.txtype === 'atomic_import_tx' ? true : false
     }

@@ -39,10 +39,10 @@
                 </div>
             </template>
             <template #item.stakeAmount="{ item }">
-                {{ item.totalStakeAmount | AVAX }} {{ nativeSymbol }}
+                {{ item.totalStakeAmount | AXC }} {{ 'AXC' }}
             </template>
             <template #item.potentialReward="{ item }"
-                >{{ item.potentialReward | AVAX }} {{ nativeSymbol }}</template
+                >{{ item.potentialReward | AXC }} {{ 'AXC' }}</template
             >
             <template #item.startTime="{ item }">
                 <div class="text-right date no-pad-right">
@@ -122,45 +122,45 @@
                     >{{ item.rewardOwner.addresses?.[0] }}
                 </router-link>
             </template>
-            <template #item.delegationFee="{ item }">
-                <div>{{ item.delegationFee }}%</div>
+            <template #item.nominationFee="{ item }">
+                <div>{{ item.nominationFee }}%</div>
             </template>
             <template #item.uptime="{ item }">
                 <div>{{ item.uptime?.toFixed(2) }}%</div>
             </template>
-            <template #item.delegators="{ item }">
-                <div v-show="item.delegators && item.delegators.length > 0">
-                    {{ item.delegators.length }}
+            <template #item.nominators="{ item }">
+                <div v-show="item.nominators && item.nominators?.length > 0">
+                    {{ item.nominators?.length }}
                 </div>
             </template>
-            <!-- DELEGATOR EXPANDED ITEM -->
+            <!-- NOMINATOR EXPANDED ITEM -->
             <template #expanded-item="{ headers, item }">
                 <td :colspan="headers.length">
                     <tr
-                        v-for="delegator in item.delegators"
-                        :key="delegator.id"
+                        v-for="nominator in item.nominators"
+                        :key="nominator.id"
                     >
                         <td style="width: 24px"></td>
                         <td>
                             <div
-                                class="text-truncate delegator-label"
+                                class="text-truncate nominator-label"
                                 style="width: 100px"
                             >
-                                Delegator
+                                Nominator
                             </div>
                         </td>
                         <td>
                             <div style="width: 130px">
-                                {{ delegator.totalStakeAmount | AVAX }}
+                                {{ nominator.totalStakeAmount | AXC }}
                                 {{ nativeSymbol }}
                             </div>
                         </td>
                         <td style="width: 80px">
                             <div class="text-right date no-pad-right">
-                                {{ delegator.startTime.getTime() | date }}
+                                {{ nominator.startTime.getTime() | date }}
                             </div>
                             <div class="text-right time no-pad-right">
-                                {{ delegator.startTime.getTime() | time }}
+                                {{ nominator.startTime.getTime() | time }}
                             </div>
                         </td>
                         <td style="width: 125px">
@@ -173,14 +173,14 @@
                                         class="chartbar"
                                         :style="{
                                             left: `${scale(
-                                                delegator.startTime.getTime()
+                                                nominator.startTime.getTime()
                                             )}px`,
                                             width: `${
                                                 scale(
-                                                    delegator.endTime.getTime()
+                                                    nominator.endTime.getTime()
                                                 ) -
                                                 scale(
-                                                    delegator.startTime.getTime()
+                                                    nominator.startTime.getTime()
                                                 )
                                             }px`,
                                         }"
@@ -189,12 +189,12 @@
                                         class="chartbar_complete"
                                         :style="{
                                             left: `${scale(
-                                                delegator.startTime.getTime()
+                                                nominator.startTime.getTime()
                                             )}px`,
                                             width: `${
                                                 scale(currentTime) -
                                                 scale(
-                                                    delegator.startTime.getTime()
+                                                    nominator.startTime.getTime()
                                                 )
                                             }px`,
                                         }"
@@ -225,9 +225,9 @@
                                             left: `0px`,
                                             width: `${scaleRelative(
                                                 (currentTime -
-                                                    delegator.startTime.getTime()) /
-                                                    (delegator.endTime.getTime() -
-                                                        delegator.startTime.getTime())
+                                                    nominator.startTime.getTime()) /
+                                                    (nominator.endTime.getTime() -
+                                                        nominator.startTime.getTime())
                                             )}px`,
                                         }"
                                     ></div>
@@ -235,27 +235,27 @@
                                         class="percentage_text text-right"
                                         :style="{ left: `71px` }"
                                     >
-                                        {{ delegator.elapsed }} %
+                                        {{ nominator.elapsed }} %
                                     </div>
                                 </div>
                             </div>
                         </td>
                         <td style="width: 80px">
                             <div class="date">
-                                {{ delegator.endTime.getTime() | date }}
+                                {{ nominator.endTime.getTime() | date }}
                             </div>
                             <div class="time">
-                                {{ delegator.endTime.getTime() | time }}
+                                {{ nominator.endTime.getTime() | time }}
                             </div>
                         </td>
                         <td style="width: 85px">
                             {{
-                                (delegator.endTime - delegator.startTime)
+                                (nominator.endTime - nominator.startTime)
                                     | duration
                             }}
                         </td>
                         <td :colspan="headers.length">
-                            <div>{{ delegator.address }}</div>
+                            <div>{{ nominator.address }}</div>
                         </td>
                     </tr>
                 </td>
@@ -267,26 +267,26 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { toAVAX } from '@/helper'
-import Subnet from '@/js/Subnet'
-import { AVALANCHE_SUBNET_ID } from '@/store/modules/platform/platform'
+import { toAXC } from '@/helper'
+import Allychain from '@/js/Allychain'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 import { IValidator } from '@/store/modules/platform/IValidator'
-import ContentMetadata from '@/components/Subnets/ContentMetadata.vue'
+import ContentMetadata from '@/components/Allychains/ContentMetadata.vue'
 import { scaleLinear } from 'd3-scale'
-import { AVAX_ID } from '@/known_assets'
+// import { AXC_ID } from '@/known_assets'
 
 @Component({
     components: {
         ContentMetadata,
     },
     filters: {
-        AVAX(val: number) {
-            return parseFloat(toAVAX(val).toFixed(9)).toLocaleString()
+        AXC(val: number) {
+            return parseFloat(toAXC(val).toFixed(9)).toLocaleString()
         },
     },
 })
 export default class ValidatorDataTable extends Vue {
-    defaultSubnetID: string = AVALANCHE_SUBNET_ID
+    defaultAllychainID: string = AXIA_ALLYCHAIN_ID
     currentTime: number | null = null
     startTimes: number[] = []
     endTimes: number[] = []
@@ -298,8 +298,8 @@ export default class ValidatorDataTable extends Vue {
     search = ''
     filteredCount = 0
 
-    @Prop() subnetID!: string
-    @Prop() subnet!: Subnet
+    @Prop() allychainID!: string
+    @Prop() allychain!: Allychain
     @Prop() validators!: IValidator[]
     @Prop() title!: string
 
@@ -322,17 +322,19 @@ export default class ValidatorDataTable extends Vue {
                 value: 'rewardOwner.addresses[0]',
                 width: 420,
             },
-            { text: 'Delegation Fee', value: 'delegationFee', width: 125 },
+            { text: 'Nomination Fee', value: 'nominationFee', width: 125 },
             { text: 'Connected', value: 'connected', width: 125 },
             { text: 'Local Uptime', value: 'uptime', width: 125 },
 
-            // { text: "Delegators", value: "delegators", width: 100 },
-            // { text: "", value: "expand", align: "end" },
+            { text: 'Nominators', value: 'nominators', width: 100 },
+            { text: '', value: 'expand', align: 'end' },
         ]
     }
 
     get stakeOrWeight(): string {
-        return this.subnetID === this.defaultSubnetID ? 'stakeAmount' : 'weight'
+        return this.allychainID === this.defaultAllychainID
+            ? 'stakeAmount'
+            : 'weight'
     }
 
     get mode(): string {
@@ -344,7 +346,9 @@ export default class ValidatorDataTable extends Vue {
     }
 
     get nativeSymbol() {
-        return this.$store.state.assets[AVAX_ID].symbol
+        // TODO: Revert when cacheAssets is avaialble from Magellan
+        // return this.$store.state.assets[AXC_ID].symbol
+        return 'AXC'
     }
 
     created() {
@@ -356,7 +360,7 @@ export default class ValidatorDataTable extends Vue {
 
     minStartTime() {
         const startTimes: number[] = []
-        this.subnet.validators.forEach((v: IValidator) => {
+        this.allychain.validators.forEach((v: IValidator) => {
             startTimes.push(v.startTime.getTime())
         })
         return Math.min(...startTimes)
@@ -364,7 +368,7 @@ export default class ValidatorDataTable extends Vue {
 
     maxEndTime() {
         const endTimes: number[] = []
-        this.subnet.validators.forEach((v: IValidator) => {
+        this.allychain.validators.forEach((v: IValidator) => {
             endTimes.push(v.endTime.getTime())
         })
         return Math.max(...endTimes)
@@ -498,7 +502,7 @@ export default class ValidatorDataTable extends Vue {
     padding-top: 7px;
 }
 
-.delegator-label {
+.nominator-label {
     font-size: 0.75rem;
     font-weight: 700;
     color: rgba(0, 0, 0, 0.6);

@@ -1,7 +1,7 @@
 <template>
     <a class="network_row" :active="isSelected" :href="explorerFEUrl">
-        <img v-if="isSelected" :src="`img/ava_logo_${logoColor}.png`" />
-        <img v-else src="img/ava_logo_black.png" />
+        <img v-if="isSelected" :src="`img/axc_logo_${logoColor}.png`" />
+        <img v-else src="img/axc_logo_black.png" />
         <div class="name_col">
             <p class="name">{{ network.name }}</p>
             <p class="url">{{ endpoint }}</p>
@@ -27,6 +27,8 @@ export default class NetworkRow extends Vue {
     @Prop() network!: Network
 
     get endpoint(): string {
+        console.log('n ', this.network)
+        console.log('N ', Network)
         const net = this.network
         let portText = ''
         if (net.port) {

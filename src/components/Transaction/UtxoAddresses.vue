@@ -2,14 +2,14 @@
     <div>
         <div class="utxo_label">{{ type | fromOrTo }}</div>
         <div v-for="({ address, displayAddress }, i) in addresses" :key="i">
-            <!-- X/P (internal route) -->
+            <!-- Swap/Core (internal route) -->
             <router-link
                 v-if="isXP(displayAddress)"
                 :to="xpURL(address)"
                 class="address monospace compound_interest"
                 >{{ displayAddress }}</router-link
             >
-            <!-- C (external route) -->
+            <!-- AX (external route) -->
             <a
                 v-else
                 :href="`${cURL(address)}`"
@@ -25,8 +25,8 @@
 <script lang="ts">
 import { DisplayAddress } from '@/js/Transaction'
 import {
-    cChainExplorerURL,
-    cChainExplorerURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
     DEFAULT_NETWORK_ID,
 } from '@/store/modules/network/network'
 import 'reflect-metadata'
@@ -55,8 +55,8 @@ export default class UtxoAddresses extends Vue {
     cURL(id: string) {
         return `${
             DEFAULT_NETWORK_ID === 1
-                ? cChainExplorerURL
-                : cChainExplorerURL_test
+                ? axChainExplorerURL
+                : axChainExplorerURL_test
         }/address/${id}`
     }
 }

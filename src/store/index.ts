@@ -9,10 +9,10 @@ import Network from './modules/network/network'
 import Notifications from './modules/notifications/notifications'
 import Transactions from './modules/transactions/transactions'
 import Blocks from './modules/blocks/blocks'
-import { avm } from '@/avalanche'
+import { avm } from '@/axia'
 import {
-    IAssetDataOrtelius,
-    IAssetDataAvalancheGo,
+    IAssetDataMagellan,
+    IAssetDataAxiaGo,
     ICollisionMap,
 } from '@/js/IAsset'
 import {
@@ -23,10 +23,10 @@ import { ITransactionPayload } from '@/services/transactions'
 import { getTransaction } from '@/services/transactions'
 import { getAssetAggregates, IAssetAggregate } from '@/services/aggregates'
 import { parseTxs } from './modules/transactions/helpers'
-import { X } from '@/known_blockchains'
+import { Swap } from '@/known_blockchains'
 import { getCacheAssets } from '@/services/assets'
 import { getPrices, Price, PriceMap } from '@/services/price'
-import { AVAX_PRICE_ID, VS_CURRENCIES } from '@/known_prices'
+import { AXC_PRICE_ID, VS_CURRENCIES } from '@/known_prices'
 import { getABI } from '@/services/abi/abi.service'
 //@ts-ignore
 import abiDecoder from 'abi-decoder'
@@ -44,19 +44,19 @@ const store = new Vuex.Store({
     },
     state: {
         assets: {},
-        assetsLoaded: false,
-        assetAggregatesLoaded: false,
+        assetsLoaded: true,
+        assetAggregatesLoaded: true,
         known_addresses: AddressDict,
-        chainId: 'X',
+        chainId: 'Swap',
         recentTxRes: {},
         assetsSubsetForAggregations: {}, // TODO: remove eventually
         // this is a bandaid until the API precomputes aggregate data for assets
         // it holds a subset of the assets and checks if they have aggregation data
         // temporarily responsible for triggering assetAggregatesLoaded
         collisionMap: {},
-        pricesLoaded: false,
+        pricesLoaded: true,
         prices: null,
-        abisLoaded: false,
+        abisLoaded: true,
         abis: null,
         abiDecoder: null,
     } as IRootState,
@@ -89,7 +89,7 @@ const store = new Vuex.Store({
          */
         async getAssets(store) {
             const assetsData = await getCacheAssets()
-            assetsData.forEach((assetData: any) => {
+            assetsData?.forEach((assetData: any) => {
                 store.commit('addAsset', new Asset(assetData, false))
             })
             store.commit('finishLoading')
@@ -97,8 +97,8 @@ const store = new Vuex.Store({
 
         async getAssetAggregates(store) {
             const assetAggregates: IAssetAggregate[] = await getAssetAggregates()
-            assetAggregates.forEach((agg: IAssetAggregate) => {
-                // only request aggregates for assets that are in the Ortelius assets map
+            assetAggregates?.forEach((agg: IAssetAggregate) => {
+                // only request aggregates for assets that are in the Magellan assets map
                 if (store.state.assets[agg.asset]) {
                     store.commit('updateAssetWithAggregationData', agg)
                 }
@@ -116,12 +116,12 @@ const store = new Vuex.Store({
 
         // Adds an unknown asset id to the assets dictionary
         async addUnknownAsset({ commit }, assetId: string) {
-            const desc: IAssetDataAvalancheGo = await avm.getAssetDescription(
+            const desc: IAssetDataAxiaGo = await avm.getAssetDescription(
                 assetId
             )
-            const newAssetData: IAssetDataOrtelius = {
+            const newAssetData: IAssetDataMagellan = {
                 alias: '',
-                chainID: X.id,
+                chainID: Swap.id,
                 currentSupply: '0',
                 denomination: desc.denomination,
                 id: assetId,
@@ -152,10 +152,10 @@ const store = new Vuex.Store({
 
         async getPrice({ commit }) {
             const price: PriceMap = await getPrices({
-                ids: [AVAX_PRICE_ID],
+                ids: [AXC_PRICE_ID],
                 vs_currencies: [VS_CURRENCIES],
             })
-            commit('addPrices', price[AVAX_PRICE_ID])
+            commit('addPrices', price[AXC_PRICE_ID])
             commit('finishPricesLoading')
         },
 

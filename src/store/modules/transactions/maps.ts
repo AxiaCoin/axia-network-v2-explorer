@@ -7,7 +7,7 @@ export interface TxType {
 }
 
 /**
- * These types come from here @link https://github.com/ava-labs/ortelius/blob/ec567c97630383d1a4ef468cf1bcf35d5d1eb3d2/services/indexes/models/types.go#L56
+ * These types come from here @link https://github.com/AxiaCoin/magellan/blob/ec567c97630383d1a4ef468cf1bcf35d5d1eb3d2/services/indexes/models/types.go#L56
  */
 export const txTypeMap = new Map<string, TxType>([
     [
@@ -25,7 +25,7 @@ export const txTypeMap = new Map<string, TxType>([
         },
     ],
     /**
-     * @link https://docs.avax.network/build/references/avm-transaction-serialization#operations
+     * @link https://docs.axc.network/build/references/avm-transaction-serialization#operations
      */
     [
         'operation',
@@ -70,24 +70,24 @@ export const txTypeMap = new Map<string, TxType>([
         },
     ],
     [
-        'add_subnet_validator',
+        'add_allychain_validator',
         {
-            long: 'Add Subnet Validator',
-            short: 'Validate Subnet',
+            long: 'Add Allychain Validator',
+            short: 'Validate Allychain',
         },
     ],
     [
-        'add_delegator',
+        'add_nominator',
         {
-            long: 'Add Delegator',
-            short: 'Delegate',
+            long: 'Add Nominator',
+            short: 'Nominate',
         },
     ],
     [
-        'create_subnet',
+        'create_allychain',
         {
-            long: 'Create Subnet',
-            short: 'Create Subnet',
+            long: 'Create Allychain',
+            short: 'Create Allychain',
         },
     ],
     [
@@ -132,7 +132,7 @@ export function getMappingForType(type: string) {
 }
 
 /**
- * Info can be found here @link https://docs.avax.network/build/references/avm-transaction-serialization
+ * Info can be found here @link https://docs.axc.network/build/references/avm-transaction-serialization
  */
 const outputTypes = new Map([
     [6, OutputType.MINT],

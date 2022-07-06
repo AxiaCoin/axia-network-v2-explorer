@@ -8,12 +8,12 @@
             <p class="label">
                 Validators
                 <TooltipMeta
-                    content="Total number of nodes validating transactions on Avalanche"
+                    content="Total number of nodes validating transactions on Axia"
                     :color="'#2196f3'"
                 />
             </p>
             <div>
-                <p v-if="subnetsLoaded" class="meta_val">
+                <p v-if="allychainsLoaded" class="meta_val">
                     {{ totalValidatorsCount.toLocaleString() }}
                 </p>
                 <v-progress-circular
@@ -30,14 +30,14 @@
             <p class="label">
                 Total Staked
                 <TooltipMeta
-                    content="Total value of AVAX locked to secure Avalanche"
+                    content="Total value of AXC locked to secure Axia"
                     :color="'#2196f3'"
                 />
             </p>
             <div>
-                <p v-if="subnetsLoaded" class="meta_val">
+                <p v-if="allychainsLoaded" class="meta_val">
                     {{ totalStake }}
-                    <span class="unit">AVAX</span>
+                    <span class="unit">AXC</span>
                 </p>
                 <v-progress-circular
                     v-else
@@ -53,12 +53,12 @@
             <p class="label">
                 Staking Ratio
                 <TooltipMeta
-                    content="Percentage of AVAX locked to secure Avalanche out of total AVAX supply"
+                    content="Percentage of AXC locked to secure Axia out of total AXC supply"
                     :color="'#2196f3'"
                 />
             </p>
             <div>
-                <p v-if="subnetsLoaded" class="meta_val">
+                <p v-if="allychainsLoaded" class="meta_val">
                     {{ percentStaked }}%
                 </p>
                 <v-progress-circular
@@ -71,10 +71,10 @@
                 />
             </div>
         </article>
-        <article class="meta">
+        <!-- <article class="meta">
             <p class="label">Annual Staking Reward</p>
             <div>
-                <p v-if="subnetsLoaded" class="meta_val">
+                <p v-if="allychainsLoaded" class="meta_val">
                     {{ annualStakingRewardPercentage }}
                 </p>
                 <v-progress-circular
@@ -86,7 +86,7 @@
                     indeterminate
                 />
             </div>
-        </article>
+        </article> -->
     </div>
 </template>
 
@@ -103,8 +103,8 @@ import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
     },
 })
 export default class ValidatorStats extends Mixins(PlatformGettersMixin) {
-    get subnetsLoaded(): boolean {
-        return this.$store.state.Platform.subnetsLoaded
+    get allychainsLoaded(): boolean {
+        return this.$store.state.Platform.allychainsLoaded
     }
 
     get totalValidatorsCount() {

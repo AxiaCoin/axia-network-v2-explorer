@@ -21,33 +21,33 @@ export function isMainnetNetwork() {
     return DEFAULT_NETWORK_ID === 1
 }
 
-export const P: ChainMap = {
+export const Core: ChainMap = {
     id: (isMainnetNetwork()
-        ? process.env.VUE_APP_PCHAINID
-        : process.env.VUE_APP_TEST_PCHAINID) as string,
-    name: 'P-Chain',
-    fullname: 'Platform',
-    code: 'P',
+        ? process.env.VUE_APP_CORECHAINID
+        : process.env.VUE_APP_TEST_CORECHAINID) as string,
+    name: 'Core-Chain',
+    fullname: 'Core',
+    code: 'Core',
     color: '#F19100',
     darkColor: '#FFF8EE',
     txTypes: [
         ['add_validator', txTypeMap.get('add_validator')!],
-        ['add_subnet_validator', txTypeMap.get('add_subnet_validator')!],
-        ['add_delegator', txTypeMap.get('add_delegator')!],
-        ['create_subnet', txTypeMap.get('create_subnet')!],
+        ['add_allychain_validator', txTypeMap.get('add_allychain_validator')!],
+        ['add_nominator', txTypeMap.get('add_nominator')!],
+        ['create_allychain', txTypeMap.get('create_allychain')!],
         ['create_chain', txTypeMap.get('create_chain')!],
         ['pvm_export', txTypeMap.get('pvm_export')!],
         ['pvm_import', txTypeMap.get('pvm_import')!],
     ],
 }
 
-export const X: ChainMap = {
+export const Swap: ChainMap = {
     id: (isMainnetNetwork()
-        ? process.env.VUE_APP_XCHAINID
-        : process.env.VUE_APP_TEST_XCHAINID) as string,
-    name: 'X-Chain',
-    fullname: 'Exchange',
-    code: 'X',
+        ? process.env.VUE_APP_SWAPCHAINID
+        : process.env.VUE_APP_TEST_SWAPCHAINID) as string,
+    name: 'Swap-Chain',
+    fullname: 'Swap',
+    code: 'Swap',
     color: '#005FED',
     darkColor: '#EFF7FF',
     txTypes: [
@@ -59,13 +59,13 @@ export const X: ChainMap = {
     ],
 }
 
-export const C: ChainMap = {
+export const AX: ChainMap = {
     id: (isMainnetNetwork()
-        ? process.env.VUE_APP_CCHAINID
-        : process.env.VUE_APP_TEST_CCHAINID) as string,
-    name: 'C-Chain',
-    fullname: 'Contract',
-    code: 'C',
+        ? process.env.VUE_APP_AXCHAINID
+        : process.env.VUE_APP_TEST_AXCHAINID) as string,
+    name: 'AX-Chain',
+    fullname: 'AX',
+    code: 'AX',
     color: '#088223',
     darkColor: '#F6FFF6',
     txTypes: [
@@ -76,18 +76,18 @@ export const C: ChainMap = {
 
 const dict: BlockchainDict = {}
 
-dict[P.id] = P
-dict[X.id] = X
-dict[C.id] = C
+dict[Core.id] = Core
+dict[Swap.id] = Swap
+dict[AX.id] = AX
 
 export default dict
 
-export const txChainTypeMap = new Map<string, typeof C>([
-    [C.id, C],
-    [P.id, P],
-    [X.id, X],
+export const tswapChainTypeMap = new Map<string, typeof AX>([
+    [AX.id, AX],
+    [Core.id, Core],
+    [Swap.id, Swap],
 ])
 
-export function getTxChainType(type: string) {
-    return txChainTypeMap.get(type)
+export function getTswapChainType(type: string) {
+    return tswapChainTypeMap.get(type)
 }

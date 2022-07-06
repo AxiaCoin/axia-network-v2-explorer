@@ -11,13 +11,13 @@
         <!-- LEFT -->
         <div class="logo">
             <!-- Just hardcoding to mainnet explorer since this file isn't used -->
-            <a href="https://explorer.avax.network/">
+            <!-- <a href="https://explorer.axc.network/"> -->
                 <img
                     style="height: 31px"
                     src="@/assets/explorer_logo_black.png"
                 />
                 <h1>
-                    <span class="hide">Avalanche Explorer</span>
+                    <span class="hide">Axia Explorer</span>
                 </h1>
             </a>
         </div>
@@ -113,7 +113,7 @@ export default Vue.extend({
             clip: rect(1px, 1px, 1px, 1px);
         }
 
-        .subnet {
+        .allychain {
             font-size: 12px;
             color: $primary-color;
             padding-bottom: 7px;
@@ -167,7 +167,7 @@ export default Vue.extend({
         h1 {
             padding-left: 161px;
             height: 12px;
-            .subnet {
+            .allychain {
                 font-size: 12px;
                 color: $primary-color;
                 padding-top: 9px;

@@ -17,8 +17,8 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import {
-    cChainExplorerURL,
-    cChainExplorerURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
     DEFAULT_NETWORK_ID,
 } from '@/store/modules/network/network'
 
@@ -30,8 +30,8 @@ export default class UtxoBlock extends Vue {
     get cURL() {
         return `${
             DEFAULT_NETWORK_ID === 1
-                ? cChainExplorerURL
-                : cChainExplorerURL_test
+                ? axChainExplorerURL
+                : axChainExplorerURL_test
         }/blocks/${this.block}`
     }
 }

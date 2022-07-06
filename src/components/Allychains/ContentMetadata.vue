@@ -7,7 +7,7 @@
                         <p class="label">
                             Blockchains
                             <TooltipMeta
-                                content="Total number of blockchains created on this subnetwork"
+                                content="Total number of blockchains created on this allychainwork"
                             />
                         </p>
                         <p class="meta_val">
@@ -20,7 +20,7 @@
                         <p class="label">
                             Validators
                             <TooltipMeta
-                                content="Total number of nodes participating in the consensus protocol of this subnetwork"
+                                content="Total number of nodes participating in the consensus protocol of this allychainwork"
                             />
                         </p>
                         <p class="meta_val">
@@ -31,14 +31,14 @@
                 <div>
                     <div>
                         <p class="label">
-                            Delegations
+                            Nominations
                             <TooltipMeta
-                                content="Total number of stake delegations to validators"
+                                content="Total number of stake nominations to validators"
                             />
                         </p>
                         <p class="meta_val">
-                            <template v-if="totalDelegators">
-                                {{ totalDelegators.toLocaleString() }}
+                            <template v-if="totalNominators">
+                                {{ totalNominators.toLocaleString() }}
                             </template>
                             <template v-else>n/a</template>
                         </p>
@@ -49,7 +49,7 @@
                         <p class="label">
                             Control Keys
                             <TooltipMeta
-                                content="In order to add a validator to a subnet, threshold signatures from keys are needed"
+                                content="In order to add a validator to a allychain, threshold signatures from keys are needed"
                             />
                         </p>
                         <p class="meta_val">
@@ -73,7 +73,7 @@ import TooltipMeta from '../../components/misc/TooltipMeta.vue'
 export default class ContentMetadata extends Vue {
     @Prop() totalBlockchains!: number
     @Prop() totalValidators!: number
-    @Prop() totalDelegators!: number
+    @Prop() totalNominators!: number
     @Prop() totalControlKeys!: number
 }
 </script>

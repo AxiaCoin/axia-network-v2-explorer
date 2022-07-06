@@ -1,5 +1,5 @@
 {
-    "name": "dag-explorer",
+    "name": "axia-explorer",
     "version": "1.0.0",
     "private": true,
     "scripts": {
@@ -21,8 +21,8 @@
         "@fortawesome/free-regular-svg-icons": "5.13.0",
         "@fortawesome/free-solid-svg-icons": "5.13.0",
         "@fortawesome/vue-fontawesome": "0.1.9",
+        "@axia-systems/axiajs": "^3.0.0",
         "abi-decoder": "^2.4.0",
-        "avalanche": "3.2.5",
         "axios": "0.19.2",
         "bn.js": "5.1.1",
         "body-parser": "1.19.0",

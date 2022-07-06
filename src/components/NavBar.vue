@@ -6,11 +6,11 @@
         flat
         dense
         :height="140"
-        :style="{ backgroundColor: navColor }"
+        :style="{ backgroundColor: 'white' }"
     >
         <div class="top">
-            <div class="logo">
-                <a :href="cChainURL">
+            <!-- <div class="logo">
+                <a :href="axChainURL">
                     <img
                         style="height: 30px"
                         :src="
@@ -18,46 +18,49 @@
                         "
                     />
                     <h1>
-                        <span class="hide">Avalanche Explorer</span>
+                        <span class="hide">Axia Explorer</span>
                     </h1>
                 </a>
-            </div>
+            </div> -->
             <v-spacer class="spacer_mid"></v-spacer>
             <div class="links">
                 <div class="routes">
-                    <a :href="cChainURL">Home</a>
-                    <router-link to="/subnets">Subnets</router-link>
+                    <!-- <a :href="axChainURL">Home</a> -->
+                    <router-link to="/allychains">Allychains</router-link>
                     <router-link to="/validators">Validators</router-link>
-                    <a :href="tokensURL">Tokens</a>
+                    <!-- <a :href="tokensURL">Tokens</a> -->
                     <router-link to="/blockchains">Blockchains</router-link>
-                    <a v-if="isMainnet" :href="statsURL">Stats</a>
-                    <a :href="cChainURL">C-Chain</a>
-                    <a :href="statusPageURL">Status</a>
-                    <router-link to="/resources">Resources</router-link>
+                    <!-- <a v-if="isMainnet" :href="statsURL">Stats</a> -->
+                    <a :href="axChainURL" target="_blank">AX-Chain</a>
+                    <!-- <a :href="statusPageURL">Status</a> -->
+                    <!-- <router-link to="/resources">Resources</router-link> -->
                 </div>
             </div>
             <v-spacer class="spacer_mid"></v-spacer>
             <NetworkMenu />
         </div>
         <div class="bottom">
-            <div v-if="pricesLoaded" class="prices">
+            <div class="prices">
                 <div class="price_pair">
-                    <span class="label">AVAX</span>
-                    <span class="value">{{ priceUSD }}</span>
+                    <span class="label">
+                        <img src="../../axc.png" class="currency_logo" />
+                        AXC
+                    </span>
+                    <!-- <span class="value">{{ priceUSD }}</span> -->
                 </div>
                 <!-- <div class="price_pair">
                     <span class="label">Market Cap</span>
                     <span class="value">${{ marketCapUSD }}</span>
                 </div> -->
             </div>
-            <v-progress-circular
+            <!-- <v-progress-circular
                 v-else
                 key="1"
                 :size="16"
                 :width="2"
                 color="#E84970"
                 indeterminate
-            />
+            /> -->
             <div>
                 <SearchBar
                     class="search_bar"
@@ -76,10 +79,10 @@ import SearchBar from '@/components/misc/SearchBar/SearchBar'
 import NetworkMenu from './NetworkSettings/NetworkMenu.vue'
 import {
     DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
-    statusURL,
-    statusURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
+    // statusURL,
+    // statusURL_test,
 } from '@/store/modules/network/network'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
 import { getMarketCapUSD } from '@/store/modules/platform/platform.getters'
@@ -91,7 +94,7 @@ import { getMarketCapUSD } from '@/store/modules/platform/platform.getters'
     },
 })
 export default class Navbar extends Mixins(PlatformGettersMixin) {
-    currencies = ['USD', 'AVAX']
+    currencies = ['USD', 'AXC']
 
     get themeType() {
         return this.$vuetify.theme.dark ? 'dark' : 'light'
@@ -108,10 +111,10 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
     get logoColor() {
         return DEFAULT_NETWORK_ID === 1 ? 'black' : 'white'
     }
-    get cChainURL() {
+    get axChainURL() {
         return DEFAULT_NETWORK_ID === 1
-            ? cChainExplorerURL
-            : cChainExplorerURL_test
+            ? axChainExplorerURL
+            : axChainExplorerURL_test
     }
 
     get tokensURL() {
@@ -145,9 +148,9 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
         return getMarketCapUSD()
     }
 
-    get statusPageURL() {
-        return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
-    }
+    // get statusPageURL() {
+    //     return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
+    // }
 
     onsearch(val) {
         this.$router
@@ -171,6 +174,9 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
     flex-direction: column !important;
 }
 
+.currency_logo {
+    margin-bottom: -5px;
+}
 @if $VUE_APP_DEFAULT_NETWORKID == 5 {
     .navbar {
         border-bottom: none;
@@ -238,6 +244,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 
 .bottom {
     display: flex;
+    //  margin-top: 5%;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
@@ -258,13 +265,13 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 
         .label {
             font-size: 18px;
-            color: $primary-color-light !important;
+            color: #178fe1 !important;
             margin-right: 5px;
         }
 
         .value {
             font-weight: 500;
-            font-size: 26px;
+            font-size: 24px;
             line-height: 140%;
             color: $primary-color !important;
         }
@@ -274,6 +281,7 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 .search_bar {
     min-width: 400px;
     width: 100%;
+    border-radius: 20px;
 }
 
 .links {

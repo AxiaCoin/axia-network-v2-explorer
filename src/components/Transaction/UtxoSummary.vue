@@ -46,7 +46,7 @@ import { Asset } from '@/js/Asset'
 import { getOutputType } from '@/services/transactions'
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { getTxChainType } from '@/known_blockchains'
+import { getTswapChainType } from '@/known_blockchains'
 import { foregroundColor } from '@/helper'
 
 @Component({
@@ -84,7 +84,7 @@ export default class UtxoSummary extends Vue {
     }
 
     get chain(): string {
-        return getTxChainType(this.utxo.chainID)!.name
+        return getTswapChainType(this.utxo.chainID)!.name
     }
 
     get foreground(): string {

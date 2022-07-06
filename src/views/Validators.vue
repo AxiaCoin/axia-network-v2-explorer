@@ -32,12 +32,12 @@
                 </p>
                 <p style="text-align: right">
                     <Tooltip
-                        content="Amount of AVAX staked by this validator"
+                        content="Amount of AXC staked by this validator"
                     />Stake
                 </p>
                 <p v-if="$vuetify.breakpoint.smAndUp" style="text-align: right">
                     <Tooltip
-                        content="Percentage of AVAX concentrated up to this validator ranking"
+                        content="Percentage of AXC concentrated up to this validator ranking"
                     />Cumulative Stake
                 </p>
             </div>
@@ -79,7 +79,7 @@ import 'reflect-metadata'
 import { Mixins, Component } from 'vue-property-decorator'
 import ValidatorRow from '@/components/rows/ValidatorRow/ValidatorRow.vue'
 import ValidatorPaginationControls from '@/components/misc/ValidatorPaginationControls.vue'
-import { AVALANCHE_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import Metadata from '@/components/Validators/Metadata.vue'
 import StakingMetadata from '@/components/Validators/StakingMetadata.vue'
@@ -137,13 +137,13 @@ export default class Validators extends Mixins(PlatformGettersMixin) {
     }
 
     get validators() {
-        const defaultSubnet = this.$store.state.Platform.subnets[
-            AVALANCHE_SUBNET_ID
+        const defaultAllychain = this.$store.state.Platform.allychains[
+            AXIA_ALLYCHAIN_ID
         ]
-        if (defaultSubnet) {
+        if (defaultAllychain) {
             return this.toggle === 'active'
-                ? defaultSubnet.validators
-                : defaultSubnet.pendingValidators
+                ? defaultAllychain.validators
+                : defaultAllychain.pendingValidators
         }
         return []
     }
@@ -159,21 +159,21 @@ export default class Validators extends Mixins(PlatformGettersMixin) {
     }
 
     get pendingValidators() {
-        const defaultSubnet = this.$store.state.Platform.subnets[
-            AVALANCHE_SUBNET_ID
+        const defaultAllychain = this.$store.state.Platform.allychains[
+            AXIA_ALLYCHAIN_ID
         ]
-        if (defaultSubnet) {
-            const vals = defaultSubnet.pendingValidators
+        if (defaultAllychain) {
+            const vals = defaultAllychain.pendingValidators
             return vals
         }
         return []
     }
 
     get cumulativeStake() {
-        const defaultSubnet = this.$store.state.Platform.subnets[
-            AVALANCHE_SUBNET_ID
+        const defaultAllychain = this.$store.state.Platform.allychains[
+            AXIA_ALLYCHAIN_ID
         ]
-        if (defaultSubnet) {
+        if (defaultAllychain) {
             return this.toggle === 'active'
                 ? this.getCumulativeStake()
                 : this.getCumulativePendingStake()

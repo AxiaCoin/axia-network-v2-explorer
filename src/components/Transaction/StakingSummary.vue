@@ -26,30 +26,27 @@
                             Validator is rewarded
                             <span class="status"
                                 >{{
-                                    validatorRewardUTXO.amount | toAVAX
+                                    validatorRewardUTXO.amount | toAXC
                                 }}
-                                AVAX</span
+                                AXC</span
                             >
                         </p>
                     </template>
-                    <!-- Delegator TX -->
-                    <template v-if="isDelegatorTx">
+                    <!-- Nominator TX -->
+                    <template v-if="isNominatorTx">
                         <p>
-                            Delegator is rewarded
+                            Nominator is rewarded
                             <span class="status"
                                 >{{
-                                    delegatorRewardUTXO.amount | toAVAX
+                                    nominatorRewardUTXO.amount | toAXC
                                 }}
-                                AVAX</span
+                                AXC</span
                             >
                         </p>
                         <p class="margin_top">
                             Validator is rewarded
                             <span class="status"
-                                >{{
-                                    delegatorFeeUTXO.amount | toAVAX
-                                }}
-                                AVAX</span
+                                >{{ nominatorFeeUTXO.amount | toAXC }} AXC</span
                             >
                             as fee
                         </p>
@@ -77,14 +74,14 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import StakingTimeline from '@/components/Transaction/StakingTimeline.vue'
 import moment from 'moment'
 import { Output } from '@/store/modules/transactions/models'
-import { toAVAX } from '@/helper'
+import { toAXC } from '@/helper'
 
 @Component({
     components: {
         StakingTimeline,
     },
     filters: {
-        toAVAX,
+        toAXC,
     },
 })
 export default class StakingSummary extends Vue {
@@ -112,7 +109,7 @@ export default class StakingSummary extends Vue {
     get rewardUTXOs(): Output[] | undefined {
         // if rewarded:
         // Add Validator tx will have 1 rewardUtxo
-        // Add Delegator tx will have 2 rewardUtxo for delegator reward and validator fee
+        // Add Nominator tx will have 2 rewardUtxo for nominator reward and validator fee
         const rewards = this.tx.outputs.filter((tx) => tx.rewardUtxo === true)
         return rewards
             ? rewards.sort((a, b) => {
@@ -137,13 +134,13 @@ export default class StakingSummary extends Vue {
             : undefined
     }
 
-    // DELEGATOR REWARDS
-    get isDelegatorTx() {
-        return this.tx.type === 'add_delegator'
+    // NOMINATOR REWARDS
+    get isNominatorTx() {
+        return this.tx.type === 'add_nominator'
     }
 
-    get delegatorRewardUTXO(): Output | undefined {
-        // more than one reward UTXO, the first is the delegator reward
+    get nominatorRewardUTXO(): Output | undefined {
+        // more than one reward UTXO, the first is the nominator reward
         return this.rewardUTXOs
             ? this.rewardUTXOs.length > 1
                 ? this.rewardUTXOs[0]
@@ -151,7 +148,7 @@ export default class StakingSummary extends Vue {
             : undefined
     }
 
-    get delegatorFeeUTXO(): Output | undefined {
+    get nominatorFeeUTXO(): Output | undefined {
         // more than one reward UTXO, the second is the validator fee
         return this.rewardUTXOs
             ? this.rewardUTXOs.length > 1

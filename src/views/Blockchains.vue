@@ -3,7 +3,7 @@
         <div class="card">
             <div class="header">
                 <h2>Blockchains</h2>
-                <template v-show="!loading && subnetsLoaded">
+                <template v-show="!loading && allychainsLoaded">
                     <div class="bar">
                         <p class="count">
                             {{ totalBlockchains.toLocaleString() }} blockchains
@@ -12,7 +12,7 @@
                     </div>
                 </template>
             </div>
-            <template v-if="loading && !subnetsLoaded">
+            <template v-if="loading && !allychainsLoaded">
                 <v-progress-circular
                     key="1"
                     :size="16"
@@ -25,7 +25,7 @@
                 <BlockchainDataTable
                     :blockchains="blockchains"
                     :links="true"
-                    :subnets="true"
+                    :allychains="true"
                 />
             </template>
         </div>
@@ -50,14 +50,18 @@ export default class Blockchains extends Mixins(PlatformGettersMixin) {
         this.loading = false
     }
 
-    get subnetsLoaded() {
-        return this.$store.state.Platform.subnetsLoaded
+    get allychainsLoaded() {
+        return this.$store.state.Platform.allychainsLoaded
     }
 
     get blockchains() {
         return (this.$store.state.Platform
             .blockchains as Blockchain[]).sort((a, b) =>
-            a.subnetID > b.subnetID ? 1 : b.subnetID > a.subnetID ? -1 : 0
+            a.allychainID > b.allychainID
+                ? 1
+                : b.allychainID > a.allychainID
+                ? -1
+                : 0
         )
     }
 

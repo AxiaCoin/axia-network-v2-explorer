@@ -1,40 +1,40 @@
-import avalanche_go_api from '@/avalanche_go_api'
-import { ISubnetData } from '@/store/modules/platform/ISubnet'
+import axia_go_api from '@/axia_go_api'
+import { IAllychainData } from '@/store/modules/platform/IAllychain'
 import Blockchain from '@/js/Blockchain'
 import {
     IValidator,
     IValidatorData,
-    IDelegator,
-    IDelegatorData,
+    INominator,
+    INominatorData,
     IPendingValidatorData,
     IPendingValidator,
-    IPendingDelegator,
-    IPendingDelegatorData,
+    IPendingNominator,
+    IPendingNominatorData,
 } from '@/store/modules/platform/IValidator'
-import { AVALANCHE_SUBNET_ID } from '@/store/modules/platform/platform'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 
-export default class Subnet {
+export default class Allychain {
     id: string
     controlKeys: string[]
     threshold: number
     blockchains: Blockchain[]
     validators: IValidator[]
-    delegators: IDelegator[]
+    nominators: INominator[]
     pendingValidators: IPendingValidator[]
-    pendingDelegators: IPendingDelegator[]
+    pendingNominators: IPendingNominator[]
 
-    constructor(data: ISubnetData) {
+    constructor(data: IAllychainData) {
         this.id = data.id
         this.controlKeys = data.controlKeys
         this.threshold = parseInt(data.threshold)
         this.blockchains = []
         this.validators = []
         this.pendingValidators = []
-        this.delegators = []
-        this.pendingDelegators = []
+        this.nominators = []
+        this.pendingNominators = []
     }
 
-    // TODO: get address details for Platform Keys (https://docs.avax.network/v1.0/en/api/platform/#platformgetaccount)
+    // TODO: get address details for Platform Keys (https://docs.axc.network/v1.0/en/api/platform/#platformgetaccount)
 
     async updateValidators(endpoint: string) {
         /* ==========================================
@@ -44,11 +44,11 @@ export default class Subnet {
             jsonrpc: '2.0',
             method: endpoint,
             params: {
-                subnetID: this.id,
+                allychainID: this.id,
             },
             id: 1,
         }
-        const response = await avalanche_go_api.post('', req)
+        const response = await axia_go_api.post('', req)
 
         // console.log(`------------- ${this.id.substring(0,4)} ------------ ${endpoint}`);
         // console.log("result:                        ", response.data.result);
@@ -56,32 +56,32 @@ export default class Subnet {
         /* ==========================================
             CURRENT VALIDATORS
            ========================================== */
-        if (endpoint === 'platform.getCurrentValidators') {
+        if (endpoint === 'core.getCurrentValidators') {
             const validatorsData = response.data.result
                 .validators as IValidatorData[]
             let validators: IValidator[] = []
-            let delegators: IDelegator[] = []
+            let nominators: INominator[] = []
 
             if (validatorsData.length > 0) {
-                // All Subnets
+                // All Allychains
                 validators = this.setValidators(validatorsData)
                 validators = this.sortByStake(validators, this.id)
 
                 // Primary Network Only
-                if (this.id === AVALANCHE_SUBNET_ID) {
+                if (this.id === AXIA_ALLYCHAIN_ID) {
                     validators.forEach((v: IValidator) => {
-                        if (v.delegators !== null) {
-                            v.delegators?.forEach((d: IDelegator) =>
-                                delegators.push(d)
+                        if (v.nominators !== null) {
+                            v.nominators?.forEach((d: INominator) =>
+                                nominators.push(d)
                             )
                         }
                     })
                 }
-                delegators = this.sortDelegators(delegators)
+                nominators = this.sortNominators(nominators)
             }
 
             this.validators = validators
-            this.delegators = delegators
+            this.nominators = nominators
         } else if (endpoint === 'platform.getPendingValidators') {
             /* ==========================================
             PENDING VALIDATORS
@@ -89,9 +89,9 @@ export default class Subnet {
             const pendingValidatorsData = response.data.result
                 .validators as IPendingValidatorData[]
             let pendingValidators: IPendingValidator[] = []
-            let pendingDelegators: IPendingDelegator[] = []
+            let pendingNominators: IPendingNominator[] = []
 
-            // All Subnets
+            // All Allychains
             if (pendingValidatorsData.length > 0) {
                 pendingValidators = this.setPendingValidators(
                     pendingValidatorsData
@@ -99,18 +99,18 @@ export default class Subnet {
             }
 
             // Primary Network Only
-            if (this.id === AVALANCHE_SUBNET_ID) {
-                const pendingDelegatorsData = response.data.result
-                    .delegators as IPendingValidatorData[]
-                if (pendingDelegatorsData.length > 0) {
-                    pendingDelegators = this.setPendingDelegators(
-                        pendingDelegatorsData
+            if (this.id === AXIA_ALLYCHAIN_ID) {
+                const pendingNominatorsData = response.data.result
+                    .nominators as IPendingValidatorData[]
+                if (pendingNominatorsData.length > 0) {
+                    pendingNominators = this.setPendingNominators(
+                        pendingNominatorsData
                     )
                 }
             }
 
             this.pendingValidators = pendingValidators
-            this.pendingDelegators = pendingDelegators
+            this.pendingNominators = pendingNominators
         }
     }
 
@@ -142,17 +142,17 @@ export default class Subnet {
                 validator.stakeAmount = parseInt(v.stakeAmount as string)
                 validator.uptime = parseFloat(v.uptime as string) * 100 // percentage
                 validator.connected = v.connected
-                validator.delegationFee = parseInt(v.delegationFee as string)
-                validator.delegators = this.setDelegators(v.delegators!) as
-                    | IDelegator[]
+                validator.nominationFee = parseInt(v.nominationFee as string)
+                validator.nominators = this.setNominators(v.nominators!) as
+                    | INominator[]
                     | null
                 validator.totalStakeAmount = this.calculateTotalStakeAmount(
-                    validator.delegators,
+                    validator.nominators,
                     validator.stakeAmount
                 )
                 validator.elapsed = this.getElapsedStakingPeriod(validator)
             }
-            // Subnets
+            // Allychains
             if ({}.hasOwnProperty.call(v, 'weight')) {
                 validator.weight = parseInt(v.weight as string)
             }
@@ -162,16 +162,16 @@ export default class Subnet {
     }
 
     /**
-     * Convert API data to delegators
+     * Convert API data to nominators
      */
-    private setDelegators(
-        delegatorsData: IDelegatorData[] | null
-    ): IDelegator[] | null {
-        let delegators = null
+    private setNominators(
+        nominatorsData: INominatorData[] | null
+    ): INominator[] | null {
+        let nominators = null
 
-        if (delegatorsData) {
-            delegators = delegatorsData.map((d) => {
-                const delegator: IDelegator = {
+        if (nominatorsData) {
+            nominators = nominatorsData.map((d) => {
+                const nominator: INominator = {
                     nodeID: d.nodeID,
                     startTime: new Date(parseInt(d.startTime) * 1000),
                     endTime: new Date(parseInt(d.endTime) * 1000),
@@ -183,10 +183,10 @@ export default class Subnet {
                     potentialReward: parseInt(d.potentialReward),
                     stakeAmount: parseInt(d.stakeAmount),
                 }
-                return delegator
+                return nominator
             })
         }
-        return delegators
+        return nominators
     }
 
     /**
@@ -202,14 +202,14 @@ export default class Subnet {
                     startTime: new Date(parseInt(pv.startTime) * 1000),
                     endTime: new Date(parseInt(pv.endTime) * 1000),
                     stakeAmount: parseInt(pv.stakeAmount),
-                    delegators: null,
+                    nominators: null,
                 }
 
                 // Pending Validators - set optional props
                 if ({}.hasOwnProperty.call(pv, 'connected')) {
                     pendingValidator.connected = pv.connected as boolean
-                    pendingValidator.delegationFee = parseInt(
-                        pv.delegationFee as string
+                    pendingValidator.nominationFee = parseInt(
+                        pv.nominationFee as string
                     )
                 }
 
@@ -220,40 +220,40 @@ export default class Subnet {
     }
 
     /**
-     * Convert API data to pending delegators
+     * Convert API data to pending nominators
      */
-    private setPendingDelegators(
-        pendingDelegatorsData: IPendingDelegatorData[] | null
-    ): IPendingDelegator[] {
-        let pendingDelegators: IPendingDelegator[] = []
+    private setPendingNominators(
+        pendingNominatorsData: IPendingNominatorData[] | null
+    ): IPendingNominator[] {
+        let pendingNominators: IPendingNominator[] = []
 
-        if (pendingDelegatorsData) {
-            pendingDelegators = pendingDelegatorsData.map((pd) => {
-                const pendingDelegator: IPendingDelegator = {
+        if (pendingNominatorsData) {
+            pendingNominators = pendingNominatorsData.map((pd) => {
+                const pendingNominator: IPendingNominator = {
                     nodeID: pd.nodeID,
                     startTime: new Date(parseInt(pd.startTime) * 1000),
                     endTime: new Date(parseInt(pd.endTime) * 1000),
                     stakeAmount: parseInt(pd.stakeAmount),
                 }
-                return pendingDelegator
+                return pendingNominator
             })
         }
-        return pendingDelegators
+        return pendingNominators
     }
 
     /**
-     *  validated + delegated stake
+     *  validated + nominated stake
      */
     private calculateTotalStakeAmount(
-        delegators: IDelegator[] | null,
+        nominators: INominator[] | null,
         stakeAmount: number
     ): number {
         let totalStakeAmount = stakeAmount
 
-        if (delegators) {
-            let delegatedStakeAmount = 0
-            delegators.forEach((d) => (delegatedStakeAmount += d.stakeAmount))
-            totalStakeAmount += delegatedStakeAmount
+        if (nominators) {
+            let nominatedStakeAmount = 0
+            nominators.forEach((d) => (nominatedStakeAmount += d.stakeAmount))
+            totalStakeAmount += nominatedStakeAmount
         }
 
         return totalStakeAmount
@@ -263,7 +263,7 @@ export default class Subnet {
      *  Sort by stake or weight and add rank
      */
     private sortByStake(validators: IValidator[], id: string): IValidator[] {
-        id === AVALANCHE_SUBNET_ID
+        id === AXIA_ALLYCHAIN_ID
             ? validators.sort(
                   (a, b) =>
                       (b.totalStakeAmount as number) -
@@ -279,9 +279,9 @@ export default class Subnet {
     /**
      *  Sort by stake
      */
-    private sortDelegators(delegators: IDelegator[]): IDelegator[] {
-        return delegators.length > 0
-            ? delegators.sort((a, b) => b.stakeAmount - a.stakeAmount)
+    private sortNominators(nominators: INominator[]): INominator[] {
+        return nominators.length > 0
+            ? nominators.sort((a, b) => b.stakeAmount - a.stakeAmount)
             : []
     }
 

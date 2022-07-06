@@ -19,7 +19,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { Asset } from '@/js/Asset'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 import Metadata from '@/components/Asset/Metadata.vue'
 import NFTRenderer from '@/components/Asset/NFTRenderer.vue'
 import { Transaction } from '@/js/Transaction'
@@ -34,8 +34,8 @@ export default class AssetSummary extends Vue {
     @Prop() asset!: Asset
     @Prop() genesisTx!: Transaction
 
-    get isAVAX() {
-        return this.asset.id === AVAX_ID
+    get isAXC() {
+        return this.asset.id === AXC_ID
     }
 
     get isNFT() {

@@ -1,9 +1,9 @@
-import avalanche_go_api from '@/avalanche_go_api'
+import axia_go_api from '@/axia_go_api'
 import api from '@/axios'
 import { bigToDenomBig, getNullAddress, stringToBig } from '@/helper'
 import { Asset } from '@/js/Asset'
 import { resolveResponseData } from '@/services/helpers'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 import {
     IAddress,
     IAddressData,
@@ -15,8 +15,8 @@ import {
     IStakePData,
 } from './models'
 import Big from 'big.js'
-import { IAssetDataAvalancheGo, IAssetDataOrtelius } from '@/js/IAsset'
-import { avm } from '@/avalanche'
+import { IAssetDataAxiaGo, IAssetDataMagellan } from '@/js/IAsset'
+import { avm } from '@/axia'
 import {
     setUnlockedXP,
     setUnlockedX,
@@ -25,7 +25,7 @@ import {
     setUnlockedXC,
 } from './address'
 import qs from 'qs'
-import { C, P, X } from '@/known_blockchains'
+import { AX, Core, Swap } from '@/known_blockchains'
 
 const ADDRESSES_V2_API_BASE_URL = process.env.VUE_APP_ADDRESSES_V2_API_BASE_URL
 
@@ -37,7 +37,7 @@ export interface IAddressesParams {
     limit?: number
 }
 
-export function getAddressFromOrtelius(params?: IAddressesParams) {
+export function getAddressFromMagellan(params?: IAddressesParams) {
     return api
         .get(`${ADDRESSES_V2_API_BASE_URL}`, {
             params,
@@ -48,11 +48,11 @@ export function getAddressFromOrtelius(params?: IAddressesParams) {
 }
 
 export async function getBalance_P(id: string): Promise<IBalancePData> {
-    const res = await avalanche_go_api.post('', {
+    const res = await axia_go_api.post('', {
         jsonrpc: '2.0',
         method: 'platform.getBalance',
         params: {
-            address: `P-${id}`,
+            address: `Core-${id}`,
         },
         id: 1,
     })
@@ -60,11 +60,11 @@ export async function getBalance_P(id: string): Promise<IBalancePData> {
 }
 
 export async function getStake_P(id: string): Promise<IStakePData> {
-    const res = await avalanche_go_api.post('', {
+    const res = await axia_go_api.post('', {
         jsonrpc: '2.0',
         method: 'platform.getStake',
         params: {
-            addresses: [`P-${id}`],
+            addresses: [`Core-${id}`],
             encoding: 'hex',
         },
         id: 1,
@@ -115,11 +115,11 @@ function setBalances(balanceData: IBalanceXData, assetsMap: any): IBalanceX[] {
 
         // If asset does not exist in store
         if (!assetsMap[assetID]) {
-            // Try Ortelius
+            // Try Magellan
             api.get(`/x/assets/${assetID}`).then((res) => {
                 if (res.data) {
-                    console.log('FOUND ASSET IN ORTELIUS', res.data)
-                    const asset: IAssetDataOrtelius = res.data
+                    console.log('FOUND ASSET IN MAGELLAN', res.data)
+                    const asset: IAssetDataMagellan = res.data
 
                     setAssetMetadata(asset, balance)
                     setBalanceData(balanceDatum, balance.denomination, balance)
@@ -131,9 +131,9 @@ function setBalances(balanceData: IBalanceXData, assetsMap: any): IBalanceX[] {
                         (parseInt(balanceDatum.balance) / parseInt('0')) * 100
                     )
                 } else if (!res.data) {
-                    // Try Avalanche-Go as last resort
+                    // Try Axia-Go as last resort
                     avm.getAssetDescription(assetID).then(
-                        (res: IAssetDataAvalancheGo) => {
+                        (res: IAssetDataAxiaGo) => {
                             if (res) {
                                 console.log('FOUND ASSET IN GECKO', res)
                                 const asset = res
@@ -171,26 +171,26 @@ function setBalances(balanceData: IBalanceXData, assetsMap: any): IBalanceX[] {
  * @param assetsMap used to decode asset balances
  * @returns balances for a bech32 address, across three dimensions
  *  - type: staked, locked, unlocked
- *  - on-chain balances: X, C and/or P
- *  - shared memory balances: P/X, X/C
+ *  - on-chain balances: Swap, AX and/or Core
+ *  - shared memory balances: Core/Swap, Swap/AX
  */
 export async function getAddress(
     id: string,
     assetsMap: IAssetsMap
 ): Promise<IAddress> {
-    // Get data from Ortelius and Avalanche-Go
+    // Get data from Magellan and Axia-Go
     const [pAddress, xAddress, cAddress, pBalance, pStake] = await Promise.all([
-        getAddressFromOrtelius({
+        getAddressFromMagellan({
             address: id,
-            chainID: [P.id],
+            chainID: [Core.id],
         }),
-        getAddressFromOrtelius({
+        getAddressFromMagellan({
             address: id,
-            chainID: [X.id],
+            chainID: [Swap.id],
         }),
-        getAddressFromOrtelius({
+        getAddressFromMagellan({
             address: id,
-            chainID: [C.id],
+            chainID: [AX.id],
         }),
         getBalance_P(id!),
         getStake_P(id!),
@@ -205,77 +205,77 @@ export async function getAddress(
         return getNullAddress(id!)
     }
 
-    // Initialize the address and set the data from Avalanche-Go API
+    // Initialize the address and set the data from Axia-Go API
     const address: IAddress = {
         address: id!,
         publicKey: '', // todo
 
-        // P-Chain (excludes X -> P shared memory)
-        AVAX_balance: bigToDenomBig(
+        // CoreChain (excludes Swap -> Core shared memory)
+        AXC_balance: bigToDenomBig(
             new Big(pBalance.balance),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_unlocked: bigToDenomBig(
             new Big(pBalance.unlocked),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_lockedStakeable: bigToDenomBig(
             new Big(pBalance.lockedStakeable),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_lockedNotStakeable: bigToDenomBig(
             new Big(pBalance.lockedNotStakeable),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_staked: bigToDenomBig(
             new Big(pStake.staked),
-            assetsMap[AVAX_ID].denomination
+            assetsMap[AXC_ID].denomination
         ),
         P_utxoIDs: pBalance.utxoIDs as string[],
 
-        // X -> P shared memory
+        // Swap -> Core shared memory
         XP_unlocked: Big(0),
 
-        // X-Chain (includes P -> X & C -> X shared memory)
+        // SwapChain (includes Core -> Swap & AX -> Swap shared memory)
         X_assets: [],
         X_unlocked: Big(0),
         X_locked: Big(0),
 
-        // X -> C shared memory
+        // Swap -> AX shared memory
         XC_unlocked: Big(0),
     }
 
-    // Then set data from Ortelius
-    const pBalanceOrtelius = pAddress.addresses.filter(
-        (a: IAddressData) => a.chainID === P.id
+    // Then set data from Magellan
+    const pBalanceMagellan = pAddress.addresses.filter(
+        (a: IAddressData) => a.chainID === Core.id
     )
-    const xBalanceOrtelius = xAddress.addresses.filter(
-        (a: IAddressData) => a.chainID === X.id
+    const xBalanceMagellan = xAddress.addresses.filter(
+        (a: IAddressData) => a.chainID === Swap.id
     )
-    const cBalanceOrtelius = cAddress.addresses.filter(
-        (a: IAddressData) => a.chainID === C.id
+    const cBalanceMagellan = cAddress.addresses.filter(
+        (a: IAddressData) => a.chainID === AX.id
     )
 
-    // Ortelius pBalance includes UTXOs from P-chain and X -> P shared memory
-    // Avala-Go pBalance includes UTXOs from P-chain
-    // We subtract one from the other to get balance for X -> P shared memory
-    if (pBalanceOrtelius.length > 0) {
+    // Magellan pBalance includes UTXOs from CoreChain and Swap -> Core shared memory
+    // Avala-Go pBalance includes UTXOs from CoreChain
+    // We subtract one from the other to get balance for Swap -> Core shared memory
+    if (pBalanceMagellan.length > 0) {
         const pBalanceAndXPbalance = bigToDenomBig(
-            setUnlockedXP(pBalanceOrtelius[0].assets),
-            assetsMap[AVAX_ID].denomination
+            setUnlockedXP(pBalanceMagellan[0].assets),
+            assetsMap[AXC_ID].denomination
         )
-        address.XP_unlocked = pBalanceAndXPbalance.minus(address.AVAX_balance)
+        address.XP_unlocked = pBalanceAndXPbalance.minus(address.AXC_balance)
     }
 
-    if (xBalanceOrtelius.length > 0) {
-        address.X_assets = setBalances(xBalanceOrtelius[0].assets, assetsMap)
+    if (xBalanceMagellan.length > 0) {
+        address.X_assets = setBalances(xBalanceMagellan[0].assets, assetsMap)
         address.X_unlocked = setUnlockedX(address.X_assets)
     }
 
-    if (cBalanceOrtelius.length > 0) {
+    if (cBalanceMagellan.length > 0) {
         address.XC_unlocked = bigToDenomBig(
-            setUnlockedXC(cBalanceOrtelius[0].assets),
-            assetsMap[AVAX_ID].denomination
+            setUnlockedXC(cBalanceMagellan[0].assets),
+            assetsMap[AXC_ID].denomination
         )
     }
 

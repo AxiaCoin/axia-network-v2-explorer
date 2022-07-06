@@ -3,8 +3,8 @@
         <div class="left">
             <h2>Stats</h2>
             <p class="chain">
-                View up-to-date statistics for the Avalanche network on
-                <a class="c_chain_link" :href="statsURL">stats.avax.network</a>.
+                View up-to-date statistics for the Axia network on
+                <a class="c_chain_link" :href="statsURL">stats.axc.network</a>.
             </p>
         </div>
     </div>
@@ -18,7 +18,7 @@ import { Vue, Component } from 'vue-property-decorator'
 })
 export default class StatsHeader extends Vue {
     get statsURL() {
-        return 'https://stats.avax.network/'
+        return 'https://stats.axc.network/'
     }
 }
 </script>

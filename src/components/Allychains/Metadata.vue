@@ -2,19 +2,19 @@
     <div class="metadata">
         <div class="card">
             <div class="header">
-                <h2>Subnets</h2>
+                <h2 :style="{ fontSize: '24px' }">Allychains</h2>
             </div>
             <section class="stats">
                 <article>
                     <div class="stat">
                         <p class="label">
-                            Subnets
+                            Allychains
                             <TooltipMeta
-                                content="Total number of subnets on Avalanche"
+                                content="Total number of allychains on Axia"
                             />
                         </p>
                         <p class="meta_val">
-                            {{ totalSubnets.toLocaleString() }}
+                            {{ totalAllychains.toLocaleString() }}
                         </p>
                     </div>
                 </article>
@@ -23,7 +23,7 @@
                         <p class="label">
                             Blockchains
                             <TooltipMeta
-                                content="Total number of blockchains on Avalanche"
+                                content="Total number of blockchains on Axia"
                             />
                         </p>
                         <p class="meta_val">
@@ -36,7 +36,7 @@
                         <p class="label">
                             Validators
                             <TooltipMeta
-                                content="Total number of nodes validating transactions on Avalanche"
+                                content="Total number of nodes validating transactions on Axia"
                             />
                         </p>
                         <p class="meta_val">
@@ -49,12 +49,12 @@
                         <p class="label">
                             Total Stake Amount
                             <TooltipMeta
-                                content="Total value of AVAX locked to secure Avalanche"
+                                content="Total value of AXC locked to secure Axia"
                             />
                         </p>
                         <p class="meta_val">
                             {{ totalStake.toLocaleString() }}
-                            <span class="unit">AVAX</span>
+                            <span class="unit">AXC</span>
                         </p>
                     </div>
                 </article>
@@ -78,7 +78,7 @@ import { DEFAULT_NETWORK_ID } from '@/store/modules/network/network'
     },
 })
 export default class Metadata extends Vue {
-    @Prop() totalSubnets!: number
+    @Prop() totalAllychains!: number
     @Prop() totalBlockchains!: number
     @Prop() totalValidators!: number
     @Prop() totalStake!: Big

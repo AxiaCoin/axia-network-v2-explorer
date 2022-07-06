@@ -60,7 +60,7 @@ import {
     getTransactionInputs,
 } from '@/js/Transaction'
 import { DEFAULT_NETWORK_ID } from '@/store/modules/network/network'
-import { getTxChainType } from '@/known_blockchains'
+import { getTswapChainType } from '@/known_blockchains'
 import { getMappingForType } from '@/store/modules/transactions/maps'
 
 @Component({
@@ -78,21 +78,21 @@ export default class TxRow extends Vue {
     get isGenesisVertex(): boolean {
         const genesisTxID =
             DEFAULT_NETWORK_ID === 1
-                ? process.env.VUE_APP_AVAXID
-                : process.env.VUE_APP_TEST_AVAXID
+                ? process.env.VUE_APP_AXCID
+                : process.env.VUE_APP_TEST_AXCID
         return this.transaction.id === genesisTxID ? true : false
     }
 
     get chainCode() {
-        return getTxChainType(this.transaction.chainID)!.code
+        return getTswapChainType(this.transaction.chainID)!.code
     }
 
     get chainColor() {
-        return getTxChainType(this.transaction.chainID)!.color
+        return getTswapChainType(this.transaction.chainID)!.color
     }
 
     get chainDarkColor() {
-        return getTxChainType(this.transaction.chainID)!.darkColor
+        return getTswapChainType(this.transaction.chainID)!.darkColor
     }
 
     get type() {

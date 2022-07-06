@@ -67,7 +67,7 @@
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { scaleLinear } from 'd3-scale'
-import { P } from '@/known_blockchains'
+import { Core } from '@/known_blockchains'
 
 @Component({})
 export default class StakingTimeline extends Vue {
@@ -98,11 +98,11 @@ export default class StakingTimeline extends Vue {
     }
 
     get darkColor() {
-        return P.darkColor
+        return Core.darkColor
     }
 
     get color() {
-        return P.color
+        return Core.color
     }
 
     scale(val: number) {

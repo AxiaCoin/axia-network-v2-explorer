@@ -7,18 +7,18 @@
                 text
                 rounded="0"
             >
-                <p class="description">
-                    Explore network activity and staking metrics using
-                    <a class="bold" :href="statsURL">Avalanche Stats</a>.
+                <p class="description" :style="{ color: 'white' }">
+                    This Explorer displays activity on the
+                    <span class="bold">AXIA Mainnet</span>.
                 </p>
             </v-alert>
         </template>
         <template v-else>
             <v-alert class="testnet_alert" text type="info" rounded="0">
-                <p class="description">
+                <p class="description" :style="{ color: 'white' }">
                     Notice: This Explorer displays activity on the
                     {{ networkName }} Testnet, <span class="bold">not</span> the
-                    Avalanche Mainnet.
+                    AXIA Mainnet.
                 </p>
             </v-alert>
         </template>
@@ -44,21 +44,21 @@ export default class TestnetAlert extends Vue {
     }
 
     get statsURL() {
-        return 'https://stats.avax.network/'
+        return 'https://stats.axc.network/'
     }
 }
 </script>
 
 <style scoped lang="scss">
 .testnet_alert {
-    margin-top: 140px !important;
-    background-color: $white !important;
+    margin-top: $navbar_height_offset_xl !important;
+    background-color: #45a5e7 !important;
 }
 
 #mainnet_announce {
     > .v-alert__wrapper {
         .info--text {
-            color: $white !important;
+            color: white !important;
             caret-color: #fff !important;
         }
     }
@@ -68,7 +68,7 @@ export default class TestnetAlert extends Vue {
     }
 }
 .mainnet_announcement {
-    color: $white !important;
+    color: white !important;
     font-weight: 500;
     background-image: linear-gradient(to left, #2196f3) !important;
 
@@ -81,7 +81,7 @@ export default class TestnetAlert extends Vue {
 
 @if $VUE_APP_DEFAULT_NETWORKID == 1 {
     .v-alert--text:before {
-        background-color: $white;
+        background-color: #45a5e7 !important;
     }
 }
 
@@ -92,7 +92,7 @@ export default class TestnetAlert extends Vue {
 
 @include lgOrBigger {
     .testnet_alert {
-        margin-top: $navbar_height_offset_xl !important;
+        margin-top: 140px !important;
         padding-left: 18vw;
         padding-right: 18vw;
     }

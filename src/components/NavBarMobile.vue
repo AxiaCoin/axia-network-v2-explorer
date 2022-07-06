@@ -3,14 +3,14 @@
         <!--   TOOLBAR    -->
         <div class="inner">
             <div class="logo">
-                <a :href="cChainURL">
+                <a :href="axChainURL">
                     <img
                         style="height: 20px"
                         :src="
                             require(`@/assets/explorer_logo_${logoColor}.png`)
                         "
                     />
-                    <h1><span class="hide">Avalanche Explorer</span></h1>
+                    <h1><span class="hide">Axia Explorer</span></h1>
                 </a>
             </div>
             <div class="buttons">
@@ -37,17 +37,17 @@
                     </div>
                 </v-list-item>
                 <template>
-                    <v-list-item :href="cChainURL">Home</v-list-item>
-                    <v-list-item to="/subnets">Subnets</v-list-item>
+                    <!-- <v-list-item :href="axChainURL">Home</v-list-item> -->
+                    <v-list-item to="/allychains">Allychains</v-list-item>
                     <v-list-item to="/validators">Validators</v-list-item>
-                    <v-list-item :href="tokensURL">Tokens</v-list-item>
+                    <!-- <v-list-item :href="tokensURL">Tokens</v-list-item> -->
                     <v-list-item to="/blockchains">Blockchains</v-list-item>
                     <v-list-item to="/tx">Transactions</v-list-item>
-                    <v-list-item v-if="isMainnet" :href="statsURL"
+                    <!-- <v-list-item v-if="isMainnet" :href="statsURL"
                         >Stats</v-list-item
-                    >
-                    <v-list-item :href="cChainURL">C-Chain</v-list-item>
-                    <v-list-item :href="statusPageURL">Status</v-list-item>
+                    > -->
+                    <v-list-item :href="axChainURL">AX-Chain</v-list-item>
+                    <!-- <v-list-item :href="statusPageURL">Status</v-list-item> -->
                     <v-list-item to="/resources">Resources</v-list-item>
                 </template>
             </v-list>
@@ -79,10 +79,10 @@ import SearchBarMobile from '@/components/misc/SearchBar/SearchBarMobile.vue'
 import NetworkMenu from './NetworkSettings/NetworkMenu.vue'
 import {
     DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
-    statusURL,
-    statusURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
+    // statusURL,
+    // statusURL_test,
 } from '@/store/modules/network/network'
 
 @Component({
@@ -111,10 +111,10 @@ export default class NavbarMobile extends Vue {
         return '#fff'
     }
 
-    get cChainURL() {
+    get axChainURL() {
         return DEFAULT_NETWORK_ID === 1
-            ? cChainExplorerURL
-            : cChainExplorerURL_test
+            ? axChainExplorerURL
+            : axChainExplorerURL_test
     }
 
     get tokensURL() {
@@ -131,9 +131,9 @@ export default class NavbarMobile extends Vue {
         return DEFAULT_NETWORK_ID === 1 ? true : false
     }
 
-    get statusPageURL() {
-        return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
-    }
+    // get statusPageURL() {
+    //     return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
+    // }
 
     closeSearch(val: boolean) {
         this.isSearch = val
@@ -216,7 +216,7 @@ export default class NavbarMobile extends Vue {
             clip: rect(1px, 1px, 1px, 1px);
         }
 
-        .subnet {
+        .allychain {
             font-size: 12px;
             color: $primary-color;
             padding-bottom: 2px;

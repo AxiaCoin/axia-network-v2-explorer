@@ -2,63 +2,66 @@
     <div id="content">
         <v-card flat>
             <v-card-text>
-                <div class="subnet_header">
-                    <div class="subheading">Subnetwork</div>
-                    <h2>{{ subnetID | subnet }}</h2>
+                <div class="allychain_header">
+                    <div class="subheading">Allychainwork</div>
+                    <h2>{{ allychainID | allychain }}</h2>
                 </div>
                 <ContentMetadata
-                    :total-blockchains="subnet.blockchains.length"
-                    :total-validators="subnet.validators.length"
-                    :total-delegators="subnet.delegators.length"
-                    :total-control-keys="subnet.controlKeys.length"
+                    :total-blockchains="allychain.blockchains.length"
+                    :total-validators="allychain.validators.length"
+                    :total-nominators="allychain.nominators.length"
+                    :total-control-keys="allychain.controlKeys.length"
                 />
-                <v-tabs v-model="tab" show-arrows>
+                <v-tabs v-model="tab" show-arrows class="head-border">
                     <v-tab href="#validators">Validators</v-tab>
                     <v-tab href="#pending-validators">Pending Validators</v-tab>
                     <v-tab href="#blockchains">Blockchains</v-tab>
                     <v-tab href="#control-keys">Control Keys</v-tab>
-                    <v-tab href="#delegations">Delegations</v-tab>
+                    <v-tab href="#nominations">Nominations</v-tab>
                     <v-tab-item class="tab_content" value="validators">
-                        <template v-if="subnet.validators.length === 0">
+                        <template v-if="allychain.validators.length === 0">
                             <p class="null">
-                                There are no validators for this subnet.
+                                There are no validators for this allychain.
                             </p>
                         </template>
                         <template v-else>
                             <ValidatorDataTable
-                                :validators="subnet.validators"
-                                :subnet-i-d="subnetID"
-                                :subnet="subnet"
+                                :validators="allychain.validators"
+                                :allychain-i-d="allychainID"
+                                :allychain="allychain"
                                 :title="'Validators'"
                                 class="table_margin"
                             />
                         </template>
                     </v-tab-item>
                     <v-tab-item class="tab_content" value="pending-validators">
-                        <template v-if="subnet.pendingValidators.length === 0">
+                        <template
+                            v-if="allychain.pendingValidators.length === 0"
+                        >
                             <p class="null">
-                                There are no pending validators for this subnet.
+                                There are no pending validators for this
+                                allychain.
                             </p>
                         </template>
                         <template v-else>
                             <ValidatorDataTable
-                                :validators="subnet.pendingValidators"
-                                :subnet-i-d="subnetID"
-                                :subnet="subnet"
+                                :validators="allychain.pendingValidators"
+                                :allychain-i-d="allychainID"
+                                :allychain="allychain"
                                 :title="'Pending Validators'"
                                 class="table_margin"
                             />
                         </template>
                     </v-tab-item>
                     <v-tab-item class="tab_content" value="blockchains">
-                        <template v-if="subnet.blockchains.length === 0">
+                        <template v-if="allychain.blockchains.length === 0">
                             <p class="null">
-                                There are no blockchains for this subnet.
+                                There are no blockchains for this allychain.
                             </p>
                         </template>
                         <template v-else>
                             <BlockchainDataTable
-                                :blockchains="subnet.blockchains"
+                                :blockchains="allychain.blockchains"
                                 :title="'Blockchains'"
                                 :links="true"
                                 class="table_margin"
@@ -66,31 +69,32 @@
                         </template>
                     </v-tab-item>
                     <v-tab-item class="tab_content" value="control-keys">
-                        <template v-if="subnet.controlKeys.length === 0">
+                        <template v-if="allychain.controlKeys.length === 0">
                             <p class="null">
-                                There are no control keys for this subnet.
+                                There are no control keys for this allychain.
                             </p>
                         </template>
                         <template v-else>
                             <ControlKeyTable
-                                :subnet="subnet"
+                                :allychain="allychain"
                                 :title="'Control Keys'"
                                 class="table_margin"
                             />
                         </template>
                     </v-tab-item>
-                    <v-tab-item class="tab_content" value="delegations">
-                        <template v-if="subnet.delegators.length === 0">
+                    <v-tab-item class="tab_content" value="nominations">
+                        <template v-if="allychain.nominators.length === 0">
                             <p class="null">
-                                There are no delegated stakes for this subnet.
+                                There are no nominated stakes for this
+                                allychain.
                             </p>
                         </template>
                         <template v-else>
-                            <DelegationDataTable
-                                :validators="subnet.delegators"
-                                :subnet-i-d="subnetID"
-                                :subnet="subnet"
-                                :title="'Delegations'"
+                            <NominationDataTable
+                                :validators="allychain.nominators"
+                                :allychain-i-d="allychainID"
+                                :allychain="allychain"
+                                :title="'Nominations'"
                                 class="table_margin"
                             />
                         </template>
@@ -104,12 +108,12 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import Subnet from '@/js/Subnet'
-import { AVALANCHE_SUBNET_ID } from '@/store/modules/platform/platform'
-import ContentMetadata from '@/components/Subnets/ContentMetadata.vue'
+import Allychain from '@/js/Allychain'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
+import ContentMetadata from '@/components/Allychains/ContentMetadata.vue'
 import ValidatorDataTable from '@/components/Validators/ValidatorDataTable.vue'
 import BlockchainDataTable from '@/components/Blockchain/BlockchainDataTable.vue'
-import DelegationDataTable from '@/components/Validators/DelegationDataTable.vue'
+import NominationDataTable from '@/components/Validators/NominationDataTable.vue'
 import ControlKeyTable from '@/components/Validators/ControlKeyTable.vue'
 
 @Component({
@@ -118,13 +122,13 @@ import ControlKeyTable from '@/components/Validators/ControlKeyTable.vue'
         ValidatorDataTable,
         BlockchainDataTable,
         ControlKeyTable,
-        DelegationDataTable,
+        NominationDataTable,
     },
 })
 export default class Content extends Vue {
     dense = true
     fixedHeader = true
-    defaultSubnetID: string = AVALANCHE_SUBNET_ID
+    defaultAllychainID: string = AXIA_ALLYCHAIN_ID
     currentTime: number | null = null
     startTimes: number[] = []
     endTimes: number[] = []
@@ -132,8 +136,8 @@ export default class Content extends Vue {
     maxTime = 1
     absolute = false
 
-    @Prop() subnetID!: string
-    @Prop() subnet!: Subnet
+    @Prop() allychainID!: string
+    @Prop() allychain!: Allychain
 
     get mode(): string {
         return this.absolute ? 'absolute' : 'relative'
@@ -154,7 +158,7 @@ export default class Content extends Vue {
 </script>
 
 <style scoped lang="scss">
-.subnet_count {
+.allychain_count {
     margin-top: 5px;
 }
 
@@ -172,19 +176,25 @@ export default class Content extends Vue {
     border-radius: 0 !important;
     padding-left: 16px;
 }
-
 .v-tab {
     font-weight: 400;
     text-transform: none;
     letter-spacing: 0;
+    color: #178fe1 !important;
 }
 
+.v-tab--active {
+    color: white !important;
+    background: #178fe1;
+    margin: 2px;
+    border-radius: 12px;
+}
 .v-tab:before {
     background-color: $primary-color !important;
 }
 
-.subnet_header {
-    color: $black;
+.allychain_header {
+    color: #178fe1;
 
     .subheading {
         text-transform: capitalize;
@@ -196,6 +206,7 @@ export default class Content extends Vue {
         color: $primary-color;
         margin: 0;
         padding-top: 0;
+        font-size: 24px;
     }
 }
 
@@ -257,7 +268,7 @@ export default class Content extends Vue {
 }
 
 @include xsOrSmaller {
-    .subnet_header {
+    .allychain_header {
         padding: 0;
     }
 }
@@ -273,6 +284,13 @@ export default class Content extends Vue {
     background-color: $white !important;
 }
 
+.v-tabs-slider,
+.v-tabs-slider-wrapper {
+    height: 0;
+    color: none;
+    background-color: none;
+    display: none;
+}
 th {
     .v-input--selection-controls {
         padding-top: 0;
@@ -286,6 +304,11 @@ th {
 }
 
 #content {
+    .v-tabs-bar__content {
+        border: 1px solid #178fe1;
+        border-radius: 12px;
+    }
+
     .table_margin {
         margin-left: 1px;
     }

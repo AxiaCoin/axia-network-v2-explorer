@@ -1,15 +1,15 @@
 <template>
-    <div id="subnet_tabs">
+    <div id="allychain_tabs">
         <v-tabs vertical right>
-            <v-tab v-for="(s, subnetID) in subnets" :key="s.id">{{
-                subnetID | subnet
+            <v-tab v-for="(s, allychainID) in allychains" :key="s.id">{{
+                allychainID | allychain
             }}</v-tab>
             <v-tab-item
-                v-for="(s, subnetID) in subnets"
+                v-for="(s, allychainID) in allychains"
                 :key="s.id"
                 :vertical="true"
             >
-                <Content :subnet-i-d="subnetID" :subnet="s" />
+                <Content :allychain-i-d="allychainID" :allychain="s" />
             </v-tab-item>
         </v-tabs>
     </div>
@@ -18,11 +18,11 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import Content from '@/components/Subnets/Content.vue'
-import Subnet from '@/js/Subnet'
+import Content from '@/components/Allychains/Content.vue'
+import Allychain from '@/js/Allychain'
 
-interface Subnets {
-    [key: string]: Subnet
+interface Allychains {
+    [key: string]: Allychain
 }
 
 @Component({
@@ -30,8 +30,8 @@ interface Subnets {
         Content,
     },
 })
-export default class SubnetTabs extends Vue {
-    @Prop() subnets!: Subnets
+export default class AllychainTabs extends Vue {
+    @Prop() allychains!: Allychains
 }
 </script>
 
@@ -60,18 +60,25 @@ export default class SubnetTabs extends Vue {
     letter-spacing: 0;
 }
 
+.v-tab--active {
+    color: #178fe1 !important;
+    border-left: 4px solid #178fe1;
+}
+
 .v-tab:before {
     background-color: $primary-color !important;
 }
 </style>
 
 <style lang="scss">
-#subnet_tabs {
+#allychain_tabs {
+    background-color: #f8f9fa !important;
     .v-tabs--vertical > .v-tabs-bar {
+        padding-right: 30px;
+        background-color: #f8f9fa !important;
         max-width: 200px !important;
         border-left: 1px solid #cecece;
     }
-
     .v-tabs--vertical > .v-window {
         overflow: hidden !important;
     }

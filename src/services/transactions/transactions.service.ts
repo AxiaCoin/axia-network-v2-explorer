@@ -23,7 +23,7 @@ export interface ITransactionParams {
 }
 
 /**
-    https://explorerapi.avax.network/v2/transactions
+    https://explorerapi.axc.network/v2/transactions
         ?assetID=FvwEAhmxKfeiG8SnEvq42hc6whRyY3EFYAvebMqDNDGCgxN5Z
         &sort=timestamp-desc
         &limit=25
@@ -34,7 +34,7 @@ export interface ITransactionParams {
 /**
  *
  * @param params api release
- * @link https://docs.avax.network/build/tools/ortelius#list-transactions
+ * @link https://docs.axc.network/build/tools/magellan#list-transactions
  */
 export function getTransaction(
     id?: string | null,

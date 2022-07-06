@@ -4,13 +4,13 @@ import {
     peerInfoURL_test,
 } from '@/store/modules/network/network'
 import { IVersion, IVersionRes } from './models'
-import { toAVAX } from '@/helper'
+import { toAXC } from '@/helper'
 import { getTotalStake } from './peerinfo'
 
 const PEER_INFO_URL = DEFAULT_NETWORK_ID === 1 ? peerInfoURL : peerInfoURL_test
 
 function removePrefix(s: string): string {
-    return s.includes('avalanche/') ? s.split('avalanche/')[1] : s
+    return s.includes('axia/') ? s.split('axia/')[1] : s
 }
 
 /**
@@ -36,7 +36,7 @@ export async function getPeerInfo() {
             return {
                 version: removePrefix(peer.version),
                 nodeCount: peer.nodeCount,
-                stakeAmount: toAVAX(peer.stakeAmount),
+                stakeAmount: toAXC(peer.stakeAmount),
                 stakePercent: parseFloat(
                     ((peer.stakeAmount / totalStake) * 100).toFixed(2)
                 ),

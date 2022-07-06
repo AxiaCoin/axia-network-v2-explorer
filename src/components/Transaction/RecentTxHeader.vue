@@ -5,9 +5,9 @@
 
             <v-alert class="testnet_alert" text type="info" rounded="0">
                 <p class="description">
-                    Notice: This explorer only indexes the X-Chain and P-Chain.
-                    To view C-Chain transactions (EVM chain), click
-                    <a class="bold c_chain_link" :href="cChainURL">here</a>.
+                    Notice: This explorer only indexes the Swap-Chain and
+                    Core-Chain. To view AX-Chain transactions (EVM chain), click
+                    <a class="bold c_chain_link" :href="axChainURL">here</a>.
                 </p>
             </v-alert>
 
@@ -18,16 +18,16 @@
                         <span
                             class="chain_tag"
                             :style="{
-                                backgroundColor: pChain.darkColor,
+                                backgroundColor: coreChain.darkColor,
                             }"
                             v-on="on"
-                            >{{ pChain.name }}</span
+                            >{{ coreChain.name }}</span
                         >
                     </template>
                     <span
-                        >The P-Chain is the metadata blockchain on Avalanche,
-                        managing validators and custom subnets. Validators stake
-                        AVAX on the P-Chain to secure the network.</span
+                        >The Core-Chain is the metadata blockchain on Axia,
+                        managing validators and custom allychains. Validators stake
+                        AXC on the Core-Chain to secure the network.</span
                     >
                 </v-tooltip>
                 <v-tooltip>
@@ -35,17 +35,17 @@
                         <span
                             class="chain_tag margin-left"
                             :style="{
-                                backgroundColor: xChain.darkColor,
+                                backgroundColor: swapChain.darkColor,
                             }"
                             v-on="on"
-                            >{{ xChain.name }}</span
+                            >{{ swapChain.name }}</span
                         >
                     </template>
                     <span
-                        >The X-Chain is the default asset blockchain on
-                        Avalanche enabling the creation and instant exchange of
-                        assets. This blockchain is for transfers that benefit
-                        from high-throughput and instant finality. Think X for
+                        >The Swap-Chain is the default asset blockchain on Axia
+                        enabling the creation and instant exchange of assets.
+                        This blockchain is for transfers that benefit from
+                        high-throughput and instant finality. Think Swap for
                         eXchanging assets.
                     </span>
                 </v-tooltip>
@@ -54,15 +54,15 @@
                         <span
                             class="chain_tag margin-left"
                             :style="{
-                                backgroundColor: cChain.darkColor,
+                                backgroundColor: axChain.darkColor,
                             }"
                             v-on="on"
-                            >{{ cChain.name }} (atomic txs only)</span
+                            >{{ axChain.name }} (atomic txs only)</span
                         >
                     </template>
                     <span
-                        >The C-Chain is the default smart contract blockchain on
-                        Avalanche and enables the creation of any
+                        >The AX-Chain is the default smart contract blockchain
+                        on Axia and enables the creation of any
                         Ethereum-compatible applications and assets with lower
                         fees and faster transactions.</span
                     >
@@ -88,11 +88,11 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { P, X, C, getTxChainType } from '@/known_blockchains'
+import { Core, Swap, AX, getTswapChainType } from '@/known_blockchains'
 import {
     DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
 } from '@/store/modules/network/network'
 
 @Component({
@@ -106,22 +106,22 @@ export default class RecentTxHeader extends Vue {
         this.$emit('update')
     }
 
-    get xChain() {
-        return getTxChainType(X.id)
+    get swapChain() {
+        return getTswapChainType(Swap.id)
     }
 
-    get pChain() {
-        return getTxChainType(P.id)
+    get coreChain() {
+        return getTswapChainType(Core.id)
     }
 
-    get cChain() {
-        return getTxChainType(C.id)
+    get axChain() {
+        return getTswapChainType(AX.id)
     }
 
-    get cChainURL() {
+    get axChainURL() {
         return DEFAULT_NETWORK_ID === 1
-            ? cChainExplorerURL
-            : cChainExplorerURL_test
+            ? axChainExplorerURL
+            : axChainExplorerURL_test
     }
 
     goToTx() {

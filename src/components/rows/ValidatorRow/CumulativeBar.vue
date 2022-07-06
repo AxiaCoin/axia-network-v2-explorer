@@ -6,7 +6,7 @@
     </div>
 </template>
 <script>
-import { toAVAX } from '../../../helper'
+import { toAXC } from '../../../helper'
 
 export default {
     props: {
@@ -25,10 +25,10 @@ export default {
     },
     computed: {
         barPerc() {
-            return (toAVAX(this.accumulated) / this.total) * 100
+            return (toAXC(this.accumulated) / this.total) * 100
         },
         nowPerc() {
-            return (toAVAX(this.amount) / toAVAX(this.accumulated)) * 100
+            return (toAXC(this.amount) / toAXC(this.accumulated)) * 100
         },
     },
 }

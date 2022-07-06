@@ -20,8 +20,8 @@
 
 <script lang="ts">
 import {
-    cChainExplorerURL,
-    cChainExplorerURL_test,
+    axChainExplorerURL,
+    axChainExplorerURL_test,
     DEFAULT_NETWORK_ID,
 } from '@/store/modules/network/network'
 import 'reflect-metadata'
@@ -44,8 +44,8 @@ export default class AddressLink extends Vue {
     get externalURL() {
         return `${
             DEFAULT_NETWORK_ID === 1
-                ? cChainExplorerURL
-                : cChainExplorerURL_test
+                ? axChainExplorerURL
+                : axChainExplorerURL_test
         }/address/${this.address}`
     }
 

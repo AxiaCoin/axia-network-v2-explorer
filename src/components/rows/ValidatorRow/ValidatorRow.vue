@@ -10,7 +10,7 @@
             <p>{{ duration }}</p>
         </div>
         <div class="stake_col">
-            <p class="stakeAmount">{{ stakeAmountText }} AVAX</p>
+            <p class="stakeAmount">{{ stakeAmountText }} AXC</p>
             <p>{{ stakePercText }}%</p>
         </div>
         <div class="comm_col">
@@ -28,7 +28,7 @@
 import 'reflect-metadata'
 import { Mixins, Component, Prop } from 'vue-property-decorator'
 import moment from 'moment'
-import { toAVAX } from '../../../helper'
+import { toAXC } from '../../../helper'
 import CumulativeBar from './CumulativeBar.vue'
 import { IValidator } from '@/store/modules/platform/IValidator'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
@@ -44,18 +44,18 @@ export default class ValidatorRow extends Mixins(PlatformGettersMixin) {
 
     get totalStake() {
         const val = this.getTotalStake()
-        return toAVAX(parseInt(val.toString()))
+        return toAXC(parseInt(val.toString()))
     }
 
     get stakeAmount() {
         return this.validator.stakeAmount
-            ? toAVAX(this.validator.stakeAmount)
+            ? toAXC(this.validator.stakeAmount)
             : 0
     }
 
     get stakeAmountText() {
         return this.validator.stakeAmount
-            ? toAVAX(this.validator.stakeAmount).toFixed(9)
+            ? toAXC(this.validator.stakeAmount).toFixed(9)
             : ''
     }
 
@@ -65,14 +65,14 @@ export default class ValidatorRow extends Mixins(PlatformGettersMixin) {
 
     get stakePercText() {
         // redundant assignments bc referencing computed values affect performance
-        const stakeAmount = toAVAX(this.validator.stakeAmount as number)
-        const totalStake = toAVAX(parseInt(this.getTotalStake().toString()))
+        const stakeAmount = toAXC(this.validator.stakeAmount as number)
+        const totalStake = toAXC(parseInt(this.getTotalStake().toString()))
         return ((stakeAmount / totalStake) * 100).toFixed(8)
     }
 
     get cumulativePercText() {
-        const cumulativeStake = toAVAX(this.cumulativeStake)
-        const totalStake = toAVAX(parseInt(this.getTotalStake().toString()))
+        const cumulativeStake = toAXC(this.cumulativeStake)
+        const totalStake = toAXC(parseInt(this.getTotalStake().toString()))
         return ((cumulativeStake / totalStake) * 100).toFixed(0)
     }
 

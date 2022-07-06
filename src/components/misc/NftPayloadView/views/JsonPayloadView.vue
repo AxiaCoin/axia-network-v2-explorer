@@ -6,7 +6,7 @@
 </template>
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { JSONPayload } from 'avalanche/dist/utils'
+import { JSONPayload } from '@axia-systems/axiajs/dist/utils'
 import GenericPayloadView from '@/components/misc/NftPayloadView/views/GenericPayloadView.vue'
 
 @Component({
@@ -47,7 +47,7 @@ export default class JsonPayloadView extends Vue {
         try {
             return Object.prototype.hasOwnProperty.call(
                 JSON.parse(this.text),
-                'avalanche'
+                'axia'
             )
                 ? true
                 : false

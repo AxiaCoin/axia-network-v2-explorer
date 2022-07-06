@@ -28,7 +28,7 @@ import CopyText from '@/components/misc/CopyText.vue'
 import UtxoRow from '@/components/Transaction/UtxoRow.vue'
 import { Transaction } from '@/js/Transaction'
 import { getMappingForType } from '@/store/modules/transactions/maps'
-import { toAVAX } from '@/helper'
+import { toAXC } from '@/helper'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import Metadata from '@/components/Transaction/Metadata.vue'
 
@@ -42,7 +42,7 @@ import Metadata from '@/components/Transaction/Metadata.vue'
     },
     filters: {
         getType: getMappingForType,
-        toAVAX,
+        toAXC,
     },
 })
 export default class TransactionSummary extends Vue {
@@ -58,7 +58,7 @@ export default class TransactionSummary extends Vue {
 
     get isStaking() {
         return this.tx.type === 'add_validator' ||
-            this.tx.type === 'add_delegator'
+            this.tx.type === 'add_nominator'
             ? true
             : false
     }

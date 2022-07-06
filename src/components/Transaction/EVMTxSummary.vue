@@ -60,7 +60,7 @@ import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import CopyText from '@/components/misc/CopyText.vue'
 import { getMappingForType } from '@/store/modules/transactions/maps'
-import { toAVAX } from '@/helper'
+import { toAXC } from '@/helper'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import EVMMetadata from '@/components/Transaction/EVMMetadata.vue'
 import EVMExecutionTrace from '@/components/Transaction/EVMExecutionTrace.vue'
@@ -76,7 +76,7 @@ import EVMLogRow from '@/components/rows/EVMLogRow.vue'
     },
     filters: {
         getType: getMappingForType,
-        toAVAX,
+        toAXC,
     },
 })
 export default class EVMTxSummary extends Vue {

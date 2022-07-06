@@ -65,7 +65,7 @@ export default {
             url: '',
             networkId: 12345,
             explorer_api: '',
-            chainId: 'X',
+            chainId: 'Swap',
             err: null,
             err_url: '',
         }

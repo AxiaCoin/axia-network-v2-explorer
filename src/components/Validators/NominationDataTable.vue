@@ -35,10 +35,10 @@
                 </router-link>
             </template>
             <template #item.stakeAmount="{ item }"
-                >{{ item.stakeAmount | AVAX }} {{ nativeSymbol }}</template
+                >{{ item.stakeAmount | AXC }} {{ nativeSymbol }}</template
             >
             <template #item.potentialReward="{ item }"
-                >{{ item.potentialReward | AVAX }} {{ nativeSymbol }}</template
+                >{{ item.potentialReward | AXC }} {{ nativeSymbol }}</template
             >
             <template #item.startTime="{ item }">
                 <div class="text-right date no-pad-right">
@@ -125,26 +125,26 @@
 <script lang="ts">
 import 'reflect-metadata'
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { toAVAX } from '@/helper'
-import Subnet from '@/js/Subnet'
-import { AVALANCHE_SUBNET_ID } from '@/store/modules/platform/platform'
+import { toAXC } from '@/helper'
+import Allychain from '@/js/Allychain'
+import { AXIA_ALLYCHAIN_ID } from '@/store/modules/platform/platform'
 import { IValidator } from '@/store/modules/platform/IValidator'
-import ContentMetadata from '@/components/Subnets/ContentMetadata.vue'
+import ContentMetadata from '@/components/Allychains/ContentMetadata.vue'
 import { scaleLinear } from 'd3-scale'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 
 @Component({
     components: {
         ContentMetadata,
     },
     filters: {
-        AVAX(val: number) {
-            return parseFloat(toAVAX(val).toFixed(9)).toLocaleString()
+        AXC(val: number) {
+            return parseFloat(toAXC(val).toFixed(9)).toLocaleString()
         },
     },
 })
 export default class ValidatorDataTable extends Vue {
-    defaultSubnetID: string = AVALANCHE_SUBNET_ID
+    defaultAllychainID: string = AXIA_ALLYCHAIN_ID
     currentTime: number | null = null
     startTimes: number[] = []
     endTimes: number[] = []
@@ -156,19 +156,19 @@ export default class ValidatorDataTable extends Vue {
     search = ''
     filteredCount = 0
 
-    @Prop() subnetID!: string
-    @Prop() subnet!: Subnet
+    @Prop() allychainID!: string
+    @Prop() allychain!: Allychain
     @Prop() validators!: IValidator[]
     @Prop() title!: string
 
     get headers(): any[] {
         return [
             {
-                text: 'Delegator Payout Address',
+                text: 'Nominator Payout Address',
                 value: 'rewardOwner.addresses[0]',
                 width: 420,
             },
-            { text: 'Delegated Stake', value: 'stakeAmount', width: 175 },
+            { text: 'Nominated Stake', value: 'stakeAmount', width: 175 },
             { text: 'Potential Reward', value: 'potentialReward', width: 150 },
             { text: 'Start', value: 'startTime', align: 'end', width: 80 },
             {
@@ -179,7 +179,7 @@ export default class ValidatorDataTable extends Vue {
             },
             { text: 'End', value: 'endTime', width: 80 },
             { text: 'Duration', value: 'duration', width: 85 },
-            { text: 'Delegate Node', value: 'nodeID', width: 420 },
+            { text: 'Nominate Node', value: 'nodeID', width: 420 },
         ]
     }
 
@@ -192,7 +192,7 @@ export default class ValidatorDataTable extends Vue {
     }
 
     get nativeSymbol() {
-        return this.$store.state.assets[AVAX_ID].symbol
+        return this.$store.state.assets[AXC_ID].symbol
     }
 
     created() {
@@ -204,7 +204,7 @@ export default class ValidatorDataTable extends Vue {
 
     minStartTime() {
         const startTimes: number[] = []
-        this.subnet.validators.forEach((v: IValidator) => {
+        this.allychain.validators.forEach((v: IValidator) => {
             startTimes.push(v.startTime.getTime())
         })
         return Math.min(...startTimes)
@@ -212,7 +212,7 @@ export default class ValidatorDataTable extends Vue {
 
     maxEndTime() {
         const endTimes: number[] = []
-        this.subnet.validators.forEach((v: IValidator) => {
+        this.allychain.validators.forEach((v: IValidator) => {
             endTimes.push(v.endTime.getTime())
         })
         return Math.max(...endTimes)

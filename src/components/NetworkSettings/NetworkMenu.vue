@@ -50,7 +50,7 @@ import 'reflect-metadata'
 import { Vue, Component } from 'vue-property-decorator'
 import Network from '@/js/Network'
 import ListPage from './ListPage.vue'
-import { DEFAULT_NETWORK_ID } from '@/store/modules/network/network'
+// import { DEFAULT_NETWORK_ID } from '@/store/modules/network/network'
 
 @Component({
     components: {
@@ -87,7 +87,8 @@ export default class NetworkMenu extends Vue {
     }
 
     get networkColor(): string {
-        return DEFAULT_NETWORK_ID === 1 ? 'primary' : 'white'
+        // return DEFAULT_NETWORK_ID === 1 ? 'primary' : 'white'
+        return 'primary'
     }
 }
 </script>

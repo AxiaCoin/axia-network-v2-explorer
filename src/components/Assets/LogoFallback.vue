@@ -10,7 +10,7 @@ import { DEFAULT_NETWORK_ID } from '@/store/modules/network/network'
 @Component({})
 export default class LogoFallback extends Vue {
     get logo(): string {
-        return `/hex_ava_${this.hexColor}.svg`
+        return `/hex_axc_${this.hexColor}.svg`
     }
 
     get hexColor(): string {

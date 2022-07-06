@@ -1,18 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 import { IMetaTag } from '@/router/IMetaTag'
-import {
-    DEFAULT_NETWORK_ID,
-    cChainExplorerURL,
-    cChainExplorerURL_test,
-} from '@/store/modules/network/network'
+// import {
+//     DEFAULT_NETWORK_ID,
+//     axChainExplorerURL,
+//     axChainExplorerURL_test,
+// } from '@/store/modules/network/network'
 
 Vue.use(VueRouter)
 
-const suffix = ' | Avalanche Explorer'
+const suffix = ' | Axia Explorer'
 const description =
-    'Avalanche Explorer is an analytics tool that enables people to search the Avalanche blockchain for transactions, addresses, and other platform activities.'
+    'Axia Explorer is an analytics tool that enables people to search the Axia blockchain for transactions, addresses, and other platform activities.'
 const defaultMetaTags: IMetaTag[] = [
     {
         name: 'description',
@@ -24,44 +24,33 @@ const defaultMetaTags: IMetaTag[] = [
     },
 ]
 
-const cChainURL =
-    DEFAULT_NETWORK_ID === 1 ? cChainExplorerURL : cChainExplorerURL_test
+// const axChainURL =
+//     DEFAULT_NETWORK_ID === 1 ? axChainExplorerURL : axChainExplorerURL_test
 
 const routes = [
     {
-        path: '/',
-        name: 'Home',
-        component: Home,
-        meta: {
-            auth: false,
-            title: 'View All Activities' + suffix,
-            metaTags: defaultMetaTags,
-        },
-        beforeEnter() {
-            if (window.location.href !== cChainURL) {
-                window.location.href = cChainURL
-            }
-        },
-    },
-    {
-        path: '/subnets',
-        name: 'Subnets',
+        path: '/allychains',
+        name: 'Allychains',
         component: () =>
-            import(/* webpackChunkName: "subnets" */ '../views/Subnets.vue'),
+            import(
+                /* webpackChunkName: "allychains" */ '../views/Allychains.vue'
+            ),
         meta: {
             auth: false,
-            title: 'Subnets' + suffix,
+            title: 'Allychains' + suffix,
             metaTags: defaultMetaTags,
         },
     },
     {
-        path: '/subnet/:id',
-        name: 'Subnet',
+        path: '/allychain/:id',
+        name: 'Allychain',
         component: () =>
-            import(/* webpackChunkName: "subnet" */ '../views/Subnet.vue'),
+            import(
+                /* webpackChunkName: "allychain" */ '../views/Allychain.vue'
+            ),
         meta: {
             auth: false,
-            title: 'Subnet' + suffix,
+            title: 'Allychain' + suffix,
             metaTags: defaultMetaTags,
         },
     },
@@ -79,12 +68,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'Avalanche Explorer for validators is the perfect analytics tool that enables transactions, addresses, and other platform transparency.',
+                        'Axia Explorer for validators is the perfect analytics tool that enables transactions, addresses, and other platform transparency.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'Avalanche Explorer for validators is the perfect analytics tool that enables transactions, addresses, and other platform transparency.',
+                        'Axia Explorer for validators is the perfect analytics tool that enables transactions, addresses, and other platform transparency.',
                 },
             ],
         },
@@ -103,12 +92,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on P-Chain, X-Chain, and C-Chain with the Avalanche Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on P-Chain, X-Chain, and C-Chain with the Avalanche Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },
@@ -127,12 +116,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on P-Chain, X-Chain, and C-Chain with the Avalanche Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on P-Chain, X-Chain, and C-Chain with the Avalanche Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },
@@ -175,6 +164,30 @@ const routes = [
         },
     },
     {
+        path: '/',
+        name: 'Blockchains',
+        component: () =>
+            import(
+                /* webpackChunkName: "blockchains" */ '../views/Blockchains.vue'
+            ),
+        meta: {
+            auth: false,
+            title: 'Blockchains' + suffix,
+            metaTags: [
+                {
+                    name: 'description',
+                    content:
+                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                },
+                {
+                    property: 'og:description',
+                    content:
+                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                },
+            ],
+        },
+    },
+    {
         path: '/blockchains',
         name: 'Blockchains',
         component: () =>
@@ -188,12 +201,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'Blockchain transparency with the Avalanche Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'Blockchain transparency with the Avalanche Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
             ],
         },
@@ -212,12 +225,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'Blockchain transparency with the Avalanche Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'Blockchain transparency with the Avalanche Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
             ],
         },

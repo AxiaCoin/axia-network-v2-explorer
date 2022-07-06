@@ -1,4 +1,4 @@
-import { blockchainMap, subnetMap } from '@/helper'
+import { blockchainMap, allychainMap } from '@/helper'
 import { Asset } from '@/js/Asset'
 import moment from 'moment'
 import Vue from 'vue'
@@ -9,8 +9,8 @@ Vue.filter('blockchain', function (val: string) {
     return blockchainMap(val)
 })
 
-Vue.filter('subnet', function (val: string) {
-    return subnetMap(val)
+Vue.filter('allychain', function (val: string) {
+    return allychainMap(val)
 })
 
 Vue.filter('nameOrID', function (val: Asset) {
@@ -80,13 +80,13 @@ Vue.filter(
 
 Vue.filter('qualifyInput', function (unit: string, type: string): string {
     switch (type) {
-        // X <- shared
+        // Swap <- shared
         case 'import':
             return 'Imported ' + unit
-        // P <- shared
+        // Core <- shared
         case 'pvm_import':
             return 'Imported ' + unit
-        // C <- shared
+        // AX <- shared
         case 'atomic_import_tx':
             return 'Imported ' + unit
         default:
@@ -96,13 +96,13 @@ Vue.filter('qualifyInput', function (unit: string, type: string): string {
 
 Vue.filter('qualifyOutput', function (unit: string, type: string): string {
     switch (type) {
-        // X -> shared
+        // Swap -> shared
         case 'export':
             return 'Exported ' + unit
-        // P -> shared
+        // Core -> shared
         case 'pvm_export':
             return 'Exported ' + unit
-        // C -> shared
+        // AX -> shared
         case 'atomic_export_tx':
             return 'Exported ' + unit
         default:

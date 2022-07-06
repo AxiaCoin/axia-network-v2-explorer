@@ -8,19 +8,19 @@ export interface IValidator {
     stakeAmount?: number
     uptime?: number // local uptime (percentrage)
     connected?: boolean
-    delegationFee?: number
-    delegators?: IDelegator[] | null
+    nominationFee?: number
+    nominators?: INominator[] | null
     // Other Networks only
     weight?: number // analogous to stakeAmount. arbitrarily set by the control key holder
 
     // Frontend Properties
-    totalStakeAmount?: number // sum of validator and delegator stake amountsd
+    totalStakeAmount?: number // sum of validator and nominator stake amountsd
     rank?: number // based on stake or weight
     elapsed?: number // how much of the staking period has elasped (%)
 }
 
 // Primary Network Only
-export interface IDelegator {
+export interface INominator {
     nodeID: string
     startTime: Date
     endTime: Date
@@ -42,11 +42,11 @@ export interface IPendingValidator {
 
     stakeAmount: number
     connected?: boolean
-    delegationFee?: number
-    delegators: IPendingDelegator | null
+    nominationFee?: number
+    nominators: IPendingNominator | null
 }
 
-export interface IPendingDelegator {
+export interface IPendingNominator {
     nodeID: string
     startTime: Date
     endTime: Date
@@ -67,13 +67,13 @@ export interface IValidatorData {
     stakeAmount?: string
     uptime?: string
     connected?: boolean
-    delegationFee?: string
-    delegators?: IDelegatorData[] | null
+    nominationFee?: string
+    nominators?: INominatorData[] | null
     // Other Networks Only
     weight?: string
 }
 
-export interface IDelegatorData {
+export interface INominatorData {
     nodeID: string
     startTime: string
     endTime: string
@@ -95,12 +95,12 @@ export interface IPendingValidatorData {
 
     stakeAmount: string
     connected?: boolean
-    delegationFee?: string
-    delegators?: null // always null (even if there is a pendingDelegator). API to be redesigned
+    nominationFee?: string
+    nominators?: null // always null (even if there is a pendingNominator). API to be redesigned
 }
 
-// the top-level API response will contain pendingDelegators for currentValidators and pendingValdators
-export interface IPendingDelegatorData {
+// the top-level API response will contain pendingNominators for currentValidators and pendingValdators
+export interface IPendingNominatorData {
     nodeID: string
     startTime: string
     endTime: string

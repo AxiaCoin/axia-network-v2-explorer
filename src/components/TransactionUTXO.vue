@@ -19,7 +19,7 @@
             </div>
             <div v-else>
                 <p>
-                    No input UTXOs found for this transaction on the Avalanche
+                    No input UTXOs found for this transaction on the Axia
                     Explorer.
                 </p>
             </div>
@@ -60,7 +60,7 @@ import {
     getTransactionOutputs,
     getTransactionInputs,
 } from '../js/Transaction'
-import { toAVAX } from '../helper'
+import { toAXC } from '../helper'
 import Tooltip from '@/components/rows/Tooltip.vue'
 import { getMappingForType } from '@/store/modules/transactions/maps'
 
@@ -73,7 +73,7 @@ import { getMappingForType } from '@/store/modules/transactions/maps'
     },
     filters: {
         getType: getMappingForType,
-        toAVAX,
+        toAXC,
     },
 })
 export default class TransactionUTXO extends Vue {

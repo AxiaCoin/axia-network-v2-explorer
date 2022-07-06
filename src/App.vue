@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <Footer class="footer" />
+        <Footer class="footer" :style="{ display: 'none' }" />
         <Notifications />
         <!-- <ResponsiveGuidelines /> -->
     </v-app>
@@ -54,7 +54,7 @@ export default Vue.extend({
                     }
                 )
                 // Update tags
-                document.title = to.meta.title || 'Avalanche Explorer'
+                document.title = to.meta.title || 'Axia Explorer'
                 if (to.meta.metaTags) {
                     to.meta.metaTags
                         .map((tagDef: IMetaTag) => {
@@ -83,13 +83,13 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .v-application {
-    background-color: $white !important;
+    background-color: #e9f6ff !important;
     min-height: 100vh;
 }
 
 @if $VUE_APP_DEFAULT_NETWORKID == 5 {
     .v-application {
-        background-color: #fff !important;
+        background-color: #e9f6ff !important;
         background-image: $background_image;
     }
 }
@@ -98,7 +98,7 @@ export default Vue.extend({
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 100%;
+    // height: 100%;
     overflow-y: hidden;
 }
 
@@ -124,7 +124,7 @@ export default Vue.extend({
         display: flex;
         flex-direction: row;
         width: 100%;
-        height: 100%;
+        // height: 100%;
         overflow-y: hidden;
     }
 

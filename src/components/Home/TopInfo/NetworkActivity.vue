@@ -1,7 +1,7 @@
 <template>
     <div id="network_statistics" class="card">
         <div class="header">
-            <h2 class="top_info_heading">Avalanche Network Activity</h2>
+            <h2 class="top_info_heading">Axia Network Activity</h2>
         </div>
         <section class="stats one-column">
             <!-- <dl>
@@ -9,12 +9,12 @@
                     <dd class="indent">
                         24h Transactions
                         <TooltipMeta
-                            content="Total number of state queries or modifications of all blockchains on Avalanche in the past 24 hours"
+                            content="Total number of state queries or modifications of all blockchains on Axia in the past 24 hours"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
-                        <template v-if="subnetsLoaded">
+                        <template v-if="allychainsLoaded">
                             {{totalTransactions.toLocaleString()}}
                             <span class="unit">{{tpmText}} TPM</span>
                         </template>
@@ -27,14 +27,14 @@
                     <dd class="indent">
                         24h Volume
                         <TooltipMeta
-                            content="Total value of AVAX transferred on Avalanche in the past 24 hours"
+                            content="Total value of AXC transferred on Axia in the past 24 hours"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
-                        <template v-if="subnetsLoaded">
-                            {{ avaxVolume }}
-                            <span class="unit">AVAX</span>
+                        <template v-if="allychainsLoaded">
+                            {{ axcVolume }}
+                            <span class="unit">AXC</span>
                         </template>
                         <v-progress-circular
                             v-else
@@ -54,12 +54,12 @@
                     <dd>
                         Validators
                         <TooltipMeta
-                            content="Total number of nodes validating transactions on Avalanche"
+                            content="Total number of nodes validating transactions on Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
-                        <template v-if="subnetsLoaded">
+                        <template v-if="allychainsLoaded">
                             {{ validatorCount.toLocaleString() }}
                         </template>
                         <v-progress-circular
@@ -78,14 +78,14 @@
                     <dd>
                         Total Staked
                         <TooltipMeta
-                            content="Total value of AVAX locked to secure Avalanche"
+                            content="Total value of AXC locked to secure Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
-                        <template v-if="subnetsLoaded">
+                        <template v-if="allychainsLoaded">
                             {{ totalStake }}
-                            <span class="unit">AVAX</span></template
+                            <span class="unit">AXC</span></template
                         >
                         <v-progress-circular
                             v-else
@@ -103,12 +103,12 @@
                     <dd>
                         Blockchains
                         <TooltipMeta
-                            content="Total number of blockchains on Avalanche"
+                            content="Total number of blockchains on Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
-                        <template v-if="subnetsLoaded">{{
+                        <template v-if="allychainsLoaded">{{
                             totalBlockchains
                         }}</template>
                         <v-progress-circular
@@ -123,17 +123,17 @@
                 </router-link>
             </dl>
             <dl>
-                <router-link class="link" to="/subnets">
+                <router-link class="link" to="/allychains">
                     <dd>
-                        Subnets
+                        Allychains
                         <TooltipMeta
-                            content="Total number of subnets on Avalanche"
+                            content="Total number of allychains on Axia"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
-                        <template v-if="subnetsLoaded">{{
-                            totalSubnets
+                        <template v-if="allychainsLoaded">{{
+                            totalAllychains
                         }}</template>
                         <v-progress-circular
                             v-else
@@ -147,16 +147,16 @@
                 </router-link>
             </dl>
             <dl>
-                <router-link class="link" to="/subnets">
+                <router-link class="link" to="/allychains">
                     <dd>
                         Staking Ratio
                         <TooltipMeta
-                            content="Percentage of AVAX locked to secure Avalanche out of total AVAX supply"
+                            content="Percentage of AXC locked to secure Axia out of total AXC supply"
                             :color="'#2196f3'"
                         />
                     </dd>
                     <dt>
-                        <template v-if="subnetsLoaded"
+                        <template v-if="allychainsLoaded"
                             >{{ percentStaked }}%</template
                         >
                         <v-progress-circular
@@ -171,10 +171,10 @@
                 </router-link>
             </dl>
             <dl>
-                <router-link class="link" to="/subnets">
+                <router-link class="link" to="/allychains">
                     <dd>Annual Staking Reward</dd>
                     <dt>
-                        <template v-if="subnetsLoaded">{{
+                        <template v-if="allychainsLoaded">{{
                             annualStakingRewardPercentage
                         }}</template>
                         <v-progress-circular
@@ -196,7 +196,7 @@ import 'reflect-metadata'
 import { Mixins, Component, Watch } from 'vue-property-decorator'
 import TooltipHeading from '@/components/misc/TooltipHeading.vue'
 import TooltipMeta from '@/components/Home/TopInfo/TooltipMeta.vue'
-import { AVAX_ID } from '@/known_assets'
+import { AXC_ID } from '@/known_assets'
 import { Asset } from '@/js/Asset'
 import Big from 'big.js'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
@@ -219,13 +219,13 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         return this.$store.state.assetAggregatesLoaded
     }
 
-    get subnetsLoaded(): boolean {
-        return this.$store.state.Platform.subnetsLoaded
+    get allychainsLoaded(): boolean {
+        return this.$store.state.Platform.allychainsLoaded
     }
 
-    @Watch('avaxVolume')
-    onAvaxVolumeChanged() {
-        this.saveCacheAvax()
+    @Watch('axcVolume')
+    onAxcVolumeChanged() {
+        this.saveCacheAxc()
     }
 
     @Watch('totalTransactions')
@@ -236,7 +236,7 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
     created() {
         // Get 24h volume cache
         // TODO: remove when API is enhanced
-        const volumeCacheJSON = localStorage.getItem('avaxCache')
+        const volumeCacheJSON = localStorage.getItem('axcCache')
         let volumeCache = Big(0)
         if (volumeCacheJSON) {
             const cache = JSON.parse(volumeCacheJSON)
@@ -257,16 +257,16 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         this.totalTransactionsCache = totalTransactionsCache
     }
 
-    saveCacheAvax() {
-        const asset = this.avax
+    saveCacheAxc() {
+        const asset = this.axc
         if (asset) {
             const volume_day = asset.volume_day.toString()
             const txCount_day = asset.txCount_day
             const cache = {
-                volume_day, // AVAX volume
-                txCount_day, // AVAX count
+                volume_day, // AXC volume
+                txCount_day, // AXC count
             }
-            localStorage.setItem('avaxCache', JSON.stringify(cache))
+            localStorage.setItem('axcCache', JSON.stringify(cache))
         }
     }
 
@@ -278,7 +278,7 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         )
     }
 
-    // Data from Ortelius
+    // Data from Magellan
     get tpmText(): string {
         const day = 60 * 24
         const avg = this.totalTransactions / day
@@ -295,16 +295,16 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         return this.$store.state.assets
     }
 
-    get avax(): Asset | undefined {
-        return this.assets[AVAX_ID]
+    get axc(): Asset | undefined {
+        return this.assets[AXC_ID]
     }
 
-    get avaxVolume(): string {
-        if (!this.avax) {
+    get axcVolume(): string {
+        if (!this.axc) {
             return parseInt(this.volumeCache.toFixed(0)).toLocaleString()
         }
-        return this.avax.isHistoryUpdated
-            ? parseInt(this.avax.volume_day.toFixed(0)).toLocaleString()
+        return this.axc.isHistoryUpdated
+            ? parseInt(this.axc.volume_day.toFixed(0)).toLocaleString()
             : parseInt(this.volumeCache.toFixed(0)).toLocaleString()
     }
 
@@ -314,7 +314,7 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
             : this.totalTransactionsCache
     }
 
-    // Data from Avalanche-Go
+    // Data from Axia-Go
     get totalStake(): string {
         return this.getTotalStake().div(Math.pow(10, 9)).toLocaleString(0)
     }
@@ -327,8 +327,8 @@ export default class NetworkActivity extends Mixins(PlatformGettersMixin) {
         return this.getTotalBlockchains()
     }
 
-    get totalSubnets(): number {
-        return Object.keys(this.$store.state.Platform.subnets).length
+    get totalAllychains(): number {
+        return Object.keys(this.$store.state.Platform.allychains).length
     }
 
     get percentStaked() {
