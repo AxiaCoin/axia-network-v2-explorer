@@ -8,8 +8,8 @@
                 rounded="0"
             >
                 <p class="description" :style="{ color: 'white' }">
-                    Explore network activity and staking metrics using
-                    <a class="bold" :href="statsURL">Axia Stats</a>.
+                    This Explorer displays activity on the
+                    <span class="bold">AXIA Mainnet</span>.
                 </p>
             </v-alert>
         </template>

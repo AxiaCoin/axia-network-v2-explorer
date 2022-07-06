@@ -30,7 +30,7 @@
                     <router-link to="/blockchains">Blockchains</router-link>
                     <a :href="axChainURL">AX-Chain</a>
                     <!-- <a :href="statusPageURL">Status</a> -->
-                    <router-link to="/resources">Resources</router-link>
+                    <!-- <router-link to="/resources">Resources</router-link> -->
                 </div>
                 <!-- <div class="list">
                     <h4>Social</h4>
@@ -61,8 +61,8 @@ import {
     DEFAULT_NETWORK_ID,
     axChainExplorerURL,
     axChainExplorerURL_test,
-    statusURL,
-    statusURL_test,
+    // statusURL,
+    // statusURL_test,
 } from '@/store/modules/network/network'
 
 @Component({})
@@ -73,9 +73,9 @@ export default class Footer extends Vue {
             : axChainExplorerURL_test
     }
 
-    get statusPageURL() {
-        return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
-    }
+    // get statusPageURL() {
+    //     return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
+    // }
 
     get img() {
         const color = DEFAULT_NETWORK_ID === 1 ? `black` : `blue`

@@ -81,8 +81,8 @@ import {
     DEFAULT_NETWORK_ID,
     axChainExplorerURL,
     axChainExplorerURL_test,
-    statusURL,
-    statusURL_test,
+    // statusURL,
+    // statusURL_test,
 } from '@/store/modules/network/network'
 
 @Component({
@@ -131,9 +131,9 @@ export default class NavbarMobile extends Vue {
         return DEFAULT_NETWORK_ID === 1 ? true : false
     }
 
-    get statusPageURL() {
-        return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
-    }
+    // get statusPageURL() {
+    //     return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
+    // }
 
     closeSearch(val: boolean) {
         this.isSearch = val

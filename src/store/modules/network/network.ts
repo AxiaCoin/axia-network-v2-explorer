@@ -25,7 +25,7 @@ const axiaJSPort = parseInt(process.env.VUE_APP_AXIA_JS_PORT || '443')
 const axiaJSNetworkID = parseInt(process.env.VUE_APP_AXIA_JS_NETWORKID || '1')
 const axiaJSChainID = process.env.VUE_APP_AXIA_JS_CHAINID || 'Swap'
 export const axChainExplorerURL = process.env.VUE_APP_AXCHAIN_EXPLORER_URL || ''
-export const statusURL = process.env.VUE_APP_STATUS_URL || ''
+// export const statusURL = process.env.VUE_APP_STATUS_URL || ''
 
 // Testnet
 const networkName_test = process.env.VUE_APP_TEST_NETWORKNAME || ''
@@ -42,7 +42,7 @@ const axiaJSNetworkID_test = parseInt(
 const axiaJSChainID_test = process.env.VUE_APP_TEST_AXIA_JS_CHAINID || ''
 export const axChainExplorerURL_test =
     process.env.VUE_APP_TEST_AXCHAIN_EXPLORER_URL || ''
-export const statusURL_test = process.env.VUE_APP_TEST_STATUS_URL || ''
+// export const statusURL_test = process.env.VUE_APP_TEST_STATUS_URL || ''
 
 const network_module: Module<INetworkState, IRootState> = {
     namespaced: true,

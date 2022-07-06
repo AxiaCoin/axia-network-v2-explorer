@@ -30,7 +30,7 @@
                     <router-link to="/validators">Validators</router-link>
                     <!-- <a :href="tokensURL">Tokens</a> -->
                     <router-link to="/blockchains">Blockchains</router-link>
-                    <a v-if="isMainnet" :href="statsURL">Stats</a>
+                    <!-- <a v-if="isMainnet" :href="statsURL">Stats</a> -->
                     <a :href="axChainURL" target="_blank">AX-Chain</a>
                     <!-- <a :href="statusPageURL">Status</a> -->
                     <!-- <router-link to="/resources">Resources</router-link> -->
@@ -81,8 +81,8 @@ import {
     DEFAULT_NETWORK_ID,
     axChainExplorerURL,
     axChainExplorerURL_test,
-    statusURL,
-    statusURL_test,
+    // statusURL,
+    // statusURL_test,
 } from '@/store/modules/network/network'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
 import { getMarketCapUSD } from '@/store/modules/platform/platform.getters'
@@ -148,9 +148,9 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
         return getMarketCapUSD()
     }
 
-    get statusPageURL() {
-        return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
-    }
+    // get statusPageURL() {
+    //     return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
+    // }
 
     onsearch(val) {
         this.$router

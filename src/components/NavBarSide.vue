@@ -8,8 +8,8 @@
             <v-list-item to="/assets">Assets</v-list-item>
             <v-list-item to="/tx">Transactions</v-list-item>
             <v-list-item :href="axChainURL">AX-Chain</v-list-item>
-            <v-list-item :href="statusPageURL">Status</v-list-item>
-            <v-list-item to="/resources">Resources</v-list-item>
+            <!-- <v-list-item :href="statusPageURL">Status</v-list-item> -->
+            <!-- <v-list-item to="/resources">Resources</v-list-item> -->
         </v-list>
     </div>
 </template>
@@ -20,8 +20,8 @@ import {
     DEFAULT_NETWORK_ID,
     axChainExplorerURL,
     axChainExplorerURL_test,
-    statusURL,
-    statusURL_test,
+    // statusURL,
+    // statusURL_test,
 } from '@/store/modules/network/network'
 
 @Component({})
@@ -32,9 +32,9 @@ export default class NavbarSide extends Vue {
             : axChainExplorerURL_test
     }
 
-    get statusPageURL() {
-        return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
-    }
+    // get statusPageURL() {
+    //     return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
+    // }
 }
 </script>
 
