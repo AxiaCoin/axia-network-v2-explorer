@@ -9,10 +9,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@axia-systems/axiajs@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@axia-systems/axiajs/-/axiajs-3.0.3.tgz#f31e3d0945c7236ed63fda65628390f46aadebe8"
-  integrity sha512-OiqqHBp7o6k8SfxO0oJQM1svIbPymRNUVjfTZ9gKIj2z5nEthZpqN64OexCzHU57CVOfUeJ9oMhgZnyv/3YGAw==
+"@axia-systems/axiajs@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@axia-systems/axiajs/-/axiajs-3.0.5.tgz#bfc532a54c6c982a0a480bac8c8615a58f1a0d65"
+  integrity sha512-/baCDpeV/+3qbHAC9YRLM+w3KlgU6uF75AVDRJiv2eZdiaAXCq0t3detz0oSUQZyASn9LRAajpsrgS1ltd/QkA==
   dependencies:
     assert "2.0.0"
     axios "0.27.2"
@@ -3763,12 +3763,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001035:
-  version "1.0.30001363"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001363.tgz"
-  integrity sha512-HpQhpzTGGPVMnCjIomjt+jvyUu8vNFo3TaDiZ/RcoTrlOq/5+tC8zHdsbgFB6MxmaY+jCpsH09aD80Bb4Ow3Sg==
-
-caniuse-lite@^1.0.30001312:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001312:
   version "1.0.30001363"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001363.tgz"
   integrity sha512-HpQhpzTGGPVMnCjIomjt+jvyUu8vNFo3TaDiZ/RcoTrlOq/5+tC8zHdsbgFB6MxmaY+jCpsH09aD80Bb4Ow3Sg==
