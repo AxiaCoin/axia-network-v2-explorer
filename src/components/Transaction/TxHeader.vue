@@ -103,11 +103,11 @@ export default class TxHeader extends Vue {
     background-color: $white !important;
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 1 {
-    .v-alert--text:before {
-        background-color: $white;
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 1 {
+//     .v-alert--text:before {
+//         background-color: $white;
+//     }
+// }
 
 .bold {
     font-weight: 700;

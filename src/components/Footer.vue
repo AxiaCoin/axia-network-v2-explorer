@@ -87,9 +87,9 @@ export default class Footer extends Vue {
 <style scoped lang="scss">
 $footer_color: $black;
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    $footer_color: $secondary-color;
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     $footer_color: $secondary-color;
+// }
 
 .v-footer {
     margin: 60px 0 0 0;

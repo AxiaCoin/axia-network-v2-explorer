@@ -113,13 +113,13 @@ export default class TransactionUTXO extends Vue {
     }
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .utxo {
-        .card {
-            border: 2px solid $secondary-color;
-        }
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .utxo {
+//         .card {
+//             border: 2px solid $secondary-color;
+//         }
+//     }
+// }
 
 @include smOrSmaller {
     .utxo {
@@ -132,12 +132,12 @@ export default class TransactionUTXO extends Vue {
         }
     }
 
-    @if $VUE_APP_DEFAULT_NETWORKID == 5 {
-        .utxo {
-            .card {
-                border: none;
-            }
-        }
-    }
+    // @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+    //     .utxo {
+    //         .card {
+    //             border: none;
+    //         }
+    //     }
+    // }
 }
 </style>

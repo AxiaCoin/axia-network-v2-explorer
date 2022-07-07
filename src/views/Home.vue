@@ -32,11 +32,11 @@ export default class Home extends Vue {}
     border: none !important;
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .recent_tx {
-        border: 2px solid $secondary-color !important;
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .recent_tx {
+//         border: 2px solid $secondary-color !important;
+//     }
+// }
 
 .tables {
     display: grid;

@@ -87,12 +87,12 @@ export default Vue.extend({
     min-height: 100vh;
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .v-application {
-        background-color: #e9f6ff !important;
-        background-image: $background_image;
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .v-application {
+//         background-color: #e9f6ff !important;
+//         background-image: $background_image;
+//     }
+// }
 
 .side_container {
     display: flex;
@@ -187,11 +187,11 @@ export default Vue.extend({
 }
 
 @include xsOrSmaller {
-    @if $VUE_APP_DEFAULT_NETWORKID == 5 {
-        .v-application {
-            background-image: none !important;
-        }
-    }
+    // @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+    //     .v-application {
+    //         background-image: none !important;
+    //     }
+    // }
 
     .router_view {
         padding: $container_padding_xs;
@@ -326,11 +326,11 @@ button {
     border: 1px solid $gray-light;
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .card {
-        border: 2px solid $blue;
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .card {
+//         border: 2px solid $blue;
+//     }
+// }
 
 .stats {
     dl {

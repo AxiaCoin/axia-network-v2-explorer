@@ -31,11 +31,11 @@ $secondary-color-xlight: $blue-light2;
 $background-color: $dark-white;
 $button: $button-gray;
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    $secondary-color: $blue;
-    $secondary-color-light: $blue-light;
-    $secondary-color-xlight: $blue-light2;
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     $secondary-color: $blue;
+//     $secondary-color-light: $blue-light;
+//     $secondary-color-xlight: $blue-light2;
+// }
 
 $bg-light: $white;
 

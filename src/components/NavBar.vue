@@ -177,11 +177,11 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 .currency_logo {
     margin-bottom: -5px;
 }
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .navbar {
-        border-bottom: none;
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .navbar {
+//         border-bottom: none;
+//     }
+// }
 
 .top {
     display: flex;
@@ -321,26 +321,26 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
     }
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .routes a {
-        color: rgba(255, 255, 255, 0.72) !important;
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .routes a {
+//         color: rgba(255, 255, 255, 0.72) !important;
 
-        &.router-link-exact-active {
-            color: $white !important;
-        }
-    }
+//         &.router-link-exact-active {
+//             color: $white !important;
+//         }
+//     }
 
-    .prices {
-        .price_pair {
-            .label {
-                color: rgba(255, 255, 255, 0.72) !important;
-            }
-            .value {
-                color: $white !important;
-            }
-        }
-    }
-}
+//     .prices {
+//         .price_pair {
+//             .label {
+//                 color: rgba(255, 255, 255, 0.72) !important;
+//             }
+//             .value {
+//                 color: $white !important;
+//             }
+//         }
+//     }
+// }
 
 @include smOnly {
     .logo {

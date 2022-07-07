@@ -79,11 +79,11 @@ export default class TestnetAlert extends Vue {
     }
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 1 {
-    .v-alert--text:before {
-        background-color: #45a5e7 !important;
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 1 {
+//     .v-alert--text:before {
+//         background-color: #45a5e7 !important;
+//     }
+// }
 
 .bold {
     font-weight: 700;
