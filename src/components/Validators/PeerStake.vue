@@ -2,7 +2,7 @@
     <div class="peer_info">
         <div class="header">
             <h4 class="meta_title">AXC Stake Distribution</h4>
-            <p class="subtitle">by AxiaGo Version</p>
+            <p class="subtitle">by AXIA Version</p>
         </div>
         <div class="canv_cont">
             <canvas ref="canv"></canvas>

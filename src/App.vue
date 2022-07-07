@@ -54,7 +54,7 @@ export default Vue.extend({
                     }
                 )
                 // Update tags
-                document.title = to.meta.title || 'Axia Explorer'
+                document.title = to.meta.title || 'AXIA Explorer'
                 if (to.meta.metaTags) {
                     to.meta.metaTags
                         .map((tagDef: IMetaTag) => {

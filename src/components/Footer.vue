@@ -4,11 +4,11 @@
             <div class="powered_by">
                 <div class="header">
                     <img :src="img" />
-                    <h4>Axia Explorer</h4>
+                    <h4>AXIA Explorer</h4>
                 </div>
                 <p class="axia_desc">
-                    Axia Explorer is an analytics tool that enables people to
-                    search the Axia blockchain for transactions, addresses, and
+                    AXIA Explorer is an analytics tool that enables people to
+                    search the AXIA blockchain for transactions, addresses, and
                     other platform activities.
                 </p>
                 <!-- <p class="axia_desc tos">

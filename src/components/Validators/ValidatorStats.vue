@@ -8,7 +8,7 @@
             <p class="label">
                 Validators
                 <TooltipMeta
-                    content="Total number of nodes validating transactions on Axia"
+                    content="Total number of nodes validating transactions on AXIA"
                     :color="'#2196f3'"
                 />
             </p>
@@ -30,7 +30,7 @@
             <p class="label">
                 Total Staked
                 <TooltipMeta
-                    content="Total value of AXC locked to secure Axia"
+                    content="Total value of AXC locked to secure AXIA"
                     :color="'#2196f3'"
                 />
             </p>
@@ -53,7 +53,7 @@
             <p class="label">
                 Staking Ratio
                 <TooltipMeta
-                    content="Percentage of AXC locked to secure Axia out of total AXC supply"
+                    content="Percentage of AXC locked to secure AXIA out of total AXC supply"
                     :color="'#2196f3'"
                 />
             </p>

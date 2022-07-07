@@ -300,7 +300,7 @@ export default {
                 responsive: true,
                 title: {
                     display: false,
-                    text: 'Axia Transaction History',
+                    text: 'AXIA Transaction History',
                 },
                 tooltips: {
                     mode: 'index',

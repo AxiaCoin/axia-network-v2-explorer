@@ -72,7 +72,7 @@ export interface IBalanceXDatum {
 }
 
 /* ==========================================
-   Axia Go API
+   AXIA API
         - unlocked CoreChain AXC
         - locked CoreChain AXC
         - staked CoreChain AXC

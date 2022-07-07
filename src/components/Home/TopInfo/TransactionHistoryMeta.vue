@@ -5,7 +5,7 @@
                 <dd>
                     {{ prefix }} Addresses
                     <TooltipMeta
-                        content="Number of unique addresses on Axia in the selected time-interval"
+                        content="Number of unique addresses on AXIA in the selected time-interval"
                         :color="'#2196f3'"
                     />
                 </dd>
@@ -17,7 +17,7 @@
                 <dd>
                     {{ prefix }} Assets
                     <TooltipMeta
-                        content="Number of distinct assets transferred on Axia in the selected time-interval"
+                        content="Number of distinct assets transferred on AXIA in the selected time-interval"
                         :color="'#2196f3'"
                     />
                 </dd>
