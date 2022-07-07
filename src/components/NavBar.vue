@@ -18,7 +18,7 @@
                         "
                     />
                     <h1>
-                        <span class="hide">Axia Explorer</span>
+                        <span class="hide">AXIA Explorer</span>
                     </h1>
                 </a>
             </div> -->

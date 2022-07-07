@@ -13,7 +13,7 @@ export interface BlocksState {
     block by a cryptographic hash of its contents as a means of reference. Blocks contain 
     an identifier for the final state after all transactions contained in it are validated. 
     There is a consensus mechanism that provides incentives for nodes adding new blocks to 
-    the chain that comply with the rules of Axia by burning tokens ('AXC') to an account 
+    the chain that comply with the rules of AXIA by burning tokens ('AXC') to an account 
     specified by the protocol.
 
     Current API response is the same as eth.getBlock (https://explorerapi.axc.network/v2/ctxdata/1000)
@@ -25,7 +25,7 @@ export interface EVMBlockQueryResponse {
     transactions: EVMBlockTransaction[]
     logs: EVMBlockLog[] | null
     blockExtraData: string /* An arbitrary byte array containing data relevant to this block. 
-                                Contains atomic transactions (cross-chain imports/exports) in Axia 
+                                Contains atomic transactions (cross-chain imports/exports) in AXIA 
                                 Must be 32 bytes or fewer. */
 
     // NOT APPLICABLE

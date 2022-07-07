@@ -12,7 +12,7 @@
                 v-if="!address"
                 :id="addressId"
                 :title="'Address Details Not Found'"
-                :message="'A record for this address ID was not found in the Axia Explorer'"
+                :message="'A record for this address ID was not found in the AXIA Explorer'"
                 :support-u-r-l="'https://chat.avalabs.org'"
             />
             <template v-else>

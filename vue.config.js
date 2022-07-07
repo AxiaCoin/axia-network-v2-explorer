@@ -16,7 +16,7 @@ scssVars += `@import "@/_background.scss"; `
 console.log(`
 ${colors.green('.Env configs are:')}
     Magellan url: ${colors.magenta(process.env.VUE_APP_MAGELLAN_URL)}
-    Axia GO url: ${colors.magenta(process.env.VUE_APP_AXIA_GO_URL)}
+    AXIA url: ${colors.magenta(process.env.VUE_APP_AXIA_GO_URL)}
     Testnet url: ${colors.magenta(process.env.VUE_APP_AXIA_JS_IP)}
     AX-Chain url: ${colors.magenta(process.env.VUE_APP_AXCHAIN_EXPLORER_URL)}
 

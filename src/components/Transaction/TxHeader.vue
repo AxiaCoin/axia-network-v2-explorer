@@ -22,7 +22,7 @@
                     >
                 </template>
                 <span
-                    >The Core-Chain is the metadata blockchain on Axia, managing
+                    >The Core-Chain is the metadata blockchain on AXIA, managing
                     validators and custom allychains. Validators stake AXC on
                     the Core-Chain to secure the network.</span
                 >
@@ -39,7 +39,7 @@
                     >
                 </template>
                 <span
-                    >The Swap-Chain is the default asset blockchain on Axia
+                    >The Swap-Chain is the default asset blockchain on AXIA
                     enabling the creation and instant exchange of assets. This
                     blockchain is for transfers that benefit from
                     high-throughput and instant finality. Think Swap for

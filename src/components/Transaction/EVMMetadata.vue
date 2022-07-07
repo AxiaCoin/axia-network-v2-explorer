@@ -26,7 +26,7 @@
             <p class="meta_label">
                 Timestamp
                 <Tooltip
-                    content="The date and time when this transaction was accepted by the Axia Network"
+                    content="The date and time when this transaction was accepted by the AXIA Network"
                 />
             </p>
             <div class="meta_value values">
