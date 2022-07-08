@@ -9,10 +9,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@axia-systems/axiajs@^3.0.5":
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/@axia-systems/axiajs/-/axiajs-3.0.5.tgz#bfc532a54c6c982a0a480bac8c8615a58f1a0d65"
-  integrity sha512-/baCDpeV/+3qbHAC9YRLM+w3KlgU6uF75AVDRJiv2eZdiaAXCq0t3detz0oSUQZyASn9LRAajpsrgS1ltd/QkA==
+"@axia-systems/axiajs@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@axia-systems/axiajs/-/axiajs-3.0.6.tgz#5f57bcf4fd3c8af79c192f2b45e511c920233490"
+  integrity sha512-c4hpBlogrv6EtQVi8tbV45dtL0lm5aTRJ/fZqHbOpMlk5WOaJoEXA18jphOyquQ8l4EBjI8fVQ2jyt9pwK60Cw==
   dependencies:
     assert "2.0.0"
     axios "0.27.2"
