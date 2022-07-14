@@ -85,7 +85,7 @@ import {
     // statusURL_test,
 } from '@/store/modules/network/network'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
-import { getMarketCapUSD } from '@/store/modules/platform/platform.getters'
+// import { getMarketCapUSD } from '@/store/modules/platform/platform.getters'
 
 @Component({
     components: {
@@ -117,16 +117,6 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
             : axChainExplorerURL_test
     }
 
-    get tokensURL() {
-        return DEFAULT_NETWORK_ID === 1
-            ? 'https://avascan.info/tokens'
-            : 'https://testnet.avascan.info/tokens'
-    }
-
-    get statsURL() {
-        return 'https://stats.avax.network/'
-    }
-
     get isMainnet() {
         return DEFAULT_NETWORK_ID === 1 ? true : false
     }
@@ -144,9 +134,9 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
         return prices ? formatter.format(prices.usd) : '$-.--'
     }
 
-    get marketCapUSD() {
-        return getMarketCapUSD()
-    }
+    // get marketCapUSD() {
+    //     return getMarketCapUSD()
+    // }
 
     // get statusPageURL() {
     //     return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test

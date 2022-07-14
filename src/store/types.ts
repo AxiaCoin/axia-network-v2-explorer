@@ -6,7 +6,7 @@ import { Asset } from '@/js/Asset'
 import { ICollisionMap } from '@/js/IAsset'
 import { PlatformState } from './modules/platform/models'
 import { BlocksState } from './modules/blocks/models'
-import { Price } from '@/services/price'
+// import { Price } from '@/services/price'
 
 export interface IRootState {
     assets: {
@@ -24,7 +24,7 @@ export interface IRootState {
     }
     collisionMap: ICollisionMap
     pricesLoaded: boolean
-    prices: Price | null
+    // prices: Price | null
     abisLoaded: boolean
     abis: any | null
     abiDecoder: any

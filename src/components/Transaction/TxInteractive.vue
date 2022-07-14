@@ -80,7 +80,7 @@ export default class TxInteractive extends Vue {
     }
 
     get filteredTransactions() {
-        return this.transactions.filter((tx) => {
+        return this.transactions?.filter((tx) => {
             return this.filters.some((val) => val === tx.type)
         })
     }

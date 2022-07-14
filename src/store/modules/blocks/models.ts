@@ -31,7 +31,7 @@ export interface EVMBlockQueryResponse {
     // NOT APPLICABLE
     version: number /* N/A - Intended to provide a version of the ExtraData field. Deprecated since we 
                         can just use our codec to reason about how that should be versioned. */
-    uncles: null // N/A due to Snow Consensus
+    uncles: null // N/A due to Kleroterion Consensus
     txs: null // N/A
 }
 

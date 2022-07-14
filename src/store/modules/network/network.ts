@@ -14,7 +14,7 @@ export const DEFAULT_NETWORK_NAME =
         : (process.env.VUE_APP_TEST_NETWORKNAME as string)
 
 // Mainnet
-const networkName = process.env.VUE_APP_NETWORKNAME
+// const networkName = process.env.VUE_APP_NETWORKNAME
 const explorerFEUrl = process.env.VUE_APP_EXPLORER_FE_URL || ''
 const magellanURL = process.env.VUE_APP_MAGELLAN_URL || ''
 export const ethereumAPI = process.env.VUE_APP_AXIA_GO_ETH_URL || ''
@@ -28,7 +28,7 @@ export const axChainExplorerURL = process.env.VUE_APP_AXCHAIN_EXPLORER_URL || ''
 // export const statusURL = process.env.VUE_APP_STATUS_URL || ''
 
 // Testnet
-const networkName_test = process.env.VUE_APP_TEST_NETWORKNAME || ''
+// const networkName_test = process.env.VUE_APP_TEST_NETWORKNAME || ''
 const explorerFEUrl_test = process.env.VUE_APP_TEST_EXPLORER_FE_URL || ''
 const magellanURL_test = process.env.VUE_APP_TEST_MAGELLAN_URL || ''
 export const ethereumAPI_test = process.env.VUE_APP_TEST_AXIA_GO_ETH_URL || ''
@@ -59,7 +59,7 @@ const network_module: Module<INetworkState, IRootState> = {
     actions: {
         async init({ state, commit, dispatch }) {
             const mainnet = new Network(
-                `${networkName} Mainnet`,
+                `Mainnet`,
                 `${axiaJSProtocol}://${axiaJSIP}:${axiaJSPort}`,
                 axiaJSNetworkID,
                 axiaJSChainID,
@@ -67,7 +67,7 @@ const network_module: Module<INetworkState, IRootState> = {
                 explorerFEUrl
             )
             const testnet = new Network(
-                `${networkName_test} Testnet`,
+                `Testnet`,
                 `${axiaJSProtocol_test}://${axiaJSIP_test}:${axiaJSPort_test}`,
                 axiaJSNetworkID_test,
                 axiaJSChainID_test,
