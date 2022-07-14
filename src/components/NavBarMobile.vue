@@ -117,16 +117,6 @@ export default class NavbarMobile extends Vue {
             : axChainExplorerURL_test
     }
 
-    get tokensURL() {
-        return DEFAULT_NETWORK_ID === 1
-            ? 'https://avascan.info/tokens'
-            : 'https://testnet.avascan.info/tokens'
-    }
-
-    get statsURL() {
-        return 'https://stats.avax.network/'
-    }
-
     get isMainnet() {
         return DEFAULT_NETWORK_ID === 1 ? true : false
     }

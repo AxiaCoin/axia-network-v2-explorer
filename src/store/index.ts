@@ -25,8 +25,8 @@ import { getAssetAggregates, IAssetAggregate } from '@/services/aggregates'
 import { parseTxs } from './modules/transactions/helpers'
 import { Swap } from '@/known_blockchains'
 import { getCacheAssets } from '@/services/assets'
-import { getPrices, Price, PriceMap } from '@/services/price'
-import { AXC_PRICE_ID, VS_CURRENCIES } from '@/known_prices'
+// import { getPrices, Price, PriceMap } from '@/services/price'
+// import { AXC_PRICE_ID, VS_CURRENCIES } from '@/known_prices'
 import { getABI } from '@/services/abi/abi.service'
 //@ts-ignore
 import abiDecoder from 'abi-decoder'
@@ -55,7 +55,7 @@ const store = new Vuex.Store({
         // temporarily responsible for triggering assetAggregatesLoaded
         collisionMap: {},
         pricesLoaded: true,
-        prices: null,
+        // prices: null,
         abisLoaded: true,
         abis: null,
         abiDecoder: null,
@@ -64,7 +64,7 @@ const store = new Vuex.Store({
         async init(store) {
             // Get and set initial list of all indexed assets
             await store.dispatch('getAssets')
-            store.dispatch('getPrice')
+            // store.dispatch('getPrice')
             store.dispatch('getABI')
 
             // Once we have assets, next get recent transactions
@@ -150,14 +150,14 @@ const store = new Vuex.Store({
             return map
         },
 
-        async getPrice({ commit }) {
-            const price: PriceMap = await getPrices({
-                ids: [AXC_PRICE_ID],
-                vs_currencies: [VS_CURRENCIES],
-            })
-            commit('addPrices', price[AXC_PRICE_ID])
-            commit('finishPricesLoading')
-        },
+        // async getPrice({ commit }) {
+        //     const price: PriceMap = await getPrices({
+        //         ids: [AXC_PRICE_ID],
+        //         vs_currencies: [VS_CURRENCIES],
+        //     })
+        //     commit('addPrices', price[AXC_PRICE_ID])
+        //     commit('finishPricesLoading')
+        // },
 
         async getABI({ commit }) {
             const ERC20: any = await getABI('erc20')
@@ -207,9 +207,9 @@ const store = new Vuex.Store({
         addCollisionMap(state, collisionMap: ICollisionMap) {
             state.collisionMap = collisionMap
         },
-        addPrices(state, prices: Price) {
-            state.prices = prices
-        },
+        // addPrices(state, prices: Price) {
+        //     state.prices = prices
+        // },
         finishPricesLoading(state) {
             state.pricesLoaded = true
         },
