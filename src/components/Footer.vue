@@ -4,11 +4,11 @@
             <div class="powered_by">
                 <div class="header">
                     <img :src="img" />
-                    <h4>Axia Explorer</h4>
+                    <h4>AXIA Explorer</h4>
                 </div>
                 <p class="axia_desc">
-                    Axia Explorer is an analytics tool that enables people to
-                    search the Axia blockchain for transactions, addresses, and
+                    AXIA Explorer is an analytics tool that enables people to
+                    search the AXIA blockchain for transactions, addresses, and
                     other platform activities.
                 </p>
                 <!-- <p class="axia_desc tos">
@@ -87,9 +87,9 @@ export default class Footer extends Vue {
 <style scoped lang="scss">
 $footer_color: $black;
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    $footer_color: $secondary-color;
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     $footer_color: $secondary-color;
+// }
 
 .v-footer {
     margin: 60px 0 0 0;

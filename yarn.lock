@@ -9,10 +9,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@axia-systems/axiajs@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@axia-systems/axiajs/-/axiajs-3.0.0.tgz#1c54eee982414dca823f21f789caa580c71a9a01"
-  integrity sha512-eFE2IlhmWPWzgmRYR8ma/UsNXBr+lOin3kkOheHErv0Jfean23s8Wy8KcNCXBrowgMqansVZTrCYxLQQ6rw9qw==
+"@axia-systems/axiajs@^2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@axia-systems/axiajs/-/axiajs-2.0.10.tgz#2aa8f71d12ea36a5589c872183260ce78b65e94a"
+  integrity sha512-esMP/jx2bIVVCg53RjbPbM54tI9noXQNjYf1DBnKSv/UlXUZ/Fdj66+zvwtBNjyH19yfcRKbOU/jPBs56sPbCw==
   dependencies:
     assert "2.0.0"
     axios "0.27.2"
@@ -3763,15 +3763,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001035:
-  version "1.0.30001036"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001036.tgz"
-  integrity sha512-jU8CIFIj2oR7r4W+5AKcsvWNVIb6Q6OZE3UsrXrZBHFtreT4YgTeOJtTucp+zSedEpTi3L5wASSP0LYIE3if6w==
-
-caniuse-lite@^1.0.30001312:
-  version "1.0.30001312"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001312.tgz#e11eba4b87e24d22697dae05455d5aea28550d5f"
-  integrity sha512-Wiz1Psk2MEK0pX3rUzWaunLTZzqS2JYZFzNKqAiJGiuxIjRPLgV6+VDPOg6lQOUxmDwhTlh198JsTTi8Hzw6aQ==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001020, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001312:
+  version "1.0.30001363"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001363.tgz"
+  integrity sha512-HpQhpzTGGPVMnCjIomjt+jvyUu8vNFo3TaDiZ/RcoTrlOq/5+tC8zHdsbgFB6MxmaY+jCpsH09aD80Bb4Ow3Sg==
 
 case-sensitive-paths-webpack-plugin@^2.3.0:
   version "2.3.0"

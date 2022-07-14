@@ -10,7 +10,7 @@
                         <p class="label">
                             Allychains
                             <TooltipMeta
-                                content="Total number of allychains on Axia"
+                                content="Total number of allychains on AXIA"
                             />
                         </p>
                         <p class="meta_val">
@@ -23,7 +23,7 @@
                         <p class="label">
                             Blockchains
                             <TooltipMeta
-                                content="Total number of blockchains on Axia"
+                                content="Total number of blockchains on AXIA"
                             />
                         </p>
                         <p class="meta_val">
@@ -36,7 +36,7 @@
                         <p class="label">
                             Validators
                             <TooltipMeta
-                                content="Total number of nodes validating transactions on Axia"
+                                content="Total number of nodes validating transactions on AXIA"
                             />
                         </p>
                         <p class="meta_val">
@@ -49,7 +49,7 @@
                         <p class="label">
                             Total Stake Amount
                             <TooltipMeta
-                                content="Total value of AXC locked to secure Axia"
+                                content="Total value of AXC locked to secure AXIA"
                             />
                         </p>
                         <p class="meta_val">

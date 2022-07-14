@@ -10,9 +10,9 @@ import { IMetaTag } from '@/router/IMetaTag'
 
 Vue.use(VueRouter)
 
-const suffix = ' | Axia Explorer'
+const suffix = ' | AXIA Explorer'
 const description =
-    'Axia Explorer is an analytics tool that enables people to search the Axia blockchain for transactions, addresses, and other platform activities.'
+    'AXIA Explorer is an analytics tool that enables people to search the AXIA blockchain for transactions, addresses, and other platform activities.'
 const defaultMetaTags: IMetaTag[] = [
     {
         name: 'description',
@@ -68,12 +68,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'Axia Explorer for validators is the perfect analytics tool that enables transactions, addresses, and other platform transparency.',
+                        'AXIA Explorer for validators is the perfect analytics tool that enables transactions, addresses, and other platform transparency.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'Axia Explorer for validators is the perfect analytics tool that enables transactions, addresses, and other platform transparency.',
+                        'AXIA Explorer for validators is the perfect analytics tool that enables transactions, addresses, and other platform transparency.',
                 },
             ],
         },
@@ -92,12 +92,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the AXIA Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the AXIA Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },
@@ -116,12 +116,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the AXIA Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the Axia Explorer. Providing our community of individuals, developers, and investors piece of mind.',
+                        'View transactions on Core-Chain, Swap-Chain, and AX-Chain with the AXIA Explorer. Providing our community of individuals, developers, and investors piece of mind.',
                 },
             ],
         },
@@ -177,12 +177,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the AXIA Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the AXIA Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
             ],
         },
@@ -201,12 +201,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the AXIA Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the AXIA Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
             ],
         },
@@ -225,12 +225,12 @@ const routes = [
                 {
                     name: 'description',
                     content:
-                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the AXIA Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
                 {
                     property: 'og:description',
                     content:
-                        'Blockchain transparency with the Axia Explorer enables people to search for transactions, addresses, and other platform activities.',
+                        'Blockchain transparency with the AXIA Explorer enables people to search for transactions, addresses, and other platform activities.',
                 },
             ],
         },

@@ -1,7 +1,13 @@
 <template>
     <div>
         <TxTableHead />
-        <v-alert v-if="transactions.length === 0" color="#e6f5ff" dense>
+        <v-alert
+            v-if="
+                transactions?.length === 0 || transactions?.length === undefined
+            "
+            color="#e6f5ff"
+            dense
+        >
             There are no matching entries
         </v-alert>
         <div class="rows">

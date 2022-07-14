@@ -18,7 +18,7 @@
                         "
                     />
                     <h1>
-                        <span class="hide">Axia Explorer</span>
+                        <span class="hide">AXIA Explorer</span>
                     </h1>
                 </a>
             </div> -->
@@ -85,7 +85,7 @@ import {
     // statusURL_test,
 } from '@/store/modules/network/network'
 import { PlatformGettersMixin } from '@/store/modules/platform/platform.mixins'
-import { getMarketCapUSD } from '@/store/modules/platform/platform.getters'
+// import { getMarketCapUSD } from '@/store/modules/platform/platform.getters'
 
 @Component({
     components: {
@@ -117,16 +117,6 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
             : axChainExplorerURL_test
     }
 
-    get tokensURL() {
-        return DEFAULT_NETWORK_ID === 1
-            ? 'https://avascan.info/tokens'
-            : 'https://testnet.avascan.info/tokens'
-    }
-
-    get statsURL() {
-        return 'https://stats.avax.network/'
-    }
-
     get isMainnet() {
         return DEFAULT_NETWORK_ID === 1 ? true : false
     }
@@ -144,9 +134,9 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
         return prices ? formatter.format(prices.usd) : '$-.--'
     }
 
-    get marketCapUSD() {
-        return getMarketCapUSD()
-    }
+    // get marketCapUSD() {
+    //     return getMarketCapUSD()
+    // }
 
     // get statusPageURL() {
     //     return DEFAULT_NETWORK_ID === 1 ? statusURL : statusURL_test
@@ -177,11 +167,11 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
 .currency_logo {
     margin-bottom: -5px;
 }
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .navbar {
-        border-bottom: none;
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .navbar {
+//         border-bottom: none;
+//     }
+// }
 
 .top {
     display: flex;
@@ -321,26 +311,26 @@ export default class Navbar extends Mixins(PlatformGettersMixin) {
     }
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .routes a {
-        color: rgba(255, 255, 255, 0.72) !important;
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .routes a {
+//         color: rgba(255, 255, 255, 0.72) !important;
 
-        &.router-link-exact-active {
-            color: $white !important;
-        }
-    }
+//         &.router-link-exact-active {
+//             color: $white !important;
+//         }
+//     }
 
-    .prices {
-        .price_pair {
-            .label {
-                color: rgba(255, 255, 255, 0.72) !important;
-            }
-            .value {
-                color: $white !important;
-            }
-        }
-    }
-}
+//     .prices {
+//         .price_pair {
+//             .label {
+//                 color: rgba(255, 255, 255, 0.72) !important;
+//             }
+//             .value {
+//                 color: $white !important;
+//             }
+//         }
+//     }
+// }
 
 @include smOnly {
     .logo {

@@ -10,7 +10,7 @@
                             require(`@/assets/explorer_logo_${logoColor}.png`)
                         "
                     />
-                    <h1><span class="hide">Axia Explorer</span></h1>
+                    <h1><span class="hide">AXIA Explorer</span></h1>
                 </a>
             </div>
             <div class="buttons">
@@ -115,16 +115,6 @@ export default class NavbarMobile extends Vue {
         return DEFAULT_NETWORK_ID === 1
             ? axChainExplorerURL
             : axChainExplorerURL_test
-    }
-
-    get tokensURL() {
-        return DEFAULT_NETWORK_ID === 1
-            ? 'https://avascan.info/tokens'
-            : 'https://testnet.avascan.info/tokens'
-    }
-
-    get statsURL() {
-        return 'https://stats.avax.network/'
     }
 
     get isMainnet() {

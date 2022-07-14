@@ -1,7 +1,7 @@
 <template>
     <div id="network_statistics" class="card">
         <div class="header">
-            <h2 class="top_info_heading">Axia Network Activity</h2>
+            <h2 class="top_info_heading">AXIA Network Activity</h2>
         </div>
         <section class="stats one-column">
             <!-- <dl>
@@ -9,7 +9,7 @@
                     <dd class="indent">
                         24h Transactions
                         <TooltipMeta
-                            content="Total number of state queries or modifications of all blockchains on Axia in the past 24 hours"
+                            content="Total number of state queries or modifications of all blockchains on AXIA in the past 24 hours"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -27,7 +27,7 @@
                     <dd class="indent">
                         24h Volume
                         <TooltipMeta
-                            content="Total value of AXC transferred on Axia in the past 24 hours"
+                            content="Total value of AXC transferred on AXIA in the past 24 hours"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -54,7 +54,7 @@
                     <dd>
                         Validators
                         <TooltipMeta
-                            content="Total number of nodes validating transactions on Axia"
+                            content="Total number of nodes validating transactions on AXIA"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -78,7 +78,7 @@
                     <dd>
                         Total Staked
                         <TooltipMeta
-                            content="Total value of AXC locked to secure Axia"
+                            content="Total value of AXC locked to secure AXIA"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -103,7 +103,7 @@
                     <dd>
                         Blockchains
                         <TooltipMeta
-                            content="Total number of blockchains on Axia"
+                            content="Total number of blockchains on AXIA"
                             :color="'#2196f3'"
                         />
                     </dd>
@@ -127,7 +127,7 @@
                     <dd>
                         Allychains
                         <TooltipMeta
-                            content="Total number of allychains on Axia"
+                            content="Total number of allychains on AXIA"
                             :color="'#2196f3'"
                         />
                     </dd>

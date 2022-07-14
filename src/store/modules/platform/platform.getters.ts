@@ -94,16 +94,16 @@ export function getTotalBlockchains(): number {
 /**
  * @returns AXC Market Cap in USD
  */
-export function getMarketCapUSD(): string {
-    const currentSupplyBN = store.state.Platform.currentSupply
-    const currentSupplyBig = Big(currentSupplyBN.div(ONEAXC).toString())
-    // TODO: need to use circulatingSupply as currentSupply is both locked and unlocked AXC
-    if (store.state.prices) {
-        const marketCapUSD = currentSupplyBig.times(store.state.prices['usd'])
-        return marketCapUSD.toLocaleString(2)
-    }
-    return '-'
-}
+// export function getMarketCapUSD(): string {
+//     const currentSupplyBN = store.state.Platform.currentSupply
+//     const currentSupplyBig = Big(currentSupplyBN.div(ONEAXC).toString())
+//     // TODO: need to use circulatingSupply as currentSupply is both locked and unlocked AXC
+//     if (store.state.prices) {
+//         const marketCapUSD = currentSupplyBig.times(store.state.prices['usd'])
+//         return marketCapUSD.toLocaleString(2)
+//     }
+//     return '-'
+// }
 
 export function getStakingRatio(): number {
     let totalStake = getTotalStake()

@@ -123,18 +123,18 @@ export default class NetworkMenu extends Vue {
     }
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .toggle_but {
-        .caret,
-        button {
-            color: $white;
-        }
-    }
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .toggle_but {
+//         .caret,
+//         button {
+//             color: $white;
+//         }
+//     }
 
-    .network_menu[connected] .toggle_but {
-        color: $white;
-    }
-}
+//     .network_menu[connected] .toggle_but {
+//         color: $white;
+//     }
+// }
 
 .network_body {
     position: absolute;
@@ -187,18 +187,18 @@ export default class NetworkMenu extends Vue {
 }
 
 @include smOrSmaller {
-    @if $VUE_APP_DEFAULT_NETWORKID == 5 {
-        .toggle_but {
-            .caret,
-            button {
-                color: $primary-color-light;
-            }
-        }
+    // @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+    //     .toggle_but {
+    //         .caret,
+    //         button {
+    //             color: $primary-color-light;
+    //         }
+    //     }
 
-        .network_menu[connected] .toggle_but {
-            color: $primary-color-light;
-        }
-    }
+    //     .network_menu[connected] .toggle_but {
+    //         color: $primary-color-light;
+    //     }
+    // }
 
     .network_body {
         top: 0;

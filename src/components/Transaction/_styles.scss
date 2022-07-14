@@ -160,11 +160,11 @@ h3.label {
     text-transform: none;
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 5 {
-    .utxo_container {
-        background-color: $white;
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 5 {
+//     .utxo_container {
+//         background-color: $white;
+//     }
+// }
 
 @include smOrSmaller {
     .type_label {

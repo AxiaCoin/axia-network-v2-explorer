@@ -16,9 +16,8 @@
         <template v-else>
             <v-alert class="testnet_alert" text type="info" rounded="0">
                 <p class="description" :style="{ color: 'white' }">
-                    Notice: This Explorer displays activity on the
-                    {{ networkName }} Testnet, <span class="bold">not</span> the
-                    AXIA Mainnet.
+                    Notice: This Explorer displays activity on the Testnet,
+                    <span class="bold">not</span> the AXIA Mainnet.
                 </p>
             </v-alert>
         </template>
@@ -79,11 +78,11 @@ export default class TestnetAlert extends Vue {
     }
 }
 
-@if $VUE_APP_DEFAULT_NETWORKID == 1 {
-    .v-alert--text:before {
-        background-color: #45a5e7 !important;
-    }
-}
+// @if $VUE_APP_DEFAULT_NETWORKID == 1 {
+//     .v-alert--text:before {
+//         background-color: #45a5e7 !important;
+//     }
+// }
 
 .bold {
     font-weight: 700;
