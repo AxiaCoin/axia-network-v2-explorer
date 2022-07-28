@@ -8,7 +8,7 @@
                 rounded="0"
             >
                 <p class="description" :style="{ color: 'white' }">
-                    This Explorer displays activity on the
+                    This Explorer displays activities on the
                     <span class="bold">AXIA Mainnet</span>.
                 </p>
             </v-alert>
@@ -16,7 +16,7 @@
         <template v-else>
             <v-alert class="testnet_alert" text type="info" rounded="0">
                 <p class="description" :style="{ color: 'white' }">
-                    Notice: This Explorer displays activity on the Testnet,
+                    Notice: This Explorer displays activities on the Testnet,
                     <span class="bold">not</span> the AXIA Mainnet.
                 </p>
             </v-alert>
